@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# Enforces Conventional Commits: type(scope)!: subject
+set -euo pipefail
+
+first_line=$(head -n1 "$1")
+pattern='^(feat|fix|chore|docs|test|refactor|perf|style|build|ci|revert)(\([a-z0-9._/-]+\))?!?: .{1,100}$'
+
+if [[ "$first_line" =~ ^(Merge|Revert\ \") ]]; then
+    exit 0
+fi
+
+if ! [[ "$first_line" =~ $pattern ]]; then
+    echo "commit-msg: správa nespĺňa Conventional Commits, napr. 'feat(booking): add calendar'." >&2
+    echo "  prvý riadok: $first_line" >&2
+    exit 1
+fi

@@ -1,0 +1,22 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+
+/*
+ * Design tokens – single place to change the look.
+ * Values come from the Stitch project "Mobile First Aid Workshops" (Phase 4 refines them).
+ */
+@theme {
+    --font-sans: 'Work Sans', ui-sans-serif, system-ui, sans-serif;
+    --font-heading: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
+
+    --color-primary: #be000c;
+    --color-on-primary: #ffffff;
+    --color-secondary: #565e74;
+    --color-surface: #f8f9ff;
+    --color-on-surface: #0b1c30;
+    --color-error: #ba1a1a;
+
+    --radius-DEFAULT: 0.5rem;
+}

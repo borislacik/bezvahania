@@ -1,0 +1,75 @@
+# Local development stack. Everything runs in Docker; the host needs only Docker and Git.
+# Usage: see README.md (section "Lokálny vývoj").
+name: bezvahania
+
+services:
+  app:
+    build:
+      context: docker/php
+    volumes:
+      - .:/var/www/html
+      # vendor/ and node_modules/ live in named volumes (much faster than a Windows bind mount)
+      - vendor:/var/www/html/vendor
+      - node_modules:/var/www/html/node_modules
+      - composer_cache:/composer/cache
+    environment:
+      DB_HOST: db
+      MAIL_HOST: mailpit
+    depends_on:
+      db:
+        condition: service_healthy
+      mailpit:
+        condition: service_started
+
+  web:
+    image: nginx:1.29-alpine
+    ports:
+      - '${APP_PORT:-80}:80'
+    volumes:
+      - .:/var/www/html:ro
+      - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+    depends_on:
+      - app
+
+  vite:
+    build:
+      context: docker/php
+    command: ['npm', 'run', 'dev', '--', '--host', '0.0.0.0']
+    working_dir: /var/www/html
+    ports:
+      - '${VITE_PORT:-5173}:5173'
+    volumes:
+      - .:/var/www/html
+      - node_modules:/var/www/html/node_modules
+    profiles: ['vite']
+
+  db:
+    image: mariadb:11.4
+    environment:
+      MARIADB_DATABASE: bezvahania
+      MARIADB_USER: bezvahania
+      MARIADB_PASSWORD: secret
+      MARIADB_ROOT_PASSWORD: root
+      TZ: Europe/Bratislava
+    command: ['--character-set-server=utf8mb4', '--collation-server=utf8mb4_unicode_ci']
+    ports:
+      - '${FORWARD_DB_PORT:-3306}:3306'
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./docker/mariadb/init:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ['CMD', 'healthcheck.sh', '--connect', '--innodb_initialized']
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+  mailpit:
+    image: axllent/mailpit:latest
+    ports:
+      - '${FORWARD_MAILPIT_UI_PORT:-8025}:8025'
+
+volumes:
+  vendor:
+  node_modules:
+  composer_cache:
+  db_data:

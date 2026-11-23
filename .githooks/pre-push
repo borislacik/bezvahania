@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+# Blocks pushing main unless `composer check` passed for the pushed commit (.check-passed).
+# Exception: chore(release) commits that change only CHANGELOG.md and docs/deployments.md.
+set -euo pipefail
+
+passed=$(cat .check-passed 2>/dev/null || true)
+
+while read -r local_ref local_sha remote_ref remote_sha; do
+    [[ "$remote_ref" == "refs/heads/main" ]] || continue
+    [[ "$local_sha" =~ ^0+$ ]] && continue
+
+    if [[ "$local_sha" == "$passed" ]]; then
+        continue
+    fi
+
+    if [[ -n "$passed" ]] && git merge-base --is-ancestor "$passed" "$local_sha" 2>/dev/null; then
+        extra=$(git diff --name-only "$passed" "$local_sha" | grep -v -E '^(CHANGELOG\.md|docs/deployments\.md)$' || true)
+        if [[ -z "$extra" ]]; then
+            continue
+        fi
+    fi
+
+    echo "pre-push: push do main je zablokovaný – .check-passed nezodpovedá $local_sha." >&2
+    echo "  Spusti 'docker compose exec app composer check' na main." >&2
+    exit 1
+done
