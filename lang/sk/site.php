@@ -1,0 +1,196 @@
+<?php
+
+/*
+ * Texts of the public website. Texts edited in the admin (courses, team, FAQ, testimonials,
+ * SEO, legal pages, contact details) are in the database, everything else is here.
+ */
+return [
+    'brand_tagline' => 'Prvá pomoc • Workshop',
+    'default_description' => 'Praktické workshopy prvej pomoci pre malé skupiny do 4 osôb priamo u vás doma alebo v kancelárii. Bratislava a okolie.',
+    'service_area' => 'Bratislava a okolie do 60 km',
+    'skip_to_content' => 'Preskočiť na obsah',
+
+    'pages' => [
+        'home' => 'Domáce workshopy prvej pomoci',
+        'workshops' => 'Workshopy',
+        'booking' => 'Rezervácia termínu',
+        'about' => 'O lektorovi',
+        'faq' => 'Časté otázky',
+        'contact' => 'Kontakt',
+        'privacy' => 'Ochrana osobných údajov',
+        'terms' => 'Podmienky rezervácie',
+        'cookies' => 'Zásady používania cookies',
+    ],
+
+    'nav' => [
+        'label' => 'Hlavná navigácia',
+        'home' => 'Úvod',
+        'workshops' => 'Workshopy',
+        'about' => 'O lektorovi',
+        'faq' => 'Časté otázky',
+        'contact' => 'Kontakt',
+        'book' => 'Rezervovať termín',
+        'open_menu' => 'Otvoriť menu',
+        'close_menu' => 'Zavrieť menu',
+    ],
+
+    'footer' => [
+        'about' => 'Praktické workshopy prvej pomoci v malých skupinách ľudí, ktorí sa poznajú. Prídem za vami domov alebo do kancelárie.',
+        'links' => 'Užitočné odkazy',
+        'legal' => 'Právne informácie',
+        'contact' => 'Kontakt',
+        'operator' => 'Prevádzkovateľ',
+        'ico' => 'IČO: :ico',
+        'cookie_settings' => 'Nastavenia cookies',
+        'rights' => '© :year :name. Všetky práva vyhradené.',
+    ],
+
+    'common' => [
+        'from_price' => ':price',
+        'per_group' => 'za skupinu',
+        'per_person' => '(:price / os. pri 4 osobách)',
+        'group' => 'Skupina',
+        'group_value' => '1 – 4 osoby (uzavretá)',
+        'equipment' => 'Vybavenie',
+        'price' => 'Cena za skupinu',
+        'duration' => 'Trvanie',
+        'book_course' => 'Rezervovať termín',
+        'detail' => 'Viac o workshope',
+        'all_workshops' => 'Všetky workshopy',
+        'back' => 'Späť',
+    ],
+
+    'home' => [
+        'pills' => [
+            'practice' => '100 % prax a nácvik',
+            'home' => 'U vás doma alebo v kancelárii',
+            'group' => 'Komorná skupina 1 – 4 osoby',
+        ],
+        'eyebrow' => 'Autentický výcvik pre život',
+        'title_start' => 'Prvá pomoc bez strachu a',
+        'title_highlight' => 'bez váhania',
+        'title_end' => '– priamo u vás doma.',
+        'lead' => 'Praktické workshopy v kruhu vašej rodiny, priateľov či kolegov (najviac 4 osoby). Žiadne suché memorovanie – väčšinu času trénujete na figurínach a trenažéroch pod vedením profesionálneho záchranára.',
+        'cta_book' => 'Vybrať workshop a rezervovať',
+        'cta_how' => 'Ako prebieha workshop',
+        'kpis' => [
+            ['value' => '12+', 'label' => 'rokov v záchrannej službe'],
+            ['value' => '90 %', 'label' => 'čistý praktický nácvik'],
+            ['value' => '1 – 4', 'label' => 'účastníci pre maximálny fokus'],
+        ],
+        'hero_image_alt' => 'Nácvik resuscitácie a defibrilátora v domácom prostredí',
+        'hero_badge' => 'Živý nácvik',
+        'hero_caption' => 'Resuscitácia a AED vo vašej obývačke',
+        'hero_caption_sub' => 'Svalová pamäť, ktorá v reálnom strese pomôže zachrániť život.',
+        'hero_card_title' => 'Aktuálne odporúčania ERC',
+        'hero_card_text' => 'Postupy podľa European Resuscitation Council',
+        'fact_title' => 'Kritický čas: prvé 3 až 5 minút',
+        'fact_text' => 'Záchranka je na mieste spravidla až o niekoľko minút. O tom, čo sa deje dovtedy, rozhodujete vy.',
+        'fact_badge' => 'Pripravenosť zachraňuje',
+
+        'pillars_eyebrow' => 'Prečo Bez váhania',
+        'pillars_title' => 'Tri piliere výcviku, ktorý naozaj funguje',
+        'pillars_lead' => 'Zabudnite na nudné prednášky v preplnených miestnostiach. Toto je dôvod, prečo v núdzi nezamrznete.',
+        'pillars' => [
+            [
+                'icon' => 'local_fire_department',
+                'title' => 'Dôveryhodnosť a odbornosť',
+                'text' => 'Žiadne suché poučky z učebníc. Vedomosti a reflexy priamo z reálnych výjazdov profesionálneho hasiča a záchranára – vieme, čo v strese funguje a čo nie.',
+                'footer' => 'Overená prax z terénu',
+                'footer_icon' => 'verified_user',
+            ],
+            [
+                'icon' => 'pan_tool_alt',
+                'title' => 'Efektivita a reálny nácvik',
+                'text' => 'Väčšinu času strávite s figurínou so spätnou väzbou, cvičným defibrilátorom AED a turniketom v rukách. Vytvoríte si svalovú pamäť, ktorá v strese vytlačí strach.',
+                'footer' => 'Ruky na trenažéroch',
+                'footer_icon' => 'touch_app',
+            ],
+            [
+                'icon' => 'cottage',
+                'title' => 'Komfort vášho domova',
+                'text' => 'Necestujete nikam. Prídem s kompletným vybavením k vám domov alebo do kancelárie. Trénujete v kruhu 1 až 4 ľudí, ktorí sa poznajú – nikto sa nehanbí pýtať ani skúšať.',
+                'footer' => 'Komorne a bez ostychu',
+                'footer_icon' => 'sentiment_satisfied',
+            ],
+        ],
+        'pillar_label' => 'Pilier :number',
+
+        'how_eyebrow' => 'Priebeh od A po Z',
+        'how_title' => 'Ako prebieha workshop priamo u vás?',
+        'how_lead' => 'Žiadna zložitá príprava z vašej strany. Stačí bežná obývačka alebo zasadačka s priestorom na podložku a figurínu. Všetko vybavenie prinesiem so sebou.',
+        'how_note_title' => 'Vhodné aj pre staršie deti (od 11 rokov)',
+        'how_note_text' => 'Deti často reagujú v krízach prekvapivo pokojne a presne. Spoločný tréning posilní celú rodinu.',
+        'steps' => [
+            ['icon' => 'calendar_clock', 'title' => 'Výber termínu', 'text' => 'V kalendári si vyberiete deň a časť dňa – doobeda (9:00 – 13:00) alebo poobede (15:00 – 19:00).'],
+            ['icon' => 'luggage', 'title' => 'Príchod a príprava', 'text' => 'Prídem s predstihom a rozložím figuríny, cvičný AED, obväzový materiál a hygienické pomôcky.'],
+            ['icon' => 'cardiology', 'title' => 'Intenzívny tréning', 'text' => 'Prejdeme si simulované situácie. Každý si zásah vyskúša niekoľkokrát, kým sa z neho nestane prirodzený reflex.'],
+            ['icon' => 'workspace_premium', 'title' => 'Osvedčenie a pomôcky', 'text' => 'Na konci dostanete osvedčenie o absolvovaní workshopu a prehľadnú príručku do domácej lekárničky.'],
+        ],
+
+        'workshops_eyebrow' => 'Ponuka výcvikov',
+        'workshops_title' => 'Tri špecializované praktické workshopy',
+        'workshops_lead' => 'Vyberte si zameranie, ktoré najlepšie zodpovedá vašim potrebám.',
+
+        'instructor_eyebrow' => 'Váš lektor',
+        'instructor_badge_label' => 'Aktívna služba',
+        'instructor_badge_value' => '12+ rokov zásahov',
+        'instructor_credentials' => [
+            ['icon' => 'workspace_premium', 'title' => 'Osvedčenie pre každého', 'text' => 'Potvrdenie o absolvovaní workshopu'],
+            ['icon' => 'emergency', 'title' => 'Prax z terénu', 'text' => 'Denný kontakt so zásahmi'],
+            ['icon' => 'cardiology', 'title' => 'Prednemocničná starostlivosť', 'text' => 'Postupy podľa ERC'],
+        ],
+
+        'testimonials_eyebrow' => 'Skúsenosti absolventov',
+        'testimonials_title' => 'Čo hovoria tí, ktorí už trénovali doma',
+        'rating' => 'Hodnotenie :rating z 5',
+
+        'faq_eyebrow' => 'Časté otázky',
+        'faq_title' => 'Všetko, čo potrebujete vedieť pred workshopom',
+        'faq_more' => 'Všetky otázky a odpovede',
+
+        'contact_eyebrow' => 'Osobná konzultácia',
+        'contact_title' => 'Máte špecifické požiadavky alebo firmu?',
+        'contact_text' => 'Workshop prispôsobíme vašej rodine, malej firme či športovému klubu. Zavolajte alebo napíšte, odpoviem obratom.',
+        'guarantee_title' => 'Garancia Bez váhania',
+        'guarantees' => [
+            'Platba až po skončení workshopu – v hotovosti alebo kartou',
+            'Doprava do 60 km od Bratislavy je v cene',
+            'Osvedčenie o absolvovaní pre každého účastníka',
+        ],
+        'guarantee_cta' => 'Vybrať voľný termín v kalendári',
+    ],
+
+    'workshops' => [
+        'title' => 'Workshopy prvej pomoci',
+        'lead' => 'Tri praktické workshopy pre skupiny do 4 osôb. Prídem k vám domov alebo do kancelárie v Bratislave a okolí.',
+        'about' => 'O workshope',
+        'empty' => 'Momentálne nie sú dostupné žiadne workshopy.',
+        'other' => 'Ďalšie workshopy',
+        'practical' => 'Praktické informácie',
+        'place' => 'Miesto',
+        'place_value' => 'U vás doma alebo v kancelárii',
+        'payment' => 'Platba',
+        'payment_value' => 'Na mieste po workshope, v hotovosti alebo kartou',
+        'certificate' => 'Osvedčenie',
+        'certificate_value' => 'Osvedčenie o absolvovaní pre každého účastníka',
+    ],
+
+    'about' => [
+        'title' => 'O lektorovi',
+        'lead' => 'Kto k vám príde a prečo sa naučíte viac než na bežnom kurze.',
+        'why_title' => 'Prečo malé skupiny',
+        'why_text' => 'Vo veľkých skupinách sa ľudia boja pýtať a prakticky si zásah vyskúšajú len raz. V malej skupine ľudí, ktorí sa poznajú, má každý dosť času na opakovaný nácvik a otázky bez ostychu.',
+    ],
+
+    'faq' => [
+        'title' => 'Časté otázky',
+        'lead' => 'Nenašli ste odpoveď? Napíšte mi cez kontaktný formulár.',
+        'empty' => 'Zatiaľ tu nie sú žiadne otázky.',
+    ],
+
+    'legal' => [
+        'missing' => 'Text sa pripravuje. Pre otázky nás kontaktujte na :email.',
+        'updated' => 'Posledná aktualizácia: :date',
+    ],
+];

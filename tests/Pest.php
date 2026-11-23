@@ -1,6 +1,10 @@
 <?php
 
+use App\Models\User;
+use Database\Seeders\ContentSeeder;
+use Filament\Facades\Filament;
 use Illuminate\Foundation\Testing\LazilyRefreshDatabase;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
 /*
@@ -19,5 +23,27 @@ pest()->extend(TestCase::class)
     ->in('Feature');
 
 pest()->extend(TestCase::class)
-    ->use(LazilyRefreshDatabase::class)
+    ->use(RefreshDatabase::class)
+    ->beforeEach(fn () => $this->seed(ContentSeeder::class))
     ->in('Browser');
+
+// Browser tests reach the app on the public domain (*.localhost resolves to loopback).
+pest()->browser()->withHost('bezvahania.localhost');
+
+/*
+|--------------------------------------------------------------------------
+| Helpers
+|--------------------------------------------------------------------------
+*/
+
+/**
+ * Logs in an administrator for Filament (Livewire) tests.
+ */
+function actingAsAdmin(): User
+{
+    $admin = User::factory()->create();
+    test()->actingAs($admin);
+    Filament::setCurrentPanel('admin');
+
+    return $admin;
+}

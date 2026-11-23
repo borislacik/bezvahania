@@ -41,7 +41,7 @@ MariaDB 11.4 · Pest 5 + browser plugin · Pint · Larastan · Prettier · Larav
 - Tenké controllery, biznis logika v `App\Actions\…` (volá ich web aj Filament). Validácia vo Form Requests.
 - Stavy ako PHP Enums s `label()` cez preklady. E-maily vo fronte.
 - Rezervácia: celý termín (deň + doobeda 9–13 / poobede 15–19) pre jednu skupinu 1–4 osôb, bez potvrdzovania adminom.
-  Vytvorenie v transakcii s `lockForUpdate()`, nikdy nesmie vzniknúť dvojitá rezervácia.
+  Dvojitej rezervácii bráni unikátny index na `bookings.active_slot` (ADR 0005), nie `lockForUpdate()`.
 - SEO (title, description, OG obrázok) je editovateľné v admine. **Všetky obrázky na webe sú WebP**, nahraté obrázky sa automaticky konvertujú na WebP.
 - Google Analytics iba po súhlase (cookie lišta podľa EÚ, Consent Mode v2). GDPR: osobné údaje nikdy do logov.
 - Časové pásmo `Europe/Bratislava`, slovenské formáty. Architektúra pripravená na ďalší jazyk (`/{locale}` prefix neskôr).
@@ -69,7 +69,13 @@ MariaDB 11.4 · Pest 5 + browser plugin · Pint · Larastan · Prettier · Larav
 - mazať dáta (lokálne DB, súbory na serveri) bez pokynu
 
 ## Práca po fázach
-Fázy 0–5 podľa `docs/brief.md` (sekcia 11). Po každej fáze sa zastav, zhrň a počkaj na „pokračuj“.
+Fázy podľa `docs/brief.md` (sekcia 11), upravené v `docs/decisions.md`: overenie hostingu a deploy až po schválení
+lokálnej verzie. Po každom väčšom celku sa zastav, zhrň a počkaj na „pokračuj“.
+
+## Praktické poznámky
+- Ikony: `<x-site.icon name="…" />` (SVG v `resources/svg/icons`). `<x-icon>` patrí Filamentu (blade-icons).
+- Tailwind 4: triedy použité v `@apply` iných tried definuj cez `@utility`, nie v `@layer components`.
+- Lokálny admin: `admin@bezvahania.localhost` / `password` (seeder, iba `local`).
 
 ## Vzťah k Boost guidelines nižšie
 Blok `<laravel-boost-guidelines>` generuje `php artisan boost:update`, ručne ho neupravuj. Pri konflikte platia pravidlá projektu vyššie:

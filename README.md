@@ -8,7 +8,7 @@ alebo v kancelárii, Bratislava a okolie.
 | Produkcia – web | https://bezvahania.sk (zatiaľ nenasadené) |
 | Produkcia – admin | https://admin.bezvahania.sk (zatiaľ nenasadené) |
 | Lokálne – web | http://bezvahania.localhost |
-| Lokálne – admin | http://admin.bezvahania.localhost (od Fázy 2) |
+| Lokálne – admin | http://admin.bezvahania.localhost |
 | Lokálne – Mailpit | http://localhost:8025 |
 
 Staging neexistuje, všetko sa testuje lokálne ([rozhodnutia](docs/decisions.md)).
@@ -30,9 +30,12 @@ docker compose up -d --build
 docker compose exec app composer install
 docker compose exec app npm ci
 docker compose exec app php artisan key:generate
-docker compose exec app php artisan migrate
+docker compose exec app php artisan migrate --seed
 docker compose exec app npm run build
 ```
+`--seed` naplní web obsahom zo Stitch návrhu (3 workshopy, lektor, FAQ, referencie, SEO stránok) a lokálne
+aj ukážkovými rezerváciami a blokovanými dňami.
+
 Potom otvor http://bezvahania.localhost. Domény `*.localhost` sa prekladajú na tvoj počítač automaticky,
 súbor `hosts` netreba upravovať.
 
@@ -54,7 +57,15 @@ Všetky príkazy sa spúšťajú v kontajneri `app`:
 | `docker compose exec app composer docs:check` | kontrola dokumentácie |
 | `docker compose exec app composer check` | všetko vyššie + `npm run build`; pri úspechu a čistom strome zapíše `.check-passed` |
 
-Pripravuje sa (Fáza 2): vytvorenie admina (`app:create-admin`), deploy a rollback (`scripts/deploy.sh`, `scripts/rollback.sh`).
+| `docker compose exec app php artisan app:create-admin` | vytvorí administrátora (meno, e-mail, heslo min. 12 znakov) |
+| `docker compose exec app php artisan app:anonymize-bookings` | anonymizuje rezervácie staršie ako 3 roky (spúšťa sa aj denne automaticky) |
+| `docker compose exec app php artisan migrate:fresh --seed` | znovu vytvorí lokálnu databázu s ukážkovými dátami (**zmaže lokálne dáta**) |
+
+### Lokálny admin
+Seeder vytvorí lokálneho administrátora `admin@bezvahania.localhost` s heslom `password` (iba v prostredí `local`).
+Lokálne je MFA nepovinné (`ADMIN_MFA_REQUIRED=false`), na produkcii povinné.
+
+Pripravuje sa neskôr (až po schválení lokálnej verzie): overenie hostingu a deploy (`scripts/deploy.sh`, `scripts/rollback.sh`).
 
 ### Služby v Dockeri
 | Služba | Účel | Port na hoste |
@@ -63,6 +74,8 @@ Pripravuje sa (Fáza 2): vytvorenie admina (`app:create-admin`), deploy a rollba
 | `web` | nginx pre obe domény | 80 (`APP_PORT`) |
 | `db` | MariaDB 11.4 (`bezvahania`, `bezvahania_testing`) | 3306 (`FORWARD_DB_PORT`) |
 | `mailpit` | zachytáva odoslané e-maily | 8025 (`FORWARD_MAILPIT_UI_PORT`) |
+| `queue` | spracúva frontu (odosielanie e-mailov) | – |
+| `scheduler` | plánované úlohy (`model:prune`, anonymizácia rezervácií) | – |
 | `vite` | Vite dev server (profil `vite`) | 5173 (`VITE_PORT`) |
 
 `vendor/` a `node_modules/` sú v Docker volumes, nie v priečinku projektu ([ADR 0002](docs/adr/0002-docker-local-development.md)).
@@ -72,7 +85,8 @@ Pripravuje sa (Fáza 2): vytvorenie admina (`app:create-admin`), deploy a rollba
 
 | Premenná | Význam |
 |---|---|
-| `APP_DOMAIN`, `ADMIN_DOMAIN` | hostname verejného webu a adminu |
+| `APP_DOMAIN`, `ADMIN_DOMAIN`, `ADMIN_URL` | hostname verejného webu a adminu, URL adminu (odkaz v e-mailoch) |
+| `ADMIN_MFA_REQUIRED` | povinné dvojfaktorové overenie v admine (produkcia `true`) |
 | `APP_LOCALE`, `APP_FALLBACK_LOCALE`, `APP_FAKER_LOCALE` | `sk`, `sk`, `sk_SK` |
 | `APP_TIMEZONE` | `Europe/Bratislava` |
 | `DB_*` | MariaDB (lokálne služba `db`) |
@@ -115,5 +129,5 @@ Mimo `.env` (premenná prostredia na hoste): `STITCH_API_KEY` pre Stitch MCP v C
 | [docs/deployments.md](docs/deployments.md) | záznam nasadení |
 | [docs/changes/](docs/changes/) | záznam ku každej vetve |
 | [docs/adr/](docs/adr/) | architektonické rozhodnutia |
-| [docs/features/](docs/features/) | dokumentácia funkcionalít |
+| [docs/features/](docs/features/) | dokumentácia funkcionalít (rezervácie, admin, SEO a obrázky, cookies a GDPR) |
 | [CHANGELOG.md](CHANGELOG.md) | prehľad zmien |

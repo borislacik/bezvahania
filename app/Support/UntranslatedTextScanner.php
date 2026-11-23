@@ -30,9 +30,10 @@ final class UntranslatedTextScanner
 
         $findings = $this->attributeFindings($source);
 
+        // Directives first (their arguments may contain "=>" or "->"), then quote-aware tags.
         $text = $this->blankOut($source, [
-            '/<[^>]*>/s',
-            '/@[a-zA-Z]+(\s*\((?:[^()]++|(?1))*\))?/',
+            '/@[a-zA-Z]+(\s*(\((?:[^()]++|(?2))*\)))?/',
+            '/<(?:[^>"\']|"[^"]*"|\'[^\']*\')*>/s',
             '/&[a-zA-Z#0-9]+;/',
         ]);
 

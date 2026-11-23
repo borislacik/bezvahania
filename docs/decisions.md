@@ -5,6 +5,10 @@ a doplnené požiadavky. **Pri rozpore platí tento dokument.**
 
 Posledná aktualizácia: 23. 11. 2026
 
+## Zmena postupu (23. 11. 2026)
+Overenie hostingu, deploy skripty a nasadenie sa robia **až keď bude prevádzkovateľ spokojný s lokálnou verziou**.
+Dovtedy sa vyvíja celý web aj admin lokálne v Dockeri (pôvodné fázy 2 – 5 zo zadania sa spojili).
+
 ## Doplnené pravidlá a požiadavky
 
 | Téma | Rozhodnutie |

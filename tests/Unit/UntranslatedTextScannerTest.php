@@ -34,3 +34,21 @@ it('reports hardcoded visible attributes but not bound ones', function () {
     expect((new UntranslatedTextScanner)->scan($blade))
         ->toBe([['line' => 1, 'text' => 'alt="Ukážka kurzu"']]);
 });
+
+it('ignores arrows and comparisons inside directives and attributes', function () {
+    $blade = <<<'BLADE'
+        <a
+            @class([
+                'text-primary' => request()->routeIs('home'),
+                'text-on-surface' => ! $active,
+            ])
+            :class="date === '2026-12-02' ? 'a' : 'b'"
+            @if ($active) aria-current="page" @endif
+        >
+            {{ __('site.nav.home') }}
+        </a>
+        <x-site.card :index="$loop->index + 1" heading-level="h2" />
+        BLADE;
+
+    expect((new UntranslatedTextScanner)->scan($blade))->toBe([]);
+});

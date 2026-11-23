@@ -21,6 +21,34 @@ services:
       mailpit:
         condition: service_started
 
+  # Queue worker (e-mails). On the hosting the queue runs from cron instead (no supervisor).
+  queue:
+    image: bezvahania-app
+    command: ['php', 'artisan', 'queue:work', '--tries=3', '--backoff=30', '--sleep=3']
+    restart: unless-stopped
+    volumes:
+      - .:/var/www/html
+      - vendor:/var/www/html/vendor
+    environment:
+      DB_HOST: db
+      MAIL_HOST: mailpit
+    depends_on:
+      - app
+
+  # Scheduler (model:prune, anonymisation of old bookings).
+  scheduler:
+    image: bezvahania-app
+    command: ['php', 'artisan', 'schedule:work']
+    restart: unless-stopped
+    volumes:
+      - .:/var/www/html
+      - vendor:/var/www/html/vendor
+    environment:
+      DB_HOST: db
+      MAIL_HOST: mailpit
+    depends_on:
+      - app
+
   web:
     image: nginx:1.29-alpine
     ports:

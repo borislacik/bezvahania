@@ -22,6 +22,11 @@
     </source>
     <php>
         <env name="APP_ENV" value="testing"/>
+        <env name="APP_URL" value="http://bezvahania.localhost"/>
+        <env name="APP_DOMAIN" value="bezvahania.localhost"/>
+        <env name="ADMIN_DOMAIN" value="admin.bezvahania.localhost"/>
+        <env name="ADMIN_URL" value="http://admin.bezvahania.localhost"/>
+        <env name="ADMIN_MFA_REQUIRED" value="false"/>
         <env name="APP_MAINTENANCE_DRIVER" value="file"/>
         <env name="BCRYPT_ROUNDS" value="4"/>
         <env name="BROADCAST_CONNECTION" value="null"/>
@@ -33,6 +38,7 @@
         <env name="DB_URL" value=""/>
         <env name="MAIL_MAILER" value="array"/>
         <env name="QUEUE_CONNECTION" value="sync"/>
+        <env name="FILESYSTEM_DISK" value="local"/>
         <env name="SESSION_DRIVER" value="array"/>
         <env name="GOOGLE_ANALYTICS_ID" value=""/>
         <env name="PULSE_ENABLED" value="false"/>

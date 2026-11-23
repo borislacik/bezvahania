@@ -68,6 +68,8 @@ return [
 
     'admin_domain' => env('ADMIN_DOMAIN', 'admin.bezvahania.localhost'),
 
+    'admin_url' => env('ADMIN_URL', 'http://admin.bezvahania.localhost'),
+
     /*
     |--------------------------------------------------------------------------
     | Application Timezone

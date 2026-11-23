@@ -1,0 +1,56 @@
+# feat/website-and-admin – celý web a administrácia lokálne
+
+## Požiadavka
+„Fáza 2 nemá obsahovať overenie hostingu a deploy skript, to budeme robiť až keď budem spokojný s lokálnou
+verziou. Teraz chcem, aby si vyvinul celý web aj s adminom a lokálne ho spustil na Dockeri. Na dizajn použi Stitch.“
+Doplnené počas práce: SEO plne pripravené a editovateľné v admine (vrátane obrázka, nadpisu a popisu), všetky
+obrázky vo WebP s automatickou konverziou nahraných obrázkov, Google Analytics `G-Z690RSSEM0`.
+
+## Riešenie
+- **Dizajn**: Stitch projekt „Mobile First Aid Workshops“ (cez Stitch MCP) – farby, typografia, sekcie, obrázky
+  (konvertované na WebP). Texty z návrhu sú upravené podľa [decisions.md](../decisions.md) (1 – 4 osoby,
+  Bratislava + 60 km, časti dňa 9 – 13 / 15 – 19, okamžité potvrdenie, osvedčenie bez akreditácie).
+- **Rezervácie**: celý termín, mesačný kalendár, unikátny `active_slot` ([ADR 0005](../adr/0005-unique-slot-booking.md)),
+  logika v `App\Actions\Bookings`, dostupnosť v `App\Support\Availability`.
+- **Admin**: Filament 5 na `ADMIN_DOMAIN`, MFA (TOTP), vlastné stránky Dostupnosť a Nastavenia, widgety.
+- **Obsah a SEO** editovateľné v admine, preložiteľné cez `spatie/laravel-translatable`
+  ([ADR 0006](../adr/0006-translatable-content-and-webp.md)).
+- **Bez tretích strán**: písma a ikony (SVG) z vlastnej domény, GA až po súhlase.
+
+### Nové balíky (zdôvodnenie)
+| Balík | Účel | Licencia | Poznámka |
+|---|---|---|---|
+| `filament/filament` 5.12 | administrácia | MIT | v zadaní |
+| `spatie/laravel-translatable` 6.15 | preložiteľný obsah | MIT | v zadaní (predvolená odpoveď 17) |
+| `alpinejs`, `@alpinejs/collapse` 3.17 | kalendár, menu, FAQ, cookie lišta | MIT | Alpine je v zadaní |
+
+## Dotknuté časti
+- Migrácie: MFA stĺpce v `users`, `courses`, `blocked_days`, `bookings`, `team_members`, `faqs`, `testimonials`,
+  `pages`, `settings`, `contact_messages`.
+- Modely, Enums (`TimeSlot`, `BookingStatus`), Actions, `Availability`, `Seo`, `WebpImage`, middleware
+  (`SecurityHeaders`, `RedirectWww`, `AddNoIndexHeader`), e-maily (4 Mailables + Markdown šablóny).
+- Routy: všetky verejné routy v `Route::domain(config('app.domain'))`, Filament panel na `admin_domain`.
+- Filament: 7 resources, 2 stránky, 2 widgety, téma `resources/css/filament/admin/theme.css`.
+- Šablóny: `resources/views/pages/*`, `components/site/*`, `errors/*`, `mail/*`; preklady `lang/sk/*.php`.
+- Konfigurácia: `config/app.php` (`admin_url`), `config/auth.php` (`admin_mfa_required`), `config/services.php`
+  (`google_analytics`), `compose.yaml` (služby `queue`, `scheduler`), nginx (`/storage`).
+- Nové `.env` premenné: `ADMIN_URL`, `ADMIN_MFA_REQUIRED`, `GOOGLE_ANALYTICS_ID`.
+
+## Testy
+- Unit: `TimeSlotTest`, `UntranslatedTextScannerTest` (rozšírený o šípky v direktívach).
+- Feature: `AvailabilityTest`, `BookingTest` (vrátane súbehu a okrajových prípadov), `ContactTest`,
+  `PublicPagesTest`, `HomePageTest`, `DomainSeparationTest`, `ErrorPagesTest`, `WebpImageTest`, `CommandsTest`,
+  `EnumLabelsTest`, `Admin/*` (Livewire testy všetkých resources a stránok).
+- Browser: `BookingFlowTest` (celá rezervácia, plný termín, ďalší mesiac), `AdminTest` (prihlásenie na admin
+  doméne a zrušenie rezervácie), `HomePageTest` (všetky stránky bez JS chýb, písma, cookie lišta).
+- Ručne: `docker compose exec app php artisan migrate:fresh --seed`, http://bezvahania.localhost,
+  http://admin.bezvahania.localhost (`admin@bezvahania.localhost` / `password`), e-maily v http://localhost:8025.
+
+## Nasadenie
+Nenasadzuje sa. Pred prvým nasadením: overiť na hostingu GD s WebP, `/storage` symlink, cron pre scheduler a frontu,
+SMTP; vytvoriť admina cez `app:create-admin`; `ADMIN_MFA_REQUIRED=true`; `GOOGLE_ANALYTICS_ID=G-Z690RSSEM0`;
+na produkcii spustiť iba `db:seed --class=ContentSeeder`.
+
+## Odkazy
+[ADR 0005](../adr/0005-unique-slot-booking.md), [ADR 0006](../adr/0006-translatable-content-and-webp.md),
+[features/](../features/README.md), [architecture.md](../architecture.md).

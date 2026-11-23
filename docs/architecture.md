@@ -1,6 +1,6 @@
 # Architektúra
 
-> Stav: kostra (Fáza 1). Doménový model a tok rezervácie sa doplnia vo Fáze 3 a 4.
+> Stav: web aj admin implementované lokálne (23. 11. 2026). Podrobnosti v [features/](features/README.md).
 > Rozhodnutia k zadaniu: [decisions.md](decisions.md). ADR: [adr/](adr/).
 
 ## Prehľad
@@ -16,8 +16,9 @@
 | `app/Http/Controllers` | tenké controllery |
 | `app/Http/Requests` | validácia (Form Requests) |
 | `app/Enums` | stavy s `label()` cez preklady |
-| `app/Support` | pomocné triedy (napr. `UntranslatedTextScanner`) |
-| `resources/views/components` | znovupoužiteľné Blade komponenty (`layouts/public`) |
+| `app/Support` | `Availability`, `Seo`, `WebpImage`, `UntranslatedTextScanner` |
+| `app/Filament` | admin: resources, stránky (Dostupnosť, Nastavenia), widgety |
+| `resources/views/components` | Blade komponenty (`layouts/public`, `site/*`, ikony `<x-site.icon>`) |
 | `resources/views/pages` | stránky verejného webu |
 | `lang/sk`, `lang/sk.json` | všetky texty UI |
 
@@ -32,8 +33,33 @@
   Hodnoty pochádzajú zo Stitch projektu „Mobile First Aid Workshops“.
 - Písma Work Sans a Space Grotesk sa pri builde stiahnu a servírujú lokálne.
 
-## Doménový model (návrh, potvrdí sa vo Fáze 3)
-- **Course** (typ workshopu, 3 typy): preložiteľný názov a popis, cena (~200 €), poradie, aktívny, obrázok (WebP), SEO.
-- **Dostupnosť**: kalendár s dvoma termínmi denne (9–13, 15–19), admin blokuje celé dni.
-- **Booking**: dátum + termín, typ workshopu, kontaktná osoba, e-mail, telefón, adresa konania, počet osôb (1–4),
-  súhlas so spracovaním údajov. Vytvorenie v transakcii so zámkom, jedna rezervácia na termín.
+## Doménový model
+| Model | Tabuľka | Popis |
+|---|---|---|
+| `Course` | `courses` | typ workshopu (3 typy), preložiteľné texty, cena, obrázok (WebP), SEO |
+| `Booking` | `bookings` | rezervácia celého termínu: dátum + `TimeSlot`, workshop, kontakt, adresa, 1 – 4 osoby, stav, súhlas |
+| `BlockedDay` | `blocked_days` | deň, keď lektor nie je k dispozícii |
+| `TeamMember` | `team_members` | lektor (meno, funkcia, citát, text, foto) |
+| `Faq`, `Testimonial` | `faqs`, `testimonials` | časté otázky a referencie |
+| `Page` | `pages` | SEO a texty pevných stránok (kľúče v `Page::KEYS`) |
+| `Setting` | `settings` | kontaktné údaje, prevádzkovateľ, pravidlá rezervácií (kľúč – hodnota, cache) |
+| `ContactMessage` | `contact_messages` | správy z kontaktného formulára (mažú sa po 12 mesiacoch) |
+| `User` | `users` | administrátor (MFA cez aplikáciu) |
+
+Enums: `TimeSlot` (doobeda 9 – 13, poobede 15 – 19), `BookingStatus` (confirmed, completed, no_show, cancelled).
+
+## Tok rezervácie
+1. `BookingController@create` – `Availability::months()` pripraví kalendár (aktuálny + ďalší mesiac).
+2. `StoreBookingRequest` – validácia, honeypot, súhlas; rate limit `bookings`.
+3. `CreateBooking` – kontrola dostupnosti, vloženie v transakcii, unikátny `active_slot`
+   ([ADR 0005](adr/0005-unique-slot-booking.md)), e-maily do fronty.
+4. Presmerovanie na podpísanú adresu potvrdenia (`booking.show`).
+
+## Verejné routy (`routes/web.php`, doména `APP_DOMAIN`)
+`/`, `/workshopy`, `/workshopy/{slug}`, `/rezervacia` (GET/POST), `/rezervacia/{číslo}` (podpísaná),
+`/o-lektorovi`, `/caste-otazky`, `/kontakt` (GET/POST), `/ochrana-osobnych-udajov`, `/podmienky-rezervacie`,
+`/cookies`, `/sitemap.xml`, `/robots.txt`. Health check `/up`.
+
+## Plánované úlohy (`routes/console.php`)
+`model:prune` (správy z formulára), `app:anonymize-bookings` (rezervácie po 3 rokoch), na produkcii aj
+`queue:work --stop-when-empty` každú minútu. Lokálne beží služba `scheduler` a `queue`.

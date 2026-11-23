@@ -9,3 +9,5 @@ CHANGELOG.md
 docs/
 *.md
 lang/
+resources/views/mail/
+resources/svg/

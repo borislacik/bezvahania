@@ -1,0 +1,2195 @@
+<!doctype html>
+
+<html lang="sk">
+    <head>
+        <meta charset="utf-8" />
+        <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+        <meta content="web_standard" name="shell-type" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+            rel="stylesheet"
+        />
+        <link href="https://fonts.googleapis.com" rel="preconnect" />
+        <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&amp;family=Work+Sans:wght@400;500;600&amp;display=swap"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+            rel="stylesheet"
+        />
+        <style>
+            @layer base {
+                html,
+                body {
+                    margin: 0;
+                    padding: 0;
+                }
+                body {
+                    overscroll-behavior: none;
+                }
+                main > :first-child {
+                    margin-top: 0 !important;
+                }
+                main > :last-child {
+                    margin-bottom: 0 !important;
+                }
+            }
+            ::-webkit-scrollbar {
+                display: none;
+            }
+        </style>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script id="tailwind-config">
+            tailwind.config = {
+                darkMode: 'class',
+                theme: {
+                    extend: {
+                        colors: {
+                            'primary-fixed': '#ffdad5',
+                            'on-secondary': '#ffffff',
+                            'surface-container': '#e5eeff',
+                            'outline-variant': '#e7bdb7',
+                            'tertiary-container': '#007cbb',
+                            'on-error': '#ffffff',
+                            outline: '#926f6a',
+                            'on-tertiary-fixed-variant': '#004b73',
+                            'surface-container-high': '#dce9ff',
+                            surface: '#f8f9ff',
+                            'on-primary-fixed-variant': '#930007',
+                            'surface-container-low': '#eff4ff',
+                            'inverse-primary': '#ffb4aa',
+                            primary: '#be000c',
+                            'on-primary': '#ffffff',
+                            'on-surface-variant': '#5d3f3b',
+                            'on-secondary-fixed-variant': '#3f465c',
+                            tertiary: '#006296',
+                            'on-primary-container': '#fffeff',
+                            'on-error-container': '#93000a',
+                            'tertiary-fixed': '#cce5ff',
+                            'primary-fixed-dim': '#ffb4aa',
+                            'secondary-fixed': '#dae2fd',
+                            'on-background': '#0b1c30',
+                            'surface-dim': '#cbdbf5',
+                            'surface-variant': '#d3e4fe',
+                            'surface-tint': '#c0000d',
+                            'on-tertiary-container': '#fffeff',
+                            'on-secondary-fixed': '#131b2e',
+                            'secondary-fixed-dim': '#bec6e0',
+                            'surface-container-lowest': '#ffffff',
+                            'tertiary-fixed-dim': '#93ccff',
+                            'on-surface': '#0b1c30',
+                            'on-secondary-container': '#5c647a',
+                            secondary: '#565e74',
+                            'error-container': '#ffdad6',
+                            error: '#ba1a1a',
+                            'inverse-surface': '#213145',
+                            'on-tertiary-fixed': '#001d31',
+                            'on-primary-fixed': '#410001',
+                            'surface-bright': '#f8f9ff',
+                            'inverse-on-surface': '#eaf1ff',
+                            'primary-container': '#e52320',
+                            background: '#f8f9ff',
+                            'secondary-container': '#dae2fd',
+                            'on-tertiary': '#ffffff',
+                            'surface-container-highest': '#d3e4fe',
+                        },
+                        borderRadius: { DEFAULT: '0.25rem', lg: '0.5rem', xl: '0.75rem', full: '9999px' },
+                        spacing: {
+                            'space-lg': '1.5rem',
+                            'space-xs': '0.25rem',
+                            margin: '3rem',
+                            'margin-mobile': '1.25rem',
+                            gutter: '1.5rem',
+                            'space-xl': '2.5rem',
+                            'space-md': '1rem',
+                            'gutter-mobile': '1rem',
+                            'space-sm': '0.5rem',
+                        },
+                        fontFamily: {
+                            'headline-lg': ['Space Grotesk'],
+                            'headline-md': ['Space Grotesk'],
+                            'display-hero-mobile': ['Space Grotesk'],
+                            'body-lg': ['Work Sans'],
+                            'body-md': ['Work Sans'],
+                            'headline-xl-mobile': ['Space Grotesk'],
+                            'label-lg': ['Space Grotesk'],
+                            'display-hero': ['Space Grotesk'],
+                            'body-sm': ['Work Sans'],
+                            'label-badge': ['Space Grotesk'],
+                            'label-md': ['Space Grotesk'],
+                            'headline-xl': ['Space Grotesk'],
+                            'headline-sm': ['Space Grotesk'],
+                        },
+                        fontSize: {
+                            'headline-lg': [
+                                '28px',
+                                { lineHeight: '36px', letterSpacing: '-0.01em', fontWeight: '600' },
+                            ],
+                            'headline-md': ['22px', { lineHeight: '28px', fontWeight: '600' }],
+                            'display-hero-mobile': [
+                                '36px',
+                                { lineHeight: '44px', letterSpacing: '-0.02em', fontWeight: '700' },
+                            ],
+                            'body-lg': ['18px', { lineHeight: '28px', fontWeight: '400' }],
+                            'body-md': ['16px', { lineHeight: '24px', fontWeight: '400' }],
+                            'headline-xl-mobile': [
+                                '28px',
+                                { lineHeight: '36px', letterSpacing: '-0.01em', fontWeight: '700' },
+                            ],
+                            'label-lg': ['14px', { lineHeight: '20px', letterSpacing: '0.02em', fontWeight: '600' }],
+                            'display-hero': [
+                                '56px',
+                                { lineHeight: '64px', letterSpacing: '-0.03em', fontWeight: '700' },
+                            ],
+                            'body-sm': ['14px', { lineHeight: '20px', fontWeight: '400' }],
+                            'label-badge': ['11px', { lineHeight: '14px', letterSpacing: '0.06em', fontWeight: '700' }],
+                            'label-md': ['12px', { lineHeight: '16px', letterSpacing: '0.04em', fontWeight: '600' }],
+                            'headline-xl': [
+                                '40px',
+                                { lineHeight: '48px', letterSpacing: '-0.02em', fontWeight: '700' },
+                            ],
+                            'headline-sm': ['18px', { lineHeight: '24px', fontWeight: '600' }],
+                        },
+                    },
+                },
+            };
+        </script>
+    </head>
+    <body class="bg-surface font-body-md text-on-surface antialiased">
+        <header
+            class="bg-surface/90 fixed top-0 right-0 left-0 z-50 w-full shadow-[0_1px_8px_rgba(0,0,0,0.04)] backdrop-blur-xl"
+        >
+            <div class="mx-auto flex h-20 max-w-7xl items-center justify-between px-6 lg:px-12">
+                <a class="gap-space-sm group flex items-center" data-path="o-projekte" href="#"
+                    ><div
+                        class="bg-primary-container text-on-primary-container font-headline-lg text-headline-sm flex h-10 w-10 items-center justify-center rounded-lg font-bold shadow-sm"
+                    >
+                        <span class="material-symbols-outlined text-[24px]">medical_services</span>
+                    </div>
+                    <div class="flex flex-col">
+                        <span
+                            class="font-headline-lg text-headline-sm text-on-surface font-bold tracking-tight uppercase"
+                            >Bez Váhania</span
+                        ><span class="font-label-badge text-label-badge text-primary font-bold tracking-wider uppercase"
+                            >Prvá Pomoc • Workshop</span
+                        >
+                    </div></a
+                >
+                <nav class="gap-space-lg hidden items-center xl:flex" data-active-classes="text-primary font-semibold">
+                    <a
+                        aria-current="page"
+                        class="text-primary font-semibold transition-colors"
+                        data-path="o-projekte"
+                        href="#"
+                        >O projekte</a
+                    ><a
+                        class="font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface transition-colors"
+                        data-path="3-piliere"
+                        href="#"
+                        >3 Piliere</a
+                    ><a
+                        class="font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface transition-colors"
+                        data-path="workshopy"
+                        href="#"
+                        >Workshopy</a
+                    ><a
+                        class="font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface transition-colors"
+                        data-path="o-lektorovi"
+                        href="#"
+                        >O lektorovi</a
+                    ><a
+                        class="font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface transition-colors"
+                        data-path="rezervacia-terminu"
+                        href="#"
+                        >Rezervácia termínu</a
+                    ><a
+                        class="font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface transition-colors"
+                        data-path="kontakt"
+                        href="#"
+                        >Kontakt</a
+                    >
+                </nav>
+                <div class="gap-space-md flex items-center">
+                    <a
+                        class="px-space-md py-space-sm bg-primary-container hover:bg-primary text-on-primary-container font-label-lg text-label-lg hidden transform items-center justify-center rounded-lg font-bold shadow-sm transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 sm:inline-flex"
+                        data-path="rezervacia-terminu"
+                        href="#"
+                        >Rezervovať termín</a
+                    >
+                    <div class="pl-space-xs flex items-center">
+                        <img
+                            alt="Profile"
+                            class="ring-surface-container-high h-8 w-8 rounded-full object-cover ring-2"
+                            src="https://lh3.googleusercontent.com/aida/AEtjO1UTJhU-phiEGjPeH77A0i1z-p4-0hvPnd0gzmBkjrRrdqtSyC6PnxDQa0_C2ZxbSwPbyssLhbJJgAbLxmhfNXx_TAGSVKivTSYZStkoi1MWcxSRiW-FAw1AT41VGDoNrucIb0TgcDzWyrbgSdh_1ZyU47-C7MmFe-NqjBlsaCsKqJzMp_rE7lwioq8cGg5mID6u0FyL5FqK_eE50XN4gzc9MdUusIGoZV35XXQo5Bv9Gji7tvZDtxjrF1I"
+                        />
+                    </div>
+                </div>
+            </div>
+        </header>
+        <main class="bg-surface min-h-[calc(100vh-80px)] w-full pt-20">
+            <div class="flex w-full flex-col">
+                <!-- HERO SECTION -->
+                <section
+                    class="from-surface-container-low via-surface to-surface-container-lowest pb-space-xl relative w-full overflow-hidden bg-gradient-to-b pt-8 lg:pt-14"
+                >
+                    <!-- Atmospheric subtle radar / life pulse decoration in SVG -->
+                    <div
+                        class="bg-primary/5 pointer-events-none absolute -top-20 -right-20 h-96 w-96 rounded-full blur-3xl"
+                    ></div>
+                    <div
+                        class="bg-secondary-container/40 pointer-events-none absolute top-1/2 left-1/4 h-80 w-80 rounded-full blur-3xl"
+                    ></div>
+                    <div class="mx-auto max-w-7xl px-6 lg:px-12">
+                        <!-- Fast Credentials Pill Bar -->
+                        <div class="gap-space-xs flex flex-wrap items-center pb-6">
+                            <div
+                                class="bg-surface-container-lowest text-primary inline-flex items-center gap-1.5 rounded-full px-3 py-1 shadow-sm"
+                            >
+                                <span class="material-symbols-outlined text-[16px]">verified</span>
+                                <span class="font-label-badge text-label-badge font-bold tracking-wider uppercase"
+                                    >100% Prax &amp; Nácvik</span
+                                >
+                            </div>
+                            <div
+                                class="bg-surface-container-lowest text-on-surface-variant inline-flex items-center gap-1.5 rounded-full px-3 py-1 shadow-sm"
+                            >
+                                <span class="material-symbols-outlined text-primary text-[16px]">home_pin</span>
+                                <span class="font-label-badge text-label-badge font-bold tracking-wider uppercase"
+                                    >U vás doma (Západné &amp; Stredné SK)</span
+                                >
+                            </div>
+                            <div
+                                class="bg-surface-container-lowest text-on-surface-variant inline-flex items-center gap-1.5 rounded-full px-3 py-1 shadow-sm"
+                            >
+                                <span class="material-symbols-outlined text-tertiary text-[16px]">groups</span>
+                                <span class="font-label-badge text-label-badge font-bold tracking-wider uppercase"
+                                    >Komorná skupina 2–4 osoby</span
+                                >
+                            </div>
+                        </div>
+                        <!-- Main Headline + Asymmetric Hero Grid -->
+                        <div class="gap-space-xl grid grid-cols-1 items-center lg:grid-cols-12">
+                            <div class="flex flex-col gap-6 lg:col-span-7">
+                                <div class="flex flex-col gap-3">
+                                    <span
+                                        class="font-label-md text-label-md text-primary font-bold tracking-widest uppercase"
+                                        >Autentický výcvik pre život</span
+                                    >
+                                    <h1
+                                        class="font-display-hero text-headline-xl lg:text-display-hero text-on-surface leading-tight font-bold tracking-tight"
+                                    >
+                                        Prvá pomoc bez strachu a
+                                        <span class="text-primary relative inline-block"
+                                            >bez váhania<svg
+                                                class="text-primary/30 absolute -bottom-1.5 left-0 w-full"
+                                                height="8"
+                                                preserveaspectratio="none"
+                                                viewbox="0 0 100 8"
+                                            >
+                                                <path
+                                                    d="M0,5 Q50,0 100,5"
+                                                    fill="none"
+                                                    stroke="currentColor"
+                                                    stroke-width="4"
+                                                ></path></svg
+                                        ></span>
+                                        – priamo u vás doma.
+                                    </h1>
+                                </div>
+                                <p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl leading-relaxed">
+                                    Praktické workshopy v intímnom kruhu vašej rodiny či priateľov (<strong
+                                        class="text-on-surface font-semibold"
+                                        >2–4 osoby</strong
+                                    >). Žiadne suché memorovanie. 90% skutočného nácviku so špičkovými trenažérmi pod
+                                    vedením aktívneho hasiča-záchranára.
+                                </p>
+                                <!-- CTAs -->
+                                <div class="flex flex-col items-stretch gap-4 pt-2 sm:flex-row sm:items-center">
+                                    <a
+                                        class="bg-primary-container font-headline-sm text-headline-sm text-on-primary hover:bg-primary inline-flex items-center justify-center gap-2 rounded-lg px-7 py-4 text-center font-semibold shadow-md transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg active:translate-y-0"
+                                        href="#rezervacia"
+                                    >
+                                        <span>Vybrať workshop a rezervovať</span>
+                                        <span class="material-symbols-outlined text-[20px]">calendar_month</span>
+                                    </a>
+                                    <a
+                                        class="bg-surface-container-lowest font-label-lg text-label-lg text-on-surface hover:bg-surface-container hover:text-on-surface inline-flex items-center justify-center gap-2 rounded-lg px-6 py-4 text-center font-semibold shadow-sm transition-all duration-200"
+                                        href="#ako-prebieha"
+                                    >
+                                        <span class="material-symbols-outlined text-primary text-[20px]"
+                                            >play_circle</span
+                                        >
+                                        <span>Ako prebieha domáci workshop</span>
+                                    </a>
+                                </div>
+                                <!-- Trust KPIs bar -->
+                                <div class="mt-2 grid grid-cols-3 gap-4 pt-4">
+                                    <div class="flex flex-col">
+                                        <span
+                                            class="font-headline-xl text-headline-lg lg:text-headline-xl text-on-surface font-bold"
+                                            >12+</span
+                                        >
+                                        <span class="font-body-sm text-body-sm text-on-surface-variant"
+                                            >rokov v záchrannej službe</span
+                                        >
+                                    </div>
+                                    <div class="flex flex-col">
+                                        <span
+                                            class="font-headline-xl text-headline-lg lg:text-headline-xl text-primary font-bold"
+                                            >90%</span
+                                        >
+                                        <span class="font-body-sm text-body-sm text-on-surface-variant"
+                                            >čistý praktický nácvik</span
+                                        >
+                                    </div>
+                                    <div class="flex flex-col">
+                                        <span
+                                            class="font-headline-xl text-headline-lg lg:text-headline-xl text-on-surface font-bold"
+                                            >2–4</span
+                                        >
+                                        <span class="font-body-sm text-body-sm text-on-surface-variant"
+                                            >účastníci pre maximálny fokus</span
+                                        >
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Hero visual / feature collage -->
+                            <div class="relative lg:col-span-5">
+                                <div class="relative mx-auto max-w-md lg:max-w-none">
+                                    <!-- Main Hero Image Frame -->
+                                    <div
+                                        class="bg-surface-container-highest relative overflow-hidden rounded-2xl shadow-xl"
+                                    >
+                                        <img
+                                            alt="Nácvik KPR a defibrilátora v domácom prostredí"
+                                            class="h-80 w-full object-cover lg:h-[420px]"
+                                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAxkFBtkWGXdedxbotRPapNmx51H0jsmnZXIWr16sLRov_-BEzKwUvauGwfPb2iMY_DFJSd8rlA84mmk92djbamOpAIJ6wS4mtAqs_CIChntgY4BZGZlPQbNx_81vopnFlsdEJ3AixGUTY8e7ONJ9YZe8amygNZqFRmuKG4QTtV-5Dg1d_bz0O6b2gJVswhi7RbLzFg_kGIUez6z9IgDbva2Lv_VPud3qknqp-8j6c"
+                                        />
+                                        <div
+                                            class="from-on-surface/80 absolute inset-0 bg-gradient-to-t via-transparent to-transparent"
+                                        ></div>
+                                        <div class="text-on-primary absolute right-4 bottom-4 left-4">
+                                            <span
+                                                class="bg-primary-container font-label-badge text-label-badge text-on-primary inline-flex items-center gap-1 rounded px-2 py-0.5 font-bold uppercase"
+                                                >Živý nácvik</span
+                                            >
+                                            <p class="font-headline-sm text-headline-sm mt-1 font-semibold">
+                                                Resuscitácia &amp; AED vo vašej obývačke
+                                            </p>
+                                            <p class="font-body-sm text-body-sm opacity-90">
+                                                Svalová pamäť, ktorá v reálnom strese zachráni rodinu.
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <!-- Overlapping tactile card badge -->
+                                    <div
+                                        class="bg-surface-container-lowest absolute -bottom-6 -left-6 hidden items-center gap-3 rounded-xl p-4 shadow-xl sm:flex"
+                                    >
+                                        <div
+                                            class="bg-surface-container text-primary flex h-12 w-12 items-center justify-center rounded-lg"
+                                        >
+                                            <span
+                                                class="material-symbols-outlined text-[28px]"
+                                                style="font-variation-settings: 'FILL' 1"
+                                                >ecg_heart</span
+                                            >
+                                        </div>
+                                        <div class="flex flex-col">
+                                            <span class="font-headline-sm text-label-lg text-on-surface font-bold"
+                                                >European Resuscitation Council</span
+                                            >
+                                            <span class="font-body-sm text-body-sm text-on-surface-variant"
+                                                >Garantované najnovšie štandardy ERC 2024</span
+                                            >
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- EMERGENCY FACT STRIP / MISSION BANNER -->
+                <section class="bg-inverse-surface text-inverse-on-surface w-full py-6">
+                    <div
+                        class="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-6 md:flex-row lg:px-12"
+                    >
+                        <div class="flex items-center gap-3">
+                            <div
+                                class="bg-primary-container text-on-primary flex h-10 w-10 shrink-0 items-center justify-center rounded-full"
+                            >
+                                <span class="material-symbols-outlined text-[22px]">timer</span>
+                            </div>
+                            <div>
+                                <span class="font-headline-sm text-headline-sm text-inverse-on-surface block font-bold"
+                                    >Kritický čas prežitia: 3 až 5 minút</span
+                                >
+                                <span class="font-body-sm text-body-sm text-inverse-on-surface/80"
+                                    >Priemerný dojazd sanitky je 8–11 minút. O prežití rozhodujete vy v prvých troch
+                                    minútach.</span
+                                >
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="bg-primary inline-block h-2 w-2 animate-ping rounded-full"></span>
+                            <span
+                                class="font-label-badge text-label-badge text-inverse-on-surface/90 font-bold tracking-wider uppercase"
+                                >Pripravenosť zachraňuje</span
+                            >
+                        </div>
+                    </div>
+                </section>
+                <!-- SECTION: 3 PILIERE (3 PILLARS) -->
+                <section class="py-space-xl bg-surface w-full" id="3-piliere">
+                    <div class="mx-auto max-w-7xl px-6 lg:px-12">
+                        <!-- Section Header -->
+                        <div class="mx-auto mb-14 flex max-w-3xl flex-col items-center text-center">
+                            <div
+                                class="bg-surface-container text-primary mb-3 inline-flex items-center gap-2 rounded-full px-3.5 py-1"
+                            >
+                                <span class="material-symbols-outlined text-[16px]">shield</span>
+                                <span class="font-label-badge text-label-badge font-bold tracking-wider uppercase"
+                                    >Prečo Bez Váhania</span
+                                >
+                            </div>
+                            <h2 class="font-headline-xl text-headline-xl text-on-surface font-bold">
+                                Tri piliere výcviku, ktorý naozaj funguje
+                            </h2>
+                            <p class="font-body-lg text-body-lg text-on-surface-variant mt-3">
+                                Zabudnite na nudné prednášky v preplnených školiacich miestnostiach. Tu je dôvod, prečo
+                                si kurz zamilujete a v núdzi nezamrznete.
+                            </p>
+                        </div>
+                        <!-- Pillars Cards Grid -->
+                        <div class="grid grid-cols-1 gap-8 md:grid-cols-3">
+                            <!-- Pilier 1 -->
+                            <div
+                                class="bg-surface-container-lowest flex flex-col rounded-2xl p-8 shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+                            >
+                                <div
+                                    class="bg-primary-container text-on-primary-container mb-6 flex h-14 w-14 items-center justify-center rounded-xl shadow-sm"
+                                >
+                                    <span class="material-symbols-outlined text-[32px]">local_fire_department</span>
+                                </div>
+                                <div class="mb-2 flex items-center gap-2">
+                                    <span
+                                        class="font-label-badge text-label-badge text-primary font-bold tracking-wider uppercase"
+                                        >Pilier 01</span
+                                    >
+                                </div>
+                                <h3 class="font-headline-md text-headline-md text-on-surface mb-3 font-bold">
+                                    Dôveryhodnosť a odbornosť
+                                </h3>
+                                <p class="font-body-md text-body-md text-on-surface-variant mb-6 leading-relaxed">
+                                    Žiadne suché poučky z učebníc. Získate vedomosti a reflexy priamo z reálnych
+                                    výjazdov aktívneho profesionálneho hasiča a záchranára. Prešli sme stovkami
+                                    skutočných situácií a presne vieme, čo v šoku funguje a čo nie.
+                                </p>
+                                <div
+                                    class="text-primary font-label-md text-label-md mt-auto flex items-center gap-2 pt-4 font-semibold"
+                                >
+                                    <span class="material-symbols-outlined text-[18px]">verified_user</span>
+                                    <span>Overená prax z terénu</span>
+                                </div>
+                            </div>
+                            <!-- Pilier 2 -->
+                            <div
+                                class="bg-surface-container-lowest flex flex-col rounded-2xl p-8 shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+                            >
+                                <div
+                                    class="bg-surface-container text-primary mb-6 flex h-14 w-14 items-center justify-center rounded-xl shadow-sm"
+                                >
+                                    <span class="material-symbols-outlined text-[32px]">pan_tool_alt</span>
+                                </div>
+                                <div class="mb-2 flex items-center gap-2">
+                                    <span
+                                        class="font-label-badge text-label-badge text-primary font-bold tracking-wider uppercase"
+                                        >Pilier 02</span
+                                    >
+                                </div>
+                                <h3 class="font-headline-md text-headline-md text-on-surface mb-3 font-bold">
+                                    Efektivita a reálny nácvik
+                                </h3>
+                                <p class="font-body-md text-body-md text-on-surface-variant mb-6 leading-relaxed">
+                                    Až 90% času strávite s figurínou s digitálnym feedbackom, cvičným defibrilátorom AED
+                                    a turniketom priamo v rukách. Vytvoríte si hlbokú svalovú pamäť, ktorá v okamihu
+                                    stresu eliminuje strach a rozhoduje o živote.
+                                </p>
+                                <div
+                                    class="text-primary font-label-md text-label-md mt-auto flex items-center gap-2 pt-4 font-semibold"
+                                >
+                                    <span class="material-symbols-outlined text-[18px]">touch_app</span>
+                                    <span>100% ruky na trenažéroch</span>
+                                </div>
+                            </div>
+                            <!-- Pilier 3 -->
+                            <div
+                                class="bg-surface-container-lowest flex flex-col rounded-2xl p-8 shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+                            >
+                                <div
+                                    class="bg-secondary-container text-on-secondary-fixed mb-6 flex h-14 w-14 items-center justify-center rounded-xl shadow-sm"
+                                >
+                                    <span class="material-symbols-outlined text-[32px]">cottage</span>
+                                </div>
+                                <div class="mb-2 flex items-center gap-2">
+                                    <span
+                                        class="font-label-badge text-label-badge text-tertiary font-bold tracking-wider uppercase"
+                                        >Pilier 03</span
+                                    >
+                                </div>
+                                <h3 class="font-headline-md text-headline-md text-on-surface mb-3 font-bold">
+                                    Komfort vášho domova
+                                </h3>
+                                <p class="font-body-md text-body-md text-on-surface-variant mb-6 leading-relaxed">
+                                    Necestujete nikam. Prídem s kompletným certifikovaným vybavením priamo do vašej
+                                    obývačky. Nácvik v uzavretom kruhu 2 až 4 ľudí (rodina, partneri, blízki), kde sa
+                                    nikto nehanbí pýtať a každý má neobmedzený priestor na tréning.
+                                </p>
+                                <div
+                                    class="text-on-surface font-label-md text-label-md mt-auto flex items-center gap-2 pt-4 font-semibold"
+                                >
+                                    <span class="material-symbols-outlined text-[18px]">sentiment_satisfied</span>
+                                    <span>Intímne &amp; bez ostychu</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- SECTION: AKO PREBIEHA DOMÁCI WORKSHOP -->
+                <section class="py-space-xl bg-surface-container-low w-full" id="ako-prebieha">
+                    <div class="mx-auto max-w-7xl px-6 lg:px-12">
+                        <div class="grid grid-cols-1 items-center gap-12 lg:grid-cols-12">
+                            <div class="flex flex-col gap-6 lg:col-span-5">
+                                <span
+                                    class="font-label-md text-label-md text-primary font-bold tracking-wider uppercase"
+                                    >Priebeh od A po Z</span
+                                >
+                                <h2 class="font-headline-xl text-headline-xl text-on-surface font-bold">
+                                    Ako prebieha workshop priamo u vás doma?
+                                </h2>
+                                <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                                    Žiadna zložitá príprava z vašej strany. Stačí bežná obývačka s priestorom na
+                                    položenie podložky a figuríny. Všetko technické, hygienické aj edukačné zabezpečenie
+                                    prinesiem v profesionálnych záchranárskych kufroch.
+                                </p>
+                                <div
+                                    class="bg-surface-container-lowest flex items-start gap-4 rounded-xl p-5 shadow-sm"
+                                >
+                                    <span class="material-symbols-outlined text-primary text-[28px]"
+                                        >family_restroom</span
+                                    >
+                                    <div>
+                                        <h4 class="font-headline-sm text-headline-sm text-on-surface font-bold">
+                                            Vhodné aj pre staršie deti (od 11 rokov)
+                                        </h4>
+                                        <p class="font-body-sm text-body-sm text-on-surface-variant mt-1">
+                                            Deti často reagujú v krízach s neuveriteľným chladom a precíznosťou. Tréning
+                                            s rodičmi posilní celú rodinu.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:col-span-7">
+                                <!-- Step 1 -->
+                                <div class="bg-surface-container-lowest flex flex-col rounded-xl p-6 shadow-sm">
+                                    <div class="mb-4 flex items-center justify-between">
+                                        <span
+                                            class="bg-primary-container text-on-primary font-headline-sm text-label-lg flex h-8 w-8 items-center justify-center rounded-full font-bold"
+                                            >1</span
+                                        >
+                                        <span class="material-symbols-outlined text-on-surface-variant"
+                                            >calendar_clock</span
+                                        >
+                                    </div>
+                                    <h4 class="font-headline-sm text-headline-sm text-on-surface mb-2 font-bold">
+                                        Výber termínu
+                                    </h4>
+                                    <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+                                        Vyberiete si termín (doobeda, poobede, víkend). Dohodneme presný čas a adresu vo
+                                        vašom meste či obci.
+                                    </p>
+                                </div>
+                                <!-- Step 2 -->
+                                <div class="bg-surface-container-lowest flex flex-col rounded-xl p-6 shadow-sm">
+                                    <div class="mb-4 flex items-center justify-between">
+                                        <span
+                                            class="bg-primary-container text-on-primary font-headline-sm text-label-lg flex h-8 w-8 items-center justify-center rounded-full font-bold"
+                                            >2</span
+                                        >
+                                        <span class="material-symbols-outlined text-on-surface-variant">luggage</span>
+                                    </div>
+                                    <h4 class="font-headline-sm text-headline-sm text-on-surface mb-2 font-bold">
+                                        Príchod &amp; Rozloženie
+                                    </h4>
+                                    <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+                                        Prídem 15 minút vopred, rozložíme certifikované KPR figuríny, trenažér AED,
+                                        obväzový materiál a hygienické rúška.
+                                    </p>
+                                </div>
+                                <!-- Step 3 -->
+                                <div class="bg-surface-container-lowest flex flex-col rounded-xl p-6 shadow-sm">
+                                    <div class="mb-4 flex items-center justify-between">
+                                        <span
+                                            class="bg-primary-container text-on-primary font-headline-sm text-label-lg flex h-8 w-8 items-center justify-center rounded-full font-bold"
+                                            >3</span
+                                        >
+                                        <span class="material-symbols-outlined text-on-surface-variant"
+                                            >cardiology</span
+                                        >
+                                    </div>
+                                    <h4 class="font-headline-sm text-headline-sm text-on-surface mb-2 font-bold">
+                                        Intenzívny tréning
+                                    </h4>
+                                    <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+                                        Prejdeme si simulované krízy. Každý člen skupiny si vyskúša zásah niekoľkokrát,
+                                        kým sa z techniky nestane prirodzený reflex.
+                                    </p>
+                                </div>
+                                <!-- Step 4 -->
+                                <div class="bg-surface-container-lowest flex flex-col rounded-xl p-6 shadow-sm">
+                                    <div class="mb-4 flex items-center justify-between">
+                                        <span
+                                            class="bg-primary-container text-on-primary font-headline-sm text-label-lg flex h-8 w-8 items-center justify-center rounded-full font-bold"
+                                            >4</span
+                                        >
+                                        <span class="material-symbols-outlined text-on-surface-variant"
+                                            >workspace_premium</span
+                                        >
+                                    </div>
+                                    <h4 class="font-headline-sm text-headline-sm text-on-surface mb-2 font-bold">
+                                        Certifikát &amp; Pomôcky
+                                    </h4>
+                                    <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+                                        Získate oficiálny certifikát o absolvovaní, prehľadnú laminovanú príručku do
+                                        domácej lekárničky a doživotnú istotu.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- SECTION: WORKSHOPY (THE 3 WORKSHOPS) -->
+                <section class="py-space-xl bg-surface w-full" id="workshopy">
+                    <div class="mx-auto max-w-7xl px-6 lg:px-12">
+                        <!-- Section Header -->
+                        <div class="mx-auto mb-14 flex max-w-3xl flex-col items-center text-center">
+                            <div
+                                class="bg-surface-container text-primary mb-3 inline-flex items-center gap-2 rounded-full px-3.5 py-1"
+                            >
+                                <span class="material-symbols-outlined text-[16px]">school</span>
+                                <span class="font-label-badge text-label-badge font-bold tracking-wider uppercase"
+                                    >Ponuka výcvikov</span
+                                >
+                            </div>
+                            <h2 class="font-headline-xl text-headline-xl text-on-surface font-bold">
+                                Tri špecializované praktické workshopy
+                            </h2>
+                            <p class="font-body-lg text-body-lg text-on-surface-variant mt-3">
+                                Zvoľte si modul, ktorý najlepšie zodpovedá vašim potrebám alebo ich skombinujte pre
+                                komplexnú prípravu.
+                            </p>
+                        </div>
+                        <!-- Workshops Cards -->
+                        <div class="grid grid-cols-1 gap-8 lg:grid-cols-3">
+                            <!-- WORKSHOP 1: KPR & AED (Najžiadanejší) -->
+                            <div
+                                class="bg-surface-container-lowest flex flex-col overflow-hidden rounded-2xl shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl"
+                            >
+                                <!-- Upper visual with badge -->
+                                <div class="bg-surface-container-high relative h-56 w-full overflow-hidden">
+                                    <img
+                                        alt="KPR a záchrana života s AED"
+                                        class="h-full w-full object-cover transition-transform duration-500 hover:scale-105"
+                                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuAxkFBtkWGXdedxbotRPapNmx51H0jsmnZXIWr16sLRov_-BEzKwUvauGwfPb2iMY_DFJSd8rlA84mmk92djbamOpAIJ6wS4mtAqs_CIChntgY4BZGZlPQbNx_81vopnFlsdEJ3AixGUTY8e7ONJ9YZe8amygNZqFRmuKG4QTtV-5Dg1d_bz0O6b2gJVswhi7RbLzFg_kGIUez6z9IgDbva2Lv_VPud3qknqp-8j6c"
+                                    />
+                                    <div class="absolute top-4 left-4">
+                                        <span
+                                            class="bg-primary-container font-label-badge text-label-badge text-on-primary inline-flex items-center gap-1 rounded-full px-3 py-1 font-bold uppercase shadow-sm"
+                                        >
+                                            <span class="material-symbols-outlined text-[14px]">star</span>
+                                            Najžiadanejší
+                                        </span>
+                                    </div>
+                                    <div
+                                        class="bg-surface-container-lowest/90 text-on-surface font-label-badge text-label-badge absolute right-3 bottom-3 rounded-lg px-3 py-1 font-bold backdrop-blur-md"
+                                    >
+                                        cca 2,5 – 3 hodiny
+                                    </div>
+                                </div>
+                                <!-- Body -->
+                                <div class="flex flex-grow flex-col p-6">
+                                    <h3 class="font-headline-md text-headline-md text-on-surface mb-2 font-bold">
+                                        KPR a záchrana života s AED
+                                    </h3>
+                                    <p class="font-body-sm text-body-sm text-on-surface-variant mb-4 leading-relaxed">
+                                        Okamžitá reakcia pri náhlej zástave srdca a kolapse. Nácvik kvalitných kompresií
+                                        hrudníka na realistických figurínach s meraním hĺbky a frekvencie, bezpečné
+                                        použitie defibrilátora AED, uvoľnenie dýchacích ciest pri dusení (Heimlichov
+                                        manéver) a zotavovacia poloha.
+                                    </p>
+                                    <!-- Metadata specs -->
+                                    <div
+                                        class="border-surface-container text-body-sm text-body-sm space-y-2 border-y py-4"
+                                    >
+                                        <div class="flex items-center justify-between">
+                                            <span class="text-on-surface-variant flex items-center gap-1.5"
+                                                ><span class="material-symbols-outlined text-[18px]">group</span>
+                                                Skupina:</span
+                                            >
+                                            <span class="text-on-surface font-semibold">2 – 4 osoby (uzavretá)</span>
+                                        </div>
+                                        <div class="flex items-center justify-between">
+                                            <span class="text-on-surface-variant flex items-center gap-1.5"
+                                                ><span class="material-symbols-outlined text-[18px]">inventory_2</span>
+                                                Vybavenie:</span
+                                            >
+                                            <span class="text-on-surface font-semibold"
+                                                >CPR figuríny, cvičný AED, resuscitačné rúška</span
+                                            >
+                                        </div>
+                                        <div class="flex items-center justify-between">
+                                            <span class="text-on-surface-variant flex items-center gap-1.5"
+                                                ><span class="material-symbols-outlined text-[18px]">payments</span>
+                                                Cena za skupinu:</span
+                                            >
+                                            <span class="font-headline-sm text-headline-sm text-primary font-bold"
+                                                >160 €
+                                                <span class="text-body-sm text-on-surface-variant font-normal"
+                                                    >(40 € / os.)</span
+                                                ></span
+                                            >
+                                        </div>
+                                    </div>
+                                    <!-- Button -->
+                                    <div class="mt-6 pt-2">
+                                        <button
+                                            class="bg-primary-container font-headline-sm text-headline-sm text-on-primary hover:bg-primary flex w-full items-center justify-center gap-2 rounded-lg px-5 py-3 font-semibold shadow transition-all duration-200 hover:shadow-md"
+                                            onclick="selectWorkshopInCalendar('kpr-aed')"
+                                        >
+                                            <span>Rezervovať KPR &amp; AED</span>
+                                            <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- WORKSHOP 2: Civilná prvá pomoc v domácnosti a na cestách -->
+                            <div
+                                class="bg-surface-container-lowest flex flex-col overflow-hidden rounded-2xl shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl"
+                            >
+                                <!-- Upper visual with badge -->
+                                <div
+                                    class="bg-surface-container-high from-surface-container via-surface-container-low to-surface-variant relative flex h-56 w-full items-center justify-center overflow-hidden bg-gradient-to-br"
+                                >
+                                    <div class="flex flex-col items-center p-6 text-center">
+                                        <div
+                                            class="bg-surface-container-lowest text-primary mb-3 flex h-16 w-16 items-center justify-center rounded-2xl shadow-sm"
+                                        >
+                                            <span class="material-symbols-outlined text-[36px]">medical_services</span>
+                                        </div>
+                                        <span class="font-headline-sm text-headline-sm text-on-surface font-bold"
+                                            >Komplexná domáca medicína</span
+                                        >
+                                    </div>
+                                    <div class="absolute top-4 left-4">
+                                        <span
+                                            class="bg-secondary text-on-secondary font-label-badge text-label-badge inline-flex items-center gap-1 rounded-full px-3 py-1 font-bold uppercase shadow-sm"
+                                        >
+                                            <span class="material-symbols-outlined text-[14px]">family_home</span>
+                                            Pre rodiny a rodičov
+                                        </span>
+                                    </div>
+                                    <div
+                                        class="bg-surface-container-lowest/90 text-on-surface font-label-badge text-label-badge absolute right-3 bottom-3 rounded-lg px-3 py-1 font-bold backdrop-blur-md"
+                                    >
+                                        cca 3,5 – 4 hodiny
+                                    </div>
+                                </div>
+                                <!-- Body -->
+                                <div class="flex flex-grow flex-col p-6">
+                                    <h3 class="font-headline-md text-headline-md text-on-surface mb-2 font-bold">
+                                        Civilná prvá pomoc doma &amp; na cestách
+                                    </h3>
+                                    <p class="font-body-sm text-body-sm text-on-surface-variant mb-4 leading-relaxed">
+                                        Komplexná prvá pomoc pri najčastejších úrazoch a akútnych stavoch: masívne
+                                        krvácanie a popáleniny, zlomeniny, fixácia končatín, anafylaktický šok,
+                                        epileptický záchvat, intoxikácie a špecifiká prvej pomoci u malých detí.
+                                    </p>
+                                    <!-- Metadata specs -->
+                                    <div
+                                        class="border-surface-container text-body-sm text-body-sm space-y-2 border-y py-4"
+                                    >
+                                        <div class="flex items-center justify-between">
+                                            <span class="text-on-surface-variant flex items-center gap-1.5"
+                                                ><span class="material-symbols-outlined text-[18px]">group</span>
+                                                Skupina:</span
+                                            >
+                                            <span class="text-on-surface font-semibold">2 – 4 osoby (uzavretá)</span>
+                                        </div>
+                                        <div class="flex items-center justify-between">
+                                            <span class="text-on-surface-variant flex items-center gap-1.5"
+                                                ><span class="material-symbols-outlined text-[18px]">inventory_2</span>
+                                                Vybavenie:</span
+                                            >
+                                            <span class="text-on-surface font-semibold"
+                                                >Obväzová technika, dlahy, trenažér dusenia</span
+                                            >
+                                        </div>
+                                        <div class="flex items-center justify-between">
+                                            <span class="text-on-surface-variant flex items-center gap-1.5"
+                                                ><span class="material-symbols-outlined text-[18px]">payments</span>
+                                                Cena za skupinu:</span
+                                            >
+                                            <span class="font-headline-sm text-headline-sm text-on-surface font-bold"
+                                                >190 €
+                                                <span class="text-body-sm text-on-surface-variant font-normal"
+                                                    >(47 € / os.)</span
+                                                ></span
+                                            >
+                                        </div>
+                                    </div>
+                                    <!-- Button -->
+                                    <div class="mt-6 pt-2">
+                                        <button
+                                            class="bg-inverse-surface font-headline-sm text-headline-sm text-inverse-on-surface hover:bg-on-surface flex w-full items-center justify-center gap-2 rounded-lg px-5 py-3 font-semibold shadow transition-all duration-200 hover:shadow-md"
+                                            onclick="selectWorkshopInCalendar('civilna')"
+                                        >
+                                            <span>Rezervovať Civilnú prvú pomoc</span>
+                                            <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- WORKSHOP 3: Taktická prvá pomoc v kríze (TCCC / Stop The Bleed) -->
+                            <div
+                                class="bg-surface-container-lowest flex flex-col overflow-hidden rounded-2xl shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl"
+                            >
+                                <!-- Upper visual with badge -->
+                                <div class="bg-surface-container-high relative h-56 w-full overflow-hidden">
+                                    <img
+                                        alt="Taktická prvá pomoc TCCC Stop the Bleed"
+                                        class="h-full w-full object-cover transition-transform duration-500 hover:scale-105"
+                                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuCog4Xe1qVeacXz74karYa7NSJdkyRZD7u-wDtIfMJxs9bmMdv69KQlys8q4mOuBIFEFG6hgftzzopSvPdRIdw4ZZYXULrtn4WsYsENUtr3znhCP1xZlfWSVqlwQEOHatVJ1UJ7C9eDVaNCqWwhAqacFCMFbgC3_G_PTjFCufYRDJZJ3KxN3G9hp2UUnxBLpPKHX0JcS4CX0xryeK3GsaZedkOv7D80QNj-s2rV9w4"
+                                    />
+                                    <div class="absolute top-4 left-4">
+                                        <span
+                                            class="bg-on-surface text-inverse-on-surface font-label-badge text-label-badge inline-flex items-center gap-1 rounded-full px-3 py-1 font-bold uppercase shadow-sm"
+                                        >
+                                            <span class="material-symbols-outlined text-[14px]">crisis_alert</span>
+                                            Pokročilý tréning
+                                        </span>
+                                    </div>
+                                    <div
+                                        class="bg-surface-container-lowest/90 text-on-surface font-label-badge text-label-badge absolute right-3 bottom-3 rounded-lg px-3 py-1 font-bold backdrop-blur-md"
+                                    >
+                                        cca 3 hodiny
+                                    </div>
+                                </div>
+                                <!-- Body -->
+                                <div class="flex flex-grow flex-col p-6">
+                                    <h3 class="font-headline-md text-headline-md text-on-surface mb-2 font-bold">
+                                        Taktická prvá pomoc v kríze (TCCC)
+                                    </h3>
+                                    <p class="font-body-sm text-body-sm text-on-surface-variant mb-4 leading-relaxed">
+                                        Zvládanie život ohrozujúcich úrazov a masívnych tepnových krvácaní v extrémnych
+                                        podmienkach (autonehody, dielenské úrazy, outdoor). Aplikácia originálnych
+                                        turniketov (CAT / SOFTT), tlakových hemostatických obväzov a stabilizácia
+                                        zraneného.
+                                    </p>
+                                    <!-- Metadata specs -->
+                                    <div
+                                        class="border-surface-container text-body-sm text-body-sm space-y-2 border-y py-4"
+                                    >
+                                        <div class="flex items-center justify-between">
+                                            <span class="text-on-surface-variant flex items-center gap-1.5"
+                                                ><span class="material-symbols-outlined text-[18px]">group</span>
+                                                Skupina:</span
+                                            >
+                                            <span class="text-on-surface font-semibold">2 – 4 osoby (uzavretá)</span>
+                                        </div>
+                                        <div class="flex items-center justify-between">
+                                            <span class="text-on-surface-variant flex items-center gap-1.5"
+                                                ><span class="material-symbols-outlined text-[18px]">inventory_2</span>
+                                                Vybavenie:</span
+                                            >
+                                            <span class="text-on-surface font-semibold"
+                                                >Turnikety CAT Gen7, Izraelské obväzy, hemostatiká</span
+                                            >
+                                        </div>
+                                        <div class="flex items-center justify-between">
+                                            <span class="text-on-surface-variant flex items-center gap-1.5"
+                                                ><span class="material-symbols-outlined text-[18px]">payments</span>
+                                                Cena za skupinu:</span
+                                            >
+                                            <span class="font-headline-sm text-headline-sm text-on-surface font-bold"
+                                                >180 €
+                                                <span class="text-body-sm text-on-surface-variant font-normal"
+                                                    >(45 € / os.)</span
+                                                ></span
+                                            >
+                                        </div>
+                                    </div>
+                                    <!-- Button -->
+                                    <div class="mt-6 pt-2">
+                                        <button
+                                            class="bg-surface-container-highest font-headline-sm text-headline-sm text-on-surface hover:bg-secondary-container flex w-full items-center justify-center gap-2 rounded-lg px-5 py-3 font-semibold shadow-sm transition-all duration-200 hover:shadow-md"
+                                            onclick="selectWorkshopInCalendar('takticka')"
+                                        >
+                                            <span>Rezervovať Taktickú pomoc</span>
+                                            <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- SECTION: O LEKTOROVI (INSTRUCTOR BIO) -->
+                <section class="py-space-xl bg-surface-container-low w-full" id="o-lektorovi">
+                    <div class="mx-auto max-w-7xl px-6 lg:px-12">
+                        <div class="grid grid-cols-1 items-center gap-12 lg:grid-cols-12">
+                            <!-- Photo with tactile framed badge -->
+                            <div class="relative order-2 lg:order-1 lg:col-span-5">
+                                <div class="relative mx-auto max-w-md">
+                                    <div class="bg-surface overflow-hidden rounded-2xl shadow-xl">
+                                        <img
+                                            alt="Michal Kováč - profesionálny záchranár a inštruktor prvej pomoci"
+                                            class="h-[460px] w-full object-cover"
+                                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAF4HxCb2n5V-8IrEn1BzYmvz_eGOUKK9gAllhyNBO5_Kgc8xL9KWW3dKRYLP27Z5TWuJMbxYGvQIOEd0Hm5kNwnIea37FwLqa92Lwljn9cx7dVpdxIDV6ui-eZ1OyCWFnmHFnhxWO6-uDcTR0Z_1UVLR7zeX9TAqHPRQ22d2ku12Cz5MicC2F-XpvQP00z1Tj7P6uG7lw5CA9SKEgqwnsnbh3-irOpNhhFU-HthQ4"
+                                        />
+                                    </div>
+                                    <!-- Quick Credential Badge over image corner -->
+                                    <div
+                                        class="bg-inverse-surface text-inverse-on-surface absolute -right-4 -bottom-6 flex items-center gap-3 rounded-xl p-4 shadow-xl sm:right-6"
+                                    >
+                                        <div
+                                            class="bg-primary text-on-primary flex h-10 w-10 items-center justify-center rounded-lg"
+                                        >
+                                            <span class="material-symbols-outlined text-[24px]">ambulance</span>
+                                        </div>
+                                        <div class="flex flex-col">
+                                            <span
+                                                class="font-label-badge text-label-badge text-inverse-primary font-bold uppercase"
+                                                >Aktívna služba</span
+                                            >
+                                            <span class="font-headline-sm text-headline-sm font-semibold"
+                                                >12+ rokov zásahov</span
+                                            >
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Instructor Story & Philosophy -->
+                            <div class="order-1 flex flex-col gap-6 lg:order-2 lg:col-span-7">
+                                <div class="flex flex-col gap-2">
+                                    <div
+                                        class="bg-surface-container text-primary inline-flex w-fit items-center gap-2 rounded-full px-3.5 py-1"
+                                    >
+                                        <span class="material-symbols-outlined text-[16px]">badge</span>
+                                        <span
+                                            class="font-label-badge text-label-badge font-bold tracking-wider uppercase"
+                                            >Váš osobný inštruktor</span
+                                        >
+                                    </div>
+                                    <h2 class="font-headline-xl text-headline-xl text-on-surface font-bold">
+                                        Michal Kováč
+                                    </h2>
+                                    <span class="font-headline-sm text-headline-sm text-primary font-semibold">
+                                        Aktívny príslušník HaZZ a profesionálny záchranár
+                                    </span>
+                                </div>
+                                <!-- Quote Block -->
+                                <blockquote
+                                    class="bg-surface-container-lowest text-on-surface font-body-lg text-body-lg relative rounded-xl p-6 leading-relaxed italic shadow-sm"
+                                >
+                                    <span
+                                        class="material-symbols-outlined text-primary/30 pointer-events-none absolute top-2 right-4 text-[48px]"
+                                        >format_quote</span
+                                    >
+                                    „V praxi na výjazdoch vidím, že o prežití človeka často nerozhodujú záchranári po
+                                    príchode za 8 až 10 minút, ale ľudia, ktorí stoja pri ňom v prvých troch minútach.
+                                    Mojím cieľom nie je vás skúšať, kritizovať ani zahltiť latinskými výrazmi. Naučím
+                                    vás jednoduché, vytesané postupy tak, aby ste v kritickom okamihu konali úplne bez
+                                    váhania.“
+                                </blockquote>
+                                <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                                    Pri výcviku v domácnostiach spájam najnovšie medicínske smernice ERC s reálnou
+                                    hasičskou praxou v extrémnych podmienkach. Žiaden stres zo zlyhania – na workshope
+                                    vytvárame bezpečný priestor, kde si každú situáciu vyskúšate toľkokrát, kým sa
+                                    nebudete cítiť na 100% pripravení.
+                                </p>
+                                <!-- 3 Badges Credentials -->
+                                <div class="grid grid-cols-1 gap-4 pt-2 sm:grid-cols-3">
+                                    <div
+                                        class="bg-surface-container-lowest flex items-start gap-3 rounded-xl p-4 shadow-sm"
+                                    >
+                                        <span class="material-symbols-outlined text-primary text-[22px]"
+                                            >workspace_premium</span
+                                        >
+                                        <div>
+                                            <span class="font-headline-sm text-label-lg text-on-surface block font-bold"
+                                                >Certifikovaný inštruktor</span
+                                            >
+                                            <span class="font-body-sm text-body-sm text-on-surface-variant"
+                                                >Akreditácia prvej pomoci</span
+                                            >
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="bg-surface-container-lowest flex items-start gap-3 rounded-xl p-4 shadow-sm"
+                                    >
+                                        <span class="material-symbols-outlined text-primary text-[22px]"
+                                            >emergency</span
+                                        >
+                                        <div>
+                                            <span class="font-headline-sm text-label-lg text-on-surface block font-bold"
+                                                >HaZZ &amp; ZZS SR</span
+                                            >
+                                            <span class="font-body-sm text-body-sm text-on-surface-variant"
+                                                >Denný kontakt s terénom</span
+                                            >
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="bg-surface-container-lowest flex items-start gap-3 rounded-xl p-4 shadow-sm"
+                                    >
+                                        <span class="material-symbols-outlined text-primary text-[22px]"
+                                            >cardiology</span
+                                        >
+                                        <div>
+                                            <span class="font-headline-sm text-label-lg text-on-surface block font-bold"
+                                                >Špecialista PNP</span
+                                            >
+                                            <span class="font-body-sm text-body-sm text-on-surface-variant"
+                                                >Prednemocničná starostlivosť</span
+                                            >
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- SECTION: REZERVAČNÝ KALENDÁR A OBJEDNÁVKA (INTERACTIVE BOOKING WIDGET) -->
+                <section class="py-space-xl bg-surface w-full" id="rezervacia">
+                    <div class="mx-auto max-w-7xl px-6 lg:px-12">
+                        <!-- Section Header -->
+                        <div class="mx-auto mb-12 flex max-w-3xl flex-col items-center text-center">
+                            <div
+                                class="bg-primary-container text-on-primary mb-3 inline-flex items-center gap-2 rounded-full px-3.5 py-1"
+                            >
+                                <span class="material-symbols-outlined text-[16px]">edit_calendar</span>
+                                <span class="font-label-badge text-label-badge font-bold tracking-wider uppercase"
+                                    >Online rezervácia</span
+                                >
+                            </div>
+                            <h2 class="font-headline-xl text-headline-xl text-on-surface font-bold">
+                                Zarezervujte si termín priamo k vám domov
+                            </h2>
+                            <p class="font-body-lg text-body-lg text-on-surface-variant mt-3">
+                                Zvoľte kurz, kliknite na vyhovujúci dátum a odošlite nezáväznú požiadavku. Do 24 hodín
+                                vám zavolám a dohodneme všetky detaily.
+                            </p>
+                        </div>
+                        <!-- Booking Interactive Widget Card -->
+                        <div class="bg-surface-container-lowest rounded-2xl p-6 shadow-xl lg:p-10">
+                            <div class="grid grid-cols-1 gap-10 lg:grid-cols-12">
+                                <!-- LEFT COLUMN: Step 1, Step 2, Step 3 -->
+                                <div class="flex flex-col gap-8 lg:col-span-7">
+                                    <!-- Step 1: Selection of Workshop -->
+                                    <div>
+                                        <div class="mb-3 flex items-center gap-2">
+                                            <span
+                                                class="bg-primary-container text-on-primary font-headline-sm text-label-badge flex h-7 w-7 items-center justify-center rounded-full font-bold"
+                                                >1</span
+                                            >
+                                            <label class="font-headline-sm text-headline-sm text-on-surface font-bold"
+                                                >Výber workshopu</label
+                                            >
+                                        </div>
+                                        <div class="grid grid-cols-1 gap-3 sm:grid-cols-3" id="workshop-selector">
+                                            <button
+                                                class="workshop-pill active bg-surface-container-low rounded-xl p-3.5 text-left transition-all duration-200"
+                                                data-val="kpr-aed"
+                                                onclick="
+                                                    updateWorkshop(
+                                                        'kpr-aed',
+                                                        'KPR a záchrana života s AED',
+                                                        '160 €',
+                                                        'cca 2,5 – 3 hodiny',
+                                                    )
+                                                "
+                                                type="button"
+                                            >
+                                                <span
+                                                    class="font-label-badge text-label-badge text-primary mb-1 block font-bold uppercase"
+                                                    >Najžiadanejší</span
+                                                >
+                                                <span
+                                                    class="font-headline-sm text-label-lg text-on-surface block font-bold"
+                                                    >KPR s AED</span
+                                                >
+                                                <span class="font-body-sm text-body-sm text-on-surface-variant"
+                                                    >160 € / skupina</span
+                                                >
+                                            </button>
+                                            <button
+                                                class="workshop-pill bg-surface-container-low rounded-xl p-3.5 text-left transition-all duration-200"
+                                                data-val="civilna"
+                                                onclick="
+                                                    updateWorkshop(
+                                                        'civilna',
+                                                        'Civilná prvá pomoc v domácnosti a na cestách',
+                                                        '190 €',
+                                                        'cca 3,5 – 4 hodiny',
+                                                    )
+                                                "
+                                                type="button"
+                                            >
+                                                <span
+                                                    class="font-label-badge text-label-badge text-secondary mb-1 block font-bold uppercase"
+                                                    >Pre rodiny</span
+                                                >
+                                                <span
+                                                    class="font-headline-sm text-label-lg text-on-surface block font-bold"
+                                                    >Civilná prvá pomoc</span
+                                                >
+                                                <span class="font-body-sm text-body-sm text-on-surface-variant"
+                                                    >190 € / skupina</span
+                                                >
+                                            </button>
+                                            <button
+                                                class="workshop-pill bg-surface-container-low rounded-xl p-3.5 text-left transition-all duration-200"
+                                                data-val="takticka"
+                                                onclick="
+                                                    updateWorkshop(
+                                                        'takticka',
+                                                        'Taktická prvá pomoc v kríze (TCCC)',
+                                                        '180 €',
+                                                        'cca 3 hodiny',
+                                                    )
+                                                "
+                                                type="button"
+                                            >
+                                                <span
+                                                    class="font-label-badge text-label-badge text-inverse-surface mb-1 block font-bold uppercase"
+                                                    >Pokročilý</span
+                                                >
+                                                <span
+                                                    class="font-headline-sm text-label-lg text-on-surface block font-bold"
+                                                    >Taktická (TCCC)</span
+                                                >
+                                                <span class="font-body-sm text-body-sm text-on-surface-variant"
+                                                    >180 € / skupina</span
+                                                >
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <!-- Step 2: Interactive Calendar Picker -->
+                                    <div>
+                                        <div class="mb-3 flex items-center justify-between">
+                                            <div class="flex items-center gap-2">
+                                                <span
+                                                    class="bg-primary-container text-on-primary font-headline-sm text-label-badge flex h-7 w-7 items-center justify-center rounded-full font-bold"
+                                                    >2</span
+                                                >
+                                                <label
+                                                    class="font-headline-sm text-headline-sm text-on-surface font-bold"
+                                                    >Výber dňa (Október / November 2024)</label
+                                                >
+                                            </div>
+                                            <div class="flex items-center gap-2">
+                                                <span class="bg-primary inline-block h-2.5 w-2.5 rounded-full"></span>
+                                                <span class="font-body-sm text-body-sm text-on-surface-variant"
+                                                    >Voľné termíny</span
+                                                >
+                                            </div>
+                                        </div>
+                                        <!-- Calendar Month Container -->
+                                        <div class="bg-surface-container-low rounded-xl p-4">
+                                            <div class="mb-4 flex items-center justify-between">
+                                                <span
+                                                    class="font-headline-sm text-headline-sm text-on-surface font-bold"
+                                                    id="cal-month-title"
+                                                    >Október 2024</span
+                                                >
+                                                <div class="flex gap-2">
+                                                    <button
+                                                        class="bg-surface-container-lowest text-on-surface hover:bg-surface-container flex h-8 w-8 items-center justify-center rounded-lg"
+                                                        onclick="prevMonth()"
+                                                        type="button"
+                                                    >
+                                                        <span class="material-symbols-outlined text-[18px]"
+                                                            >chevron_left</span
+                                                        >
+                                                    </button>
+                                                    <button
+                                                        class="bg-surface-container-lowest text-on-surface hover:bg-surface-container flex h-8 w-8 items-center justify-center rounded-lg"
+                                                        onclick="nextMonth()"
+                                                        type="button"
+                                                    >
+                                                        <span class="material-symbols-outlined text-[18px]"
+                                                            >chevron_right</span
+                                                        >
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <!-- Days header -->
+                                            <div
+                                                class="font-label-badge text-label-badge text-on-surface-variant mb-2 grid grid-cols-7 text-center font-bold uppercase"
+                                            >
+                                                <span>Po</span><span>Ut</span><span>St</span><span>Št</span
+                                                ><span>Pi</span><span>So</span><span>Ne</span>
+                                            </div>
+                                            <!-- Calendar grid days -->
+                                            <div
+                                                class="text-body-sm grid grid-cols-7 gap-1.5 text-center font-semibold"
+                                                id="cal-days-grid"
+                                            >
+                                                <!-- Filled via JS or default static fallback -->
+                                                <div class="text-on-surface-variant/40 p-2">30</div>
+                                                <div
+                                                    class="date-chip bg-surface-container-lowest text-on-surface hover:bg-surface-container cursor-pointer rounded-lg p-2"
+                                                    onclick="selectDate(this, '1. Október 2024')"
+                                                >
+                                                    1
+                                                </div>
+                                                <div
+                                                    class="date-chip bg-surface-container-lowest text-on-surface hover:bg-surface-container cursor-pointer rounded-lg p-2"
+                                                    onclick="selectDate(this, '2. Október 2024')"
+                                                >
+                                                    2
+                                                </div>
+                                                <div
+                                                    class="date-chip bg-surface-container-lowest text-on-surface hover:bg-surface-container cursor-pointer rounded-lg p-2"
+                                                    onclick="selectDate(this, '3. Október 2024')"
+                                                >
+                                                    3
+                                                </div>
+                                                <div
+                                                    class="bg-surface-container-low text-on-surface-variant/40 cursor-not-allowed rounded-lg p-2 line-through"
+                                                    title="Obsadené"
+                                                >
+                                                    4
+                                                </div>
+                                                <div
+                                                    class="date-chip bg-surface-container-lowest text-primary hover:bg-primary-fixed relative cursor-pointer rounded-lg p-2 font-bold"
+                                                    onclick="selectDate(this, '5. Október 2024')"
+                                                >
+                                                    5<span
+                                                        class="bg-primary absolute bottom-1 left-1/2 h-1 w-1 -translate-x-1/2 rounded-full"
+                                                    ></span>
+                                                </div>
+                                                <div
+                                                    class="date-chip bg-surface-container-lowest text-primary hover:bg-primary-fixed relative cursor-pointer rounded-lg p-2 font-bold"
+                                                    onclick="selectDate(this, '6. Október 2024')"
+                                                >
+                                                    6<span
+                                                        class="bg-primary absolute bottom-1 left-1/2 h-1 w-1 -translate-x-1/2 rounded-full"
+                                                    ></span>
+                                                </div>
+                                                <div
+                                                    class="date-chip bg-surface-container-lowest text-on-surface hover:bg-surface-container cursor-pointer rounded-lg p-2"
+                                                    onclick="selectDate(this, '7. Október 2024')"
+                                                >
+                                                    7
+                                                </div>
+                                                <div
+                                                    class="date-chip bg-surface-container-lowest text-on-surface hover:bg-surface-container cursor-pointer rounded-lg p-2"
+                                                    onclick="selectDate(this, '8. Október 2024')"
+                                                >
+                                                    8
+                                                </div>
+                                                <div
+                                                    class="bg-surface-container-low text-on-surface-variant/40 cursor-not-allowed rounded-lg p-2 line-through"
+                                                    title="Obsadené"
+                                                >
+                                                    9
+                                                </div>
+                                                <div
+                                                    class="date-chip bg-surface-container-lowest text-on-surface hover:bg-surface-container cursor-pointer rounded-lg p-2"
+                                                    onclick="selectDate(this, '10. Október 2024')"
+                                                >
+                                                    10
+                                                </div>
+                                                <div
+                                                    class="date-chip bg-surface-container-lowest text-on-surface hover:bg-surface-container cursor-pointer rounded-lg p-2"
+                                                    onclick="selectDate(this, '11. Október 2024')"
+                                                >
+                                                    11
+                                                </div>
+                                                <div
+                                                    class="date-chip active-date bg-primary text-on-primary relative cursor-pointer rounded-lg p-2 font-bold shadow-sm"
+                                                    onclick="selectDate(this, '12. Október 2024')"
+                                                >
+                                                    12<span
+                                                        class="bg-on-primary absolute bottom-1 left-1/2 h-1 w-1 -translate-x-1/2 rounded-full"
+                                                    ></span>
+                                                </div>
+                                                <div
+                                                    class="date-chip bg-surface-container-lowest text-primary hover:bg-primary-fixed relative cursor-pointer rounded-lg p-2 font-bold"
+                                                    onclick="selectDate(this, '13. Október 2024')"
+                                                >
+                                                    13<span
+                                                        class="bg-primary absolute bottom-1 left-1/2 h-1 w-1 -translate-x-1/2 rounded-full"
+                                                    ></span>
+                                                </div>
+                                                <div
+                                                    class="date-chip bg-surface-container-lowest text-on-surface hover:bg-surface-container cursor-pointer rounded-lg p-2"
+                                                    onclick="selectDate(this, '14. Október 2024')"
+                                                >
+                                                    14
+                                                </div>
+                                                <div
+                                                    class="date-chip bg-surface-container-lowest text-on-surface hover:bg-surface-container cursor-pointer rounded-lg p-2"
+                                                    onclick="selectDate(this, '15. Október 2024')"
+                                                >
+                                                    15
+                                                </div>
+                                                <div
+                                                    class="date-chip bg-surface-container-lowest text-on-surface hover:bg-surface-container cursor-pointer rounded-lg p-2"
+                                                    onclick="selectDate(this, '16. Október 2024')"
+                                                >
+                                                    16
+                                                </div>
+                                                <div
+                                                    class="date-chip bg-surface-container-lowest text-on-surface hover:bg-surface-container cursor-pointer rounded-lg p-2"
+                                                    onclick="selectDate(this, '17. Október 2024')"
+                                                >
+                                                    17
+                                                </div>
+                                                <div
+                                                    class="date-chip bg-surface-container-lowest text-on-surface hover:bg-surface-container cursor-pointer rounded-lg p-2"
+                                                    onclick="selectDate(this, '18. Október 2024')"
+                                                >
+                                                    18
+                                                </div>
+                                                <div
+                                                    class="date-chip bg-surface-container-lowest text-primary hover:bg-primary-fixed relative cursor-pointer rounded-lg p-2 font-bold"
+                                                    onclick="selectDate(this, '19. Október 2024')"
+                                                >
+                                                    19<span
+                                                        class="bg-primary absolute bottom-1 left-1/2 h-1 w-1 -translate-x-1/2 rounded-full"
+                                                    ></span>
+                                                </div>
+                                                <div
+                                                    class="date-chip bg-surface-container-lowest text-primary hover:bg-primary-fixed relative cursor-pointer rounded-lg p-2 font-bold"
+                                                    onclick="selectDate(this, '20. Október 2024')"
+                                                >
+                                                    20<span
+                                                        class="bg-primary absolute bottom-1 left-1/2 h-1 w-1 -translate-x-1/2 rounded-full"
+                                                    ></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Step 3: Preferred Time Slot -->
+                                    <div>
+                                        <div class="mb-3 flex items-center gap-2">
+                                            <span
+                                                class="bg-primary-container text-on-primary font-headline-sm text-label-badge flex h-7 w-7 items-center justify-center rounded-full font-bold"
+                                                >3</span
+                                            >
+                                            <label class="font-headline-sm text-headline-sm text-on-surface font-bold"
+                                                >Čas začiatku workshopu</label
+                                            >
+                                        </div>
+                                        <div class="grid grid-cols-1 gap-3 sm:grid-cols-3" id="timeslot-selector">
+                                            <button
+                                                class="time-pill bg-surface-container-low text-on-surface hover:bg-surface-container font-headline-sm text-label-lg rounded-xl p-3 text-center font-bold"
+                                                onclick="selectTime(this, '09:00 Dopoludnia')"
+                                                type="button"
+                                            >
+                                                09:00 Dopoludnia
+                                            </button>
+                                            <button
+                                                class="time-pill active bg-surface-container-highest text-on-surface font-headline-sm text-label-lg rounded-xl p-3 text-center font-bold"
+                                                onclick="selectTime(this, '14:00 Popoludní')"
+                                                type="button"
+                                            >
+                                                14:00 Popoludní
+                                            </button>
+                                            <button
+                                                class="time-pill bg-surface-container-low text-on-surface hover:bg-surface-container font-headline-sm text-label-lg rounded-xl p-3 text-center font-bold"
+                                                onclick="selectTime(this, '17:30 Podvečer')"
+                                                type="button"
+                                            >
+                                                17:30 Podvečer
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- RIGHT COLUMN: Customer Details + Live Summary -->
+                                <div class="flex flex-col justify-between lg:col-span-5">
+                                    <div class="bg-surface-container-low flex flex-col gap-5 rounded-xl p-6">
+                                        <div class="flex items-center gap-2">
+                                            <span
+                                                class="bg-primary-container text-on-primary font-headline-sm text-label-badge flex h-7 w-7 items-center justify-center rounded-full font-bold"
+                                                >4</span
+                                            >
+                                            <h3 class="font-headline-sm text-headline-sm text-on-surface font-bold">
+                                                Kontaktné údaje pre návštevu
+                                            </h3>
+                                        </div>
+                                        <!-- Form Inputs -->
+                                        <div class="flex flex-col gap-4">
+                                            <div>
+                                                <label
+                                                    class="font-label-md text-label-md text-on-surface mb-1 block font-semibold"
+                                                    >Meno a priezvisko *</label
+                                                >
+                                                <input
+                                                    class="bg-surface-container-lowest text-on-surface text-body-md focus:ring-primary h-11 w-full rounded-lg px-3.5 shadow-sm focus:ring-2 focus:outline-none"
+                                                    id="cust-name"
+                                                    placeholder="napr. MUDr. Peter Novák"
+                                                    required=""
+                                                    type="text"
+                                                />
+                                            </div>
+                                            <div class="grid grid-cols-1 gap-3 sm:grid-cols-2">
+                                                <div>
+                                                    <label
+                                                        class="font-label-md text-label-md text-on-surface mb-1 block font-semibold"
+                                                        >Telefón *</label
+                                                    >
+                                                    <input
+                                                        class="bg-surface-container-lowest text-on-surface text-body-md focus:ring-primary h-11 w-full rounded-lg px-3.5 shadow-sm focus:ring-2 focus:outline-none"
+                                                        id="cust-phone"
+                                                        placeholder="+421 900 000 000"
+                                                        required=""
+                                                        type="tel"
+                                                    />
+                                                </div>
+                                                <div>
+                                                    <label
+                                                        class="font-label-md text-label-md text-on-surface mb-1 block font-semibold"
+                                                        >Email *</label
+                                                    >
+                                                    <input
+                                                        class="bg-surface-container-lowest text-on-surface text-body-md focus:ring-primary h-11 w-full rounded-lg px-3.5 shadow-sm focus:ring-2 focus:outline-none"
+                                                        id="cust-email"
+                                                        placeholder="vas@email.sk"
+                                                        required=""
+                                                        type="email"
+                                                    />
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <label
+                                                    class="font-label-md text-label-md text-on-surface mb-1 block font-semibold"
+                                                    >Adresa konania (kde mám prísť) *</label
+                                                >
+                                                <input
+                                                    class="bg-surface-container-lowest text-on-surface text-body-md focus:ring-primary h-11 w-full rounded-lg px-3.5 shadow-sm focus:ring-2 focus:outline-none"
+                                                    id="cust-address"
+                                                    placeholder="Ulica, číslo domu, Mesto / Obec"
+                                                    required=""
+                                                    type="text"
+                                                />
+                                            </div>
+                                            <div>
+                                                <label
+                                                    class="font-label-md text-label-md text-on-surface mb-1 block font-semibold"
+                                                    >Počet účastníkov (2 až 4 osoby)</label
+                                                >
+                                                <div class="grid grid-cols-3 gap-2">
+                                                    <label
+                                                        class="bg-surface-container-lowest hover:bg-surface-container text-body-sm has-[:checked]:bg-primary-container has-[:checked]:text-on-primary flex cursor-pointer items-center justify-center rounded-lg p-2.5 font-semibold shadow-sm"
+                                                    >
+                                                        <input
+                                                            class="hidden"
+                                                            name="attendees"
+                                                            type="radio"
+                                                            value="2 osoby"
+                                                        />
+                                                        <span>2 osoby</span>
+                                                    </label>
+                                                    <label
+                                                        class="bg-surface-container-lowest hover:bg-surface-container text-body-sm has-[:checked]:bg-primary-container has-[:checked]:text-on-primary flex cursor-pointer items-center justify-center rounded-lg p-2.5 font-semibold shadow-sm"
+                                                    >
+                                                        <input
+                                                            class="hidden"
+                                                            name="attendees"
+                                                            type="radio"
+                                                            value="3 osoby"
+                                                        />
+                                                        <span>3 osoby</span>
+                                                    </label>
+                                                    <label
+                                                        class="bg-surface-container-lowest hover:bg-surface-container text-body-sm has-[:checked]:bg-primary-container has-[:checked]:text-on-primary flex cursor-pointer items-center justify-center rounded-lg p-2.5 font-semibold shadow-sm"
+                                                    >
+                                                        <input
+                                                            checked=""
+                                                            class="hidden"
+                                                            name="attendees"
+                                                            type="radio"
+                                                            value="4 osoby"
+                                                        />
+                                                        <span>4 osoby</span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <label
+                                                    class="font-label-md text-label-md text-on-surface mb-1 block font-semibold"
+                                                    >Poznámka / Špecifické otázky (voliteľné)</label
+                                                >
+                                                <textarea
+                                                    class="bg-surface-container-lowest text-on-surface text-body-sm focus:ring-primary w-full rounded-lg p-3 shadow-sm focus:ring-2 focus:outline-none"
+                                                    id="cust-notes"
+                                                    placeholder="napr. Máme malé bábätko, chceli by sme sa viac zamerať na detské dusenie..."
+                                                    rows="2"
+                                                ></textarea>
+                                            </div>
+                                        </div>
+                                        <!-- REAL-TIME LIVE SUMMARY BOX -->
+                                        <div class="bg-surface-container-lowest mt-2 rounded-xl p-4 shadow-sm">
+                                            <span
+                                                class="font-label-badge text-label-badge text-on-surface-variant mb-2 block font-bold tracking-wider uppercase"
+                                                >Súhrn rezervácie</span
+                                            >
+                                            <div class="text-body-sm space-y-1.5">
+                                                <div class="flex justify-between">
+                                                    <span class="text-on-surface-variant">Vybraný kurz:</span>
+                                                    <span
+                                                        class="text-on-surface text-right font-bold"
+                                                        id="summary-course"
+                                                        >KPR s AED</span
+                                                    >
+                                                </div>
+                                                <div class="flex justify-between">
+                                                    <span class="text-on-surface-variant">Dátum &amp; čas:</span>
+                                                    <span
+                                                        class="text-on-surface text-right font-bold"
+                                                        id="summary-datetime"
+                                                        >12. Október 2024, 14:00</span
+                                                    >
+                                                </div>
+                                                <div class="flex justify-between">
+                                                    <span class="text-on-surface-variant">Trvanie:</span>
+                                                    <span
+                                                        class="text-on-surface text-right font-bold"
+                                                        id="summary-duration"
+                                                        >cca 2,5 – 3 hodiny</span
+                                                    >
+                                                </div>
+                                                <div
+                                                    class="border-surface-container flex justify-between border-t pt-2"
+                                                >
+                                                    <span
+                                                        class="font-headline-sm text-headline-sm text-on-surface font-bold"
+                                                        >Celková cena:</span
+                                                    >
+                                                    <span
+                                                        class="font-headline-sm text-headline-sm text-primary font-bold"
+                                                        id="summary-price"
+                                                        >160 €</span
+                                                    >
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- SUBMIT BUTTON -->
+                                        <button
+                                            class="bg-primary-container font-headline-sm text-headline-sm text-on-primary hover:bg-primary flex w-full items-center justify-center gap-2 rounded-lg px-6 py-4 font-bold shadow-lg transition-all duration-200 hover:-translate-y-0.5 hover:shadow-xl active:translate-y-0"
+                                            onclick="submitBooking()"
+                                            type="button"
+                                        >
+                                            <span>Záväzne objednať workshop</span>
+                                            <span class="material-symbols-outlined text-[20px]">check_circle</span>
+                                        </button>
+                                        <div
+                                            class="text-on-surface-variant font-body-sm text-body-sm flex items-center justify-center gap-2"
+                                        >
+                                            <span class="material-symbols-outlined text-tertiary text-[16px]"
+                                                >lock</span
+                                            >
+                                            <span>Platba až po skončení kurzu v hotovosti alebo na faktúru</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- CONFIRMATION MODAL (HIDDEN BY DEFAULT) -->
+                <div
+                    class="bg-inverse-surface/60 fixed inset-0 z-50 hidden items-center justify-center p-4 backdrop-blur-sm"
+                    id="booking-success-modal"
+                >
+                    <div
+                        class="bg-surface-container-lowest relative w-full max-w-lg rounded-2xl p-8 text-center shadow-2xl"
+                    >
+                        <div
+                            class="bg-primary-container text-on-primary mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full"
+                        >
+                            <span class="material-symbols-outlined text-[36px]">verified</span>
+                        </div>
+                        <h3 class="font-headline-xl text-headline-xl text-on-surface mb-2 font-bold">
+                            Ďakujeme za rezerváciu!
+                        </h3>
+                        <p class="font-body-md text-body-md text-on-surface-variant mb-6 leading-relaxed">
+                            Vaša požiadavka bola úspešne odoslaná. Do 24 hodín vás bude Michal Kováč telefonicky
+                            kontaktovať pre overenie termínu a spresnenie vašej adresy.
+                        </p>
+                        <div class="bg-surface-container-low text-body-sm mb-6 rounded-xl p-4 text-left">
+                            <div class="flex justify-between py-1">
+                                <span class="text-on-surface-variant">Kurz:</span>
+                                <span class="text-on-surface font-bold" id="modal-course-name">KPR s AED</span>
+                            </div>
+                            <div class="flex justify-between py-1">
+                                <span class="text-on-surface-variant">Termín:</span>
+                                <span class="text-on-surface font-bold" id="modal-date-val"
+                                    >12. Október 2024, 14:00</span
+                                >
+                            </div>
+                        </div>
+                        <button
+                            class="bg-inverse-surface font-headline-sm text-headline-sm text-inverse-on-surface hover:bg-on-surface w-full rounded-lg px-6 py-3 font-semibold transition-colors"
+                            onclick="closeModal()"
+                            type="button"
+                        >
+                            Zatvoriť
+                        </button>
+                    </div>
+                </div>
+                <!-- SECTION: FAQ & REVIEWS -->
+                <section class="py-space-xl bg-surface-container-low w-full">
+                    <div class="mx-auto max-w-7xl px-6 lg:px-12">
+                        <div class="grid grid-cols-1 gap-12 lg:grid-cols-12">
+                            <!-- Left: FAQ Accordion -->
+                            <div class="flex flex-col gap-6 lg:col-span-7">
+                                <div>
+                                    <div
+                                        class="bg-surface-container text-primary mb-3 inline-flex items-center gap-2 rounded-full px-3.5 py-1"
+                                    >
+                                        <span class="material-symbols-outlined text-[16px]">help</span>
+                                        <span
+                                            class="font-label-badge text-label-badge font-bold tracking-wider uppercase"
+                                            >Časté otázky</span
+                                        >
+                                    </div>
+                                    <h2 class="font-headline-xl text-headline-xl text-on-surface font-bold">
+                                        Všetko, čo potrebujete vedieť pred workshopom
+                                    </h2>
+                                </div>
+                                <div class="flex flex-col gap-3">
+                                    <!-- FAQ 1 -->
+                                    <details
+                                        class="group bg-surface-container-lowest rounded-xl p-5 shadow-sm transition-all open:shadow-md"
+                                        open=""
+                                    >
+                                        <summary
+                                            class="font-headline-sm text-headline-sm text-on-surface flex cursor-pointer list-none items-center justify-between font-semibold"
+                                        >
+                                            <span>Musíme mať doma špeciálny priestor?</span>
+                                            <span
+                                                class="material-symbols-outlined text-primary transition-transform duration-200 group-open:rotate-180"
+                                                >expand_more</span
+                                            >
+                                        </summary>
+                                        <p
+                                            class="font-body-md text-body-md text-on-surface-variant mt-3 leading-relaxed"
+                                        >
+                                            Vôbec nie. Úplne postačí bežná obývačka s voľným miestom na podlahe (cca 2×2
+                                            metre), kde položíme cvičnú podložku a figuríny. Všetko hygienické
+                                            zabezpečenie vrátane dezinfekcie a ochranných rúšok pre každého účastníka
+                                            prinášam so sebou.
+                                        </p>
+                                    </details>
+                                    <!-- FAQ 2 -->
+                                    <details
+                                        class="group bg-surface-container-lowest rounded-xl p-5 shadow-sm transition-all open:shadow-md"
+                                    >
+                                        <summary
+                                            class="font-headline-sm text-headline-sm text-on-surface flex cursor-pointer list-none items-center justify-between font-semibold"
+                                        >
+                                            <span>Pre koho je workshop vhodný a môžu sa zúčastniť aj deti?</span>
+                                            <span
+                                                class="material-symbols-outlined text-primary transition-transform duration-200 group-open:rotate-180"
+                                                >expand_more</span
+                                            >
+                                        </summary>
+                                        <p
+                                            class="font-body-md text-body-md text-on-surface-variant mt-3 leading-relaxed"
+                                        >
+                                            Workshop je určený pre dospelých a staršie deti (odporúčame od 11–12 rokov,
+                                            kedy už majú dostatočnú silu na efektívne stlačenia hrudníka). Rodinný
+                                            formát je mimoriadne obľúbený, pretože členovia domácnosti trénujú ako
+                                            zohraný tím.
+                                        </p>
+                                    </details>
+                                    <!-- FAQ 3 -->
+                                    <details
+                                        class="group bg-surface-container-lowest rounded-xl p-5 shadow-sm transition-all open:shadow-md"
+                                    >
+                                        <summary
+                                            class="font-headline-sm text-headline-sm text-on-surface flex cursor-pointer list-none items-center justify-between font-semibold"
+                                        >
+                                            <span>Čo všetko donesiete so sebou?</span>
+                                            <span
+                                                class="material-symbols-outlined text-primary transition-transform duration-200 group-open:rotate-180"
+                                                >expand_more</span
+                                            >
+                                        </summary>
+                                        <p
+                                            class="font-body-md text-body-md text-on-surface-variant mt-3 leading-relaxed"
+                                        >
+                                            Kompletný záchranársky tréningový set: certifikované KPR dospelé aj detské
+                                            figuríny s LED indikáciou správnej hĺbky stlačení, cvičný defibrilátor AED,
+                                            simulátor dusenia (vesta na Heimlichov manéver), originálne vojenské
+                                            turnikety, dlahy a spotrebný obväzový materiál.
+                                        </p>
+                                    </details>
+                                    <!-- FAQ 4 -->
+                                    <details
+                                        class="group bg-surface-container-lowest rounded-xl p-5 shadow-sm transition-all open:shadow-md"
+                                    >
+                                        <summary
+                                            class="font-headline-sm text-headline-sm text-on-surface flex cursor-pointer list-none items-center justify-between font-semibold"
+                                        >
+                                            <span>Aké mestá a okresy pokrývate?</span>
+                                            <span
+                                                class="material-symbols-outlined text-primary transition-transform duration-200 group-open:rotate-180"
+                                                >expand_more</span
+                                            >
+                                        </summary>
+                                        <p
+                                            class="font-body-md text-body-md text-on-surface-variant mt-3 leading-relaxed"
+                                        >
+                                            Pôsobím v celom Bratislavskom, Trnavskom, Nitrianskom a Trenčianskom kraji,
+                                            po individuálnej dohode aj v strednom Slovensku (Žilina, Banská Bystrica,
+                                            Zvolen). Cestovné náklady v okruhu 50 km od Bratislavy sú už zahrnuté v
+                                            cene.
+                                        </p>
+                                    </details>
+                                </div>
+                            </div>
+                            <!-- Right: Reviews / Testimonials -->
+                            <div class="flex flex-col gap-6 lg:col-span-5">
+                                <div>
+                                    <div
+                                        class="bg-surface-container text-primary mb-3 inline-flex items-center gap-2 rounded-full px-3.5 py-1"
+                                    >
+                                        <span class="material-symbols-outlined text-[16px]">reviews</span>
+                                        <span
+                                            class="font-label-badge text-label-badge font-bold tracking-wider uppercase"
+                                            >Skúsenosti absolventov</span
+                                        >
+                                    </div>
+                                    <h3 class="font-headline-lg text-headline-lg text-on-surface font-bold">
+                                        Čo hovoria tí, ktorí už trénovali doma
+                                    </h3>
+                                </div>
+                                <div class="flex flex-col gap-4">
+                                    <!-- Review 1 -->
+                                    <div
+                                        class="bg-surface-container-lowest flex flex-col gap-3 rounded-xl p-6 shadow-sm"
+                                    >
+                                        <div class="flex items-center justify-between">
+                                            <div class="flex items-center gap-2">
+                                                <div
+                                                    class="bg-primary-fixed text-primary flex h-9 w-9 items-center justify-center rounded-full font-bold"
+                                                >
+                                                    M
+                                                </div>
+                                                <span
+                                                    class="font-headline-sm text-headline-sm text-on-surface font-semibold"
+                                                    >Martina &amp; Juraj K.</span
+                                                >
+                                            </div>
+                                            <div class="text-primary flex">
+                                                <span
+                                                    class="material-symbols-outlined text-[18px]"
+                                                    style="font-variation-settings: 'FILL' 1"
+                                                    >star</span
+                                                >
+                                                <span
+                                                    class="material-symbols-outlined text-[18px]"
+                                                    style="font-variation-settings: 'FILL' 1"
+                                                    >star</span
+                                                >
+                                                <span
+                                                    class="material-symbols-outlined text-[18px]"
+                                                    style="font-variation-settings: 'FILL' 1"
+                                                    >star</span
+                                                >
+                                                <span
+                                                    class="material-symbols-outlined text-[18px]"
+                                                    style="font-variation-settings: 'FILL' 1"
+                                                    >star</span
+                                                >
+                                                <span
+                                                    class="material-symbols-outlined text-[18px]"
+                                                    style="font-variation-settings: 'FILL' 1"
+                                                    >star</span
+                                                >
+                                            </div>
+                                        </div>
+                                        <p class="font-body-sm text-body-sm text-on-surface-variant italic">
+                                            „Máme doma ročné dieťa a stále sme mali panický strach zo zadusenia. Michal
+                                            prišiel v sobotu poobede k nám, všetko nám ukázal, trénovali sme obaja
+                                            dovtedy, kým sme si neboli istí. Obrovská úľava a pocit pokoja.“
+                                        </p>
+                                        <span class="font-label-badge text-label-badge text-primary font-bold uppercase"
+                                            >Workshop KPR &amp; AED + Detské stavy • Bratislava</span
+                                        >
+                                    </div>
+                                    <!-- Review 2 -->
+                                    <div
+                                        class="bg-surface-container-lowest flex flex-col gap-3 rounded-xl p-6 shadow-sm"
+                                    >
+                                        <div class="flex items-center justify-between">
+                                            <div class="flex items-center gap-2">
+                                                <div
+                                                    class="bg-secondary-fixed text-on-secondary-fixed flex h-9 w-9 items-center justify-center rounded-full font-bold"
+                                                >
+                                                    T
+                                                </div>
+                                                <span
+                                                    class="font-headline-sm text-headline-sm text-on-surface font-semibold"
+                                                    >Tomáš V. s partiou</span
+                                                >
+                                            </div>
+                                            <div class="text-primary flex">
+                                                <span
+                                                    class="material-symbols-outlined text-[18px]"
+                                                    style="font-variation-settings: 'FILL' 1"
+                                                    >star</span
+                                                >
+                                                <span
+                                                    class="material-symbols-outlined text-[18px]"
+                                                    style="font-variation-settings: 'FILL' 1"
+                                                    >star</span
+                                                >
+                                                <span
+                                                    class="material-symbols-outlined text-[18px]"
+                                                    style="font-variation-settings: 'FILL' 1"
+                                                    >star</span
+                                                >
+                                                <span
+                                                    class="material-symbols-outlined text-[18px]"
+                                                    style="font-variation-settings: 'FILL' 1"
+                                                    >star</span
+                                                >
+                                                <span
+                                                    class="material-symbols-outlined text-[18px]"
+                                                    style="font-variation-settings: 'FILL' 1"
+                                                    >star</span
+                                                >
+                                            </div>
+                                        </div>
+                                        <p class="font-body-sm text-body-sm text-on-surface-variant italic">
+                                            „Taktický workshop Stop The Bleed bol pecka. Žiadna nuda, Michal je chlap z
+                                            terénu, odpovedal na každú otázku a uťahovanie turniketov sme si vyskúšali
+                                            aj v tme a pod tlakom. Odporúčam každému motoristovi aj kutilovi.“
+                                        </p>
+                                        <span
+                                            class="font-label-badge text-label-badge text-tertiary font-bold uppercase"
+                                            >Workshop TCCC • Trnava</span
+                                        >
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- SECTION: KONTAKT A PRIAMA LÍNICKA (DIRECT CONTACT) -->
+                <section class="py-space-xl bg-surface w-full" id="kontakt">
+                    <div class="mx-auto max-w-7xl px-6 lg:px-12">
+                        <div
+                            class="from-inverse-surface via-inverse-surface to-on-surface text-inverse-on-surface rounded-2xl bg-gradient-to-r p-8 shadow-2xl lg:p-12"
+                        >
+                            <div class="grid grid-cols-1 items-center gap-8 lg:grid-cols-12">
+                                <div class="flex flex-col gap-4 lg:col-span-7">
+                                    <span
+                                        class="font-label-badge text-label-badge text-primary-fixed font-bold tracking-wider uppercase"
+                                        >Osobná konzultácia</span
+                                    >
+                                    <h2 class="font-headline-xl text-headline-xl text-inverse-on-surface font-bold">
+                                        Máte špecifické požiadavky alebo firmu?
+                                    </h2>
+                                    <p
+                                        class="font-body-lg text-body-lg text-inverse-on-surface/80 max-w-xl leading-relaxed"
+                                    >
+                                        Radi prispôsobíme workshop špecifikám vašej rodiny, malej firmy či športového
+                                        klubu. Zavolajte mi priamo alebo pošlite správu, odpoviem obratom.
+                                    </p>
+                                    <div class="flex flex-wrap items-center gap-6 pt-2">
+                                        <a
+                                            class="font-headline-sm text-headline-sm text-inverse-on-surface hover:text-primary-fixed inline-flex items-center gap-3 font-bold transition-colors"
+                                            href="tel:+421900000000"
+                                        >
+                                            <span
+                                                class="bg-primary-container text-on-primary flex h-11 w-11 items-center justify-center rounded-xl"
+                                            >
+                                                <span class="material-symbols-outlined text-[24px]">call</span>
+                                            </span>
+                                            <span>+421 900 000 000</span>
+                                        </a>
+                                        <a
+                                            class="font-headline-sm text-headline-sm text-inverse-on-surface hover:text-primary-fixed inline-flex items-center gap-3 font-bold transition-colors"
+                                            href="mailto:info@bezvahania.sk"
+                                        >
+                                            <span
+                                                class="bg-surface-container-high/20 text-inverse-on-surface flex h-11 w-11 items-center justify-center rounded-xl"
+                                            >
+                                                <span class="material-symbols-outlined text-[24px]">mail</span>
+                                            </span>
+                                            <span>info@bezvahania.sk</span>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div
+                                    class="bg-inverse-on-surface/5 flex flex-col gap-3 rounded-xl p-6 backdrop-blur-md lg:col-span-5"
+                                >
+                                    <span class="font-headline-sm text-headline-sm text-inverse-on-surface font-bold"
+                                        >Garancia Bez Váhania</span
+                                    >
+                                    <ul class="text-body-sm text-inverse-on-surface/80 space-y-2">
+                                        <li class="flex items-center gap-2">
+                                            <span class="material-symbols-outlined text-primary-fixed text-[18px]"
+                                                >check</span
+                                            >
+                                            <span>Flexibilná zmena termínu bez storno poplatkov</span>
+                                        </li>
+                                        <li class="flex items-center gap-2">
+                                            <span class="material-symbols-outlined text-primary-fixed text-[18px]"
+                                                >check</span
+                                            >
+                                            <span>100% garancia spokojnosti – platba až po výcviku</span>
+                                        </li>
+                                        <li class="flex items-center gap-2">
+                                            <span class="material-symbols-outlined text-primary-fixed text-[18px]"
+                                                >check</span
+                                            >
+                                            <span>Certifikát a tlačené materiály pre všetkých</span>
+                                        </li>
+                                    </ul>
+                                    <a
+                                        class="bg-primary-container font-headline-sm text-label-lg text-on-primary hover:bg-primary mt-3 inline-flex items-center justify-center gap-2 rounded-lg py-3 font-bold shadow transition-all"
+                                        href="#rezervacia"
+                                    >
+                                        <span>Vybrať voľný termín v kalendári</span>
+                                        <span class="material-symbols-outlined text-[18px]">calendar_today</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- JAVASCRIPT FOR BOOKING LOGIC AND MICRO-INTERACTIONS -->
+                <script>
+                    let selectedWorkshop = {
+                        id: 'kpr-aed',
+                        name: 'KPR a záchrana života s AED',
+                        price: '160 €',
+                        duration: 'cca 2,5 – 3 hodiny',
+                    };
+                    let selectedDate = '12. Október 2024';
+                    let selectedTime = '14:00 Popoludní';
+
+                    function selectWorkshopInCalendar(type) {
+                        if (type === 'kpr-aed') {
+                            updateWorkshop('kpr-aed', 'KPR a záchrana života s AED', '160 €', 'cca 2,5 – 3 hodiny');
+                        } else if (type === 'civilna') {
+                            updateWorkshop(
+                                'civilna',
+                                'Civilná prvá pomoc v domácnosti a na cestách',
+                                '190 €',
+                                'cca 3,5 – 4 hodiny',
+                            );
+                        } else if (type === 'takticka') {
+                            updateWorkshop('takticka', 'Taktická prvá pomoc v kríze (TCCC)', '180 €', 'cca 3 hodiny');
+                        }
+
+                        const el = document.getElementById('rezervacia');
+                        if (el) {
+                            el.scrollIntoView({ behavior: 'smooth' });
+                        }
+                    }
+
+                    function updateWorkshop(id, name, price, duration) {
+                        selectedWorkshop = { id, name, price, duration };
+
+                        // Update pills appearance
+                        const pills = document.querySelectorAll('.workshop-pill');
+                        pills.forEach((pill) => {
+                            if (pill.getAttribute('data-val') === id) {
+                                pill.classList.remove('bg-surface-container-low');
+                                pill.classList.add('bg-surface-container-highest', 'shadow-sm');
+                            } else {
+                                pill.classList.remove('bg-surface-container-highest', 'shadow-sm');
+                                pill.classList.add('bg-surface-container-low');
+                            }
+                        });
+
+                        // Update Summary
+                        document.getElementById('summary-course').innerText = name;
+                        document.getElementById('summary-price').innerText = price;
+                        document.getElementById('summary-duration').innerText = duration;
+                    }
+
+                    function selectDate(element, dateStr) {
+                        document.querySelectorAll('.date-chip').forEach((el) => {
+                            el.classList.remove('active-date', 'bg-primary', 'text-on-primary');
+                            el.classList.add('bg-surface-container-lowest', 'text-on-surface');
+                        });
+                        element.classList.remove('bg-surface-container-lowest', 'text-on-surface');
+                        element.classList.add('active-date', 'bg-primary', 'text-on-primary');
+
+                        selectedDate = dateStr;
+                        updateSummaryDateTime();
+                    }
+
+                    function selectTime(element, timeStr) {
+                        document.querySelectorAll('.time-pill').forEach((el) => {
+                            el.classList.remove('bg-surface-container-highest');
+                            el.classList.add('bg-surface-container-low');
+                        });
+                        element.classList.remove('bg-surface-container-low');
+                        element.classList.add('bg-surface-container-highest');
+
+                        selectedTime = timeStr;
+                        updateSummaryDateTime();
+                    }
+
+                    function updateSummaryDateTime() {
+                        document.getElementById('summary-datetime').innerText =
+                            `${selectedDate}, ${selectedTime.split(' ')[0]}`;
+                    }
+
+                    function submitBooking() {
+                        const name = document.getElementById('cust-name').value.trim();
+                        const phone = document.getElementById('cust-phone').value.trim();
+                        const address = document.getElementById('cust-address').value.trim();
+
+                        if (!name || !phone || !address) {
+                            alert('Prosím, vyplňte vaše meno, telefónne číslo a adresu konania.');
+                            return;
+                        }
+
+                        document.getElementById('modal-course-name').innerText = selectedWorkshop.name;
+                        document.getElementById('modal-date-val').innerText = `${selectedDate}, ${selectedTime}`;
+
+                        const modal = document.getElementById('booking-success-modal');
+                        modal.classList.remove('hidden');
+                        modal.classList.add('flex');
+                    }
+
+                    function closeModal() {
+                        const modal = document.getElementById('booking-success-modal');
+                        modal.classList.add('hidden');
+                        modal.classList.remove('flex');
+                    }
+
+                    function nextMonth() {
+                        const title = document.getElementById('cal-month-title');
+                        title.innerText = 'November 2024';
+                    }
+
+                    function prevMonth() {
+                        const title = document.getElementById('cal-month-title');
+                        title.innerText = 'Október 2024';
+                    }
+                </script>
+            </div>
+        </main>
+        <footer class="bg-surface-container-lowest pt-space-xl pb-space-lg w-full shadow-[0_-1px_8px_rgba(0,0,0,0.03)]">
+            <div class="mx-auto max-w-7xl px-6 lg:px-12">
+                <div class="gap-space-xl pb-space-xl grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+                    <div class="gap-space-sm flex flex-col">
+                        <div class="gap-space-sm flex items-center">
+                            <div
+                                class="bg-primary-container text-on-primary-container flex h-8 w-8 items-center justify-center rounded-lg"
+                            >
+                                <span class="material-symbols-outlined text-[20px]">medical_services</span>
+                            </div>
+                            <span class="font-headline-lg text-headline-sm text-on-surface font-bold uppercase"
+                                >Bez Váhania</span
+                            >
+                        </div>
+                        <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                            Vedomosti, ktoré zachraňujú životy bez zaváhania. Autentický praktický výcvik prvej pomoci
+                            od záchranárov pre každodenný život.
+                        </p>
+                    </div>
+                    <div class="gap-space-sm flex flex-col">
+                        <span class="font-headline-sm text-headline-sm text-on-surface font-semibold"
+                            >Rýchla navigácia</span
+                        >
+                        <ul class="gap-space-xs font-body-sm text-body-sm text-on-surface-variant flex flex-col">
+                            <li>
+                                <a class="hover:text-primary transition-colors" data-path="o-projekte" href="#"
+                                    >O projekte</a
+                                >
+                            </li>
+                            <li>
+                                <a class="hover:text-primary transition-colors" data-path="3-piliere" href="#"
+                                    >3 Piliere výcviku</a
+                                >
+                            </li>
+                            <li>
+                                <a class="hover:text-primary transition-colors" data-path="workshopy" href="#"
+                                    >Prehľad workshopov</a
+                                >
+                            </li>
+                            <li>
+                                <a class="hover:text-primary transition-colors" data-path="o-lektorovi" href="#"
+                                    >O lektorovi</a
+                                >
+                            </li>
+                            <li>
+                                <a class="hover:text-primary transition-colors" data-path="rezervacia-terminu" href="#"
+                                    >Termíny a registrácia</a
+                                >
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="gap-space-sm flex flex-col">
+                        <span class="font-headline-sm text-headline-sm text-on-surface font-semibold"
+                            >Priamy kontakt</span
+                        >
+                        <div class="gap-space-xs font-body-sm text-body-sm text-on-surface-variant flex flex-col">
+                            <div class="gap-space-xs flex items-center">
+                                <span class="material-symbols-outlined text-primary text-[20px]">phone</span
+                                ><a class="hover:text-on-surface font-medium" href="tel:+421900000000"
+                                    >+421 900 000 000</a
+                                >
+                            </div>
+                            <div class="gap-space-xs flex items-center">
+                                <span class="material-symbols-outlined text-primary text-[20px]">mail</span
+                                ><a class="hover:text-on-surface font-medium" href="mailto:info@bezvahania.sk"
+                                    >info@bezvahania.sk</a
+                                >
+                            </div>
+                            <div class="gap-space-xs flex items-center">
+                                <span class="material-symbols-outlined text-primary text-[20px]">location_on</span
+                                ><span>Bratislava &amp; individuálne lokality</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gap-space-sm flex flex-col">
+                        <span class="font-headline-sm text-headline-sm text-on-surface font-semibold"
+                            >Akreditácia &amp; Bezpečnosť</span
+                        >
+                        <p class="font-body-sm text-body-sm text-on-surface-variant">
+                            Metodika vychádza z najnovších smerníc European Resuscitation Council (ERC). Každý absolvent
+                            získava oficiálny certifikát pripravenosti.
+                        </p>
+                    </div>
+                </div>
+                <div
+                    class="pt-space-lg gap-space-md text-on-surface-variant font-body-sm text-body-sm flex flex-col items-center justify-between md:flex-row"
+                >
+                    <p class="text-center md:text-left">
+                        © 2024 Bez Váhania. Všetky práva vyhradené. Projekt záchrany ľudského života.
+                    </p>
+                    <p class="text-center text-xs opacity-75 md:text-right">
+                        Dôležité upozornenie: Informácie a materiály nenahrádzajú privolanie odbornej záchrannej
+                        zdravotnej služby (155 / 112).
+                    </p>
+                </div>
+            </div>
+        </footer>
+    </body>
+</html>

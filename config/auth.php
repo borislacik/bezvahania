@@ -114,4 +114,16 @@ return [
 
     'password_timeout' => env('AUTH_PASSWORD_TIMEOUT', 10800),
 
+    /*
+    |--------------------------------------------------------------------------
+    | Administration MFA
+    |--------------------------------------------------------------------------
+    |
+    | When true, administrators must set up an authenticator app (TOTP) before
+    | they can use the admin. Always true in production.
+    |
+    */
+
+    'admin_mfa_required' => (bool) env('ADMIN_MFA_REQUIRED', true),
+
 ];
