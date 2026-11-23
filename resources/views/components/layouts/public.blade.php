@@ -9,6 +9,7 @@
     @if ($description)
         <meta name="description" content="{{ $description }}" />
     @endif
+    @fonts
     @vite (['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="bg-surface text-on-surface min-h-screen font-sans antialiased">

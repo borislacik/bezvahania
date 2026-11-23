@@ -5,6 +5,9 @@ verzie podľa git tagov z deployov (`vRRRR.MM.DD-N`).
 
 ## [Unreleased]
 
+### Opravené
+- Písma Work Sans a Space Grotesk sa reálne načítajú na stránke (chýbala direktíva `@fonts`).
+
 ### Pridané
 - Kostra projektu: Laravel 13, PHP 8.4, slovenská lokalizácia, časové pásmo Europe/Bratislava.
 - Lokálne vývojové prostredie v Dockeri (PHP-FPM, nginx, MariaDB 11.4, Mailpit, Vite, Playwright).
