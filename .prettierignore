@@ -1,0 +1,11 @@
+vendor/
+node_modules/
+public/
+storage/
+bootstrap/cache/
+composer.lock
+package-lock.json
+CHANGELOG.md
+docs/
+*.md
+lang/

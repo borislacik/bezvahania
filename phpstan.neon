@@ -1,0 +1,14 @@
+includes:
+    - vendor/larastan/larastan/extension.neon
+
+parameters:
+    # Start at level 6, goal is level 8 (docs/brief.md, section 7.2). Never lower without approval.
+    level: 6
+    # tests/ are excluded: Pest closures bind $this dynamically, which PHPStan cannot follow.
+    paths:
+        - app
+        - bootstrap/app.php
+        - config
+        - database
+        - routes
+    tmpDir: storage/framework/cache/phpstan

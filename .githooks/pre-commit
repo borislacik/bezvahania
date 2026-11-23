@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+# Formats staged PHP files with Pint and staged frontend files with Prettier (inside Docker).
+set -euo pipefail
+
+mapfile -t php_files < <(git diff --cached --name-only --diff-filter=ACMR -- '*.php' | grep -v '\.blade\.php$' || true)
+mapfile -t web_files < <(git diff --cached --name-only --diff-filter=ACMR -- '*.blade.php' '*.js' '*.css' '*.json' '*.yaml' '*.yml' \
+    | grep -v -E '^(composer\.lock|package-lock\.json)$' || true)
+
+if [[ ${#php_files[@]} -eq 0 && ${#web_files[@]} -eq 0 ]]; then
+    exit 0
+fi
+
+if ! docker compose ps --status running --services 2>/dev/null | grep -qx app; then
+    echo "pre-commit: Docker stack nebeží. Spusti 'docker compose up -d' a commitni znova." >&2
+    exit 1
+fi
+
+if [[ ${#php_files[@]} -gt 0 ]]; then
+    docker compose exec -T app vendor/bin/pint "${php_files[@]}"
+    git add -- "${php_files[@]}"
+fi
+
+if [[ ${#web_files[@]} -gt 0 ]]; then
+    docker compose exec -T app npx prettier --write --ignore-unknown "${web_files[@]}"
+    git add -- "${web_files[@]}"
+fi
