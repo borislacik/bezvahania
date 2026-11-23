@@ -12,6 +12,7 @@ alebo v kancelárii, Bratislava a okolie.
 | Lokálne – Mailpit | http://localhost:8025 |
 
 Staging neexistuje, všetko sa testuje lokálne ([rozhodnutia](docs/decisions.md)).
+Repozitár: https://github.com/borislacik/bezvahania (verejný, bez CI).
 
 ## Požiadavky
 - **Docker Desktop** (Windows, macOS alebo Linux)
@@ -21,7 +22,7 @@ PHP, Composer, Node, MariaDB, Mailpit a Playwright bežia v kontajneroch. Nič z
 
 ## Rýchly štart
 ```bash
-git clone <repozitár> bezvahania && cd bezvahania
+git clone git@github.com:borislacik/bezvahania.git && cd bezvahania
 git config core.hooksPath .githooks
 git config core.autocrlf false
 cp .env.example .env
@@ -95,12 +96,13 @@ Mimo `.env` (premenná prostredia na hoste): `STITCH_API_KEY` pre Stitch MCP v C
 ### Skills v repozitári (`.claude/skills/`)
 | Skill | Na čo slúži |
 |---|---|
+| `new-change` | postup každej požiadavky: vetva → implementácia → testy → dokumentácia → `composer check` → zhrnutie → merge po súhlase |
 | `infer-conventions` | (Boost) zaznamená konvencie aplikácie |
 | `laravel-best-practices` | (Boost) odporúčané postupy pre Laravel |
 | `testing-best-practices` | (Boost) písanie a štruktúra testov |
 | `tailwindcss-development` | (Boost) práca s Tailwind CSS |
 
-Projektové skills (napr. `new-change`) pribudnú po schválení.
+Ďalšie projektové skills (`deploy`, `rollback`, `filament-resource`, …) pribudnú po schválení.
 
 ## Dokumentácia
 | Dokument | Obsah |
