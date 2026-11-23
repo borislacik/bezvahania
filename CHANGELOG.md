@@ -12,4 +12,5 @@ verzie podľa git tagov z deployov (`vRRRR.MM.DD-N`).
 - Composer skripty `lint`, `format`, `analyse`, `test`, `test:browser`, `docs:check`, `check`.
 - Git hooky (Pint/Prettier pri commite, Conventional Commits, ochrana pushu do `main`).
 - Kontrola nepreložených textov v Blade šablónach.
+- Skill `new-change` pre Claude Code (postup jednej požiadavky).
 - Dokumentácia: README, CLAUDE.md, rozhodnutia k zadaniu, architektúra, ADR 0001–0004.

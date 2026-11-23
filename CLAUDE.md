@@ -56,6 +56,7 @@ MariaDB 11.4 · Pest 5 + browser plugin · Pint · Larastan · Prettier · Larav
 ## Dokumentácia (súčasť každej zmeny)
 - `docs/changes/RRRR-MM-DD-<vetva>.md` pre každú vetvu (Požiadavka, Riešenie, Dotknuté časti, Testy, Nasadenie, Odkazy).
 - `CHANGELOG.md` sekcia `[Unreleased]`, `README.md` vždy aktuálny, ADR pri ťažko zmeniteľných rozhodnutiach.
+- Každú požiadavku rob podľa skillu `new-change` (`.claude/skills/new-change/SKILL.md`).
 - Skills projektu v `.claude/skills/<nazov>/SKILL.md` (nikdy iba v `~/.claude/`). Nový skill navrhni, vytvor až po súhlase.
 
 ## Nikdy
