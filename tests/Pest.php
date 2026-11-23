@@ -28,7 +28,8 @@ pest()->extend(TestCase::class)
     ->in('Browser');
 
 // Browser tests reach the app on the public domain (*.localhost resolves to loopback).
-pest()->browser()->withHost('bezvahania.localhost');
+// The first page load after a build compiles views and can exceed the default timeout.
+pest()->browser()->withHost('bezvahania.localhost')->timeout(15_000);
 
 /*
 |--------------------------------------------------------------------------
