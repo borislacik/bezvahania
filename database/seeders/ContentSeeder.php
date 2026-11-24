@@ -50,7 +50,7 @@ class ContentSeeder extends Seeder
                 'duration_label' => 'cca 3,5 – 4 hodiny',
                 'equipment' => 'Obväzový materiál, dlahy, trenažér dusenia',
                 'price' => 200,
-                'image' => null,
+                'image' => 'workshop-family.webp',
                 'is_featured' => false,
             ],
             [

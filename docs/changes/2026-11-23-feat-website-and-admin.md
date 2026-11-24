@@ -133,6 +133,9 @@ workshop?“ (`ContentSeeder`). Piliere sa už nepodobajú na karty workshopov: 
   bodky a bez hviezdičky. `course-card` už nepotrebuje parameter `index`.
 - Nové texty štítkov (seeder aj lokálna DB, v admine pole Štítok): KPR a AED „Pokročilý tréning“, Civilná prvá
   pomoc „Univerzálny“, Taktická prvá pomoc „Špecializovaný“.
+- Workshop Civilná prvá pomoc mal namiesto fotky iba ikonu. Dočasne má fotku od používateľa (skupinový nácvik KPR,
+  WebP 600 × 400, `resources/images/workshop-family.webp`; seeder aj lokálna DB). Finálne fotky workshopov dodá
+  používateľ, nahrajú sa v admine (Workshopy → Obrázok).
 
 ### Časté otázky a skúsenosti vedľa seba (24. 11. 2026)
 - Na desktope jedna sekcia: vľavo časté otázky (2/3 šírky), vpravo skúsenosti absolventov (1/3) s menším nadpisom.
