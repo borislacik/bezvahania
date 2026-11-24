@@ -100,7 +100,6 @@ return [
                 'text' => 'Necestujete nikam. Prídem s kompletným vybavením k vám domov alebo do kancelárie. Vo veľkých skupinách sa ľudia boja pýtať a zásah si vyskúšajú len raz. Tu trénujete v kruhu 2 až 4 ľudí, ktorí sa poznajú, takže každý má dosť času na opakovaný nácvik a otázky bez ostychu.',
             ],
         ],
-        'pillar_label' => 'Pilier :number',
 
         'workshops_eyebrow' => 'Ponuka výcvikov',
         'workshops_title' => 'Tri špecializované praktické workshopy',

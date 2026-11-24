@@ -132,9 +132,6 @@
                             class="pillar-item flex flex-col gap-2"
                             :class="active >= {{ $loop->index }} ? 'is-added' : 'is-future'"
                         >
-                            <span class="font-heading text-label-badge text-primary font-bold tracking-wider uppercase">
-                                {{ __('site.home.pillar_label', ['number' => sprintf('%02d', $loop->iteration)]) }}
-                            </span>
                             <h3 class="text-headline-md text-on-surface flex items-center gap-3 font-bold">
                                 <span
                                     class="bg-primary-container text-on-primary flex size-10 shrink-0 items-center justify-center rounded-lg lg:hidden"
