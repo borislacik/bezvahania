@@ -71,6 +71,8 @@ rezervácie, výber vo formulári (2, 3, 4) a v admine, factory. Lokálna datab�
 
 Hero obrázok (24. 11. 2026): odstránený popis na spodku obrázka, ktorý prekrýval baner „Aktuálne odporúčania ERC“; baner ostal, štítok „Živý nácvik“ je v ľavom hornom rohu, bez tmavého prechodu.
 
+Štítok „Živý nácvik“ (24. 11. 2026): podľa výberu používateľa z troch variantov je matné biele sklo s pulzujúcou červenou bodkou (pri `prefers-reduced-motion` bez pulzu). Červená je vyhradená pre výzvy na rezerváciu.
+
 ### Stabilita browser testov
 `composer test:browser` pred testami skompiluje šablóny (`view:cache`). Pri studenom štarte sa inak pri prvom
 prihlásení do adminu kompilovali všetky Filament šablóny a test prekročil časový limit.

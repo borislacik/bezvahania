@@ -80,9 +80,17 @@
                                 fetchpriority="high"
                                 class="h-80 w-full object-cover lg:h-[420px]"
                             />
+                            {{-- Decorative, intentionally quiet: red is reserved for the booking calls to action. --}}
                             <span
-                                class="bg-primary-container font-heading text-label-badge text-on-primary absolute top-4 left-4 inline-flex rounded px-2 py-0.5 font-bold uppercase shadow-sm"
+                                class="font-heading text-label-badge text-on-surface absolute top-4 left-4 inline-flex items-center gap-1.5 rounded-full bg-white/85 px-2.5 py-1 font-bold uppercase shadow-sm backdrop-blur-md"
+                                data-testid="hero-badge"
                             >
+                                <span class="relative flex size-2" aria-hidden="true">
+                                    <span
+                                        class="bg-primary-container absolute inline-flex size-full animate-ping rounded-full opacity-60 motion-reduce:hidden"
+                                    ></span>
+                                    <span class="bg-primary-container relative inline-flex size-2 rounded-full"></span>
+                                </span>
                                 {{ __('site.home.hero_badge') }}
                             </span>
                         </div>
