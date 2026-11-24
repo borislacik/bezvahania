@@ -50,6 +50,8 @@ po načítaní sa stránka posunie k formuláru s chybou alebo potvrdením. Komp
 informačnú vetu; automatické potvrdenie odosielateľovi nie je potrebné.“ Platí pre oba kontaktné formuláre
 (blok aj stránka Kontakt), rezervácia si zaškrtávacie pole ponecháva.
 
+Text v ľavej časti bloku: „malej firme“ zmenené na „firemnému tímu“ (`lang/sk/site.php`, 24. 11. 2026).
+
 ### Stabilita browser testov
 `composer test:browser` pred testami skompiluje šablóny (`view:cache`). Pri studenom štarte sa inak pri prvom
 prihlásení do adminu kompilovali všetky Filament šablóny a test prekročil časový limit.

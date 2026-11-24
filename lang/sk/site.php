@@ -151,7 +151,7 @@ return [
 
         'contact_eyebrow' => 'Osobná konzultácia',
         'contact_title' => 'Máte špecifické požiadavky alebo firmu?',
-        'contact_text' => 'Workshop prispôsobíme vašej rodine, malej firme či športovému klubu. Zavolajte alebo napíšte, odpoviem obratom.',
+        'contact_text' => 'Workshop prispôsobíme vašej rodine, firemnému tímu či športovému klubu. Zavolajte alebo napíšte, odpoviem obratom.',
     ],
 
     'workshops' => [
