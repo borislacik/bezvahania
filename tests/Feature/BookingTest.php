@@ -149,6 +149,7 @@ it('validates the booking form', function (array $overrides, string $field) {
     'missing address' => [['address' => ''], 'address'],
     'too many people' => [['participants' => 5], 'participants'],
     'no people' => [['participants' => 0], 'participants'],
+    'one person' => [['participants' => 1], 'participants'],
     'unknown slot' => [['time_slot' => 'evening'], 'time_slot'],
     'bad date' => [['date' => '2. 12. 2026'], 'date'],
     'no consent' => [['consent' => null], 'consent'],

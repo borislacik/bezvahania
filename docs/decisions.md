@@ -32,7 +32,7 @@ workshopu a právne stránky. Pozri [ADR 0007](adr/0007-one-page-website.md).
 | 1 | SSH | Trvalý SSH prístup je zakúpený (`shell.r6.websupport.sk`, port 26972, prihlásenie kľúčom). |
 | 2 | Staging | **Staging nebude.** Vývoj aj testovanie iba lokálne, nasadzuje sa priamo na produkciu. |
 | 3 | Repozitár, CI | GitHub, **verejný** repozitár. CI nebude. |
-| 4 | Model rezervácie | Rezervuje sa **celý termín** pre jednu skupinu (1–4 osoby). Obsadené a zablokované termíny sa nedajú zvoliť. |
+| 4 | Model rezervácie | Rezervuje sa **celý termín** pre jednu skupinu (**2 – 4 osoby**, zmena z 1 – 4 dňa 24. 11. 2026). Obsadené a zablokované termíny sa nedajú zvoliť. |
 | 4 | Kalendár | Mesačný kalendár: aktuálny mesiac + prepnutie na nasledujúci. Admin označí nedostupné dni (sivé). Ostatné dni majú termín **doobeda 9–13** a **poobede 15–19**. Zákazník vyberie deň a termín, potom typ workshopu. |
 | 5 | Potvrdzovanie | **Bez potvrdzovania adminom** – rezervácia voľného termínu je potvrdená hneď. |
 | 6 | Zrušenie zákazníkom | Upresní sa neskôr. |

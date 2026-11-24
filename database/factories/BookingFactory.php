@@ -27,7 +27,7 @@ class BookingFactory extends Factory
             'email' => fake()->unique()->safeEmail(),
             'phone' => '+421 9'.fake()->numerify('## ### ###'),
             'address' => fake()->streetAddress().', '.fake()->city(),
-            'participants' => fake()->numberBetween(1, 4),
+            'participants' => fake()->numberBetween(Booking::MIN_PARTICIPANTS, Booking::MAX_PARTICIPANTS),
             'note' => null,
             'price' => 200,
             'consent_at' => now(),

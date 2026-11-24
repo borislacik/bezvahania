@@ -156,3 +156,12 @@ it('uses only WebP images for content', function () {
         expect($src)->toEndWith('.webp');
     }
 });
+
+it('describes the group as 2 to 4 people everywhere', function () {
+    $this->get(route('home'))->assertOk()->assertSee('2 – 4')->assertDontSee('1 – 4')->assertDontSee('1 až 4');
+
+    $html = (string) $this->get(route('booking.create'))->assertOk()->getContent();
+    expect($html)->not->toContain('name="participants" value="1"')
+        ->toContain('value="2"')
+        ->toContain('value="4"');
+});

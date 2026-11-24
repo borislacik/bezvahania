@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration
 {
     /**
-     * One booking reserves a whole slot (date + morning/afternoon) for one group of 1-4 people.
+     * One booking reserves a whole slot (date + morning/afternoon) for one group of 2-4 people.
      *
      * The active_slot column holds "YYYY-MM-DD:slot" while the booking is active and NULL once it
      * is cancelled. Its unique index makes double booking impossible even under concurrent requests.

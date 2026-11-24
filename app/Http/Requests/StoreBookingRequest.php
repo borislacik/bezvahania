@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use App\Enums\TimeSlot;
+use App\Models\Booking;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
@@ -21,7 +22,7 @@ class StoreBookingRequest extends FormRequest
             'email' => ['required', 'string', 'email:rfc', 'max:190'],
             'phone' => ['required', 'string', 'max:40', 'regex:/^[0-9 +()\/-]{6,}$/'],
             'address' => ['required', 'string', 'max:255'],
-            'participants' => ['required', 'integer', 'between:1,4'],
+            'participants' => ['required', 'integer', 'between:'.Booking::MIN_PARTICIPANTS.','.Booking::MAX_PARTICIPANTS],
             'note' => ['nullable', 'string', 'max:2000'],
             'consent' => ['accepted'],
             // Honeypot: real visitors never fill this hidden field.

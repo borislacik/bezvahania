@@ -37,6 +37,11 @@ use Illuminate\Support\Str;
  */
 class Booking extends Model
 {
+    /** A workshop is for a group of 2 to 4 people (docs/decisions.md). */
+    public const MIN_PARTICIPANTS = 2;
+
+    public const MAX_PARTICIPANTS = 4;
+
     /** @use HasFactory<BookingFactory> */
     use HasFactory;
 

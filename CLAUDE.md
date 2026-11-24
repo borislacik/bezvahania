@@ -40,7 +40,7 @@ MariaDB 11.4 · Pest 5 + browser plugin · Pint · Larastan · Prettier · Larav
 - Verejné routy v `Route::domain(config('app.domain'))`, Filament panel `->domain(config('app.admin_domain'))->path('')`.
 - Tenké controllery, biznis logika v `App\Actions\…` (volá ich web aj Filament). Validácia vo Form Requests.
 - Stavy ako PHP Enums s `label()` cez preklady. E-maily vo fronte.
-- Rezervácia: celý termín (deň + doobeda 9–13 / poobede 15–19) pre jednu skupinu 1–4 osôb, bez potvrdzovania adminom.
+- Rezervácia: celý termín (deň + doobeda 9–13 / poobede 15–19) pre jednu skupinu 2–4 osôb, bez potvrdzovania adminom.
   Dvojitej rezervácii bráni unikátny index na `bookings.active_slot` (ADR 0005), nie `lockForUpdate()`.
 - SEO (title, description, OG obrázok) je editovateľné v admine. **Všetky obrázky na webe sú WebP**, nahraté obrázky sa automaticky konvertujú na WebP.
 - Google Analytics iba po súhlase (cookie lišta podľa EÚ, Consent Mode v2). GDPR: osobné údaje nikdy do logov.

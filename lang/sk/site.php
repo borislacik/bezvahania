@@ -45,7 +45,7 @@ return [
         'per_group' => 'za skupinu',
         'per_person' => '(:price / os. pri 4 osobách)',
         'group' => 'Skupina',
-        'group_value' => '1 – 4 osoby (uzavretá)',
+        'group_value' => '2 – 4 osoby (uzavretá)',
         'equipment' => 'Vybavenie',
         'price' => 'Cena za skupinu',
         'duration' => 'Trvanie',
@@ -59,7 +59,7 @@ return [
         'pills' => [
             'practice' => '100 % prax a nácvik',
             'home' => 'U vás doma alebo v kancelárii',
-            'group' => 'Komorná skupina 1 – 4 osoby',
+            'group' => 'Komorná skupina 2 – 4 osoby',
         ],
         'eyebrow' => 'Autentický výcvik pre život',
         'title_start' => 'Prvá pomoc bez strachu a',
@@ -71,7 +71,7 @@ return [
         'kpis' => [
             ['value' => '12+', 'label' => 'rokov v záchrannej službe'],
             ['value' => '90 %', 'label' => 'čistý praktický nácvik'],
-            ['value' => '1 – 4', 'label' => 'účastníci pre maximálny fokus'],
+            ['value' => '2 – 4', 'label' => 'účastníci pre maximálny fokus'],
         ],
         'hero_image_alt' => 'Nácvik resuscitácie a defibrilátora v domácom prostredí',
         'hero_badge' => 'Živý nácvik',
@@ -104,7 +104,7 @@ return [
             [
                 'icon' => 'cottage',
                 'title' => 'Komfort vášho domova',
-                'text' => 'Necestujete nikam. Prídem s kompletným vybavením k vám domov alebo do kancelárie. Vo veľkých skupinách sa ľudia boja pýtať a zásah si vyskúšajú len raz. Tu trénujete v kruhu 1 až 4 ľudí, ktorí sa poznajú, takže každý má dosť času na opakovaný nácvik a otázky bez ostychu.',
+                'text' => 'Necestujete nikam. Prídem s kompletným vybavením k vám domov alebo do kancelárie. Vo veľkých skupinách sa ľudia boja pýtať a zásah si vyskúšajú len raz. Tu trénujete v kruhu 2 až 4 ľudí, ktorí sa poznajú, takže každý má dosť času na opakovaný nácvik a otázky bez ostychu.',
                 'footer' => 'Komorne a bez ostychu',
                 'footer_icon' => 'sentiment_satisfied',
             ],

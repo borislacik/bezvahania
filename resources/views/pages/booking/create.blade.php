@@ -339,8 +339,8 @@
 
                                 <fieldset>
                                     <legend class="field-label">{{ __('booking.fields.participants') }} *</legend>
-                                    <div class="grid grid-cols-4 gap-2">
-                                        @foreach (range(1, 4) as $count)
+                                    <div class="grid grid-cols-3 gap-2">
+                                        @foreach (range(\App\Models\Booking::MIN_PARTICIPANTS, \App\Models\Booking::MAX_PARTICIPANTS) as $count)
                                             <label
                                                 class="bg-surface-container-lowest text-body-sm hover:bg-surface-container has-[:checked]:bg-primary-container has-[:checked]:text-on-primary has-[:focus-visible]:ring-primary-container flex cursor-pointer items-center justify-center rounded-lg p-2.5 font-semibold shadow-sm has-[:focus-visible]:ring-2"
                                             >

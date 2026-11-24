@@ -89,7 +89,7 @@ class BookingResource extends Resource
                     ->disabledOn('edit'),
                 Select::make('participants')
                     ->label(__('admin.fields.participants'))
-                    ->options(['1' => '1', '2' => '2', '3' => '3', '4' => '4'])
+                    ->options(collect(range(Booking::MIN_PARTICIPANTS, Booking::MAX_PARTICIPANTS))->mapWithKeys(fn (int $count): array => [(string) $count => (string) $count])->all())
                     ->default(4)
                     ->required(),
             ]),

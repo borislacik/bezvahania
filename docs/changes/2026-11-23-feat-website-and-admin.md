@@ -64,6 +64,11 @@ browser test skrolovania z rezervácie.
 
 Text „Prečo malé skupiny“ zo zrušenej stránky O lektorovi zapracovaný do 3. piliera („Komfort vášho domova“), texty sa ešte budú upravovať.
 
+### Skupina 2 – 4 osoby (24. 11. 2026)
+Požiadavka: „Miesta, kde sa hovorí o počte účastníkov 1 – 4 osoby, zmeň na 2 – 4 osoby.“ Zmenené texty
+(`lang/sk/site.php`, FAQ a SEO úvodu v seederi), aj samotné pravidlo: `Booking::MIN_PARTICIPANTS = 2`, validácia
+rezervácie, výber vo formulári (2, 3, 4) a v admine, factory. Lokálna databáza: upravená odpoveď vo FAQ a SEO popis úvodu.
+
 ### Stabilita browser testov
 `composer test:browser` pred testami skompiluje šablóny (`view:cache`). Pri studenom štarte sa inak pri prvom
 prihlásení do adminu kompilovali všetky Filament šablóny a test prekročil časový limit.

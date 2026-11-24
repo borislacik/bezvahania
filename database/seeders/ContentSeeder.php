@@ -96,7 +96,7 @@ class ContentSeeder extends Seeder
         $faqs = [
             ['Musíme mať doma špeciálny priestor?', 'Vôbec nie. Stačí bežná obývačka alebo zasadačka s voľným miestom na podlahe (približne 2 × 2 metre), kde položíme podložku a figuríny. Hygienické pomôcky a dezinfekciu prinesiem.'],
             ['Pre koho je workshop vhodný? Môžu sa zúčastniť aj deti?', 'Workshop je určený pre dospelých a staršie deti (odporúčame od 11 rokov, keď už majú dosť sily na účinné stláčanie hrudníka). Rodinný formát je obľúbený, pretože členovia domácnosti trénujú ako zohraný tím.'],
-            ['Koľko ľudí sa môže zúčastniť?', 'Workshop je pre 1 až 4 osoby, ktoré sa poznajú – rodina, priatelia alebo kolegovia. Cena je za celú skupinu.'],
+            ['Koľko ľudí sa môže zúčastniť?', 'Workshop je pre 2 až 4 osoby, ktoré sa poznajú – rodina, priatelia alebo kolegovia. Cena je za celú skupinu.'],
             ['Kam za vami prídete?', 'Pôsobím v Bratislave a okolí. Doprava do 60 km od Bratislavy je v cene, pri väčšej vzdialenosti sa dohodneme individuálne.'],
             ['Ako a kedy sa platí?', 'Platí sa až po skončení workshopu, v hotovosti alebo kartou.'],
             ['Dostaneme potvrdenie o absolvovaní?', 'Áno, každý účastník dostane osvedčenie o absolvovaní workshopu. Nejde o akreditovaný kurz (napríklad pre BOZP alebo vodičský preukaz).'],
@@ -132,7 +132,7 @@ class ContentSeeder extends Seeder
     private function pages(): void
     {
         $pages = [
-            'home' => ['Prvá pomoc bez váhania – workshopy u vás doma', 'Praktické workshopy prvej pomoci pre 1 – 4 osoby priamo u vás doma alebo v kancelárii. KPR a AED, prvá pomoc pre rodiny, taktická prvá pomoc. Bratislava a okolie.'],
+            'home' => ['Prvá pomoc bez váhania – workshopy u vás doma', 'Praktické workshopy prvej pomoci pre 2 – 4 osoby priamo u vás doma alebo v kancelárii. KPR a AED, prvá pomoc pre rodiny, taktická prvá pomoc. Bratislava a okolie.'],
             'booking' => ['Rezervácia termínu workshopu', 'Vyberte si voľný termín workshopu prvej pomoci v kalendári – doobeda alebo poobede, u vás doma v Bratislave a okolí.'],
             'privacy' => ['Ochrana osobných údajov', 'Informácie o spracúvaní osobných údajov pri rezervácii workshopu a kontaktnom formulári.'],
             'terms' => ['Podmienky rezervácie', 'Podmienky rezervácie a zrušenia workshopov prvej pomoci Bez váhania.'],

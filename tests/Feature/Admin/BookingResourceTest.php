@@ -120,13 +120,13 @@ it('edits only contact details of a booking', function () {
     $booking = Booking::factory()->create(['date' => '2026-12-01', 'time_slot' => TimeSlot::Morning]);
 
     Livewire::test(EditBooking::class, ['record' => $booking->getRouteKey()])
-        ->fillForm(['phone' => '0911 000 111', 'participants' => 1, 'date' => '2026-12-24'])
+        ->fillForm(['phone' => '0911 000 111', 'participants' => 2, 'date' => '2026-12-24'])
         ->call('save')
         ->assertHasNoFormErrors();
 
     $booking->refresh();
     expect($booking->phone)->toBe('0911 000 111')
-        ->and($booking->participants)->toBe(1)
+        ->and($booking->participants)->toBe(2)
         ->and($booking->date->toDateString())->toBe('2026-12-01');
 });
 

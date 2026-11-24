@@ -49,7 +49,7 @@ return [
         'note' => 'napr. máme malé bábätko, chceli by sme sa zamerať aj na dusenie u detí',
     ],
 
-    'participants_option' => '{1} 1 osoba|[2,4] :count osoby',
+    'participants_option' => ':count osoby',
     'area_note' => 'Doprava do 60 km od Bratislavy je v cene, ďalej podľa individuálnej dohody.',
 
     'summary' => [
