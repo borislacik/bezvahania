@@ -129,12 +129,26 @@
                     <p class="text-body-sm text-inverse-on-surface/80">{{ __('site.home.fact_text') }}</p>
                 </div>
             </div>
-            <p class="flex items-center gap-2">
+            <p class="ecg-badge relative flex h-14 w-64 shrink-0 items-center justify-center">
+                {{-- Animated ECG trace behind the text (static with prefers-reduced-motion). --}}
+                <svg
+                    class="ecg-line pointer-events-none absolute inset-0 h-full w-full"
+                    viewBox="0 0 240 40"
+                    preserveAspectRatio="none"
+                    aria-hidden="true"
+                >
+                    <path
+                        class="ecg-line__base"
+                        d="M0 22 H6 L10 17 L14 22 L18 22 L23 3 L29 37 L33 22 L38 22 L43 18 L48 22 H192 L196 17 L200 22 L204 22 L209 3 L215 37 L219 22 L224 22 L229 18 L234 22 H240"
+                    />
+                    <path
+                        class="ecg-line__pulse"
+                        pathLength="100"
+                        d="M0 22 H6 L10 17 L14 22 L18 22 L23 3 L29 37 L33 22 L38 22 L43 18 L48 22 H192 L196 17 L200 22 L204 22 L209 3 L215 37 L219 22 L224 22 L229 18 L234 22 H240"
+                    />
+                </svg>
                 <span
-                    class="bg-primary-container inline-block size-2 animate-ping rounded-full motion-reduce:animate-none"
-                ></span>
-                <span
-                    class="font-heading text-label-badge text-inverse-on-surface/90 font-bold tracking-wider uppercase"
+                    class="font-heading text-label-badge text-inverse-on-surface bg-inverse-surface relative rounded px-1.5 font-bold tracking-wider whitespace-nowrap uppercase"
                     >{{ __('site.home.fact_badge') }}</span
                 >
             </p>

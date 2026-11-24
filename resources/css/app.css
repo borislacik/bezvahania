@@ -169,3 +169,46 @@
         @apply text-primary underline;
     }
 }
+
+/* ECG trace behind "Pripravenosť zachraňuje": a faint line with a bright pulse running left to right. */
+@layer components {
+    .ecg-line path {
+        fill: none;
+        stroke: var(--color-primary-container);
+        stroke-width: 2.5;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        vector-effect: non-scaling-stroke;
+    }
+
+    .ecg-line__base {
+        opacity: 0.35;
+    }
+
+    .ecg-line__pulse {
+        stroke-dasharray: 14 86;
+        stroke-dashoffset: 14;
+        filter: drop-shadow(0 0 3px var(--color-primary-container));
+        animation: ecg-pulse 2.6s linear infinite;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .ecg-line__pulse {
+            display: none;
+        }
+
+        .ecg-line__base {
+            opacity: 0.6;
+        }
+    }
+}
+
+@keyframes ecg-pulse {
+    from {
+        stroke-dashoffset: 14;
+    }
+
+    to {
+        stroke-dashoffset: -100;
+    }
+}
