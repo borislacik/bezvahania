@@ -52,7 +52,7 @@ Všetky príkazy sa spúšťajú v kontajneri `app`:
 | `docker compose exec app composer lint` | Pint `--test` + Prettier `--check` |
 | `docker compose exec app composer format` | opraví formátovanie (Pint + Prettier) |
 | `docker compose exec app composer analyse` | Larastan (PHPStan, level 6) |
-| `docker compose exec app composer test` | Unit + Feature testy, paralelne, pokrytie min. 80 % |
+| `docker compose exec app composer test` | Unit + Feature testy, paralelne (4 procesy, kvôli pamäti Dockeru), pokrytie min. 80 % |
 | `docker compose exec app composer test:browser` | browser testy (Pest + Playwright, Chromium) |
 | `docker compose exec app composer docs:check` | kontrola dokumentácie |
 | `docker compose exec app composer check` | všetko vyššie + `npm run build`; pri úspechu a čistom strome zapíše `.check-passed` |

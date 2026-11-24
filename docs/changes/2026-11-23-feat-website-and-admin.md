@@ -66,6 +66,9 @@ browser test skrolovania z rezervácie.
 `composer test:browser` pred testami skompiluje šablóny (`view:cache`). Pri studenom štarte sa inak pri prvom
 prihlásení do adminu kompilovali všetky Filament šablóny a test prekročil časový limit.
 
+Paralelné testy bežia v **4 procesoch** (`--processes=4`). Pri predvolenom počte (16 = počet jadier) a 2 GB RAM pre
+Docker zabil systém kontajner MariaDB (exit 137) a testy sa zasekli.
+
 ## Dotknuté časti
 - Migrácie: MFA stĺpce v `users`, `courses`, `blocked_days`, `bookings`, `team_members`, `faqs`, `testimonials`,
   `pages`, `settings`, `contact_messages`.

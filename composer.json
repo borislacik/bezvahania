@@ -56,7 +56,7 @@
     ],
     "test": [
       "@php artisan config:clear --ansi",
-      "vendor/bin/pest --testsuite=Unit,Feature --parallel --coverage --min=80"
+      "vendor/bin/pest --testsuite=Unit,Feature --parallel --processes=4 --coverage --min=80"
     ],
     "test:browser": [
       "@php artisan config:clear --ansi",
