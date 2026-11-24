@@ -68,7 +68,7 @@ class ContentSeeder extends Seeder
         ];
 
         foreach ($courses as $index => $data) {
-            $image = $data['image'] ? $this->copyImage($data['image'], 'courses') : null;
+            $image = $this->copyImage($data['image'], 'courses');
 
             Course::query()->updateOrCreate(['slug' => $data['slug']], [
                 ...$data,
