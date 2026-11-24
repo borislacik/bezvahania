@@ -23,6 +23,7 @@ verzie podľa git tagov z deployov (`vRRRR.MM.DD-N`).
 - Testy: 114 Unit/Feature (pokrytie 97 %) a 8 browser testov (rezervácia, plný termín, admin, všetky stránky).
 
 ### Zmenené – kontakt
+- Pätička bez bloku „Užitočné odkazy“ (odkazy sú v hlavnom menu).
 - Text kontaktného bloku: „malej firme“ → „firemnému tímu“.
 - Blok „Garancia Bez váhania“ v kontaktnom bloku nahradil krátky kontaktný formulár (meno, e-mail, správa); správa ide do admina aj na info@bezvahania.sk.
 - Kontaktné formuláre: nepovinný telefón aj v krátkom formulári, namiesto zaškrtávacieho poľa súhlasu informačná veta o spracovaní osobných údajov.

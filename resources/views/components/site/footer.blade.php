@@ -1,33 +1,9 @@
 <footer class="bg-inverse-surface text-inverse-on-surface">
-    <div class="container-page grid gap-10 py-14 md:grid-cols-2 lg:grid-cols-4">
-        <div class="flex flex-col gap-4 lg:col-span-1">
+    <div class="container-page grid gap-10 py-14 md:grid-cols-3">
+        <div class="flex flex-col gap-4">
             <x-site.logo dark />
             <p class="text-body-sm text-inverse-on-surface/80">{{ __('site.footer.about') }}</p>
         </div>
-
-        <nav aria-label="{{ __('site.footer.links') }}">
-            <h2 class="text-headline-sm mb-4 font-bold">{{ __('site.footer.links') }}</h2>
-            <ul class="text-body-sm text-inverse-on-surface/80 space-y-2">
-                <li>
-                    <a
-                        class="hover:text-inverse-on-surface"
-                        href="{{ route('workshops.index') }}"
-                        >{{ __('site.nav.workshops') }}</a
-                    >
-                </li>
-                <li>
-                    <a
-                        class="hover:text-inverse-on-surface"
-                        href="{{ route('booking.create') }}"
-                        >{{ __('site.nav.book') }}</a
-                    >
-                </li>
-                <li>
-                    <a class="hover:text-inverse-on-surface" href="{{ route('about') }}">{{ __('site.nav.about') }}</a>
-                </li>
-                <li><a class="hover:text-inverse-on-surface" href="{{ route('faq') }}">{{ __('site.nav.faq') }}</a></li>
-            </ul>
-        </nav>
 
         <nav aria-label="{{ __('site.footer.legal') }}">
             <h2 class="text-headline-sm mb-4 font-bold">{{ __('site.footer.legal') }}</h2>

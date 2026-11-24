@@ -52,6 +52,8 @@ informačnú vetu; automatické potvrdenie odosielateľovi nie je potrebné.“ 
 
 Text v ľavej časti bloku: „malej firme“ zmenené na „firemnému tímu“ (`lang/sk/site.php`, 24. 11. 2026).
 
+Pätička: odstránený blok „Užitočné odkazy“, odkazy sú v hlavnom menu (24. 11. 2026).
+
 ### Stabilita browser testov
 `composer test:browser` pred testami skompiluje šablóny (`view:cache`). Pri studenom štarte sa inak pri prvom
 prihlásení do adminu kompilovali všetky Filament šablóny a test prekročil časový limit.
