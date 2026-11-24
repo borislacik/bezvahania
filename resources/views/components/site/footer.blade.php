@@ -64,7 +64,7 @@
             </ul>
             {{-- Business details (admin: Kontakt a prevádzkovateľ); icons instead of labels. --}}
             @if ($settings['operator_name'])
-                <ul class="text-body-sm text-inverse-on-surface/70 mt-6 space-y-3 border-t border-white/10 pt-6">
+                <ul class="text-body-sm text-inverse-on-surface/80 mt-3 space-y-3">
                     <li class="flex items-start gap-2">
                         <x-site.icon name="badge" class="text-inverse-primary mt-0.5 size-5 shrink-0" />
                         <span>

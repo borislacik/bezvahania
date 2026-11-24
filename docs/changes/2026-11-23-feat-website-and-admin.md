@@ -126,7 +126,7 @@ workshop?“ (`ContentSeeder`). Piliere sa už nepodobajú na karty workshopov: 
   obrázok `lg:mt-7`) a sekcia je nižšia.
 
 ### Údaje o živnosti v pätičke (24. 11. 2026)
-- Časť Kontakt v pätičke: pod telefónom, e-mailom a oblasťou je oddelený blok – ikona preukazu s menom, IČO, DIČ
+- Časť Kontakt v pätičke: pod telefónom a e-mailom (bez deliacej čiary) nasleduje ikona preukazu s menom, IČO, DIČ
   a textom k DPH, ikona domčeka so sídlom (ikony namiesto popisov „Prevádzkovateľ“, „Sídlo“).
 - Údaje sú v nastaveniach (admin → Kontakt a prevádzkovateľ). Nové polia `operator_dic` a `operator_vat_note`
   (bez migrácie, tabuľka `settings`). Predvolené hodnoty v `Setting::DEFAULTS` sú údaje živnosti Borisa Lacíka,
