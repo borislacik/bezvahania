@@ -32,7 +32,7 @@ class ContentSeeder extends Seeder
             [
                 'slug' => 'kpr-a-aed',
                 'name' => 'KPR a záchrana života s AED',
-                'badge' => 'Najžiadanejší',
+                'badge' => 'Pokročilý tréning',
                 'short_description' => 'Okamžitá reakcia pri náhlej zástave srdca a kolapse. Nácvik kvalitných kompresií hrudníka, bezpečné použitie defibrilátora AED, pomoc pri dusení a zotavovacia poloha.',
                 'description' => '<p>Workshop zameraný na situácie, pri ktorých rozhodujú prvé minúty: náhla zástava srdca, bezvedomie a dusenie.</p><ul><li>rozpoznanie zástavy srdca a privolanie pomoci</li><li>kompresie hrudníka na figurínach so spätnou väzbou (hĺbka a frekvencia)</li><li>bezpečné použitie defibrilátora AED</li><li>dusenie u dospelých a detí (Heimlichov manéver)</li><li>zotavovacia poloha</li></ul>',
                 'duration_label' => 'cca 3 hodiny',
@@ -44,7 +44,7 @@ class ContentSeeder extends Seeder
             [
                 'slug' => 'prva-pomoc-doma-a-na-cestach',
                 'name' => 'Civilná prvá pomoc doma a na cestách',
-                'badge' => 'Pre rodiny a rodičov',
+                'badge' => 'Univerzálny',
                 'short_description' => 'Najčastejšie úrazy a akútne stavy: krvácanie a popáleniny, zlomeniny a fixácia končatín, anafylaktický šok, epileptický záchvat, otravy a špecifiká prvej pomoci u detí.',
                 'description' => '<p>Komplexná prvá pomoc pre domácnosť, výlety aj cesty autom.</p><ul><li>zastavenie krvácania a ošetrenie popálenín</li><li>zlomeniny a fixácia končatín</li><li>alergická reakcia a anafylaktický šok</li><li>epileptický záchvat, mdloba, otravy</li><li>špecifiká prvej pomoci u malých detí</li></ul>',
                 'duration_label' => 'cca 3,5 – 4 hodiny',
@@ -56,7 +56,7 @@ class ContentSeeder extends Seeder
             [
                 'slug' => 'takticka-prva-pomoc',
                 'name' => 'Taktická prvá pomoc v kríze',
-                'badge' => 'Pokročilý tréning',
+                'badge' => 'Špecializovaný',
                 'short_description' => 'Život ohrozujúce úrazy a masívne krvácanie pri autonehodách, úrazoch v dielni či v prírode. Turnikety, tlakové obväzy a stabilizácia zraneného.',
                 'description' => '<p>Workshop pre motoristov, kutilov, športovcov a všetkých, ktorí chcú zvládnuť aj vážne úrazy.</p><ul><li>masívne krvácanie a použitie turniketu (CAT, SOFTT)</li><li>tlakové a hemostatické obväzy</li><li>postup pri autonehode a zabezpečenie miesta</li><li>stabilizácia zraneného do príchodu záchranky</li></ul>',
                 'duration_label' => 'cca 3 hodiny',

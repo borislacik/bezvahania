@@ -35,7 +35,7 @@ return [
         'slug' => 'Adresa (URL)',
         'slug_help' => 'Časť adresy, napr. kpr-a-aed → /workshopy/kpr-a-aed',
         'badge' => 'Štítok',
-        'badge_help' => 'Krátky štítok na karte, napr. „Najžiadanejší“.',
+        'badge_help' => 'Krátky štítok na karte, napr. „Pokročilý tréning“.',
         'short_description' => 'Krátky popis',
         'description' => 'Podrobný popis',
         'duration_label' => 'Trvanie',
