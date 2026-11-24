@@ -57,3 +57,12 @@ it('shows the three pillars before the workshops and answers how a workshop runs
         ])
         ->assertDontSee('id="ako-prebieha"', escape: false);
 });
+
+it('introduces the instructor and keeps the hero without key figures', function () {
+    $this->get(route('home'))
+        ->assertOk()
+        ->assertSee('Boris Lacík')
+        ->assertSee(__('site.home.instructor_badge_value'))
+        ->assertSee('9+')
+        ->assertDontSee('rokov v záchrannej službe');
+});

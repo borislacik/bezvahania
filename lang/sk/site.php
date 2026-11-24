@@ -67,11 +67,6 @@ return [
         'title_end' => '– priamo u vás doma.',
         'lead' => 'Praktické workshopy v kruhu vašej rodiny, priateľov či kolegov (najviac 4 osoby). Žiadne suché poučky – väčšinu času trénujete praktické zručnosti pod vedením profesionálneho záchranára.',
         'cta_book' => 'Vybrať workshop a rezervovať',
-        'kpis' => [
-            ['value' => '12+', 'label' => 'rokov v záchrannej službe'],
-            ['value' => '90 %', 'label' => 'čistý praktický nácvik'],
-            ['value' => '2 – 4', 'label' => 'účastníci pre maximálny fokus'],
-        ],
         'hero_image_alt' => 'Nácvik resuscitácie a defibrilátora v domácom prostredí',
         'hero_badge' => 'Živý nácvik',
         'hero_card_title' => 'Aktuálne odporúčania ERC',
@@ -107,7 +102,7 @@ return [
 
         'instructor_eyebrow' => 'Váš lektor',
         'instructor_badge_label' => 'Aktívna služba',
-        'instructor_badge_value' => '12+ rokov zásahov',
+        'instructor_badge_value' => '9+ rokov zásahov',
         'instructor_credentials' => [
             ['icon' => 'workspace_premium', 'title' => 'Osvedčenie pre každého', 'text' => 'Potvrdenie o absolvovaní workshopu'],
             ['icon' => 'emergency', 'title' => 'Prax z terénu', 'text' => 'Denný kontakt so zásahmi'],

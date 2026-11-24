@@ -51,18 +51,8 @@
                         </a>
                     </div>
 
-                    <dl class="mt-2 grid grid-cols-3 gap-4 pt-4">
-                        @foreach (__('site.home.kpis') as $kpi)
-                            <div class="flex flex-col-reverse">
-                                <dt class="text-body-sm text-on-surface-variant">{{ $kpi['label'] }}</dt>
-                                <dd
-                                    @class (['font-heading text-headline-lg lg:text-headline-xl font-bold', 'text-primary' => $loop->index === 1, 'text-on-surface' => $loop->index !== 1])
-                                >
-                                    {{ $kpi['value'] }}
-                                </dd>
-                            </div>
-                        @endforeach
-                    </dl>
+                    {{-- Intentionally empty space where the key figures used to be (they are elsewhere on the page). --}}
+                    <div class="mt-2 hidden h-[104px] lg:block" aria-hidden="true"></div>
                 </div>
 
                 <div class="relative lg:col-span-5">

@@ -81,7 +81,7 @@ class ContentSeeder extends Seeder
 
     private function team(): void
     {
-        TeamMember::query()->updateOrCreate(['name' => 'Michal Kováč'], [
+        TeamMember::query()->updateOrCreate(['name' => 'Boris Lacík'], [
             'role' => 'Profesionálny hasič a záchranár',
             'quote' => 'V praxi vidím, že o prežití často nerozhodujú záchranári, ktorí prídu o niekoľko minút, ale ľudia, ktorí sú pri postihnutom v prvých minútach. Naučím vás jednoduché postupy tak, aby ste v kritickom okamihu konali bez váhania.',
             'bio' => "Pri výcviku spájam aktuálne odporúčania European Resuscitation Council s reálnou praxou zo zásahov.\nNa workshope vytvárame bezpečný priestor, kde si každú situáciu vyskúšate toľkokrát, kým sa nebudete cítiť pripravení.",
@@ -115,7 +115,7 @@ class ContentSeeder extends Seeder
     private function testimonials(): void
     {
         $testimonials = [
-            ['Martina a Juraj K.', 'Máme doma ročné dieťa a stále sme mali strach z dusenia. Michal prišiel v sobotu poobede k nám, všetko nám ukázal a trénovali sme, kým sme si neboli istí. Obrovská úľava.', 'Workshop KPR a AED • Bratislava'],
+            ['Martina a Juraj K.', 'Máme doma ročné dieťa a stále sme mali strach z dusenia. Boris prišiel v sobotu poobede k nám, všetko nám ukázal a trénovali sme, kým sme si neboli istí. Obrovská úľava.', 'Workshop KPR a AED • Bratislava'],
             ['Tomáš V. s partiou', 'Taktický workshop bol výborný. Žiadna nuda, odpovedal na každú otázku a priškrtenie turniketom sme si vyskúšali aj pod tlakom. Odporúčam každému motoristovi aj kutilovi.', 'Taktická prvá pomoc • Senec'],
         ];
 

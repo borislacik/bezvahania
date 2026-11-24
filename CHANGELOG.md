@@ -27,6 +27,8 @@ verzie podľa git tagov z deployov (`vRRRR.MM.DD-N`).
 - Efekt pilierov začína skôr (vrch sekcie v 30 % výšky obrazovky); tmavý pruh „Kritický čas“ nad nimi sa posúva rovnako pomaly.
 - Piliere bez označenia „Pilier 01 – 03“, iba nadpis a text.
 - Prvý pilier a jeho ikona sa nezvýraznia hneď, ale až keď je sekcia pilierov v polovici obrazovky.
+- Hero bez troch číselných údajov (12+ rokov, 90 % nácvik, 2 – 4 účastníci), na ich mieste ostáva prázdne miesto.
+- Lektor: Boris Lacík, 9+ rokov aktívnej služby, dočasná fotka (finálna od fotografa príde neskôr).
 - Pruh „Kritický čas“: namiesto blikajúcej bodky animovaná červená EKG krivka poza text „Pripravenosť zachraňuje“ (bez animácie pri obmedzení pohybu).
 - Hero sekcia: bez tlačidla „Ako prebieha workshop“, nový úvodný text („Žiadne suché poučky…“).
 - Dočasné logo (priehľadné WebP, 60 px) v hlavičke, pätičke a na chybových stránkach; nový favicon (ICO, PNG, Apple touch icon) pre web aj admin; skript `scripts/make-logo.php`.
