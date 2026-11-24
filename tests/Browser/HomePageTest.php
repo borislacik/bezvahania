@@ -99,6 +99,6 @@ it('adds up the pillars while scrolling and lands on the workshops from the menu
     expect($offsets[0] - $offsets[1])->toBeLessThan(80)->toBeGreaterThan(20);
 
     $page->script("() => { window.scrollTo({ top: 0, behavior: 'instant' }); window.dispatchEvent(new Event('scroll')); }");
-    expect($page->script("() => document.querySelectorAll('[data-testid=\"pillars\"] .pillar-add.is-added').length"))->toBe(1);
+    expect($page->script("() => document.querySelectorAll('[data-testid=\"pillars\"] .pillar-add.is-added').length"))->toBe(0);
     $page->assertNoJavaScriptErrors();
 });

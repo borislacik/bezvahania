@@ -1,7 +1,8 @@
 {{--
     Pillars with a "slow scroll" on desktop (lg+):
     the section above ($before, the dark fact strip), the pillars section and the start of the following section ($slot)
-    stick when the top of the pillars reaches 30 % of the screen height and moves up at ~1/3 speed while the scroll progress switches pillar 1 → 2 → 3; then normal scrolling continues.
+    stick when the top of the pillars reaches 30 % of the screen height and moves up at ~1/3 speed while the pillars light up one by one
+    (none at first, the first one shortly after the slowing starts); then normal scrolling continues.
     Mobile: no slowing, pillars fade in and out as they enter and leave the screen.
     Without JS or with prefers-reduced-motion: everything static and visible.
 --}}
@@ -10,7 +11,7 @@
 <div
     class="pillars-scrolly relative"
     x-data="{
-        active: 0,
+        active: -1,
         enabled: false,
         distance: 0,
         drift: 0,
@@ -78,7 +79,12 @@
             const top = parseFloat(getComputedStyle(inner).top) || 0;
             const progress = Math.min(1, Math.max(0, (top - this.$root.getBoundingClientRect().top) / this.distance));
             inner.style.transform = `translate3d(0, ${-progress * this.drift}px, 0)`;
-            this.active = Math.min({{ count($pillars) - 1 }}, Math.floor(progress * {{ count($pillars) }}));
+            // Nothing is lit when the block arrives; the pillars then light up in equal steps, the first one
+            // after 10 % of the slowed part, and the last one stays lit for the final stretch.
+            const steps = {{ count($pillars) }};
+            const lead = 0.1;
+            const step = (1 - lead) / (steps + 0.5);
+            this.active = progress < lead ? -1 : Math.min(steps - 1, Math.floor((progress - lead) / step));
         },
     }"
     data-testid="pillars"

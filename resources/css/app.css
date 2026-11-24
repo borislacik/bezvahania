@@ -216,7 +216,7 @@
 /* Pillars scrollytelling (components/site/pillars-scrolly). Static unless JS adds .pillars-js. */
 @layer components {
     /* Panel icons "add up": hidden until their pillar is reached, then they stay. */
-    .pillar-add {
+    .pillars-js .pillar-add {
         opacity: 0;
         transform: translateY(8px) scale(0.6);
         transition:
@@ -224,7 +224,7 @@
             transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
 
-    .pillar-add.is-added {
+    .pillars-js .pillar-add.is-added {
         opacity: 1;
         transform: none;
     }
