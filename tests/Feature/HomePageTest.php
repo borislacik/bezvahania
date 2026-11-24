@@ -48,6 +48,7 @@ it('shows the three pillars before the workshops and answers how a workshop runs
         ->assertOk()
         ->assertSee('data-testid="pillars"', escape: false)
         ->assertSeeInOrder([
+            __('site.home.fact_title'),
             __('site.home.pillars_title'),
             ...array_column($pillars, 'title'),
             __('site.home.workshops_title'),

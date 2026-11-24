@@ -24,7 +24,7 @@ verzie podľa git tagov z deployov (`vRRRR.MM.DD-N`).
 
 ### Zmenené – štruktúra webu
 - Piliere so spomaleným skrolovaním: na desktope sa sekcia posúva pomalšie a piliere aj ikony v tmavom paneli postupne pribúdajú; sekcia „Ako prebieha workshop priamo u vás?“ nahradená prvou častou otázkou „Ako prebieha workshop?“.
-- Efekt pilierov začína skôr (vrch sekcie v 25 % výšky obrazovky).
+- Efekt pilierov začína skôr (vrch sekcie v 25 % výšky obrazovky); tmavý pruh „Kritický čas“ nad nimi sa posúva rovnako pomaly.
 - Pruh „Kritický čas“: namiesto blikajúcej bodky animovaná červená EKG krivka poza text „Pripravenosť zachraňuje“ (bez animácie pri obmedzení pohybu).
 - Hero sekcia: bez tlačidla „Ako prebieha workshop“, nový úvodný text („Žiadne suché poučky…“).
 - Dočasné logo (priehľadné WebP, 60 px) v hlavičke, pätičke a na chybových stránkach; nový favicon (ICO, PNG, Apple touch icon) pre web aj admin; skript `scripts/make-logo.php`.

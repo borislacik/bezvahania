@@ -1,7 +1,7 @@
 {{--
     Pillars with a "slow scroll" on desktop (lg+):
-    the pillars section together with the start of the following section ($slot) sticks when its top reaches 25 %
-    of the screen height and moves up at ~1/3 speed while the scroll progress switches pillar 1 → 2 → 3; then normal scrolling continues.
+    the section above ($before, the dark fact strip), the pillars section and the start of the following section ($slot)
+    stick when the top of the pillars reaches 25 % of the screen height and moves up at ~1/3 speed while the scroll progress switches pillar 1 → 2 → 3; then normal scrolling continues.
     Mobile: no slowing, pillars fade in and out as they enter and leave the screen.
     Without JS or with prefers-reduced-motion: everything static and visible.
 --}}
@@ -21,8 +21,10 @@
                 this.enabled = media.matches;
                 this.distance = this.enabled ? Math.round(window.innerHeight * 1.2) : 0;
                 this.drift = Math.round(this.distance / 3);
-                // The block pins (and the pillars start adding up) when its top reaches this point of the screen.
-                this.$refs.inner.style.top = this.enabled ? Math.max(80, Math.round(window.innerHeight * 0.25)) + 'px' : '';
+                // The block pins (and the pillars start adding up) when the top of the pillars reaches 25 % of the
+                // screen; the section above them ($before) is part of the block, so it moves away just as slowly.
+                const pinAt = Math.max(80, Math.round(window.innerHeight * 0.25)) - this.$refs.pillars.offsetTop;
+                this.$refs.inner.style.top = this.enabled ? pinAt + 'px' : '';
                 // The spacer gives the sticky block the pin distance; the negative margin removes the gap
                 // left by the drift, so the page continues seamlessly afterwards.
                 this.$refs.spacer.style.height = this.enabled ? this.distance + 'px' : '0px';
@@ -82,7 +84,8 @@
     data-testid="pillars"
 >
     <div x-ref="inner" class="pillars-scrolly__inner will-change-transform lg:sticky lg:top-20">
-        <section class="bg-surface-container-low py-14 lg:py-16" id="preco">
+        {{ $before ?? '' }}
+        <section x-ref="pillars" class="bg-surface-container-low py-14 lg:py-16" id="preco">
             <div class="container-page grid grid-cols-1 gap-10 lg:grid-cols-12 lg:items-center lg:gap-16">
                 {{-- Left: heading and compact panel --}}
                 <div class="flex flex-col gap-4 lg:col-span-5">

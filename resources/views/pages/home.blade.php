@@ -115,48 +115,50 @@
         </div>
     </section>
 
-    {{-- FACT STRIP --}}
-    <section class="bg-inverse-surface text-inverse-on-surface w-full py-6">
-        <div class="container-page flex flex-col items-center justify-between gap-4 md:flex-row">
-            <div class="flex items-center gap-3">
-                <span
-                    class="bg-primary-container text-on-primary flex size-10 shrink-0 items-center justify-center rounded-full"
-                >
-                    <x-site.icon name="timer" class="size-[22px]" />
-                </span>
-                <div>
-                    <p class="font-heading text-headline-sm font-bold">{{ __('site.home.fact_title') }}</p>
-                    <p class="text-body-sm text-inverse-on-surface/80">{{ __('site.home.fact_text') }}</p>
-                </div>
-            </div>
-            <p class="ecg-badge relative flex h-14 w-64 shrink-0 items-center justify-center">
-                {{-- Animated ECG trace behind the text (static with prefers-reduced-motion). --}}
-                <svg
-                    class="ecg-line pointer-events-none absolute inset-0 h-full w-full"
-                    viewBox="0 0 240 40"
-                    preserveAspectRatio="none"
-                    aria-hidden="true"
-                >
-                    <path
-                        class="ecg-line__base"
-                        d="M0 29.5 C5.7 28.0 8.2 26.5 10.7 26.5 C12.6 26.5 14.2 27.7 15.7 29.5 L23.2 29.5 L25.9 33.0 L28.5 3.8 L31.4 36.7 L34.0 29.5 L44.1 29.5 C46.8 27.6 49.3 25.1 51.8 25.1 C54.0 25.1 55.5 27.1 57.0 29.5 L183 29.5 C185.7 28.0 188.2 26.5 190.7 26.5 C192.6 26.5 194.2 27.7 195.7 29.5 L203.2 29.5 L205.9 33.0 L208.5 3.8 L211.4 36.7 L214.0 29.5 L224.1 29.5 C226.8 27.6 229.3 25.1 231.8 25.1 C234.0 25.1 235.5 27.1 237.0 29.5 L240 29.5"
-                    />
-                    <path
-                        class="ecg-line__pulse"
-                        pathLength="100"
-                        d="M0 29.5 C5.7 28.0 8.2 26.5 10.7 26.5 C12.6 26.5 14.2 27.7 15.7 29.5 L23.2 29.5 L25.9 33.0 L28.5 3.8 L31.4 36.7 L34.0 29.5 L44.1 29.5 C46.8 27.6 49.3 25.1 51.8 25.1 C54.0 25.1 55.5 27.1 57.0 29.5 L183 29.5 C185.7 28.0 188.2 26.5 190.7 26.5 C192.6 26.5 194.2 27.7 195.7 29.5 L203.2 29.5 L205.9 33.0 L208.5 3.8 L211.4 36.7 L214.0 29.5 L224.1 29.5 C226.8 27.6 229.3 25.1 231.8 25.1 C234.0 25.1 235.5 27.1 237.0 29.5 L240 29.5"
-                    />
-                </svg>
-                <span
-                    class="font-heading text-label-badge text-inverse-on-surface bg-inverse-surface relative rounded px-1.5 font-bold tracking-wider whitespace-nowrap uppercase"
-                    >{{ __('site.home.fact_badge') }}</span
-                >
-            </p>
-        </div>
-    </section>
-
-    {{-- PILLARS + WORKSHOPS: on desktop both move slowly while the pillars add up (components/site/pillars-scrolly) --}}
+    {{-- FACT STRIP + PILLARS + WORKSHOPS: on desktop they move slowly while the pillars add up (components/site/pillars-scrolly) --}}
     <x-site.pillars-scrolly>
+        {{-- FACT STRIP: part of the slow block, so it does not jump away when the pillars slow down --}}
+        <x-slot:before>
+            <section class="bg-inverse-surface text-inverse-on-surface w-full py-6">
+                <div class="container-page flex flex-col items-center justify-between gap-4 md:flex-row">
+                    <div class="flex items-center gap-3">
+                        <span
+                            class="bg-primary-container text-on-primary flex size-10 shrink-0 items-center justify-center rounded-full"
+                        >
+                            <x-site.icon name="timer" class="size-[22px]" />
+                        </span>
+                        <div>
+                            <p class="font-heading text-headline-sm font-bold">{{ __('site.home.fact_title') }}</p>
+                            <p class="text-body-sm text-inverse-on-surface/80">{{ __('site.home.fact_text') }}</p>
+                        </div>
+                    </div>
+                    <p class="ecg-badge relative flex h-14 w-64 shrink-0 items-center justify-center">
+                        {{-- Animated ECG trace behind the text (static with prefers-reduced-motion). --}}
+                        <svg
+                            class="ecg-line pointer-events-none absolute inset-0 h-full w-full"
+                            viewBox="0 0 240 40"
+                            preserveAspectRatio="none"
+                            aria-hidden="true"
+                        >
+                            <path
+                                class="ecg-line__base"
+                                d="M0 29.5 C5.7 28.0 8.2 26.5 10.7 26.5 C12.6 26.5 14.2 27.7 15.7 29.5 L23.2 29.5 L25.9 33.0 L28.5 3.8 L31.4 36.7 L34.0 29.5 L44.1 29.5 C46.8 27.6 49.3 25.1 51.8 25.1 C54.0 25.1 55.5 27.1 57.0 29.5 L183 29.5 C185.7 28.0 188.2 26.5 190.7 26.5 C192.6 26.5 194.2 27.7 195.7 29.5 L203.2 29.5 L205.9 33.0 L208.5 3.8 L211.4 36.7 L214.0 29.5 L224.1 29.5 C226.8 27.6 229.3 25.1 231.8 25.1 C234.0 25.1 235.5 27.1 237.0 29.5 L240 29.5"
+                            />
+                            <path
+                                class="ecg-line__pulse"
+                                pathLength="100"
+                                d="M0 29.5 C5.7 28.0 8.2 26.5 10.7 26.5 C12.6 26.5 14.2 27.7 15.7 29.5 L23.2 29.5 L25.9 33.0 L28.5 3.8 L31.4 36.7 L34.0 29.5 L44.1 29.5 C46.8 27.6 49.3 25.1 51.8 25.1 C54.0 25.1 55.5 27.1 57.0 29.5 L183 29.5 C185.7 28.0 188.2 26.5 190.7 26.5 C192.6 26.5 194.2 27.7 195.7 29.5 L203.2 29.5 L205.9 33.0 L208.5 3.8 L211.4 36.7 L214.0 29.5 L224.1 29.5 C226.8 27.6 229.3 25.1 231.8 25.1 C234.0 25.1 235.5 27.1 237.0 29.5 L240 29.5"
+                            />
+                        </svg>
+                        <span
+                            class="font-heading text-label-badge text-inverse-on-surface bg-inverse-surface relative rounded px-1.5 font-bold tracking-wider whitespace-nowrap uppercase"
+                            >{{ __('site.home.fact_badge') }}</span
+                        >
+                    </p>
+                </div>
+            </section>
+        </x-slot:before>
+
         <section class="section bg-surface" id="{{ \App\Support\HomeSections::WORKSHOPS }}">
             <div class="container-page">
                 <x-site.section-heading

@@ -108,6 +108,8 @@ workshop?“ (`ContentSeeder`). Piliere sa už nepodobajú na karty workshopov: 
 - Začiatok efektu je skôr: sekcia sa „prilepí“, keď je jej vrch v 25 % výšky obrazovky (predtým hneď pod hlavičkou,
   asi 10 %). Hodnotu si používateľ vyskúšal cez dočasné nastavenie v admine; po výbere je zapísaná v komponente
   a nastavenie z admina je odstránené.
+- Tmavý pruh „Kritický čas“ nad piliermi je súčasťou spomaleného bloku (slot `before`), takže pri začiatku
+  spomalenia „neodskočí“ hore, ale pomaly zájde pod hlavičku rovnakou rýchlosťou ako piliere.
 
 ### Stabilita browser testov
 `composer test:browser` pred testami skompiluje šablóny (`view:cache`). Pri studenom štarte sa inak pri prvom

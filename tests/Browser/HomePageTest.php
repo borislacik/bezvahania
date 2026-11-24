@@ -82,6 +82,22 @@ it('adds up the pillars while scrolling and lands on the workshops from the menu
     expect($top)->toBeLessThan(200)->toBeGreaterThan(-50)
         ->and($page->script("() => document.querySelectorAll('[data-testid=\"pillars\"] .pillar-add.is-added').length"))->toBe(3);
 
+    // The dark fact strip above the pillars moves just as slowly while the pillars are pinned.
+    $offsets = $page->script(<<<'JS'
+        () => {
+            const strip = document.querySelector('[data-testid="pillars"] .bg-inverse-surface');
+            const pillars = document.getElementById('preco');
+            const start = pillars.getBoundingClientRect().top + window.scrollY - window.innerHeight * 0.25;
+            const at = (y) => {
+                window.scrollTo({ top: y, behavior: 'instant' });
+                window.dispatchEvent(new Event('scroll'));
+                return Math.round(strip.getBoundingClientRect().top);
+            };
+            return [at(start), at(start + 150)];
+        }
+        JS);
+    expect($offsets[0] - $offsets[1])->toBeLessThan(80)->toBeGreaterThan(20);
+
     $page->script("() => { window.scrollTo({ top: 0, behavior: 'instant' }); window.dispatchEvent(new Event('scroll')); }");
     expect($page->script("() => document.querySelectorAll('[data-testid=\"pillars\"] .pillar-add.is-added').length"))->toBe(1);
     $page->assertNoJavaScriptErrors();
