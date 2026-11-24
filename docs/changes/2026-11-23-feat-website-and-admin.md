@@ -138,6 +138,7 @@ workshop?“ (`ContentSeeder`). Piliere sa už nepodobajú na karty workshopov: 
   používateľ, nahrajú sa v admine (Workshopy → Obrázok).
 - Nadpis ponuky: „Tri intenzívne praktické workshopy“ (predtým „Tri špecializované…“, kolidovalo so štítkom
   „Špecializovaný“ tretieho workshopu).
+- Štítky z matného bieleho skla („Živý nácvik“ v hero a štítky workshopov) sú priehľadnejšie: biela 70 % namiesto 85 %.
 
 ### Časté otázky a skúsenosti vedľa seba (24. 11. 2026)
 - Na desktope jedna sekcia: vľavo časté otázky (2/3 šírky), vpravo skúsenosti absolventov (1/3) s menším nadpisom.
