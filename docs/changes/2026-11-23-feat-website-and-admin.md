@@ -73,6 +73,8 @@ Hero obrázok (24. 11. 2026): odstránený popis na spodku obrázka, ktorý prek
 
 Štítok „Živý nácvik“ (24. 11. 2026): podľa výberu používateľa z troch variantov je matné biele sklo s pulzujúcou červenou bodkou (pri `prefers-reduced-motion` bez pulzu). Červená je vyhradená pre výzvy na rezerváciu.
 
+Slogan v logu (hlavička aj pätička): „Prvá pomoc, ktorú zvládneš“ (`site.brand_tagline`, 24. 11. 2026).
+
 ### Stabilita browser testov
 `composer test:browser` pred testami skompiluje šablóny (`view:cache`). Pri studenom štarte sa inak pri prvom
 prihlásení do adminu kompilovali všetky Filament šablóny a test prekročil časový limit.

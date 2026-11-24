@@ -5,7 +5,7 @@
  * SEO, legal pages, contact details) are in the database, everything else is here.
  */
 return [
-    'brand_tagline' => 'Prvá pomoc • Workshop',
+    'brand_tagline' => 'Prvá pomoc, ktorú zvládneš',
     'default_description' => 'Praktické workshopy prvej pomoci pre malé skupiny do 4 osôb priamo u vás doma alebo v kancelárii. Bratislava a okolie.',
     'service_area' => 'Bratislava a okolie do 60 km',
     'skip_to_content' => 'Preskočiť na obsah',
