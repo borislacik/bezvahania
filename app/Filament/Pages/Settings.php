@@ -53,11 +53,14 @@ class Settings extends Page
         return $schema
             ->statePath('data')
             ->components([
-                Section::make(__('admin.settings.contact'))->columns(2)->schema([
-                    TextInput::make('contact_phone')->label(__('admin.settings.contact_phone'))->tel()->required()->maxLength(40),
-                    TextInput::make('contact_email')->label(__('admin.settings.contact_email'))->email()->required()->maxLength(190),
-                    TextInput::make('notification_email')->label(__('admin.settings.notification_email'))->email()->required()->maxLength(190)->columnSpanFull(),
-                ]),
+                Section::make(__('admin.settings.contact'))
+                    ->description(__('admin.settings.sender_note', ['address' => (string) config('mail.from.address')]))
+                    ->columns(2)
+                    ->schema([
+                        TextInput::make('contact_phone')->label(__('admin.settings.contact_phone'))->tel()->required()->maxLength(40),
+                        TextInput::make('contact_email')->label(__('admin.settings.contact_email'))->email()->required()->maxLength(190),
+                        TextInput::make('notification_email')->label(__('admin.settings.notification_email'))->email()->required()->maxLength(190)->columnSpanFull(),
+                    ]),
                 Section::make(__('admin.settings.operator'))->columns(2)->schema([
                     TextInput::make('operator_name')->label(__('admin.settings.operator_name'))->maxLength(160),
                     TextInput::make('operator_ico')->label(__('admin.settings.operator_ico'))->maxLength(20),

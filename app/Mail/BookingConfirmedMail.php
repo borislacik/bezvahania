@@ -3,9 +3,11 @@
 namespace App\Mail;
 
 use App\Models\Booking;
+use App\Models\Setting;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
+use Illuminate\Mail\Mailables\Address;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
@@ -18,7 +20,8 @@ class BookingConfirmedMail extends Mailable implements ShouldQueue
 
     public function envelope(): Envelope
     {
-        return new Envelope(subject: __('mail.booking_confirmed.subject', ['reference' => $this->booking->reference]));
+        // Sent from the automatic address (MAIL_FROM_ADDRESS); customer replies go to the contact e-mail.
+        return new Envelope(replyTo: [new Address(Setting::get('contact_email'), (string) config('app.name'))], subject: __('mail.booking_confirmed.subject', ['reference' => $this->booking->reference]));
     }
 
     public function content(): Content

@@ -90,7 +90,7 @@ Pripravuje sa neskôr (až po schválení lokálnej verzie): overenie hostingu a
 | `APP_LOCALE`, `APP_FALLBACK_LOCALE`, `APP_FAKER_LOCALE` | `sk`, `sk`, `sk_SK` |
 | `APP_TIMEZONE` | `Europe/Bratislava` |
 | `DB_*` | MariaDB (lokálne služba `db`) |
-| `MAIL_*` | lokálne Mailpit, na produkcii SMTP Websupport, odosielateľ `rezervacie@bezvahania.sk` |
+| `MAIL_*` | lokálne Mailpit, na produkcii SMTP Websupport, odosielateľ `rezervacie@bezvahania.sk` (iba automatické e-maily; kontakt na webe je `info@bezvahania.sk` v nastaveniach adminu) |
 | `GOOGLE_ANALYTICS_ID` | GA4, iba na produkcii a iba po súhlase s cookies |
 | `APP_PORT`, `VITE_PORT`, `FORWARD_DB_PORT`, `FORWARD_MAILPIT_UI_PORT` | porty Docker služieb na hoste |
 

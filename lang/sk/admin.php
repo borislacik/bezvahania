@@ -135,6 +135,7 @@ return [
         'contact_phone' => 'Telefón',
         'contact_email' => 'E-mail na webe',
         'notification_email' => 'E-mail pre upozornenia na nové rezervácie a správy',
+        'sender_note' => 'Automatické e-maily sa odosielajú z adresy :address. Odpovede zákazníkov idú na e-mail na webe.',
         'operator_name' => 'Meno / obchodné meno',
         'operator_ico' => 'IČO',
         'operator_address' => 'Sídlo / miesto podnikania',

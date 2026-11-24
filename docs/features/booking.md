@@ -40,6 +40,11 @@ nemôžu vytvoriť dve rezervácie na ten istý termín. Pozri [ADR 0005](../adr
 | `BookingCancelledMail` | zákazník | zrušenie rezervácie adminom |
 | `ContactMessageAdminMail` | `notification_email` | správa z kontaktného formulára |
 
+Odosielateľ všetkých e-mailov je `MAIL_FROM_ADDRESS` = `rezervacie@bezvahania.sk` (iba automatické e-maily).
+E-maily zákazníkom majú Reply-To na kontaktný e-mail (`contact_email`, `info@bezvahania.sk`), upozornenia
+prevádzkovateľovi idú na `notification_email` (predvolene `info@bezvahania.sk`). Telefón a e-mail na webe sa
+menia v admine (**Nastavenia → Kontakt a prevádzkovateľ**).
+
 Lokálne ich zachytáva Mailpit (http://localhost:8025), frontu spracúva služba `queue`.
 
 ## Ochrana formulárov

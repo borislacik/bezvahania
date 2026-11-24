@@ -32,6 +32,13 @@ nová neuložená session a ďalšia požiadavka skončila presmerovaním na pri
 `AddNoIndexHeader`; regresný test v `DomainSeparationTest`. Predchádzajúce obídenie (widgety bez lazy načítania)
 bolo odstránené. Chyba by sa prejavila aj na produkcii.
 
+### Kontaktné údaje (24. 11. 2026)
+Požiadavka: „Všade kde uvádzaš telefónne číslo použi +421 915 918 386, všade kde uvádzaš kontaktný e-mail použi
+info@bezvahania.sk. E-mail rezervacie@bezvahania.sk sa bude používať len na automatické rozposielanie e-mailov
+v rezervačnom systéme.“ Zmenené predvolené nastavenia (`Setting::DEFAULTS`), Reply-To v e-mailoch zákazníkom,
+poznámka o odosielateľovi v admine, placeholder telefónu vo formulári (`+421 9xx xxx xxx`). Testy overujú, že
+`rezervacie@` sa na webe nezobrazuje.
+
 ## Dotknuté časti
 - Migrácie: MFA stĺpce v `users`, `courses`, `blocked_days`, `bookings`, `team_members`, `faqs`, `testimonials`,
   `pages`, `settings`, `contact_messages`.

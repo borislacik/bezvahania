@@ -15,9 +15,9 @@ use Illuminate\Support\Facades\Cache;
 class Setting extends Model
 {
     public const DEFAULTS = [
-        'contact_phone' => '+421 900 000 000',
-        'contact_email' => 'rezervacie@bezvahania.sk',
-        'notification_email' => 'rezervacie@bezvahania.sk',
+        'contact_phone' => '+421 915 918 386',
+        'contact_email' => 'info@bezvahania.sk',
+        'notification_email' => 'info@bezvahania.sk',
         'operator_name' => '',
         'operator_ico' => '',
         'operator_address' => '',

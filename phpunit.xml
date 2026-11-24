@@ -37,6 +37,7 @@
         <env name="DB_DATABASE" value="bezvahania_testing"/>
         <env name="DB_URL" value=""/>
         <env name="MAIL_MAILER" value="array"/>
+        <env name="MAIL_FROM_ADDRESS" value="rezervacie@bezvahania.sk"/>
         <env name="QUEUE_CONNECTION" value="sync"/>
         <env name="FILESYSTEM_DISK" value="local"/>
         <env name="SESSION_DRIVER" value="array"/>

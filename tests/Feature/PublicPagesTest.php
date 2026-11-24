@@ -29,6 +29,15 @@ it('renders every public page', function (string $route, array $parameters = [])
     'cookies' => ['legal.cookies'],
 ]);
 
+it('shows the contact phone and e-mail, never the automatic booking address', function (string $route) {
+    $this->get(route($route))
+        ->assertOk()
+        ->assertSee('+421 915 918 386')
+        ->assertSee('href="tel:+421915918386"', escape: false)
+        ->assertSee('href="mailto:info@bezvahania.sk"', escape: false)
+        ->assertDontSee('rezervacie@bezvahania.sk');
+})->with(['home', 'contact.create', 'faq']);
+
 it('shows active workshops and hides inactive ones', function () {
     $inactive = Course::factory()->inactive()->create(['name' => 'Skrytý workshop']);
 
@@ -62,7 +71,7 @@ it('renders legal page content from the admin and a fallback when empty', functi
     $this->get(route('legal.cookies'))->assertOk()->assertSee('Google Analytics');
 
     Page::query()->where('key', 'privacy')->update(['content' => null]);
-    $this->get(route('legal.privacy'))->assertOk()->assertSee('rezervacie@bezvahania.sk');
+    $this->get(route('legal.privacy'))->assertOk()->assertSee('info@bezvahania.sk');
 
     Page::query()->where('key', 'privacy')->update(['content' => ['sk' => '<h2>Prevádzkovateľ</h2><p>Text GDPR</p>']]);
     $this->get(route('legal.privacy'))->assertOk()->assertSee('<h2>Prevádzkovateľ</h2>', escape: false);

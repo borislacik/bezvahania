@@ -23,6 +23,7 @@ verzie podľa git tagov z deployov (`vRRRR.MM.DD-N`).
 - Testy: 114 Unit/Feature (pokrytie 97 %) a 8 browser testov (rezervácia, plný termín, admin, všetky stránky).
 
 ### Opravené
+- Kontakt na webe: telefón +421 915 918 386 a e-mail info@bezvahania.sk; rezervacie@bezvahania.sk iba ako odosielateľ automatických e-mailov, odpovede zákazníkov idú na info@.
 - Admin po chvíli odhlásil používateľa: middleware session a cookies sa pri Livewire požiadavkách spúšťali dvakrát.
 
 ### Zmenené

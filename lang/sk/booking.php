@@ -43,7 +43,7 @@ return [
 
     'placeholders' => [
         'contact_name' => 'napr. Peter Novák',
-        'phone' => '+421 900 000 000',
+        'phone' => '+421 9xx xxx xxx',
         'email' => 'vas@email.sk',
         'address' => 'Ulica a číslo, mesto alebo obec',
         'note' => 'napr. máme malé bábätko, chceli by sme sa zamerať aj na dusenie u detí',

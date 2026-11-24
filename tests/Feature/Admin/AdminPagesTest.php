@@ -63,7 +63,7 @@ it('navigates between months', function () {
 
 it('saves contact and operator settings', function () {
     Livewire::test(Settings::class)
-        ->assertSchemaStateSet(['contact_email' => 'rezervacie@bezvahania.sk'])
+        ->assertSchemaStateSet(['contact_email' => 'info@bezvahania.sk', 'contact_phone' => '+421 915 918 386'])
         ->fillForm([
             'contact_phone' => '+421 905 000 000',
             'contact_email' => 'info@bezvahania.sk',

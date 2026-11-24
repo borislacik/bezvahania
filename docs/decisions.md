@@ -40,7 +40,8 @@ Dovtedy sa vyvíja celý web aj admin lokálne v Dockeri (pôvodné fázy 2 – 
 | 11 | Ceny a platba | Tri typy workshopov (upresnia sa), cca **200 € za workshop**. Platba na mieste v hotovosti alebo kartou **po** workshope. |
 | 12 | Admin – obsah | Kurzy (typy workshopov), termíny, tím, FAQ, SEO. Hlavne správa rezervácií a informácií k nim. |
 | 13 | Administrátori | **Jeden** administrátor, bez rolí. |
-| 14 | E-maily | Odosielateľ `rezervacie@bezvahania.sk`, schránka na Websupporte už existuje. |
+| 14 | E-maily | `rezervacie@bezvahania.sk` **iba ako odosielateľ** automatických e-mailov rezervačného systému (schránka existuje). Kontakt na webe a príjemca upozornení: `info@bezvahania.sk`, odpovede zákazníkov (Reply-To) idú na `info@bezvahania.sk`. |
+| 14 | Telefón | `+421 915 918 386` (zmena 24. 11. 2026) |
 | 15 | Prevádzkovateľ | **Živnosť**, údaje a právne texty dodá prevádzkovateľ neskôr. |
 | 16 | Analytika, cookies | Google Analytics → **cookie lišta podľa legislatívy EÚ** (GA až po súhlase). Web je GDPR compliant (aj kontaktný formulár). |
 | 17 | Jazyky | Angličtina neskôr, **obsah kurzov preložiteľný** od začiatku (`spatie/laravel-translatable`). |

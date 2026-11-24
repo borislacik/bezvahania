@@ -75,8 +75,8 @@ it('creates a confirmed booking and queues both e-mails', function () {
     $response->assertRedirect();
     expect($response->headers->get('Location'))->toContain('/rezervacia/'.$booking->reference)->toContain('signature=');
 
-    Mail::assertQueued(BookingConfirmedMail::class, fn ($mail) => $mail->hasTo('peter@example.com'));
-    Mail::assertQueued(NewBookingAdminMail::class, fn ($mail) => $mail->hasTo('rezervacie@bezvahania.sk'));
+    Mail::assertQueued(BookingConfirmedMail::class, fn ($mail) => $mail->hasTo('peter@example.com') && $mail->hasReplyTo('info@bezvahania.sk'));
+    Mail::assertQueued(NewBookingAdminMail::class, fn ($mail) => $mail->hasTo('info@bezvahania.sk'));
 });
 
 it('shows the confirmation page only with a valid signature', function () {
@@ -201,6 +201,14 @@ it('renders the booking e-mails in Slovak', function () {
 
     $booking->update(['status' => BookingStatus::Cancelled]);
     (new BookingCancelledMail($booking))->assertSeeInHtml('Choroba')->assertSeeInHtml(__('mail.booking_cancelled.button'));
+});
+
+it('sends automatic e-mails from the booking address and takes replies on the contact address', function () {
+    $booking = Booking::factory()->for($this->course)->create();
+
+    expect(config('mail.from.address'))->toBe('rezervacie@bezvahania.sk');
+    (new BookingConfirmedMail($booking))->assertHasReplyTo('info@bezvahania.sk')->assertSeeInHtml('+421 915 918 386')->assertSeeInHtml('info@bezvahania.sk');
+    (new BookingCancelledMail($booking))->assertHasReplyTo('info@bezvahania.sk');
 });
 
 it('generates unique booking references', function () {
