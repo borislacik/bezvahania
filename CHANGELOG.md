@@ -28,7 +28,7 @@ verzie podľa git tagov z deployov (`vRRRR.MM.DD-N`).
 ### Zmenené – štruktúra webu
 - Piliere so spomaleným skrolovaním: na desktope sa sekcia posúva pomalšie a piliere aj ikony v tmavom paneli postupne pribúdajú; sekcia „Ako prebieha workshop priamo u vás?“ nahradená prvou častou otázkou „Ako prebieha workshop?“.
 - Efekt pilierov začína skôr (vrch sekcie v 30 % výšky obrazovky); tmavý pruh „Kritický čas“ nad nimi sa posúva rovnako pomaly.
-- Piliere bez označenia „Pilier 01 – 03“, iba nadpis a text.
+- Piliere bez označenia „Pilier 01 – 03“, iba nadpis a text; nové ikony 1. piliera (štít s fajkou) a 2. piliera (dotyk ruky).
 - Prvý pilier a jeho ikona sa nezvýraznia hneď, ale až keď je sekcia pilierov v polovici obrazovky.
 - Hero bez troch číselných údajov (12+ rokov, 90 % nácvik, 2 – 4 účastníci); na desktope je vrch hlavného nadpisu zarovnaný s vrchom obrázka.
 - Časté otázky a skúsenosti absolventov vedľa seba (na desktope otázky 2/3, skúsenosti 1/3 – dve nad sebou, pri viacerých sa striedajú); mobil bez zmeny poradia.

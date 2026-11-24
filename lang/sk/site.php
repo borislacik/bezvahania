@@ -80,12 +80,12 @@ return [
         'pillars_lead' => 'Zabudnite na nudné prednášky v preplnených miestnostiach. Toto je dôvod, prečo v núdzi nezamrznete.',
         'pillars' => [
             [
-                'icon' => 'local_fire_department',
+                'icon' => 'verified_user',
                 'title' => 'Dôveryhodnosť a odbornosť',
                 'text' => 'Žiadne suché poučky z učebníc. Vedomosti a reflexy priamo z reálnych výjazdov profesionálneho hasiča a záchranára – vieme, čo v strese funguje a čo nie.',
             ],
             [
-                'icon' => 'pan_tool_alt',
+                'icon' => 'touch_app',
                 'title' => 'Efektivita a reálny nácvik',
                 'text' => 'Väčšinu času strávite s figurínou so spätnou väzbou, cvičným defibrilátorom AED a turniketom v rukách. Vytvoríte si svalovú pamäť, ktorá v strese vytlačí strach.',
             ],
