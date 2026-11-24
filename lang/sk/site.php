@@ -111,6 +111,7 @@ return [
 
         'testimonials_eyebrow' => 'Skúsenosti absolventov',
         'testimonials_title' => 'Čo hovoria tí, ktorí už trénovali doma',
+        'testimonials_page' => 'Zobraziť skúsenosti :page',
         'rating' => 'Hodnotenie :rating z 5',
 
         'faq_eyebrow' => 'Časté otázky',

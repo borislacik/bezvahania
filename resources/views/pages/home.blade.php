@@ -173,34 +173,45 @@
         </section>
     @endif
 
-    {{-- TESTIMONIALS --}}
-    @if ($testimonials->isNotEmpty())
-        <section class="section bg-surface" id="skusenosti">
-            <div class="container-page">
-                <x-site.section-heading
-                    icon="reviews"
-                    :eyebrow="__('site.home.testimonials_eyebrow')"
-                    :title="__('site.home.testimonials_title')"
-                />
-                <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
-                    @foreach ($testimonials as $testimonial)
-                        <x-site.testimonial :testimonial="$testimonial" />
-                    @endforeach
-                </div>
-            </div>
-        </section>
-    @endif
+    {{--
+        FAQ + TESTIMONIALS. Desktop: FAQ on the left (2/3), testimonials on the right (1/3, two at a time, rotating
+        when there are more). Mobile: as before – testimonials first, then the FAQ.
+    --}}
+    @if ($faqs->isNotEmpty() || $testimonials->isNotEmpty())
+        @php ($both = $faqs->isNotEmpty() && $testimonials->isNotEmpty())
+        <section class="section bg-surface">
+            <div @class (['container-page grid grid-cols-1 gap-x-12', 'lg:grid-cols-3' => $both])>
+                @if ($testimonials->isNotEmpty())
+                    <div id="skusenosti" @class (['order-1', 'lg:col-start-3 lg:row-start-1' => $both])>
+                        <x-site.section-heading
+                            icon="reviews"
+                            :eyebrow="__('site.home.testimonials_eyebrow')"
+                            :title="__('site.home.testimonials_title')"
+                            :align="$both ? 'responsive' : 'center'"
+                            :compact="$both"
+                        />
+                    </div>
+                    <div @class (['order-2 mb-16', 'lg:col-start-3 lg:row-start-2 lg:mb-0' => $both])>
+                        <x-site.testimonials :testimonials="$testimonials" :stacked="$both" />
+                    </div>
+                @endif
 
-    {{-- FAQ --}}
-    @if ($faqs->isNotEmpty())
-        <section class="section bg-surface-container-low" id="{{ \App\Support\HomeSections::FAQ }}">
-            <div class="container-page">
-                <x-site.section-heading
-                    icon="help"
-                    :eyebrow="__('site.home.faq_eyebrow')"
-                    :title="__('site.home.faq_title')"
-                />
-                <x-site.faq-list :faqs="$faqs" />
+                @if ($faqs->isNotEmpty())
+                    <div
+                        id="{{ \App\Support\HomeSections::FAQ }}"
+                        @class (['order-3', 'lg:col-span-2 lg:col-start-1 lg:row-start-1 lg:self-end' => $both])
+                    >
+                        <x-site.section-heading
+                            icon="help"
+                            :eyebrow="__('site.home.faq_eyebrow')"
+                            :title="__('site.home.faq_title')"
+                            :align="$both ? 'responsive' : 'center'"
+                        />
+                    </div>
+                    <div @class (['order-4', 'lg:col-span-2 lg:col-start-1 lg:row-start-2' => $both])>
+                        <x-site.faq-list :faqs="$faqs" @class(['lg:max-w-none' => $both]) />
+                    </div>
+                @endif
             </div>
         </section>
     @endif

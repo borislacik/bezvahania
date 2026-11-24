@@ -123,6 +123,17 @@ workshop?“ (`ContentSeeder`). Piliere sa už nepodobajú na karty workshopov: 
   po nich bolo príliš veľké, preto je na desktope vrch hlavného nadpisu zarovnaný s vrchom obrázka (`lg:items-start`,
   obrázok `lg:mt-7`) a sekcia je nižšia.
 
+### Časté otázky a skúsenosti vedľa seba (24. 11. 2026)
+- Na desktope jedna sekcia: vľavo časté otázky (2/3 šírky), vpravo skúsenosti absolventov (1/3) s menším nadpisom.
+- Skúsenosti sú dve nad sebou (`components/site/testimonials.blade.php`). Ak ich je v admine viac ako dve, každých
+  8 sekúnd sa vymenia za ďalšie dve (pauza pri prejdení myšou alebo fokuse, bez automatickej výmeny pri obmedzení
+  pohybu); bodky pod nimi ich prepínajú ručne. Výmena má jemné zjavenie.
+- Mobil: poradie ako predtým (najprv skúsenosti, potom otázky), všetky skúsenosti pod sebou; obe časti majú teraz
+  rovnaké pozadie.
+- Kotvy `#skusenosti` a `#otazky` (menu) ostávajú, sú na jednotlivých častiach sekcie.
+- `section-heading` má nové voľby `align="responsive"` (na mobile na stred, od lg vľavo) a `compact`;
+  `faq-list` a `testimonial` prijímajú ďalšie triedy.
+
 ### Slovenská diakritika v písmach (24. 11. 2026)
 Vlastné písma (Work Sans, Space Grotesk) sa cez `bunny()` v `vite.config.js` sťahovali iba v sade `latin`
 (predvolená hodnota pluginu). Písmená č, š, ľ, ť, ž, ň, ď, ĺ, ŕ sú v sade `latin-ext`, preto ich prehliadač kreslil

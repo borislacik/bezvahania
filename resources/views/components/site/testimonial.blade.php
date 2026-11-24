@@ -1,6 +1,6 @@
 @props (['testimonial'])
 
-<figure class="card flex flex-col gap-4 p-6">
+<figure {{ $attributes->class('card flex flex-col gap-4 p-6') }}>
     <div class="flex items-center gap-3">
         <span
             class="bg-primary-container text-on-primary font-heading text-headline-sm flex size-11 items-center justify-center rounded-full font-bold"

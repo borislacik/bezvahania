@@ -1,6 +1,6 @@
 @props (['faqs'])
 
-<div class="mx-auto flex max-w-3xl flex-col gap-3" x-data="{ open: null }">
+<div {{ $attributes->class('mx-auto flex max-w-3xl flex-col gap-3') }} x-data="{ open: null }">
     @foreach ($faqs as $faq)
         <div class="bg-surface-container-lowest rounded-xl shadow-sm">
             <h3>

@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\ContactMessage;
+use App\Models\Testimonial;
 
 it('shows the home page without JavaScript errors', function () {
     visit('/')
@@ -118,5 +119,23 @@ it('adds up the pillars while scrolling and lands on the workshops from the menu
 
     $page->script("() => { window.scrollTo({ top: 0, behavior: 'instant' }); window.dispatchEvent(new Event('scroll')); }");
     expect($page->script("() => document.querySelectorAll('[data-testid=\"pillars\"] .pillar-add.is-added').length"))->toBe(0);
+    $page->assertNoJavaScriptErrors();
+});
+
+it('shows two testimonials next to the FAQ and switches to the next ones', function () {
+    Testimonial::factory()->count(2)->create(['is_active' => true]);
+
+    $page = visit('/')
+        ->resize(1366, 768)
+        ->click('[data-cookie-reject]');
+
+    $visible = "() => [...document.querySelectorAll('[data-testid=\"testimonials\"] [data-testimonial-page]')]
+        .filter((item) => item.offsetParent !== null).map((item) => item.dataset.testimonialPage)";
+
+    expect($page->script($visible))->toBe(['0', '0']);
+
+    $page->click('[aria-label="'.__('site.home.testimonials_page', ['page' => 2]).'"]');
+
+    expect($page->script($visible))->toBe(['1', '1']);
     $page->assertNoJavaScriptErrors();
 });

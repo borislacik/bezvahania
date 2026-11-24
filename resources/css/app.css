@@ -270,3 +270,25 @@
         }
     }
 }
+
+/* Testimonials next to the FAQ (components/site/testimonials): the shown pair fades in when it changes
+   (.testimonials--rotated is added on the first change, so the first display is not animated). */
+@layer components {
+    @media (min-width: 64rem) and (prefers-reduced-motion: no-preference) {
+        .testimonials--rotated .testimonials__item {
+            animation: testimonial-in 0.6s ease both;
+        }
+    }
+}
+
+@keyframes testimonial-in {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
