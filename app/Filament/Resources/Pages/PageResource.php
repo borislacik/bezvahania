@@ -53,7 +53,7 @@ class PageResource extends Resource
      */
     public static function getEloquentQuery(): Builder
     {
-        return parent::getEloquentQuery()->whereIn('key', array_keys(Page::KEYS));
+        return Page::query()->whereIn('key', array_keys(Page::KEYS));
     }
 
     public static function canCreate(): bool
