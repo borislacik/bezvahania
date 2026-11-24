@@ -97,7 +97,7 @@ return [
         ],
 
         'workshops_eyebrow' => 'Ponuka výcvikov',
-        'workshops_title' => 'Tri špecializované praktické workshopy',
+        'workshops_title' => 'Tri intenzívne praktické workshopy',
         'workshops_lead' => 'Vyberte si zameranie, ktoré najlepšie zodpovedá vašim potrebám.',
 
         'instructor_eyebrow' => 'Váš lektor',
