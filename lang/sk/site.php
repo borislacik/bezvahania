@@ -76,7 +76,7 @@ return [
         'hero_badge' => 'Živý nácvik',
         'hero_card_title' => 'Aktuálne odporúčania ERC',
         'hero_card_text' => 'Postupy podľa European Resuscitation Council',
-        'fact_title' => 'Kritický čas: prvé 3 až 5 minút',
+        'fact_title' => 'Kritický čas: prvé 3 až 5 minúty',
         'fact_text' => 'Záchranka je na mieste spravidla až o niekoľko minút neskôr. O tom, čo sa deje dovtedy, rozhodujete vy.',
         'fact_badge' => 'Pripravenosť zachraňuje',
 

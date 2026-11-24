@@ -91,6 +91,8 @@ EKG krivka podľa predlohy od používateľa (24. 11. 2026): obkreslená iba či
 
 Text v pruhu „Kritický čas“: „…až o niekoľko minút neskôr…“ (25. 11. 2026).
 
+Nadpis pruhu: „Kritický čas: prvé 3 až 5 minúty“ (25. 11. 2026, podľa používateľa).
+
 ### Stabilita browser testov
 `composer test:browser` pred testami skompiluje šablóny (`view:cache`). Pri studenom štarte sa inak pri prvom
 prihlásení do adminu kompilovali všetky Filament šablóny a test prekročil časový limit.
