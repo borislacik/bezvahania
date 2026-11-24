@@ -7,7 +7,7 @@
         alt=""
         width="512"
         height="512"
-        class="size-11 shrink-0"
+        class="size-15 shrink-0"
         data-testid="site-logo"
     />
     <span class="flex flex-col">

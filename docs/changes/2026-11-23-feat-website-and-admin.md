@@ -81,6 +81,8 @@ aj ako nový favicon.“ Skript `scripts/make-logo.php` (GD), výstupy pozri `do
 Logo nahradilo červený štvorec s ikonou (`components/site/logo`), favicon aj v admine (`->favicon()`), odstránený
 `public/favicon.svg`.
 
+Logo zväčšené zo 44 na 60 px podľa screenshotu používateľa (24. 11. 2026).
+
 ### Stabilita browser testov
 `composer test:browser` pred testami skompiluje šablóny (`view:cache`). Pri studenom štarte sa inak pri prvom
 prihlásení do adminu kompilovali všetky Filament šablóny a test prekročil časový limit.
