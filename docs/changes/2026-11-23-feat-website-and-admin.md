@@ -82,6 +82,12 @@ prihlásení do adminu kompilovali všetky Filament šablóny a test prekročil 
 Paralelné testy bežia v **4 procesoch** (`--processes=4`). Pri predvolenom počte (16 = počet jadier) a 2 GB RAM pre
 Docker zabil systém kontajner MariaDB (exit 137) a testy sa zasekli.
 
+`composer test:browser` najprv ukončí staré procesy `playwright run-server` (`scripts/stop-stale-playwright.sh`).
+Pest browser plugin ich pri skončení nie vždy zastaví; hromadili sa v kontajneri `app` (asi 15 procesov, ~1 GB RAM),
+spomaľovali server a browser testy padali na časový limit.
+
+README: bez zmeny – príkaz `composer test:browser` sa používa rovnako.
+
 ## Dotknuté časti
 - Migrácie: MFA stĺpce v `users`, `courses`, `blocked_days`, `bookings`, `team_members`, `faqs`, `testimonials`,
   `pages`, `settings`, `contact_messages`.

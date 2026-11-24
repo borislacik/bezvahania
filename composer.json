@@ -59,6 +59,7 @@
       "vendor/bin/pest --testsuite=Unit,Feature --parallel --processes=4 --coverage --min=80"
     ],
     "test:browser": [
+      "bash scripts/stop-stale-playwright.sh",
       "@php artisan config:clear --ansi",
       "@php artisan view:cache --ansi",
       "vendor/bin/pest --testsuite=Browser"
