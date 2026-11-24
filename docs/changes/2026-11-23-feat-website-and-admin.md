@@ -132,7 +132,7 @@ workshop?“ (`ContentSeeder`). Piliere sa už nepodobajú na karty workshopov: 
   (bez migrácie, tabuľka `settings`). Predvolené hodnoty v `Setting::DEFAULTS` sú údaje živnosti Borisa Lacíka,
   takže sa zobrazia aj po nasadení bez ručného zadania; lokálne sú uložené aj v DB.
 - Z pätičky odstránený riadok „Bratislava a okolie do 60 km“ (oblasť je uvedená v iných častiach webu).
-- Adresa v tvare „Studenohorská 2061/17, 841 03 Bratislava“ (PSČ a obec bez čiarky), text „Nie som platiteľ DPH“.
+- Adresa v tvare „Studenohorská 2061/17, 841 03, Bratislava“, text „Nie som platiteľ DPH“.
 
 ### Karty workshopov (24. 11. 2026)
 - Tlačidlá „Rezervovať termín“ boli pri každom workshope inej farby (červené, tmavé, svetlé), takže prvý workshop
