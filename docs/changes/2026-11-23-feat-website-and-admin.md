@@ -115,11 +115,13 @@ workshop?“ (`ContentSeeder`). Piliere sa už nepodobajú na karty workshopov: 
   (ešte pred spomalením, ktoré začína pri 30 %), ďalšie v rovnakých krokoch a posledný ostane zvýraznený ešte asi tretinu úseku. Bez JavaScriptu sú ikony v paneli viditeľné.
 
 ### Lektor a hero bez čísel (24. 11. 2026)
-- Lektor: meno **Boris Lacík** (seeder aj lokálna DB, aj v referencii „Boris prišiel…“), odznak „9+ rokov zásahov“.
+- Lektor: meno **Boris Lacík** (seeder aj lokálna DB, aj v referencii „Boris prišiel…“), popis „Profesionálny hasič
+  a zdravotnícky záchranár“, odznak „9+ rokov zásahov“.
 - Dočasná fotka lektora od používateľa: WebP 1024 × 1024 v `resources/images/instructor.webp` (seeder ju skopíruje do
   `storage/app/public/team/`). Finálnu fotku od fotografa stačí nahrať v admine (Lektori), netreba meniť kód.
-- Hero: odstránené tri číselné údaje (12+ rokov, 90 % nácvik, 2 – 4 účastníci, kľúč `site.home.kpis`); na desktope
-  ostáva na ich mieste prázdne miesto rovnakej výšky, na mobile sa nevynecháva.
+- Hero: odstránené tri číselné údaje (12+ rokov, 90 % nácvik, 2 – 4 účastníci, kľúč `site.home.kpis`). Prázdne miesto
+  po nich bolo príliš veľké, preto je na desktope vrch hlavného nadpisu zarovnaný s vrchom obrázka (`lg:items-start`,
+  obrázok `lg:mt-7`) a sekcia je nižšia.
 
 ### Stabilita browser testov
 `composer test:browser` pred testami skompiluje šablóny (`view:cache`). Pri studenom štarte sa inak pri prvom

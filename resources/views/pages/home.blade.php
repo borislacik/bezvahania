@@ -24,7 +24,8 @@
                 </li>
             </ul>
 
-            <div class="grid grid-cols-1 items-center gap-10 lg:grid-cols-12">
+            {{-- Desktop: the top of the main heading lines up with the top of the image (lg:mt-7 = eyebrow + gap). --}}
+            <div class="grid grid-cols-1 items-center gap-10 lg:grid-cols-12 lg:items-start">
                 <div class="flex flex-col gap-6 lg:col-span-7">
                     <div class="flex flex-col gap-3">
                         <span
@@ -50,12 +51,9 @@
                             <x-site.icon name="calendar_month" class="size-5" />
                         </a>
                     </div>
-
-                    {{-- Intentionally empty space where the key figures used to be (they are elsewhere on the page). --}}
-                    <div class="mt-2 hidden h-[104px] lg:block" aria-hidden="true"></div>
                 </div>
 
-                <div class="relative lg:col-span-5">
+                <div class="relative lg:col-span-5 lg:mt-7">
                     <div class="relative mx-auto max-w-md lg:max-w-none">
                         <div class="bg-surface-container-highest relative overflow-hidden rounded-2xl shadow-xl">
                             <img

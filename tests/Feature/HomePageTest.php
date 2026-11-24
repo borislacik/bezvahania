@@ -62,6 +62,7 @@ it('introduces the instructor and keeps the hero without key figures', function 
     $this->get(route('home'))
         ->assertOk()
         ->assertSee('Boris Lacík')
+        ->assertSee('Profesionálny hasič a zdravotnícky záchranár')
         ->assertSee(__('site.home.instructor_badge_value'))
         ->assertSee('9+')
         ->assertDontSee('rokov v záchrannej službe');
