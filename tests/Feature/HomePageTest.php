@@ -40,3 +40,19 @@ it('renders the SEO tags from the admin', function () {
 it('exposes the health check endpoint', function () {
     $this->get('/up')->assertOk();
 });
+
+it('shows the three pillars before the workshops and answers how a workshop runs in the FAQ', function () {
+    $pillars = __('site.home.pillars');
+
+    $this->get(route('home'))
+        ->assertOk()
+        ->assertSee('data-testid="pillars"', escape: false)
+        ->assertSeeInOrder([
+            __('site.home.pillars_title'),
+            ...array_column($pillars, 'title'),
+            __('site.home.workshops_title'),
+            __('site.home.faq_title'),
+            'Ako prebieha workshop?',
+        ])
+        ->assertDontSee('id="ako-prebieha"', escape: false);
+});

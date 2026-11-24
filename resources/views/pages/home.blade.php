@@ -155,102 +155,24 @@
         </div>
     </section>
 
-    {{-- PILLARS --}}
-    <section class="section bg-surface" id="preco">
-        <div class="container-page">
-            <x-site.section-heading
-                icon="shield"
-                :eyebrow="__('site.home.pillars_eyebrow')"
-                :title="__('site.home.pillars_title')"
-                :lead="__('site.home.pillars_lead')"
-            />
-            <div class="grid grid-cols-1 gap-8 md:grid-cols-3">
-                @foreach (__('site.home.pillars') as $pillar)
-                    <article
-                        class="card flex flex-col p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
-                    >
-                        <span
-                            @class ([
-                                'mb-6 flex size-14 items-center justify-center rounded-xl shadow-sm',
-                                'bg-primary-container text-on-primary-container' => $loop->index === 0,
-                                'bg-surface-container text-primary' => $loop->index === 1,
-                                'bg-secondary-container text-on-secondary-fixed' => $loop->index === 2,
-                            ])
-                        >
-                            <x-site.icon :name="$pillar['icon']" class="size-8" />
-                        </span>
-                        <span
-                            class="font-heading text-label-badge text-primary mb-2 font-bold tracking-wider uppercase"
-                        >
-                            {{ __('site.home.pillar_label', ['number' => sprintf('%02d', $loop->iteration)]) }}
-                        </span>
-                        <h3 class="text-headline-md text-on-surface mb-3 font-bold">{{ $pillar['title'] }}</h3>
-                        <p class="text-body-md text-on-surface-variant mb-6">{{ $pillar['text'] }}</p>
-                        <p class="font-heading text-label-md text-primary mt-auto flex items-center gap-2 pt-4 font-semibold">
-                            <x-site.icon :name="$pillar['footer_icon']" class="size-[18px]" />
-                            {{ $pillar['footer'] }}
-                        </p>
-                    </article>
-                @endforeach
-            </div>
-        </div>
-    </section>
-
-    {{-- HOW IT WORKS --}}
-    <section class="section bg-surface-container-low" id="ako-prebieha">
-        <div class="container-page grid grid-cols-1 items-center gap-12 lg:grid-cols-12">
-            <div class="flex flex-col gap-6 lg:col-span-5">
-                <span
-                    class="font-heading text-label-md text-primary font-bold tracking-wider uppercase"
-                    >{{ __('site.home.how_eyebrow') }}</span
-                >
-                <h2 class="text-headline-xl-mobile lg:text-headline-xl text-on-surface font-bold">
-                    {{ __('site.home.how_title') }}
-                </h2>
-                <p class="text-body-md text-on-surface-variant">{{ __('site.home.how_lead') }}</p>
-                <div class="bg-surface-container-lowest flex items-start gap-4 rounded-xl p-5 shadow-sm">
-                    <x-site.icon name="family_restroom" class="text-primary size-7" />
-                    <div>
-                        <h3 class="text-headline-sm text-on-surface font-bold">{{ __('site.home.how_note_title') }}</h3>
-                        <p class="text-body-sm text-on-surface-variant mt-1">{{ __('site.home.how_note_text') }}</p>
-                    </div>
+    {{-- PILLARS + WORKSHOPS: on desktop both move slowly while the pillars add up (components/site/pillars-scrolly) --}}
+    <x-site.pillars-scrolly>
+        <section class="section bg-surface" id="{{ \App\Support\HomeSections::WORKSHOPS }}">
+            <div class="container-page">
+                <x-site.section-heading
+                    icon="school"
+                    :eyebrow="__('site.home.workshops_eyebrow')"
+                    :title="__('site.home.workshops_title')"
+                    :lead="__('site.home.workshops_lead')"
+                />
+                <div class="grid grid-cols-1 gap-8 lg:grid-cols-3">
+                    @foreach ($courses as $course)
+                        <x-site.course-card :course="$course" :index="$loop->index" />
+                    @endforeach
                 </div>
             </div>
-            <ol class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:col-span-7">
-                @foreach (__('site.home.steps') as $step)
-                    <li class="bg-surface-container-lowest flex flex-col rounded-xl p-6 shadow-sm">
-                        <div class="mb-4 flex items-center justify-between">
-                            <span
-                                class="bg-primary-container text-on-primary font-heading text-label-lg flex size-8 items-center justify-center rounded-full font-bold"
-                            >
-                                {{ $loop->iteration }}
-                            </span>
-                            <x-site.icon :name="$step['icon']" class="text-on-surface-variant size-6" />
-                        </div>
-                        <h3 class="text-headline-sm text-on-surface mb-2 font-bold">{{ $step['title'] }}</h3>
-                        <p class="text-body-sm text-on-surface-variant">{{ $step['text'] }}</p>
-                    </li>
-                @endforeach
-            </ol>
-        </div>
-    </section>
-
-    {{-- WORKSHOPS --}}
-    <section class="section bg-surface" id="{{ \App\Support\HomeSections::WORKSHOPS }}">
-        <div class="container-page">
-            <x-site.section-heading
-                icon="school"
-                :eyebrow="__('site.home.workshops_eyebrow')"
-                :title="__('site.home.workshops_title')"
-                :lead="__('site.home.workshops_lead')"
-            />
-            <div class="grid grid-cols-1 gap-8 lg:grid-cols-3">
-                @foreach ($courses as $course)
-                    <x-site.course-card :course="$course" :index="$loop->index" />
-                @endforeach
-            </div>
-        </div>
-    </section>
+        </section>
+    </x-site.pillars-scrolly>
 
     {{-- INSTRUCTOR --}}
     @if ($instructor)

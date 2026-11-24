@@ -212,3 +212,61 @@
         stroke-dashoffset: -100;
     }
 }
+
+/* Pillars scrollytelling (components/site/pillars-scrolly). Static unless JS adds .pillars-js. */
+@layer components {
+    /* Panel icons "add up": hidden until their pillar is reached, then they stay. */
+    .pillar-add {
+        opacity: 0;
+        transform: translateY(8px) scale(0.6);
+        transition:
+            opacity 0.4s ease,
+            transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .pillar-add.is-added {
+        opacity: 1;
+        transform: none;
+    }
+
+    .pillars-js .pillar-item {
+        transition:
+            opacity 0.5s ease,
+            transform 0.5s ease;
+    }
+
+    /* Desktop slow scroll: pillars "add up" – once reached they stay fully visible. */
+    .pillars-slow .pillar-item.is-future {
+        opacity: 0.2;
+        transform: translateY(10px);
+    }
+
+    .pillars-slow .pillar-item.is-added {
+        opacity: 1;
+        transform: none;
+    }
+
+    /* Mobile: pillars fade in and out as they enter and leave the screen. */
+    .pillars-js:not(.pillars-slow) .pillar-item {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    .pillars-js:not(.pillars-slow) .pillar-item.is-visible {
+        opacity: 1;
+        transform: none;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .pillar-add,
+        .pillars-js .pillar-item {
+            transition: none;
+        }
+
+        .pillars-js .pillar-item,
+        .pillars-js:not(.pillars-slow) .pillar-item {
+            opacity: 1;
+            transform: none;
+        }
+    }
+}

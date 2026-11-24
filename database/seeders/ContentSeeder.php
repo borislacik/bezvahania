@@ -94,6 +94,7 @@ class ContentSeeder extends Seeder
     private function faqs(): void
     {
         $faqs = [
+            ['Ako prebieha workshop?', 'Termín si vyberiete v kalendári – doobeda (9:00 – 13:00) alebo poobede (15:00 – 19:00). Prídem k vám s predstihom a rozložím figuríny, cvičný defibrilátor AED aj obväzový materiál; stačí bežná obývačka alebo zasadačka. Potom prejdeme simulované situácie a každý si zásah vyskúša niekoľkokrát, kým sa z neho nestane prirodzený reflex. Na záver dostanete osvedčenie o absolvovaní a príručku do domácej lekárničky.'],
             ['Musíme mať doma špeciálny priestor?', 'Vôbec nie. Stačí bežná obývačka alebo zasadačka s voľným miestom na podlahe (približne 2 × 2 metre), kde položíme podložku a figuríny. Hygienické pomôcky a dezinfekciu prinesiem.'],
             ['Pre koho je workshop vhodný? Môžu sa zúčastniť aj deti?', 'Workshop je určený pre dospelých a staršie deti (odporúčame od 11 rokov, keď už majú dosť sily na účinné stláčanie hrudníka). Rodinný formát je obľúbený, pretože členovia domácnosti trénujú ako zohraný tím.'],
             ['Koľko ľudí sa môže zúčastniť?', 'Workshop je pre 2 až 4 osoby, ktoré sa poznajú – rodina, priatelia alebo kolegovia. Cena je za celú skupinu.'],

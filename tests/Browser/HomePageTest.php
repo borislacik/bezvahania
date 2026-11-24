@@ -69,3 +69,20 @@ it('scrolls to the home page section from the menu, also from another page', fun
     expect($top)->toBeLessThan(200)->toBeGreaterThan(-50);
     $page->assertNoJavaScriptErrors();
 });
+
+it('adds up the pillars while scrolling and lands on the workshops from the menu', function () {
+    $page = visit('/rezervacia')
+        ->resize(1366, 768)
+        ->click('[data-cookie-reject]');
+
+    $page->click('header nav [data-nav="workshopy"]')->assertPathIs('/');
+    $page->wait(1.5);
+
+    $top = $page->script("() => Math.round(document.getElementById('workshopy').getBoundingClientRect().top)");
+    expect($top)->toBeLessThan(200)->toBeGreaterThan(-50)
+        ->and($page->script("() => document.querySelectorAll('[data-testid=\"pillars\"] .pillar-add.is-added').length"))->toBe(3);
+
+    $page->script("() => { window.scrollTo({ top: 0, behavior: 'instant' }); window.dispatchEvent(new Event('scroll')); }");
+    expect($page->script("() => document.querySelectorAll('[data-testid=\"pillars\"] .pillar-add.is-added').length"))->toBe(1);
+    $page->assertNoJavaScriptErrors();
+});

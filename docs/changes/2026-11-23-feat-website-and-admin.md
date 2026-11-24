@@ -93,6 +93,19 @@ Text v pruhu „Kritický čas“: „…až o niekoľko minút neskôr…“ (2
 
 Nadpis pruhu ostáva „Kritický čas: prvé 3 až 5 minút“ (krátko zmenené na „minúty“ a vrátené, 25. 11. 2026).
 
+### Piliere so spomaleným skrolovaním (24. 11. 2026)
+Sekcia „Ako prebieha workshop priamo u vás?“ je zrušená, jej obsah zhŕňa nová prvá častá otázka „Ako prebieha
+workshop?“ (`ContentSeeder`). Piliere sa už nepodobajú na karty workshopov: komponent
+`components/site/pillars-scrolly.blade.php` (Alpine.js, bez nového balíka).
+
+- Desktop (od 1024 px): sekcia pilierov spolu so začiatkom sekcie Workshopy sa „prilepí“ pod hlavičku a posúva sa
+  asi tretinovou rýchlosťou, kým skrolovanie neprejde všetky tri piliere. Piliere sa postupne zvýraznia a ostanú
+  zvýraznené; v tmavom paneli pribudne nad každou časťou čiary ikona piliera.
+- Mobil: bez spomalenia, piliere sa plynulo objavia pri príchode na obrazovku.
+- Bez JavaScriptu alebo s obmedzením pohybu (`prefers-reduced-motion`): všetko statické a viditeľné.
+- Odkaz „Workshopy“ v menu: počas spomalenia by prehliadač vypočítal zlú pozíciu kotvy, preto komponent skroluje
+  na miesto, kde sekcia skončí po spomalení (kliknutie aj príchod z inej stránky s `#workshopy`).
+
 ### Stabilita browser testov
 `composer test:browser` pred testami skompiluje šablóny (`view:cache`). Pri studenom štarte sa inak pri prvom
 prihlásení do adminu kompilovali všetky Filament šablóny a test prekročil časový limit.
@@ -124,7 +137,7 @@ README: bez zmeny – príkaz `composer test:browser` sa používa rovnako.
   `PublicPagesTest`, `HomePageTest`, `DomainSeparationTest`, `ErrorPagesTest`, `WebpImageTest`, `CommandsTest`,
   `EnumLabelsTest`, `Admin/*` (Livewire testy všetkých resources a stránok).
 - Browser: `BookingFlowTest` (celá rezervácia, plný termín, ďalší mesiac), `AdminTest` (prihlásenie na admin
-  doméne a zrušenie rezervácie), `HomePageTest` (všetky stránky bez JS chýb, písma, cookie lišta).
+  doméne a zrušenie rezervácie), `HomePageTest` (všetky stránky bez JS chýb, písma, cookie lišta, pribúdanie pilierov a kotva Workshopy).
 - Ručne: `docker compose exec app php artisan migrate:fresh --seed`, http://bezvahania.localhost,
   http://admin.bezvahania.localhost (`admin@bezvahania.localhost` / `password`), e-maily v http://localhost:8025.
 
