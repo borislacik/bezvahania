@@ -22,6 +22,8 @@ class Setting extends Model
         'operator_ico' => '',
         'operator_address' => '',
         'booking_lead_days' => '2',
+        // TEMPORARY: lets the owner tune the pillars slow scroll start, remove once a value is chosen.
+        'pillars_scroll_start' => '25',
     ];
 
     private const CACHE_KEY = 'settings.all';
