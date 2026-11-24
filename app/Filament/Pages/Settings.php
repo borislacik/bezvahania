@@ -64,6 +64,8 @@ class Settings extends Page
                 Section::make(__('admin.settings.operator'))->columns(2)->schema([
                     TextInput::make('operator_name')->label(__('admin.settings.operator_name'))->maxLength(160),
                     TextInput::make('operator_ico')->label(__('admin.settings.operator_ico'))->maxLength(20),
+                    TextInput::make('operator_dic')->label(__('admin.settings.operator_dic'))->maxLength(20),
+                    TextInput::make('operator_vat_note')->label(__('admin.settings.operator_vat_note'))->helperText(__('admin.settings.operator_vat_note_help'))->maxLength(120),
                     TextInput::make('operator_address')->label(__('admin.settings.operator_address'))->maxLength(255)->columnSpanFull(),
                 ]),
                 Section::make(__('admin.settings.booking'))->schema([

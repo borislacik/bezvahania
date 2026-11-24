@@ -66,18 +66,32 @@
                     <span>{{ __('site.service_area') }}</span>
                 </li>
             </ul>
+            {{-- Business details (admin: Kontakt a prevádzkovateľ); icons instead of labels. --}}
             @if ($settings['operator_name'])
-                <p class="text-body-sm text-inverse-on-surface/60 mt-6">
-                    {{ __('site.footer.operator') }}: {{ $settings['operator_name'] }}
-                    @if ($settings['operator_ico'])
-                        <br
-                        />{{ __('site.footer.ico', ['ico' => $settings['operator_ico']]) }}
-                    @endif
+                <ul class="text-body-sm text-inverse-on-surface/70 mt-6 space-y-3 border-t border-white/10 pt-6">
+                    <li class="flex items-start gap-2">
+                        <x-site.icon name="badge" class="text-inverse-primary mt-0.5 size-5 shrink-0" />
+                        <span>
+                            <span class="text-inverse-on-surface/90 block">{{ $settings['operator_name'] }}</span>
+                            @if ($settings['operator_ico'])
+                                {{ __('site.footer.ico', ['ico' => $settings['operator_ico']]) }}
+                            @endif
+                            @if ($settings['operator_dic'])
+                                <span aria-hidden="true">·</span>
+                                {{ __('site.footer.dic', ['dic' => $settings['operator_dic']]) }}
+                            @endif
+                            @if ($settings['operator_vat_note'])
+                                <span class="block">{{ $settings['operator_vat_note'] }}</span>
+                            @endif
+                        </span>
+                    </li>
                     @if ($settings['operator_address'])
-                        <br
-                        />{{ $settings['operator_address'] }}
+                        <li class="flex items-start gap-2">
+                            <x-site.icon name="home_pin" class="text-inverse-primary mt-0.5 size-5 shrink-0" />
+                            <span>{{ $settings['operator_address'] }}</span>
+                        </li>
                     @endif
-                </p>
+                </ul>
             @endif
         </div>
     </div>

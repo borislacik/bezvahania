@@ -70,6 +70,8 @@ it('saves contact and operator settings', function () {
             'notification_email' => 'majitel@bezvahania.sk',
             'operator_name' => 'Ján Živnostník',
             'operator_ico' => '12345678',
+            'operator_dic' => '1234567890',
+            'operator_vat_note' => 'Nie som platiteľ DPH',
             'operator_address' => 'Bratislava',
             'booking_lead_days' => 3,
         ])
@@ -80,5 +82,6 @@ it('saves contact and operator settings', function () {
     expect(Setting::get('contact_phone'))->toBe('+421 905 000 000')
         ->and(Setting::get('booking_lead_days'))->toBe('3');
 
-    $this->get(route('home'))->assertSee('Ján Živnostník')->assertSee('12345678');
+    $this->get(route('home'))->assertSee('Ján Živnostník')->assertSee('12345678')
+        ->assertSee('DIČ: 1234567890')->assertSee('Nie som platiteľ DPH');
 });

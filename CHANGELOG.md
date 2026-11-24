@@ -46,6 +46,7 @@ verzie podľa git tagov z deployov (`vRRRR.MM.DD-N`).
 - Zrušené samostatné stránky Workshopy, O lektorovi, Časté otázky a Kontakt; ich adresy presmerúvajú (301) na sekcie. Na úvodnej stránke sú všetky časté otázky.
 
 ### Zmenené – kontakt
+- Pätička, časť Kontakt: údaje o živnosti (meno, IČO, DIČ, „Nie som platiteľ DPH“, sídlo) s ikonami namiesto popisov; DIČ a text k DPH sú nové polia v admine.
 - Pätička bez bloku „Užitočné odkazy“ (odkazy sú v hlavnom menu).
 - Text kontaktného bloku: „malej firme“ → „firemnému tímu“.
 - Blok „Garancia Bez váhania“ v kontaktnom bloku nahradil krátky kontaktný formulár (meno, e-mail, správa); správa ide do admina aj na info@bezvahania.sk.

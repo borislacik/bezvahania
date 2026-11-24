@@ -18,9 +18,11 @@ class Setting extends Model
         'contact_phone' => '+421 915 918 386',
         'contact_email' => 'info@bezvahania.sk',
         'notification_email' => 'info@bezvahania.sk',
-        'operator_name' => '',
-        'operator_ico' => '',
-        'operator_address' => '',
+        'operator_name' => 'Boris Lacík',
+        'operator_ico' => '54842280',
+        'operator_dic' => '1077502657',
+        'operator_vat_note' => 'Nie som platiteľ DPH',
+        'operator_address' => 'Studenohorská 2061/17, 841 03 Bratislava',
         'booking_lead_days' => '2',
     ];
 

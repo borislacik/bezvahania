@@ -58,6 +58,12 @@ it('shows the three pillars before the workshops and answers how a workshop runs
         ->assertDontSee('id="ako-prebieha"', escape: false);
 });
 
+it('shows the business details in the footer by default', function () {
+    $this->get(route('home'))
+        ->assertOk()
+        ->assertSeeInOrder(['Boris Lacík', 'IČO: 54842280', 'DIČ: 1077502657', 'Nie som platiteľ DPH', 'Studenohorská 2061/17, 841 03 Bratislava']);
+});
+
 it('introduces the instructor and keeps the hero without key figures', function () {
     $this->get(route('home'))
         ->assertOk()

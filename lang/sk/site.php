@@ -36,6 +36,7 @@ return [
         'contact' => 'Kontakt',
         'operator' => 'Prevádzkovateľ',
         'ico' => 'IČO: :ico',
+        'dic' => 'DIČ: :dic',
         'cookie_settings' => 'Nastavenia cookies',
         'rights' => '© :year :name. Všetky práva vyhradené.',
     ],

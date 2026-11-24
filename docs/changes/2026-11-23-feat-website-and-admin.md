@@ -125,6 +125,14 @@ workshop?“ (`ContentSeeder`). Piliere sa už nepodobajú na karty workshopov: 
   po nich bolo príliš veľké, preto je na desktope vrch hlavného nadpisu zarovnaný s vrchom obrázka (`lg:items-start`,
   obrázok `lg:mt-7`) a sekcia je nižšia.
 
+### Údaje o živnosti v pätičke (24. 11. 2026)
+- Časť Kontakt v pätičke: pod telefónom, e-mailom a oblasťou je oddelený blok – ikona preukazu s menom, IČO, DIČ
+  a textom k DPH, ikona domčeka so sídlom (ikony namiesto popisov „Prevádzkovateľ“, „Sídlo“).
+- Údaje sú v nastaveniach (admin → Kontakt a prevádzkovateľ). Nové polia `operator_dic` a `operator_vat_note`
+  (bez migrácie, tabuľka `settings`). Predvolené hodnoty v `Setting::DEFAULTS` sú údaje živnosti Borisa Lacíka,
+  takže sa zobrazia aj po nasadení bez ručného zadania; lokálne sú uložené aj v DB.
+- Adresa v tvare „Studenohorská 2061/17, 841 03 Bratislava“ (PSČ a obec bez čiarky), text „Nie som platiteľ DPH“.
+
 ### Karty workshopov (24. 11. 2026)
 - Tlačidlá „Rezervovať termín“ boli pri každom workshope inej farby (červené, tmavé, svetlé), takže prvý workshop
   pôsobil dôležitejšie. Teraz sú všetky červené (`btn-primary`): tri rovnocenné výzvy, červená ostáva vyhradená
