@@ -43,11 +43,11 @@ it('sends a message from the contact box on the home page', function () {
         ->click('[data-cookie-reject]')
         ->type('#cta-name', 'Ján Návštevník')
         ->type('#cta-email', 'jan@example.com')
+        ->type('#cta-phone', '+421 905 111 222')
         ->type('#cta-message', 'Dobrý deň, mali by ste voľno aj v sobotu?')
-        ->check('#kontaktny-formular input[name="consent"]')
         ->press(__('contact.submit'))
         ->assertSee(__('contact.sent'))
         ->assertNoJavaScriptErrors();
 
-    expect(ContactMessage::query()->where('email', 'jan@example.com')->exists())->toBeTrue();
+    expect(ContactMessage::query()->where('email', 'jan@example.com')->value('phone'))->toBe('+421 905 111 222');
 });

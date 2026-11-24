@@ -17,7 +17,6 @@ class StoreContactMessageRequest extends FormRequest
             'email' => ['required', 'string', 'email:rfc', 'max:190'],
             'phone' => ['nullable', 'string', 'max:40', 'regex:/^[0-9 +()\/-]{6,}$/'],
             'message' => ['required', 'string', 'min:10', 'max:5000'],
-            'consent' => ['accepted'],
             // Honeypot: real visitors never fill this hidden field.
             'website' => ['prohibited'],
         ];
@@ -34,14 +33,6 @@ class StoreContactMessageRequest extends FormRequest
     /**
      * @return array<string, string>
      */
-    public function messages(): array
-    {
-        return ['consent.accepted' => __('contact.consent_required')];
-    }
-
-    /**
-     * @return array<string, string>
-     */
     public function attributes(): array
     {
         return [
@@ -49,7 +40,6 @@ class StoreContactMessageRequest extends FormRequest
             'email' => __('contact.fields.email'),
             'phone' => __('contact.fields.phone'),
             'message' => __('contact.fields.message'),
-            'consent' => __('contact.fields.consent_privacy'),
         ];
     }
 

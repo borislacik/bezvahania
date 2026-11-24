@@ -10,6 +10,9 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Carbon;
 
 /**
+ * A message from a contact form. `consent_at` records when the visitor sent the form with the privacy notice
+ * (the forms show an information sentence, no checkbox).
+ *
  * @property int $id
  * @property string $name
  * @property string $email

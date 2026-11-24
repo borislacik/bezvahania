@@ -14,7 +14,6 @@ function contactPayload(array $overrides = []): array
         'email' => 'jana@example.com',
         'phone' => '0900 111 222',
         'message' => 'Dobrý deň, chceli by sme workshop pre firmu.',
-        'consent' => '1',
     ], $overrides);
 }
 
@@ -68,9 +67,16 @@ it('never redirects to a foreign host after sending', function () {
         ->assertRedirect(route('contact.create').'#kontaktny-formular');
 });
 
-it('explains a missing consent in a friendly way', function () {
-    $this->post(route('contact.store'), contactPayload(['consent' => null]))
-        ->assertSessionHasErrors(['consent' => __('contact.consent_required')]);
+it('needs no consent checkbox but shows the privacy notice and stores the phone', function () {
+    $this->get(route('home'))
+        ->assertSee(__('contact.fields.phone'))
+        ->assertDontSee('name="consent"', escape: false)
+        ->assertSee('Odoslaním správy beriete na vedomie');
+    $this->get(route('contact.create'))->assertDontSee('name="consent"', escape: false)->assertSee('Odoslaním správy beriete na vedomie');
+
+    $this->post(route('contact.store'), contactPayload(['phone' => '+421 905 123 456']))->assertSessionHasNoErrors();
+
+    expect(ContactMessage::query()->sole()->phone)->toBe('+421 905 123 456');
 });
 
 it('validates the contact form', function (array $overrides, string $field) {
@@ -80,7 +86,7 @@ it('validates the contact form', function (array $overrides, string $field) {
     'name' => [['name' => ''], 'name'],
     'email' => [['email' => 'zle'], 'email'],
     'short message' => [['message' => 'Ahoj'], 'message'],
-    'consent' => [['consent' => null], 'consent'],
+    'phone' => [['phone' => 'zavolajte mi'], 'phone'],
     'honeypot' => [['website' => 'http://spam.example'], 'website'],
 ]);
 

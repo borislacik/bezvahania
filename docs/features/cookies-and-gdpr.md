@@ -11,7 +11,8 @@
 - Lokálne a v testoch je `GOOGLE_ANALYTICS_ID` prázdne, GA sa nenačíta vôbec.
 
 ## GDPR
-- Formuláre zbierajú len potrebné údaje a vyžadujú súhlas s podmienkami a spracovaním osobných údajov.
+- Formuláre zbierajú len potrebné údaje. Rezervácia vyžaduje súhlas s podmienkami (zaškrtávacie pole),
+  kontaktné formuláre zobrazujú iba informačnú vetu o spracovaní osobných údajov (súhlas tu nie je právnym základom).
 - Pri rezervácii sa ukladá čas a verzia súhlasu (`consent_at`, `consent_version`).
 - Doby uchovávania: rezervácie anonymizované **3 roky** po termíne, správy z formulára zmazané po **12 mesiacoch**.
 - Texty **Ochrana osobných údajov** a **Podmienky rezervácie** dodá prevádzkovateľ, vkladajú sa v admine

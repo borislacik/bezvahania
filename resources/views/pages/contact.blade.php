@@ -91,31 +91,11 @@
                         <input type="text" name="website" tabindex="-1" autocomplete="off" />
                     </div>
 
-                    <div>
-                        <label class="text-body-sm text-on-surface flex items-start gap-3">
-                            <input
-                                type="checkbox"
-                                name="consent"
-                                value="1"
-                                class="accent-primary-container mt-0.5 size-5 shrink-0"
-                                @checked (old('consent'))
-                                required
-                            />
-                            <span>
-                                {!! __('contact.fields.consent', [
-                                    'privacy' => '<a class="text-primary underline" href="'.route('legal.privacy').'" target="_blank">'.e(__('contact.fields.consent_privacy')).'</a>',
-                                ]) !!}
-                            </span>
-                        </label>
-                        @error ('consent')
-                            <p class="field-error">{{ $message }}</p>
-                        @enderror
-                    </div>
-
                     <button type="submit" class="btn-primary mt-2 self-start">
                         {{ __('contact.submit') }}
                         <x-site.icon name="arrow_forward" class="size-5" />
                     </button>
+                    <x-site.privacy-notice />
                 </form>
             </div>
         </div>

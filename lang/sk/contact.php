@@ -14,7 +14,6 @@ return [
         'email' => 'E-mail',
         'phone' => 'Telefón (nepovinné)',
         'message' => 'Správa',
-        'consent' => 'Beriem na vedomie :privacy.',
         'consent_privacy' => 'spracovanie osobných údajov',
     ],
 
@@ -23,7 +22,7 @@ return [
         'placeholder' => 'Čo by ste chceli prebrať? Napr. workshop pre firmu, iný termín, počet ľudí…',
     ],
 
-    'consent_required' => 'Pred odoslaním potvrďte, že beriete na vedomie spracovanie osobných údajov.',
+    'privacy_notice' => 'Odoslaním správy beriete na vedomie :privacy na účel odpovede na vašu správu.',
 
     'submit' => 'Odoslať správu',
     'sent' => 'Ďakujeme, vaša správa bola odoslaná. Odpoviem čo najskôr.',

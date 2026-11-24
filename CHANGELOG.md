@@ -24,7 +24,8 @@ verzie podľa git tagov z deployov (`vRRRR.MM.DD-N`).
 
 ### Zmenené – kontakt
 - Blok „Garancia Bez váhania“ v kontaktnom bloku nahradil krátky kontaktný formulár (meno, e-mail, správa); správa ide do admina aj na info@bezvahania.sk.
-- Zrozumiteľnejšie hlásenie pri chýbajúcom súhlase vo formulároch.
+- Kontaktné formuláre: nepovinný telefón aj v krátkom formulári, namiesto zaškrtávacieho poľa súhlasu informačná veta o spracovaní osobných údajov.
+- Zrozumiteľnejšie hlásenie pri chýbajúcom súhlase v rezervačnom formulári.
 
 ### Opravené
 - Kontakt na webe: telefón +421 915 918 386 a e-mail info@bezvahania.sk; rezervacie@bezvahania.sk iba ako odosielateľ automatických e-mailov, odpovede zákazníkov idú na info@.
