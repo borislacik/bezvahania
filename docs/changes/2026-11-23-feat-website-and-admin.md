@@ -125,6 +125,13 @@ workshop?“ (`ContentSeeder`). Piliere sa už nepodobajú na karty workshopov: 
   po nich bolo príliš veľké, preto je na desktope vrch hlavného nadpisu zarovnaný s vrchom obrázka (`lg:items-start`,
   obrázok `lg:mt-7`) a sekcia je nižšia.
 
+### Karty workshopov (24. 11. 2026)
+- Tlačidlá „Rezervovať termín“ boli pri každom workshope inej farby (červené, tmavé, svetlé), takže prvý workshop
+  pôsobil dôležitejšie. Teraz sú všetky červené (`btn-primary`): tri rovnocenné výzvy, červená ostáva vyhradená
+  pre rezerváciu. Workshopy sa odlišujú obrázkom, štítkom a nadpisom.
+- Štítok vľavo hore na obrázku (napr. „Najžiadanejší“) je matné biele sklo ako „Živý nácvik“ v hero, bez pulzujúcej
+  bodky a bez hviezdičky. `course-card` už nepotrebuje parameter `index`.
+
 ### Časté otázky a skúsenosti vedľa seba (24. 11. 2026)
 - Na desktope jedna sekcia: vľavo časté otázky (2/3 šírky), vpravo skúsenosti absolventov (1/3) s menším nadpisom.
 - Skúsenosti sú dve nad sebou (`components/site/testimonials.blade.php`). Ak ich je v admine viac ako dve, každých

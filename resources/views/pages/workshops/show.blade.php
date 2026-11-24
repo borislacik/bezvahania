@@ -91,7 +91,7 @@
                 <x-site.section-heading :title="__('site.workshops.other')" />
                 <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
                     @foreach ($others as $other)
-                        <x-site.course-card :course="$other" :index="$loop->index + 1" />
+                        <x-site.course-card :course="$other" />
                     @endforeach
                 </div>
             </div>

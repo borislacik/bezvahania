@@ -1,13 +1,4 @@
-@props (['course', 'index' => 0, 'headingLevel' => 'h3'])
-
-@php
-    $styles = [
-        ['badge' => 'bg-primary-container text-on-primary', 'button' => 'btn-primary'],
-        ['badge' => 'bg-secondary text-on-secondary', 'button' => 'btn-dark'],
-        ['badge' => 'bg-on-surface text-inverse-on-surface', 'button' => 'btn-light bg-surface-container-highest hover:bg-secondary-container'],
-    ];
-    $style = $styles[$index % count($styles)];
-@endphp
+@props (['course', 'headingLevel' => 'h3'])
 
 <article
     class="card flex flex-col overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl"
@@ -37,8 +28,11 @@
         @endif
 
         @if ($course->badge)
-            <span class="eyebrow {{ $style['badge'] }} absolute top-4 left-4 px-3 shadow-sm">
-                <x-site.icon name="star" class="size-3.5" />
+            {{-- Quiet frosted label like "Živý nácvik" in the hero: red stays reserved for the booking buttons. --}}
+            <span
+                class="font-heading text-label-badge text-on-surface absolute top-4 left-4 rounded-full bg-white/85 px-2.5 py-1 font-bold uppercase shadow-sm backdrop-blur-md"
+                data-testid="course-badge"
+            >
                 {{ $course->badge }}
             </span>
         @endif
@@ -86,7 +80,7 @@
 
         <a
             href="{{ route('booking.create', ['workshop' => $course->slug]) }}#rezervacia"
-            class="{{ $style['button'] }} mt-6 w-full"
+            class="btn-primary mt-6 w-full"
         >
             {{ __('site.common.book_course') }}
             <x-site.icon name="arrow_forward" class="size-[18px]" />

@@ -157,7 +157,7 @@
                 />
                 <div class="grid grid-cols-1 gap-8 lg:grid-cols-3">
                     @foreach ($courses as $course)
-                        <x-site.course-card :course="$course" :index="$loop->index" />
+                        <x-site.course-card :course="$course" />
                     @endforeach
                 </div>
             </div>
