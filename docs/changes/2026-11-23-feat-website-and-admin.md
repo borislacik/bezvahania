@@ -83,6 +83,8 @@ Logo nahradilo červený štvorec s ikonou (`components/site/logo`), favicon aj 
 
 Logo zväčšené zo 44 na 60 px podľa screenshotu používateľa (24. 11. 2026).
 
+Hero sekcia (24. 11. 2026): odstránené tlačidlo „Ako prebieha workshop“, nový úvodný text podľa používateľa.
+
 ### Stabilita browser testov
 `composer test:browser` pred testami skompiluje šablóny (`view:cache`). Pri studenom štarte sa inak pri prvom
 prihlásení do adminu kompilovali všetky Filament šablóny a test prekročil časový limit.

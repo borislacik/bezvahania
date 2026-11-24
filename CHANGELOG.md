@@ -23,6 +23,7 @@ verzie podľa git tagov z deployov (`vRRRR.MM.DD-N`).
 - Testy: 114 Unit/Feature (pokrytie 97 %) a 8 browser testov (rezervácia, plný termín, admin, všetky stránky).
 
 ### Zmenené – štruktúra webu
+- Hero sekcia: bez tlačidla „Ako prebieha workshop“, nový úvodný text („Žiadne suché poučky…“).
 - Dočasné logo (priehľadné WebP, 60 px) v hlavičke, pätičke a na chybových stránkach; nový favicon (ICO, PNG, Apple touch icon) pre web aj admin; skript `scripts/make-logo.php`.
 - Slogan v logu: „Prvá pomoc, ktorú zvládneš“ (predtým „Prvá pomoc • Workshop“).
 - Štítok „Živý nácvik“ na hlavnom obrázku je nenápadný (matné biele sklo s pulzujúcou červenou bodkou), červená ostáva pre tlačidlá rezervácie.

@@ -65,9 +65,8 @@ return [
         'title_start' => 'Prvá pomoc bez strachu a',
         'title_highlight' => 'bez váhania',
         'title_end' => '– priamo u vás doma.',
-        'lead' => 'Praktické workshopy v kruhu vašej rodiny, priateľov či kolegov (najviac 4 osoby). Žiadne suché memorovanie – väčšinu času trénujete na figurínach a trenažéroch pod vedením profesionálneho záchranára.',
+        'lead' => 'Praktické workshopy v kruhu vašej rodiny, priateľov či kolegov (najviac 4 osoby). Žiadne suché poučky – väčšinu času trénujete praktické zručnosti pod vedením profesionálneho záchranára.',
         'cta_book' => 'Vybrať workshop a rezervovať',
-        'cta_how' => 'Ako prebieha workshop',
         'kpis' => [
             ['value' => '12+', 'label' => 'rokov v záchrannej službe'],
             ['value' => '90 %', 'label' => 'čistý praktický nácvik'],

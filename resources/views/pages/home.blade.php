@@ -49,10 +49,6 @@
                             {{ __('site.home.cta_book') }}
                             <x-site.icon name="calendar_month" class="size-5" />
                         </a>
-                        <a href="#ako-prebieha" class="btn-light text-label-lg px-6 py-4">
-                            <x-site.icon name="play_circle" class="text-primary size-5" />
-                            {{ __('site.home.cta_how') }}
-                        </a>
                     </div>
 
                     <dl class="mt-2 grid grid-cols-3 gap-4 pt-4">
