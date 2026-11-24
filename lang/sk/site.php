@@ -75,8 +75,6 @@ return [
         ],
         'hero_image_alt' => 'Nácvik resuscitácie a defibrilátora v domácom prostredí',
         'hero_badge' => 'Živý nácvik',
-        'hero_caption' => 'Resuscitácia a AED vo vašej obývačke',
-        'hero_caption_sub' => 'Svalová pamäť, ktorá v reálnom strese pomôže zachrániť život.',
         'hero_card_title' => 'Aktuálne odporúčania ERC',
         'hero_card_text' => 'Postupy podľa European Resuscitation Council',
         'fact_title' => 'Kritický čas: prvé 3 až 5 minút',

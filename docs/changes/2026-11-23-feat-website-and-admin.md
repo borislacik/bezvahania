@@ -69,6 +69,8 @@ Požiadavka: „Miesta, kde sa hovorí o počte účastníkov 1 – 4 osoby, zme
 (`lang/sk/site.php`, FAQ a SEO úvodu v seederi), aj samotné pravidlo: `Booking::MIN_PARTICIPANTS = 2`, validácia
 rezervácie, výber vo formulári (2, 3, 4) a v admine, factory. Lokálna databáza: upravená odpoveď vo FAQ a SEO popis úvodu.
 
+Hero obrázok (24. 11. 2026): odstránený popis na spodku obrázka, ktorý prekrýval baner „Aktuálne odporúčania ERC“; baner ostal, štítok „Živý nácvik“ je v ľavom hornom rohu, bez tmavého prechodu.
+
 ### Stabilita browser testov
 `composer test:browser` pred testami skompiluje šablóny (`view:cache`). Pri studenom štarte sa inak pri prvom
 prihlásení do adminu kompilovali všetky Filament šablóny a test prekročil časový limit.

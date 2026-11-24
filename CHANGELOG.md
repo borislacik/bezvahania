@@ -23,6 +23,7 @@ verzie podľa git tagov z deployov (`vRRRR.MM.DD-N`).
 - Testy: 114 Unit/Feature (pokrytie 97 %) a 8 browser testov (rezervácia, plný termín, admin, všetky stránky).
 
 ### Zmenené – štruktúra webu
+- Hlavný obrázok: odstránený text na spodku (prekrýval ho baner ERC), štítok „Živý nácvik“ presunutý do horného rohu.
 - Skupina je 2 – 4 osoby (predtým 1 – 4): texty na webe, výber v rezervácii, validácia aj admin.
 - Myšlienka „Prečo malé skupiny“ zo zrušenej stránky O lektorovi je zapracovaná do 3. piliera na úvodnej stránke.
 - Web je jedna stránka: menu skroluje na sekcie úvodnej stránky (aj z rezervácie, detailu workshopu a právnych stránok), aktívna sekcia sa zvýrazní.

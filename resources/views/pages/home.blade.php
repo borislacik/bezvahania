@@ -80,18 +80,11 @@
                                 fetchpriority="high"
                                 class="h-80 w-full object-cover lg:h-[420px]"
                             />
-                            <div
-                                class="from-on-surface/80 absolute inset-0 bg-gradient-to-t via-transparent to-transparent"
-                            ></div>
-                            <div class="text-on-primary absolute right-4 bottom-4 left-4">
-                                <span
-                                    class="bg-primary-container font-heading text-label-badge text-on-primary inline-flex rounded px-2 py-0.5 font-bold uppercase"
-                                >
-                                    {{ __('site.home.hero_badge') }}
-                                </span>
-                                <p class="font-heading text-headline-sm mt-1 font-semibold">{{ __('site.home.hero_caption') }}</p>
-                                <p class="text-body-sm opacity-90">{{ __('site.home.hero_caption_sub') }}</p>
-                            </div>
+                            <span
+                                class="bg-primary-container font-heading text-label-badge text-on-primary absolute top-4 left-4 inline-flex rounded px-2 py-0.5 font-bold uppercase shadow-sm"
+                            >
+                                {{ __('site.home.hero_badge') }}
+                            </span>
                         </div>
                         <div
                             class="bg-surface-container-lowest absolute -bottom-6 -left-6 hidden items-center gap-3 rounded-xl p-4 shadow-xl sm:flex"
