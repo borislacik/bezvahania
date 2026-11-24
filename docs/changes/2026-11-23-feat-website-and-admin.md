@@ -24,6 +24,14 @@ obrázky vo WebP s automatickou konverziou nahraných obrázkov, Google Analytic
 | `spatie/laravel-translatable` 6.15 | preložiteľný obsah | MIT | v zadaní (predvolená odpoveď 17) |
 | `alpinejs`, `@alpinejs/collapse` 3.17 | kalendár, menu, FAQ, cookie lišta | MIT | Alpine je v zadaní |
 
+### Oprava počas kontroly (24. 11. 2026)
+Používateľ nahlásil, že ho admin po chvíli odhlási. Príčina: v `AdminPanelProvider` bol celý zoznam middleware
+označený `isPersistent: true`, takže Livewire pri každej požiadavke na pozadí (obnovovanie widgetu štatistík každých
+5 s) spustil `EncryptCookies` a `StartSession` druhýkrát. Dešifrovanie už dešifrovaného cookie zlyhalo, vznikla
+nová neuložená session a ďalšia požiadavka skončila presmerovaním na prihlásenie. Persistentný je teraz iba
+`AddNoIndexHeader`; regresný test v `DomainSeparationTest`. Predchádzajúce obídenie (widgety bez lazy načítania)
+bolo odstránené. Chyba by sa prejavila aj na produkcii.
+
 ## Dotknuté časti
 - Migrácie: MFA stĺpce v `users`, `courses`, `blocked_days`, `bookings`, `team_members`, `faqs`, `testimonials`,
   `pages`, `settings`, `contact_messages`.

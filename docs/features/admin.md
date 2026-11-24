@@ -29,5 +29,8 @@ Textové polia workshopov, lektorov, FAQ, referencií a stránok sú uložené a
 Pri pridaní ďalšieho jazyka pribudne vo formulároch prepínač jazyka.
 
 ## Poznámky k implementácii
-- Widgety nástenky sa nenačítavajú „lazy“ – súbežné načítanie spôsobovalo odhlásenie (session v databáze).
+- Ako *persistentný* (opakovane spúšťaný pri Livewire požiadavkách) je zaregistrovaný **iba** `AddNoIndexHeader`.
+  Keď bol persistentný celý zoznam middleware, `EncryptCookies` a `StartSession` bežali pri každej Livewire
+  požiadavke dvakrát (napr. pri automatickom obnovovaní štatistík na nástenke), vznikla nová prázdna session
+  a admin sa po pár sekundách odhlásil. Stráži to test `DomainSeparationTest`.
 - Vlastné stránky adminu (`app/Filament/Pages`) používajú tému `resources/css/filament/admin/theme.css`.

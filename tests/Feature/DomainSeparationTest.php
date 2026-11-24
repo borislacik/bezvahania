@@ -1,5 +1,10 @@
 <?php
 
+use App\Http\Middleware\AddNoIndexHeader;
+use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
+use Illuminate\Cookie\Middleware\EncryptCookies;
+use Illuminate\Session\Middleware\StartSession;
+
 it('serves the admin only on the admin domain', function () {
     $this->get('http://admin.bezvahania.localhost/login')
         ->assertOk()
@@ -20,4 +25,15 @@ it('reads both domains from the configuration', function () {
     expect(config('app.domain'))->toBe('bezvahania.localhost')
         ->and(config('app.admin_domain'))->toBe('admin.bezvahania.localhost')
         ->and(route('home'))->toBe('http://bezvahania.localhost');
+});
+
+it('re-applies only the noindex header on Livewire requests, never the session stack', function () {
+    // Regression: making EncryptCookies/StartSession persistent ran them twice on every Livewire
+    // request (e.g. dashboard widget polling), created a new empty session and logged the admin out.
+    $persistent = Livewire\Livewire::getPersistentMiddleware();
+
+    expect($persistent)->toContain(AddNoIndexHeader::class)
+        ->not->toContain(EncryptCookies::class)
+        ->not->toContain(StartSession::class)
+        ->not->toContain(AddQueuedCookiesToResponse::class);
 });

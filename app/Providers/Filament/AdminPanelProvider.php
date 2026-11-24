@@ -63,8 +63,10 @@ class AdminPanelProvider extends PanelProvider
                 SubstituteBindings::class,
                 DisableBladeIconComponents::class,
                 DispatchServingFilamentEvent::class,
-                AddNoIndexHeader::class,
-            ], isPersistent: true)
+            ])
+            // Only the noindex header is persistent (re-applied on Livewire requests). Making the whole stack
+            // persistent runs EncryptCookies/StartSession twice and logs the admin out (docs/features/admin.md).
+            ->middleware([AddNoIndexHeader::class], isPersistent: true)
             ->authMiddleware([
                 Authenticate::class,
             ]);

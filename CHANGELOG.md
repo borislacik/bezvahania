@@ -22,6 +22,9 @@ verzie podľa git tagov z deployov (`vRRRR.MM.DD-N`).
 - Docker služby `queue` a `scheduler`, ukážkové dáta (`migrate --seed`).
 - Testy: 114 Unit/Feature (pokrytie 97 %) a 8 browser testov (rezervácia, plný termín, admin, všetky stránky).
 
+### Opravené
+- Admin po chvíli odhlásil používateľa: middleware session a cookies sa pri Livewire požiadavkách spúšťali dvakrát.
+
 ### Zmenené
 - Overenie hostingu a nasadenie sa presúvajú až po schválení lokálnej verzie (docs/decisions.md).
 
