@@ -2,7 +2,7 @@
     Pillars with a "slow scroll" on desktop (lg+):
     the section above ($before, the dark fact strip), the pillars section and the start of the following section ($slot)
     stick when the top of the pillars reaches 30 % of the screen height and moves up at ~1/3 speed while the pillars light up one by one
-    (none at first, the first one shortly after the slowing starts); then normal scrolling continues.
+    (none at first, the first one when the pillars reach the middle of the screen); then normal scrolling continues.
     Mobile: no slowing, pillars fade in and out as they enter and leave the screen.
     Without JS or with prefers-reduced-motion: everything static and visible.
 --}}
@@ -77,14 +77,16 @@
                 return;
             }
             const top = parseFloat(getComputedStyle(inner).top) || 0;
-            const progress = Math.min(1, Math.max(0, (top - this.$root.getBoundingClientRect().top) / this.distance));
+            const raw = (top - this.$root.getBoundingClientRect().top) / this.distance;
+            const progress = Math.min(1, Math.max(0, raw));
             inner.style.transform = `translate3d(0, ${-progress * this.drift}px, 0)`;
-            // Nothing is lit when the block arrives; the pillars then light up in equal steps, the first one
-            // after 10 % of the slowed part, and the last one stays lit for the final stretch.
+            // Nothing is lit when the block arrives; the first pillar lights up when the top of the pillars reaches
+            // the middle of the screen (still before the slowing starts at 30 %), the others follow in equal steps
+            // and the last one stays lit for the final stretch.
             const steps = {{ count($pillars) }};
-            const lead = 0.1;
+            const lead = (top + this.$refs.pillars.offsetTop - window.innerHeight * 0.5) / this.distance;
             const step = (1 - lead) / (steps + 0.5);
-            this.active = progress < lead ? -1 : Math.min(steps - 1, Math.floor((progress - lead) / step));
+            this.active = raw < lead ? -1 : Math.min(steps - 1, Math.floor((raw - lead) / step));
         },
     }"
     data-testid="pillars"

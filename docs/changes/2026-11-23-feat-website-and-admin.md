@@ -111,8 +111,8 @@ workshop?“ (`ContentSeeder`). Piliere sa už nepodobajú na karty workshopov: 
 - Tmavý pruh „Kritický čas“ nad piliermi je súčasťou spomaleného bloku (slot `before`), takže pri začiatku
   spomalenia „neodskočí“ hore, ale pomaly zájde pod hlavičku rovnakou rýchlosťou ako piliere.
 - Piliere bez označenia „Pilier 01 – 03“ (kľúč `site.home.pillar_label` odstránený), iba nadpis a text.
-- Na začiatku nie je zvýraznený žiadny pilier; prvý sa zvýrazní po 10 % spomaleného úseku, ďalšie v rovnakých
-  krokoch a posledný ostane zvýraznený ešte asi tretinu úseku. Bez JavaScriptu sú ikony v paneli viditeľné.
+- Na začiatku nie je zvýraznený žiadny pilier; prvý sa zvýrazní, keď je vrch pilierov v 50 % výšky obrazovky
+  (ešte pred spomalením, ktoré začína pri 30 %), ďalšie v rovnakých krokoch a posledný ostane zvýraznený ešte asi tretinu úseku. Bez JavaScriptu sú ikony v paneli viditeľné.
 
 ### Stabilita browser testov
 `composer test:browser` pred testami skompiluje šablóny (`view:cache`). Pri studenom štarte sa inak pri prvom
