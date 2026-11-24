@@ -175,10 +175,10 @@
     .ecg-line path {
         fill: none;
         stroke: var(--color-primary-container);
-        stroke-width: 2.5;
+        /* In viewBox units: pathLength="100" on the pulse only works without non-scaling strokes. */
+        stroke-width: 1.6;
         stroke-linecap: round;
         stroke-linejoin: round;
-        vector-effect: non-scaling-stroke;
     }
 
     .ecg-line__base {
@@ -186,7 +186,7 @@
     }
 
     .ecg-line__pulse {
-        stroke-dasharray: 14 86;
+        stroke-dasharray: 14 186;
         stroke-dashoffset: 14;
         filter: drop-shadow(0 0 3px var(--color-primary-container));
         animation: ecg-pulse 2.6s linear infinite;

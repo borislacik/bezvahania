@@ -87,6 +87,8 @@ Hero sekcia (24. 11. 2026): odstránené tlačidlo „Ako prebieha workshop“, 
 
 EKG krivka (24. 11. 2026): pri „Pripravenosť zachraňuje“ nahradila blikajúcu bodku (dve blikajúce bodky pri sebe boli priveľa). SVG s dvoma tepmi po stranách textu, impulz cez `stroke-dashoffset` (`.ecg-line` v `resources/css/app.css`), pri `prefers-reduced-motion` statická.
 
+EKG krivka podľa predlohy od používateľa (24. 11. 2026): obkreslená iba čierna čiara (P vlna, PQ úsek, QRS, ST úsek, T vlna), dva tepy po stranách textu, jeden prebiehajúci impulz.
+
 ### Stabilita browser testov
 `composer test:browser` pred testami skompiluje šablóny (`view:cache`). Pri studenom štarte sa inak pri prvom
 prihlásení do adminu kompilovali všetky Filament šablóny a test prekročil časový limit.
