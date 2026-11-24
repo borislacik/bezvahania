@@ -62,6 +62,8 @@ workshopov a právne stránky. Riešenie a dôsledky: [ADR 0007](../adr/0007-one
 `ContactController` má iba `store`. Testy: menu odkazy zo všetkých stránok, sekcie na úvode, 301 presmerovania,
 browser test skrolovania z rezervácie.
 
+Text „Prečo malé skupiny“ zo zrušenej stránky O lektorovi zapracovaný do 3. piliera („Komfort vášho domova“), texty sa ešte budú upravovať.
+
 ### Stabilita browser testov
 `composer test:browser` pred testami skompiluje šablóny (`view:cache`). Pri studenom štarte sa inak pri prvom
 prihlásení do adminu kompilovali všetky Filament šablóny a test prekročil časový limit.
