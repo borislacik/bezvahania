@@ -61,10 +61,6 @@
                         >{{ $settings['contact_email'] }}</a
                     >
                 </li>
-                <li class="flex items-center gap-2">
-                    <x-site.icon name="location_on" class="text-inverse-primary size-5" />
-                    <span>{{ __('site.service_area') }}</span>
-                </li>
             </ul>
             {{-- Business details (admin: Kontakt a prevádzkovateľ); icons instead of labels. --}}
             @if ($settings['operator_name'])
