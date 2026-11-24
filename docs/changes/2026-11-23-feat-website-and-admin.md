@@ -46,6 +46,10 @@ Riešenie: pravá časť `contact-cta` je formulár s rovnakou logikou ako strá
 navyše súhlas so spracovaním údajov (GDPR) a honeypot. Návrat na pôvodnú stránku k formuláru (`ContactRedirect`),
 po načítaní sa stránka posunie k formuláru s chybou alebo potvrdením. Komponent `site.field` dostal `idPrefix` a `rows`.
 
+### Stabilita browser testov
+`composer test:browser` pred testami skompiluje šablóny (`view:cache`). Pri studenom štarte sa inak pri prvom
+prihlásení do adminu kompilovali všetky Filament šablóny a test prekročil časový limit.
+
 ## Dotknuté časti
 - Migrácie: MFA stĺpce v `users`, `courses`, `blocked_days`, `bookings`, `team_members`, `faqs`, `testimonials`,
   `pages`, `settings`, `contact_messages`.

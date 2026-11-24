@@ -2,7 +2,7 @@
   "$schema": "https://getcomposer.org/schema.json",
   "name": "bezvahania/web",
   "type": "project",
-  "description": "Web a rezerva\u010dn\u00fd syst\u00e9m pre dom\u00e1ce workshopy prvej pomoci bezvahania.sk.",
+  "description": "Web a rezervačný systém pre domáce workshopy prvej pomoci bezvahania.sk.",
   "keywords": [
     "laravel",
     "filament",
@@ -60,6 +60,7 @@
     ],
     "test:browser": [
       "@php artisan config:clear --ansi",
+      "@php artisan view:cache --ansi",
       "vendor/bin/pest --testsuite=Browser"
     ],
     "docs:check": [
@@ -110,11 +111,11 @@
   "prefer-stable": true,
   "scripts-descriptions": {
     "lint": "Pint --test + Prettier --check",
-    "format": "Pint + Prettier (zap\u00ed\u0161e zmeny)",
+    "format": "Pint + Prettier (zapíše zmeny)",
     "analyse": "Larastan (PHPStan)",
     "test": "Unit + Feature, paralelne, coverage min. 80 %",
     "test:browser": "Pest browser testy (Playwright)",
-    "docs:check": "Kontrola dokument\u00e1cie",
-    "check": "V\u0161etky br\u00e1ny kvality + build, zap\u00ed\u0161e .check-passed"
+    "docs:check": "Kontrola dokumentácie",
+    "check": "Všetky brány kvality + build, zapíše .check-passed"
   }
 }
