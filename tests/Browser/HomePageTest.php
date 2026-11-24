@@ -20,6 +20,24 @@ it('loads the self-hosted brand fonts', function () {
     expect($loaded)->toContain('Space Grotesk', 'Work Sans');
 });
 
+it('renders Slovak letters with the brand fonts, not a fallback font', function () {
+    $page = visit('/');
+
+    // Faces covering Latin Extended-A (č, š, ľ, ť, ž, ň…) must be loaded for both brand fonts.
+    $extended = $page->script(<<<'JS'
+        () => document.fonts.ready
+            .then(() => Promise.all([
+                document.fonts.load('400 16px "Work Sans"', 'čšľťžň'),
+                document.fonts.load('700 16px "Space Grotesk"', 'ČŠĽŤŽŇ'),
+            ]))
+            .then(() => [...new Set([...document.fonts]
+                .filter((font) => font.status === 'loaded' && font.unicodeRange.includes('U+100-'))
+                .map((font) => font.family.replaceAll('"', '')))])
+        JS);
+
+    expect($extended)->toContain('Work Sans', 'Space Grotesk');
+});
+
 it('renders every public page without JavaScript errors', function () {
     $pages = visit(['/', '/workshopy/kpr-a-aed', '/rezervacia', '/ochrana-osobnych-udajov', '/podmienky-rezervacie', '/cookies']);
 

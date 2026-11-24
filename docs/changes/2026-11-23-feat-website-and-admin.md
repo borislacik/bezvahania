@@ -123,6 +123,12 @@ workshop?“ (`ContentSeeder`). Piliere sa už nepodobajú na karty workshopov: 
   po nich bolo príliš veľké, preto je na desktope vrch hlavného nadpisu zarovnaný s vrchom obrázka (`lg:items-start`,
   obrázok `lg:mt-7`) a sekcia je nižšia.
 
+### Slovenská diakritika v písmach (24. 11. 2026)
+Vlastné písma (Work Sans, Space Grotesk) sa cez `bunny()` v `vite.config.js` sťahovali iba v sade `latin`
+(predvolená hodnota pluginu). Písmená č, š, ľ, ť, ž, ň, ď, ĺ, ŕ sú v sade `latin-ext`, preto ich prehliadač kreslil
+záložným písmom a v texte vyzerali inak. Doplnené `subsets: ['latin', 'latin-ext']`; prehliadač si sadu latin-ext
+stiahne iba vtedy, keď ju text potrebuje (`unicode-range`). Browser test kontroluje, že sa sady latin-ext načítajú.
+
 ### Stabilita browser testov
 `composer test:browser` pred testami skompiluje šablóny (`view:cache`). Pri studenom štarte sa inak pri prvom
 prihlásení do adminu kompilovali všetky Filament šablóny a test prekročil časový limit.

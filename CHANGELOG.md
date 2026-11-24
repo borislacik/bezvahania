@@ -22,6 +22,9 @@ verzie podľa git tagov z deployov (`vRRRR.MM.DD-N`).
 - Docker služby `queue` a `scheduler`, ukážkové dáta (`migrate --seed`).
 - Testy: 114 Unit/Feature (pokrytie 97 %) a 8 browser testov (rezervácia, plný termín, admin, všetky stránky).
 
+### Opravené
+- Slovenské písmená s diakritikou (č, š, ľ, ť, ž, ň…) sa kreslili záložným písmom; písma Work Sans a Space Grotesk sa teraz načítavajú aj so sadou latin-ext.
+
 ### Zmenené – štruktúra webu
 - Piliere so spomaleným skrolovaním: na desktope sa sekcia posúva pomalšie a piliere aj ikony v tmavom paneli postupne pribúdajú; sekcia „Ako prebieha workshop priamo u vás?“ nahradená prvou častou otázkou „Ako prebieha workshop?“.
 - Efekt pilierov začína skôr (vrch sekcie v 30 % výšky obrazovky); tmavý pruh „Kritický čas“ nad nimi sa posúva rovnako pomaly.
