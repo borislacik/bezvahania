@@ -72,7 +72,6 @@ it('saves contact and operator settings', function () {
             'operator_ico' => '12345678',
             'operator_address' => 'Bratislava',
             'booking_lead_days' => 3,
-            'pillars_scroll_start' => 40,
         ])
         ->call('save')
         ->assertHasNoFormErrors()
@@ -81,13 +80,5 @@ it('saves contact and operator settings', function () {
     expect(Setting::get('contact_phone'))->toBe('+421 905 000 000')
         ->and(Setting::get('booking_lead_days'))->toBe('3');
 
-    $this->get(route('home'))->assertSee('Ján Živnostník')->assertSee('12345678')
-        ->assertSee('window.innerHeight * 40', escape: false);
-});
-
-it('keeps the temporary pillars scroll start within its limits', function () {
-    Livewire::test(Settings::class)
-        ->fillForm(['pillars_scroll_start' => 90])
-        ->call('save')
-        ->assertHasFormErrors(['pillars_scroll_start' => 'max']);
+    $this->get(route('home'))->assertSee('Ján Živnostník')->assertSee('12345678');
 });

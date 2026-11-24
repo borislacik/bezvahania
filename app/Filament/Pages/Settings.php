@@ -69,13 +69,6 @@ class Settings extends Page
                 Section::make(__('admin.settings.booking'))->schema([
                     TextInput::make('booking_lead_days')->label(__('admin.settings.booking_lead_days'))->numeric()->minValue(0)->maxValue(30)->required(),
                 ]),
-                // TEMPORARY: remove together with Setting::DEFAULTS['pillars_scroll_start'] once a value is chosen.
-                Section::make(__('admin.settings.pillars'))->description(__('admin.settings.pillars_note'))->schema([
-                    TextInput::make('pillars_scroll_start')
-                        ->label(__('admin.settings.pillars_scroll_start'))
-                        ->helperText(__('admin.settings.pillars_scroll_start_help'))
-                        ->numeric()->integer()->minValue(10)->maxValue(70)->suffix('%')->required(),
-                ]),
             ]);
     }
 

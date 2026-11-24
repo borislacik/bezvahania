@@ -1,13 +1,11 @@
 {{--
     Pillars with a "slow scroll" on desktop (lg+):
-    the pillars section together with the start of the following section ($slot) sticks on the screen (start set by $startPercent) and moves
-    up at ~1/3 speed while the scroll progress switches pillar 1 → 2 → 3; then normal scrolling continues.
+    the pillars section together with the start of the following section ($slot) sticks when its top reaches 25 %
+    of the screen height and moves up at ~1/3 speed while the scroll progress switches pillar 1 → 2 → 3; then normal scrolling continues.
     Mobile: no slowing, pillars fade in and out as they enter and leave the screen.
     Without JS or with prefers-reduced-motion: everything static and visible.
 --}}
 @php ($pillars = __('site.home.pillars'))
-{{-- TEMPORARY admin setting (Setting::DEFAULTS['pillars_scroll_start']): where the effect starts, % of the screen height. --}}
-@php ($startPercent = max(10, min(70, (int) ($settings['pillars_scroll_start'] ?? 25))))
 
 <div
     class="pillars-scrolly relative"
@@ -24,7 +22,7 @@
                 this.distance = this.enabled ? Math.round(window.innerHeight * 1.2) : 0;
                 this.drift = Math.round(this.distance / 3);
                 // The block pins (and the pillars start adding up) when its top reaches this point of the screen.
-                this.$refs.inner.style.top = this.enabled ? Math.max(80, Math.round((window.innerHeight * {{ $startPercent }}) / 100)) + 'px' : '';
+                this.$refs.inner.style.top = this.enabled ? Math.max(80, Math.round(window.innerHeight * 0.25)) + 'px' : '';
                 // The spacer gives the sticky block the pin distance; the negative margin removes the gap
                 // left by the drift, so the page continues seamlessly afterwards.
                 this.$refs.spacer.style.height = this.enabled ? this.distance + 'px' : '0px';

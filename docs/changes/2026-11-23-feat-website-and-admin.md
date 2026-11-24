@@ -106,9 +106,8 @@ workshop?“ (`ContentSeeder`). Piliere sa už nepodobajú na karty workshopov: 
 - Odkaz „Workshopy“ v menu: počas spomalenia by prehliadač vypočítal zlú pozíciu kotvy, preto komponent skroluje
   na miesto, kde sekcia skončí po spomalení (kliknutie aj príchod z inej stránky s `#workshopy`).
 - Začiatok efektu je skôr: sekcia sa „prilepí“, keď je jej vrch v 25 % výšky obrazovky (predtým hneď pod hlavičkou,
-  asi 10 %). **Dočasne** sa dá nastaviť v admine (Nastavenia → Kontakt a prevádzkovateľ → „Dočasné: efekt pilierov“,
-  10 – 70 %, kľúč `pillars_scroll_start` v tabuľke `settings`, bez migrácie). Po výbere hodnoty sa nastavenie
-  z admina odstráni a hodnota sa zapíše natvrdo do komponentu.
+  asi 10 %). Hodnotu si používateľ vyskúšal cez dočasné nastavenie v admine; po výbere je zapísaná v komponente
+  a nastavenie z admina je odstránené.
 
 ### Stabilita browser testov
 `composer test:browser` pred testami skompiluje šablóny (`view:cache`). Pri studenom štarte sa inak pri prvom
