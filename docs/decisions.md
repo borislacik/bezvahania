@@ -9,6 +9,10 @@ Posledná aktualizácia: 23. 11. 2026
 Overenie hostingu, deploy skripty a nasadenie sa robia **až keď bude prevádzkovateľ spokojný s lokálnou verziou**.
 Dovtedy sa vyvíja celý web aj admin lokálne v Dockeri (pôvodné fázy 2 – 5 zo zadania sa spojili).
 
+## Štruktúra webu (24. 11. 2026)
+Web je **jedna stránka**: menu skroluje na sekcie úvodnej stránky. Samostatné stránky sú iba rezervácia, detail
+workshopu a právne stránky. Pozri [ADR 0007](adr/0007-one-page-website.md).
+
 ## Doplnené pravidlá a požiadavky
 
 | Téma | Rozhodnutie |

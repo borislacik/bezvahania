@@ -1,13 +1,6 @@
 <?php
 
 return [
-    'title' => 'Kontakt',
-    'lead' => 'Máte otázku k workshopom, chcete termín mimo kalendára alebo workshop pre firmu? Napíšte mi.',
-    'details' => 'Kontaktné údaje',
-    'phone' => 'Telefón',
-    'email' => 'E-mail',
-    'area' => 'Oblasť pôsobenia',
-    'form_title' => 'Napíšte správu',
 
     'fields' => [
         'name' => 'Meno a priezvisko',

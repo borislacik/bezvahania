@@ -12,11 +12,7 @@ return [
 
     'pages' => [
         'home' => 'Domáce workshopy prvej pomoci',
-        'workshops' => 'Workshopy',
         'booking' => 'Rezervácia termínu',
-        'about' => 'O lektorovi',
-        'faq' => 'Časté otázky',
-        'contact' => 'Kontakt',
         'privacy' => 'Ochrana osobných údajov',
         'terms' => 'Podmienky rezervácie',
         'cookies' => 'Zásady používania cookies',
@@ -146,7 +142,6 @@ return [
 
         'faq_eyebrow' => 'Časté otázky',
         'faq_title' => 'Všetko, čo potrebujete vedieť pred workshopom',
-        'faq_more' => 'Všetky otázky a odpovede',
 
         'contact_eyebrow' => 'Osobná konzultácia',
         'contact_title' => 'Máte špecifické požiadavky alebo firmu?',
@@ -154,10 +149,7 @@ return [
     ],
 
     'workshops' => [
-        'title' => 'Workshopy prvej pomoci',
-        'lead' => 'Tri praktické workshopy pre skupiny do 4 osôb. Prídem k vám domov alebo do kancelárie v Bratislave a okolí.',
         'about' => 'O workshope',
-        'empty' => 'Momentálne nie sú dostupné žiadne workshopy.',
         'other' => 'Ďalšie workshopy',
         'practical' => 'Praktické informácie',
         'place' => 'Miesto',
@@ -166,19 +158,6 @@ return [
         'payment_value' => 'Na mieste po workshope, v hotovosti alebo kartou',
         'certificate' => 'Osvedčenie',
         'certificate_value' => 'Osvedčenie o absolvovaní pre každého účastníka',
-    ],
-
-    'about' => [
-        'title' => 'O lektorovi',
-        'lead' => 'Kto k vám príde a prečo sa naučíte viac než na bežnom kurze.',
-        'why_title' => 'Prečo malé skupiny',
-        'why_text' => 'Vo veľkých skupinách sa ľudia boja pýtať a prakticky si zásah vyskúšajú len raz. V malej skupine ľudí, ktorí sa poznajú, má každý dosť času na opakovaný nácvik a otázky bez ostychu.',
-    ],
-
-    'faq' => [
-        'title' => 'Časté otázky',
-        'lead' => 'Nenašli ste odpoveď? Napíšte mi cez kontaktný formulár.',
-        'empty' => 'Zatiaľ tu nie sú žiadne otázky.',
     ],
 
     'legal' => [

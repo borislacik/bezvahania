@@ -2,7 +2,7 @@
     <section class="from-surface-container-low to-surface bg-gradient-to-b pt-10 pb-16 lg:pt-14">
         <div class="container-page">
             <a
-                href="{{ route('workshops.index') }}"
+                href="{{ \App\Support\HomeSections::url(\App\Support\HomeSections::WORKSHOPS) }}"
                 class="text-label-lg text-on-surface-variant hover:text-primary font-heading mb-6 inline-flex items-center gap-1"
             >
                 <x-site.icon name="chevron_left" class="size-5" />

@@ -15,7 +15,7 @@ Dvojfaktorové overenie (aplikácia, TOTP, s obnovovacími kódmi) je povinné, 
 | Obsah webu → **Workshopy** | názov, adresa, štítok, cena, trvanie, vybavenie, popisy, obrázok, poradie, viditeľnosť, SEO |
 | Obsah webu → **Lektori** | meno, funkcia, citát, text, fotografia |
 | Obsah webu → **Časté otázky**, **Referencie** | texty, poradie (ťahaním), viditeľnosť |
-| Obsah webu → **Stránky a SEO** | SEO titulok, popis a obrázok pri zdieľaní pre každú stránku; texty právnych stránok |
+| Obsah webu → **Stránky a SEO** | SEO titulok, popis a obrázok pri zdieľaní pre úvodnú stránku, rezerváciu a právne stránky; texty právnych stránok (SEO workshopov je pri workshope) |
 | Nastavenia → **Kontakt a prevádzkovateľ** | telefón, e-mail na webe, e-mail pre upozornenia, údaje živnosti, najskorší termín rezervácie |
 
 ## Obrázky

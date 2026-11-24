@@ -6,10 +6,11 @@ Každá stránka má:
   inak názov a krátky popis,
 - `canonical` URL, Open Graph (`og:title`, `og:description`, `og:image`, `og:locale=sk_SK`) a Twitter card,
 - obrázok pri zdieľaní: z admina, inak `resources/images/og-default.webp` (1200 × 630),
-- štruktúrované dáta JSON-LD: `LocalBusiness` (úvod), `Course` (detail workshopu), `FAQPage` (časté otázky).
+- štruktúrované dáta JSON-LD: `LocalBusiness` a `FAQPage` (úvodná stránka), `Course` (detail workshopu).
 
 Ďalej:
-- `/sitemap.xml` – všetky verejné stránky a aktívne workshopy,
+- `/sitemap.xml` – úvodná stránka, rezervácia, právne stránky a aktívne workshopy (web je one-pager, ADR 0007),
+- bývalé stránky (`/workshopy`, `/o-lektorovi`, `/caste-otazky`, `/kontakt`) presmerúvajú 301 na sekcie úvodnej stránky,
 - `/robots.txt` – na produkcii povolí indexovanie a odkáže na sitemap, mimo produkcie všetko zakáže,
 - mimo produkcie a na potvrdení rezervácie je `meta robots noindex`,
 - `www.` presmeruje na doménu bez `www` (301).

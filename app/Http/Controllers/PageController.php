@@ -15,40 +15,29 @@ class PageController extends Controller
 {
     public function home(): View
     {
+        $faqs = Faq::query()->active()->get();
+
         $seo = Seo::forPage(Page::forKey('home'))->withJsonLd($this->localBusiness());
+
+        if ($faqs->isNotEmpty()) {
+            $seo->withJsonLd([
+                '@context' => 'https://schema.org',
+                '@type' => 'FAQPage',
+                'mainEntity' => $faqs->map(fn (Faq $faq): array => [
+                    '@type' => 'Question',
+                    'name' => $faq->question,
+                    'acceptedAnswer' => ['@type' => 'Answer', 'text' => strip_tags($faq->answer)],
+                ])->all(),
+            ]);
+        }
 
         return view('pages.home', [
             'seo' => $seo,
             'courses' => Course::query()->active()->get(),
             'instructor' => TeamMember::query()->active()->first(),
             'testimonials' => Testimonial::query()->active()->get(),
-            'faqs' => Faq::query()->active()->limit(4)->get(),
+            'faqs' => $faqs,
         ]);
-    }
-
-    public function about(): View
-    {
-        return view('pages.about', [
-            'seo' => Seo::forPage(Page::forKey('about')),
-            'members' => TeamMember::query()->active()->get(),
-        ]);
-    }
-
-    public function faq(): View
-    {
-        $faqs = Faq::query()->active()->get();
-
-        $seo = Seo::forPage(Page::forKey('faq'))->withJsonLd([
-            '@context' => 'https://schema.org',
-            '@type' => 'FAQPage',
-            'mainEntity' => $faqs->map(fn (Faq $faq): array => [
-                '@type' => 'Question',
-                'name' => $faq->question,
-                'acceptedAnswer' => ['@type' => 'Answer', 'text' => strip_tags($faq->answer)],
-            ])->all(),
-        ]);
-
-        return view('pages.faq', ['seo' => $seo, 'faqs' => $faqs]);
     }
 
     public function legal(string $key): View

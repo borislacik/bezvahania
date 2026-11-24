@@ -17,10 +17,10 @@ function contactPayload(array $overrides = []): array
     ], $overrides);
 }
 
-it('shows the contact page with details from the settings', function () {
+it('shows the contact section with details from the settings', function () {
     Setting::put(['contact_phone' => '+421 911 222 333']);
 
-    $this->get(route('contact.create'))
+    $this->get(route('home'))
         ->assertOk()
         ->assertSee('+421 911 222 333')
         ->assertSee('tel:+421911222333', escape: false);
@@ -29,9 +29,9 @@ it('shows the contact page with details from the settings', function () {
 it('stores the message and notifies the operator', function () {
     Setting::put(['notification_email' => 'majitel@example.com']);
 
-    $this->from(route('contact.create'))
+    $this->from(route('home'))
         ->post(route('contact.store'), contactPayload())
-        ->assertRedirect(route('contact.create').'#kontaktny-formular')
+        ->assertRedirect(route('home').'#kontaktny-formular')
         ->assertSessionHas('status', __('contact.sent'));
 
     $message = ContactMessage::query()->sole();
@@ -48,13 +48,13 @@ it('shows the short contact form on other pages and returns to it after sending'
         ->assertSee('data-testid="contact-cta-form"', escape: false)
         ->assertSee(__('contact.quick.title'));
 
-    $this->from(route('faq'))
+    $this->from(route('legal.terms'))
         ->post(route('contact.store'), contactPayload(['phone' => null]))
-        ->assertRedirect(route('faq').'#kontaktny-formular');
+        ->assertRedirect(route('legal.terms').'#kontaktny-formular');
 
-    $this->from(route('faq'))
+    $this->from(route('legal.terms'))
         ->post(route('contact.store'), contactPayload(['message' => '']))
-        ->assertRedirect(route('faq').'#kontaktny-formular')
+        ->assertRedirect(route('legal.terms').'#kontaktny-formular')
         ->assertSessionHasErrors('message');
 
     expect(ContactMessage::query()->count())->toBe(1);
@@ -64,7 +64,7 @@ it('shows the short contact form on other pages and returns to it after sending'
 it('never redirects to a foreign host after sending', function () {
     $this->from('https://evil.example/stranka')
         ->post(route('contact.store'), contactPayload())
-        ->assertRedirect(route('contact.create').'#kontaktny-formular');
+        ->assertRedirect(route('home').'#kontaktny-formular');
 });
 
 it('needs no consent checkbox but shows the privacy notice and stores the phone', function () {
@@ -72,7 +72,6 @@ it('needs no consent checkbox but shows the privacy notice and stores the phone'
         ->assertSee(__('contact.fields.phone'))
         ->assertDontSee('name="consent"', escape: false)
         ->assertSee('Odoslaním správy beriete na vedomie');
-    $this->get(route('contact.create'))->assertDontSee('name="consent"', escape: false)->assertSee('Odoslaním správy beriete na vedomie');
 
     $this->post(route('contact.store'), contactPayload(['phone' => '+421 905 123 456']))->assertSessionHasNoErrors();
 

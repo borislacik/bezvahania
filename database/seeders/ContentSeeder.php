@@ -133,11 +133,7 @@ class ContentSeeder extends Seeder
     {
         $pages = [
             'home' => ['Prvá pomoc bez váhania – workshopy u vás doma', 'Praktické workshopy prvej pomoci pre 1 – 4 osoby priamo u vás doma alebo v kancelárii. KPR a AED, prvá pomoc pre rodiny, taktická prvá pomoc. Bratislava a okolie.'],
-            'workshops' => ['Workshopy prvej pomoci pre malé skupiny', 'Tri praktické workshopy prvej pomoci pre skupiny do 4 osôb: KPR a AED, civilná prvá pomoc a taktická prvá pomoc. Prídeme k vám domov.'],
             'booking' => ['Rezervácia termínu workshopu', 'Vyberte si voľný termín workshopu prvej pomoci v kalendári – doobeda alebo poobede, u vás doma v Bratislave a okolí.'],
-            'about' => ['O lektorovi', 'Workshopy vedie profesionálny hasič a záchranár s praxou zo zásahov. Zistite, prečo sa v malej skupine naučíte viac.'],
-            'faq' => ['Časté otázky o workshopoch', 'Odpovede na najčastejšie otázky o domácich workshopoch prvej pomoci: priestor, deti, platba, oblasť pôsobenia.'],
-            'contact' => ['Kontakt', 'Napíšte alebo zavolajte – workshopy prvej pomoci pre rodiny, priateľov aj firmy v Bratislave a okolí.'],
             'privacy' => ['Ochrana osobných údajov', 'Informácie o spracúvaní osobných údajov pri rezervácii workshopu a kontaktnom formulári.'],
             'terms' => ['Podmienky rezervácie', 'Podmienky rezervácie a zrušenia workshopov prvej pomoci Bez váhania.'],
             'cookies' => ['Zásady používania cookies', 'Aké cookies používame a ako môžete zmeniť svoj súhlas.'],

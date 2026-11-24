@@ -18,12 +18,8 @@ it('renders every public page', function (string $route, array $parameters = [])
         ->assertHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
 })->with([
     'home' => ['home'],
-    'workshops' => ['workshops.index'],
     'workshop detail' => ['workshops.show', ['course' => 'kpr-a-aed']],
     'booking' => ['booking.create'],
-    'about' => ['about'],
-    'faq' => ['faq'],
-    'contact' => ['contact.create'],
     'privacy' => ['legal.privacy'],
     'terms' => ['legal.terms'],
     'cookies' => ['legal.cookies'],
@@ -36,12 +32,44 @@ it('shows the contact phone and e-mail, never the automatic booking address', fu
         ->assertSee('href="tel:+421915918386"', escape: false)
         ->assertSee('href="mailto:info@bezvahania.sk"', escape: false)
         ->assertDontSee('rezervacie@bezvahania.sk');
-})->with(['home', 'contact.create', 'faq']);
+})->with(['home', 'booking.create', 'legal.terms']);
+
+it('is a one-pager: the menu links to home page sections from every page', function (string $route, array $parameters = []) {
+    $response = $this->get(route($route, $parameters))->assertOk();
+
+    foreach (['workshopy', 'lektor', 'otazky', 'kontakt'] as $section) {
+        $response->assertSee('href="http://bezvahania.localhost#'.$section.'"', escape: false);
+    }
+})->with([
+    'home' => ['home'],
+    'booking' => ['booking.create'],
+    'workshop detail' => ['workshops.show', ['course' => 'kpr-a-aed']],
+    'legal' => ['legal.privacy'],
+]);
+
+it('has a section for every menu item on the home page', function () {
+    $response = $this->get(route('home'))->assertOk();
+
+    foreach (['workshopy', 'lektor', 'otazky', 'kontakt'] as $section) {
+        $response->assertSee('id="'.$section.'"', escape: false);
+    }
+});
+
+it('redirects the former separate pages to their home page section', function (string $path, string $section) {
+    $this->get('http://bezvahania.localhost'.$path)
+        ->assertStatus(301)
+        ->assertRedirect('http://bezvahania.localhost/#'.$section);
+})->with([
+    ['/workshopy', 'workshopy'],
+    ['/o-lektorovi', 'lektor'],
+    ['/caste-otazky', 'otazky'],
+    ['/kontakt', 'kontakt'],
+]);
 
 it('shows active workshops and hides inactive ones', function () {
     $inactive = Course::factory()->inactive()->create(['name' => 'Skrytý workshop']);
 
-    $this->get(route('workshops.index'))
+    $this->get(route('home'))
         ->assertOk()
         ->assertSee('KPR a záchrana života s AED')
         ->assertDontSee('Skrytý workshop');
@@ -58,13 +86,14 @@ it('renders the workshop detail with Course structured data', function () {
         ->assertSee(route('booking.create', ['workshop' => 'kpr-a-aed']), escape: false);
 });
 
-it('renders the FAQ with FAQPage structured data', function () {
-    $faq = Faq::query()->firstOrFail();
+it('shows all FAQs on the home page with FAQPage structured data', function () {
+    $response = $this->get(route('home'))->assertOk()->assertSee('"@type":"FAQPage"', escape: false);
 
-    $this->get(route('faq'))
-        ->assertOk()
-        ->assertSee(e($faq->question), escape: false)
-        ->assertSee('"@type":"FAQPage"', escape: false);
+    foreach (Faq::query()->active()->get() as $faq) {
+        $response->assertSee(e($faq->question), escape: false);
+    }
+
+    expect(Faq::query()->active()->count())->toBeGreaterThan(4);
 });
 
 it('renders legal page content from the admin and a fallback when empty', function () {
@@ -82,9 +111,11 @@ it('serves a sitemap with all public pages and workshops', function () {
         ->assertOk()
         ->assertHeader('Content-Type', 'application/xml; charset=UTF-8');
 
-    foreach (['home', 'workshops.index', 'booking.create', 'about', 'faq', 'contact.create', 'legal.privacy'] as $route) {
+    foreach (['home', 'booking.create', 'legal.privacy', 'legal.terms', 'legal.cookies'] as $route) {
         $response->assertSee('<loc>'.route($route).'</loc>', escape: false);
     }
+
+    $response->assertDontSee('/o-lektorovi')->assertDontSee('/caste-otazky')->assertDontSee('/kontakt<');
 
     $response->assertSee('<loc>'.route('workshops.show', 'kpr-a-aed').'</loc>', escape: false);
 });
@@ -105,9 +136,9 @@ it('does not index pages outside production', function () {
 });
 
 it('redirects www to the bare domain', function () {
-    $this->get('http://www.bezvahania.localhost/workshopy?x=1')
+    $this->get('http://www.bezvahania.localhost/cookies?x=1')
         ->assertStatus(301)
-        ->assertRedirect('http://bezvahania.localhost/workshopy?x=1');
+        ->assertRedirect('http://bezvahania.localhost/cookies?x=1');
 });
 
 it('sends HSTS only over HTTPS', function () {

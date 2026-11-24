@@ -56,9 +56,11 @@ Enums: `TimeSlot` (doobeda 9 – 13, poobede 15 – 19), `BookingStatus` (confir
 4. Presmerovanie na podpísanú adresu potvrdenia (`booking.show`).
 
 ## Verejné routy (`routes/web.php`, doména `APP_DOMAIN`)
-`/`, `/workshopy`, `/workshopy/{slug}`, `/rezervacia` (GET/POST), `/rezervacia/{číslo}` (podpísaná),
-`/o-lektorovi`, `/caste-otazky`, `/kontakt` (GET/POST), `/ochrana-osobnych-udajov`, `/podmienky-rezervacie`,
-`/cookies`, `/sitemap.xml`, `/robots.txt`. Health check `/up`.
+Web je one-pager ([ADR 0007](adr/0007-one-page-website.md)): úvodná stránka `/` so sekciami `#workshopy`,
+`#lektor`, `#otazky`, `#kontakt`, ďalej `/workshopy/{slug}` (detail), `/rezervacia` (GET/POST),
+`/rezervacia/{číslo}` (podpísaná), `POST /kontakt`, `/ochrana-osobnych-udajov`, `/podmienky-rezervacie`, `/cookies`,
+`/sitemap.xml`, `/robots.txt`. Bývalé `/workshopy`, `/o-lektorovi`, `/caste-otazky`, `/kontakt` (GET) presmerúvajú 301
+na sekcie. Health check `/up`.
 
 ## Plánované úlohy (`routes/console.php`)
 `model:prune` (správy z formulára), `app:anonymize-bookings` (rezervácie po 3 rokoch), na produkcii aj

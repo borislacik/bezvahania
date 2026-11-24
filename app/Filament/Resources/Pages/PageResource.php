@@ -16,6 +16,7 @@ use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Builder;
 
 /**
  * SEO metadata and texts of the fixed public pages. Pages cannot be created or deleted.
@@ -43,6 +44,16 @@ class PageResource extends Resource
     public static function getNavigationGroup(): string
     {
         return __('admin.groups.content');
+    }
+
+    /**
+     * Only pages that still exist (keys in Page::KEYS); rows of former pages stay in the database but are hidden.
+     *
+     * @return Builder<Page>
+     */
+    public static function getEloquentQuery(): Builder
+    {
+        return parent::getEloquentQuery()->whereIn('key', array_keys(Page::KEYS));
     }
 
     public static function canCreate(): bool

@@ -22,6 +22,10 @@ verzie podľa git tagov z deployov (`vRRRR.MM.DD-N`).
 - Docker služby `queue` a `scheduler`, ukážkové dáta (`migrate --seed`).
 - Testy: 114 Unit/Feature (pokrytie 97 %) a 8 browser testov (rezervácia, plný termín, admin, všetky stránky).
 
+### Zmenené – štruktúra webu
+- Web je jedna stránka: menu skroluje na sekcie úvodnej stránky (aj z rezervácie, detailu workshopu a právnych stránok), aktívna sekcia sa zvýrazní.
+- Zrušené samostatné stránky Workshopy, O lektorovi, Časté otázky a Kontakt; ich adresy presmerúvajú (301) na sekcie. Na úvodnej stránke sú všetky časté otázky.
+
 ### Zmenené – kontakt
 - Pätička bez bloku „Užitočné odkazy“ (odkazy sú v hlavnom menu).
 - Text kontaktného bloku: „malej firme“ → „firemnému tímu“.

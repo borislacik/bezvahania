@@ -225,7 +225,7 @@
     </section>
 
     {{-- WORKSHOPS --}}
-    <section class="section bg-surface" id="workshopy">
+    <section class="section bg-surface" id="{{ \App\Support\HomeSections::WORKSHOPS }}">
         <div class="container-page">
             <x-site.section-heading
                 icon="school"
@@ -243,7 +243,7 @@
 
     {{-- INSTRUCTOR --}}
     @if ($instructor)
-        <section class="section bg-surface-container-low" id="lektor">
+        <section class="section bg-surface-container-low" id="{{ \App\Support\HomeSections::INSTRUCTOR }}">
             <div class="container-page">
                 <x-site.instructor :member="$instructor" />
             </div>
@@ -270,7 +270,7 @@
 
     {{-- FAQ --}}
     @if ($faqs->isNotEmpty())
-        <section class="section bg-surface-container-low" id="otazky">
+        <section class="section bg-surface-container-low" id="{{ \App\Support\HomeSections::FAQ }}">
             <div class="container-page">
                 <x-site.section-heading
                     icon="help"
@@ -278,17 +278,10 @@
                     :title="__('site.home.faq_title')"
                 />
                 <x-site.faq-list :faqs="$faqs" />
-                <p class="mt-8 text-center">
-                    <a
-                        href="{{ route('faq') }}"
-                        class="text-primary font-heading text-label-lg font-semibold underline"
-                        >{{ __('site.home.faq_more') }}</a
-                    >
-                </p>
             </div>
         </section>
     @endif
 
-    {{-- CONTACT CTA --}}
-    <x-site.contact-cta />
+    {{-- CONTACT --}}
+    <x-site.contact-cta :id="\App\Support\HomeSections::CONTACT" />
 </x-layouts.public>

@@ -1,14 +1,28 @@
 @php
-    $links = [
-        ['route' => 'workshops.index', 'label' => __('site.nav.workshops'), 'active' => 'workshops.*'],
-        ['route' => 'about', 'label' => __('site.nav.about'), 'active' => 'about'],
-        ['route' => 'faq', 'label' => __('site.nav.faq'), 'active' => 'faq'],
-        ['route' => 'contact.create', 'label' => __('site.nav.contact'), 'active' => 'contact.*'],
-    ];
+    // One-page navigation: every menu item scrolls to a section of the home page (also from other pages).
+    $links = collect(\App\Support\HomeSections::MENU)->map(fn (string $section, string $label) => [
+        'section' => $section,
+        'href' => \App\Support\HomeSections::url($section),
+        'label' => __("site.nav.{$label}"),
+    ]);
+    $onHome = request()->routeIs('home');
 @endphp
 
 <header
-    x-data="{ menu: false }"
+    x-data="{
+        menu: false,
+        active: null,
+        init() {
+            if (! @js($onHome)) return;
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => { if (entry.isIntersecting) this.active = entry.target.id });
+            }, { rootMargin: '-45% 0px -50% 0px' });
+            @js($links->pluck('section')).forEach((id) => {
+                const section = document.getElementById(id);
+                if (section) observer.observe(section);
+            });
+        },
+    }"
     @keydown.escape.window="menu = false"
     class="bg-surface/90 fixed inset-x-0 top-0 z-50 shadow-[0_1px_8px_rgba(0,0,0,0.04)] backdrop-blur-xl"
 >
@@ -18,13 +32,10 @@
         <nav aria-label="{{ __('site.nav.label') }}" class="hidden items-center gap-6 lg:flex">
             @foreach ($links as $link)
                 <a
-                    href="{{ route($link['route']) }}"
-                    @class ([
-                        'font-heading text-label-lg transition-colors',
-                        'text-primary font-semibold' => request()->routeIs($link['active']),
-                        'text-on-surface-variant hover:text-on-surface' => ! request()->routeIs($link['active']),
-                    ])
-                    @if (request()->routeIs($link['active'])) aria-current="page" @endif
+                    href="{{ $link['href'] }}"
+                    class="font-heading text-label-lg transition-colors"
+                    :class="active === '{{ $link['section'] }}' ? 'text-primary font-semibold' : 'text-on-surface-variant hover:text-on-surface'"
+                    data-nav="{{ $link['section'] }}"
                 >
                     {{ $link['label'] }}
                 </a>
@@ -63,12 +74,10 @@
         <div class="container-page flex flex-col gap-1 py-4">
             @foreach ($links as $link)
                 <a
-                    href="{{ route($link['route']) }}"
-                    @class ([
-                        'font-heading rounded-lg px-3 py-3 text-headline-sm',
-                        'text-primary bg-surface-container-low' => request()->routeIs($link['active']),
-                        'text-on-surface hover:bg-surface-container-low' => ! request()->routeIs($link['active']),
-                    ])
+                    href="{{ $link['href'] }}"
+                    @click="menu = false"
+                    class="font-heading text-headline-sm rounded-lg px-3 py-3"
+                    :class="active === '{{ $link['section'] }}' ? 'text-primary bg-surface-container-low' : 'text-on-surface hover:bg-surface-container-low'"
                 >
                     {{ $link['label'] }}
                 </a>

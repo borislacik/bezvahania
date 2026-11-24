@@ -48,13 +48,12 @@ menia v admine (**Nastavenia → Kontakt a prevádzkovateľ**).
 Lokálne ich zachytáva Mailpit (http://localhost:8025), frontu spracúva služba `queue`.
 
 ## Kontaktné formuláre
-- Plný formulár na stránke **Kontakt** (meno, e-mail, telefón nepovinne, správa).
-- Krátky formulár v bloku „Máte špecifické požiadavky alebo firmu?“ na ostatných stránkach
-  (`components/site/contact-cta.blade.php`): meno, e-mail, telefón (nepovinne), správa.
+- Formulár v bloku „Máte špecifické požiadavky alebo firmu?“ (`components/site/contact-cta.blade.php`), na úvodnej
+  stránke je to sekcia `#kontakt`, zobrazuje sa aj na detaile workshopu: meno, e-mail, telefón (nepovinne), správa.
 - Kontaktné formuláre **nemajú zaškrtávacie pole súhlasu**, iba informačnú vetu o spracovaní osobných údajov
   (`components/site/privacy-notice.blade.php`). `consent_at` pri správe zaznamenáva čas odoslania s touto informáciou.
   Rezervačný formulár zaškrtávacie pole má (súhlas s podmienkami rezervácie).
-- Oba posielajú na `contact.store`: správa sa uloží do admina (**Správy z webu**) a príde e-mailom na
+- Posiela na `contact.store` (`POST /kontakt`): správa sa uloží do admina (**Správy z webu**) a príde e-mailom na
   `notification_email` (predvolene `info@bezvahania.sk`) s Reply-To na odosielateľa.
 - Po odoslaní (aj pri chybe) sa návštevník vráti na tú istú stránku k formuláru `#kontaktny-formular`
   (`App\Support\ContactRedirect`, iba v rámci vlastnej domény).

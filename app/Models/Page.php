@@ -29,11 +29,7 @@ class Page extends Model
     /** Page keys mapped to the route each one belongs to. */
     public const KEYS = [
         'home' => 'home',
-        'workshops' => 'workshops.index',
         'booking' => 'booking.create',
-        'about' => 'about',
-        'faq' => 'faq',
-        'contact' => 'contact.create',
         'privacy' => 'legal.privacy',
         'terms' => 'legal.terms',
         'cookies' => 'legal.cookies',

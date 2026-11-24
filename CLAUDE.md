@@ -73,6 +73,7 @@ Fázy podľa `docs/brief.md` (sekcia 11), upravené v `docs/decisions.md`: overe
 lokálnej verzie. Po každom väčšom celku sa zastav, zhrň a počkaj na „pokračuj“.
 
 ## Praktické poznámky
+- Web je one-pager (ADR 0007): menu = sekcie úvodnej stránky (`App\Support\HomeSections`). Samostatné stránky iba rezervácia, detail workshopu, právne.
 - Ikony: `<x-site.icon name="…" />` (SVG v `resources/svg/icons`). `<x-icon>` patrí Filamentu (blade-icons).
 - Tailwind 4: triedy použité v `@apply` iných tried definuj cez `@utility`, nie v `@layer components`.
 - Lokálny admin: `admin@bezvahania.localhost` / `password` (seeder, iba `local`).

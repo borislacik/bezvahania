@@ -1,4 +1,6 @@
-<section class="section bg-surface">
+@props (['id' => null])
+
+<section class="section bg-surface" @if ($id) id="{{ $id }}" @endif>
     <div class="container-page">
         <div
             class="bg-inverse-surface text-inverse-on-surface grid gap-10 rounded-2xl p-8 shadow-xl lg:grid-cols-2 lg:p-12"

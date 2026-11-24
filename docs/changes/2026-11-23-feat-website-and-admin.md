@@ -54,6 +54,14 @@ Text v ľavej časti bloku: „malej firme“ zmenené na „firemnému tímu“
 
 Pätička: odstránený blok „Užitočné odkazy“, odkazy sú v hlavnom menu (24. 11. 2026).
 
+### Web ako jedna stránka (24. 11. 2026)
+Požiadavka: „Odkazy z menu nebudú presmerovávať na samostatné stránky, ale skrolovať na príslušnú sekciu na hlavnej
+stránke. Z rezervácie budú odkazy menu odkazovať na príslušnú sekciu na hlavnej stránke.“ Doplnené: ponechať detaily
+workshopov a právne stránky. Riešenie a dôsledky: [ADR 0007](../adr/0007-one-page-website.md). Zmazané šablóny
+`pages/about`, `pages/faq`, `pages/contact`, `pages/workshops/index`; nové `App\Support\HomeSections`;
+`ContactController` má iba `store`. Testy: menu odkazy zo všetkých stránok, sekcie na úvode, 301 presmerovania,
+browser test skrolovania z rezervácie.
+
 ### Stabilita browser testov
 `composer test:browser` pred testami skompiluje šablóny (`view:cache`). Pri studenom štarte sa inak pri prvom
 prihlásení do adminu kompilovali všetky Filament šablóny a test prekročil časový limit.

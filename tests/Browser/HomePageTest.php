@@ -21,7 +21,7 @@ it('loads the self-hosted brand fonts', function () {
 });
 
 it('renders every public page without JavaScript errors', function () {
-    $pages = visit(['/', '/workshopy', '/workshopy/kpr-a-aed', '/rezervacia', '/o-lektorovi', '/caste-otazky', '/kontakt', '/ochrana-osobnych-udajov', '/podmienky-rezervacie', '/cookies']);
+    $pages = visit(['/', '/workshopy/kpr-a-aed', '/rezervacia', '/ochrana-osobnych-udajov', '/podmienky-rezervacie', '/cookies']);
 
     $pages->assertNoJavaScriptErrors()->assertNoConsoleLogs();
 });
@@ -50,4 +50,22 @@ it('sends a message from the contact box on the home page', function () {
         ->assertNoJavaScriptErrors();
 
     expect(ContactMessage::query()->where('email', 'jan@example.com')->value('phone'))->toBe('+421 905 111 222');
+});
+
+it('scrolls to the home page section from the menu, also from another page', function () {
+    $page = visit('/rezervacia')
+        ->click('[data-cookie-reject]')
+        ->click('header nav [data-nav="otazky"]')
+        ->assertPathIs('/')
+        ->assertSee(__('site.home.faq_title'));
+
+    $page->wait(1);
+    $top = $page->script("() => Math.round(document.getElementById('otazky').getBoundingClientRect().top)");
+    expect($top)->toBeLessThan(200)->toBeGreaterThan(-50);
+
+    $page->click('header nav [data-nav="kontakt"]');
+    $page->wait(1);
+    $top = $page->script("() => Math.round(document.getElementById('kontakt').getBoundingClientRect().top)");
+    expect($top)->toBeLessThan(200)->toBeGreaterThan(-50);
+    $page->assertNoJavaScriptErrors();
 });
