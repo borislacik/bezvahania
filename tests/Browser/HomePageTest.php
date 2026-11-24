@@ -87,7 +87,7 @@ it('adds up the pillars while scrolling and lands on the workshops from the menu
         () => {
             const strip = document.querySelector('[data-testid="pillars"] .bg-inverse-surface');
             const pillars = document.getElementById('preco');
-            const start = pillars.getBoundingClientRect().top + window.scrollY - window.innerHeight * 0.25;
+            const start = pillars.getBoundingClientRect().top + window.scrollY - window.innerHeight * 0.3;
             const at = (y) => {
                 window.scrollTo({ top: y, behavior: 'instant' });
                 window.dispatchEvent(new Event('scroll'));

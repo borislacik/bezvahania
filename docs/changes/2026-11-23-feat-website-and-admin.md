@@ -105,8 +105,8 @@ workshop?“ (`ContentSeeder`). Piliere sa už nepodobajú na karty workshopov: 
 - Bez JavaScriptu alebo s obmedzením pohybu (`prefers-reduced-motion`): všetko statické a viditeľné.
 - Odkaz „Workshopy“ v menu: počas spomalenia by prehliadač vypočítal zlú pozíciu kotvy, preto komponent skroluje
   na miesto, kde sekcia skončí po spomalení (kliknutie aj príchod z inej stránky s `#workshopy`).
-- Začiatok efektu je skôr: sekcia sa „prilepí“, keď je jej vrch v 25 % výšky obrazovky (predtým hneď pod hlavičkou,
-  asi 10 %). Hodnotu si používateľ vyskúšal cez dočasné nastavenie v admine; po výbere je zapísaná v komponente
+- Začiatok efektu je skôr: sekcia sa „prilepí“, keď je jej vrch v 30 % výšky obrazovky (predtým hneď pod hlavičkou,
+  asi 10 %). Hodnotu si používateľ vyskúšal cez dočasné nastavenie v admine (25 %, potom upravené na 30 %); je zapísaná v komponente
   a nastavenie z admina je odstránené.
 - Tmavý pruh „Kritický čas“ nad piliermi je súčasťou spomaleného bloku (slot `before`), takže pri začiatku
   spomalenia „neodskočí“ hore, ale pomaly zájde pod hlavičku rovnakou rýchlosťou ako piliere.
