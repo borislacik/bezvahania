@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\ContactMessage;
+
 it('shows the home page without JavaScript errors', function () {
     visit('/')
         ->assertSee(__('site.home.title_highlight'))
@@ -34,4 +36,18 @@ it('stores the cookie choice and keeps analytics off after rejecting', function 
 
     expect($consent['analytics'])->toBeFalse()
         ->and($page->script('() => window.__bvGaLoaded === true'))->toBeFalse();
+});
+
+it('sends a message from the contact box on the home page', function () {
+    visit('/')
+        ->click('[data-cookie-reject]')
+        ->type('#cta-name', 'Ján Návštevník')
+        ->type('#cta-email', 'jan@example.com')
+        ->type('#cta-message', 'Dobrý deň, mali by ste voľno aj v sobotu?')
+        ->check('#kontaktny-formular input[name="consent"]')
+        ->press(__('contact.submit'))
+        ->assertSee(__('contact.sent'))
+        ->assertNoJavaScriptErrors();
+
+    expect(ContactMessage::query()->where('email', 'jan@example.com')->exists())->toBeTrue();
 });

@@ -64,6 +64,8 @@ return [
         'not_selected' => 'nevybrané',
     ],
 
+    'consent_required' => 'Pred rezerváciou potvrďte súhlas s podmienkami rezervácie a spracovaním osobných údajov.',
+
     'submit' => 'Záväzne rezervovať workshop',
     'payment_note' => 'Platba až po skončení workshopu, v hotovosti alebo kartou.',
 

@@ -30,8 +30,9 @@ it('shows the contact page with details from the settings', function () {
 it('stores the message and notifies the operator', function () {
     Setting::put(['notification_email' => 'majitel@example.com']);
 
-    $this->post(route('contact.store'), contactPayload())
-        ->assertRedirect(route('contact.create'))
+    $this->from(route('contact.create'))
+        ->post(route('contact.store'), contactPayload())
+        ->assertRedirect(route('contact.create').'#kontaktny-formular')
         ->assertSessionHas('status', __('contact.sent'));
 
     $message = ContactMessage::query()->sole();
@@ -40,6 +41,36 @@ it('stores the message and notifies the operator', function () {
         ->and($message->handled_at)->toBeNull();
 
     Mail::assertQueued(ContactMessageAdminMail::class, fn ($mail) => $mail->hasTo('majitel@example.com') && $mail->hasReplyTo('jana@example.com'));
+});
+
+it('shows the short contact form on other pages and returns to it after sending', function () {
+    $this->get(route('home'))
+        ->assertOk()
+        ->assertSee('data-testid="contact-cta-form"', escape: false)
+        ->assertSee(__('contact.quick.title'));
+
+    $this->from(route('faq'))
+        ->post(route('contact.store'), contactPayload(['phone' => null]))
+        ->assertRedirect(route('faq').'#kontaktny-formular');
+
+    $this->from(route('faq'))
+        ->post(route('contact.store'), contactPayload(['message' => '']))
+        ->assertRedirect(route('faq').'#kontaktny-formular')
+        ->assertSessionHasErrors('message');
+
+    expect(ContactMessage::query()->count())->toBe(1);
+    Mail::assertQueued(ContactMessageAdminMail::class, fn ($mail) => $mail->hasTo('info@bezvahania.sk'));
+});
+
+it('never redirects to a foreign host after sending', function () {
+    $this->from('https://evil.example/stranka')
+        ->post(route('contact.store'), contactPayload())
+        ->assertRedirect(route('contact.create').'#kontaktny-formular');
+});
+
+it('explains a missing consent in a friendly way', function () {
+    $this->post(route('contact.store'), contactPayload(['consent' => null]))
+        ->assertSessionHasErrors(['consent' => __('contact.consent_required')]);
 });
 
 it('validates the contact form', function (array $overrides, string $field) {

@@ -47,6 +47,15 @@ menia v admine (**Nastavenia → Kontakt a prevádzkovateľ**).
 
 Lokálne ich zachytáva Mailpit (http://localhost:8025), frontu spracúva služba `queue`.
 
+## Kontaktné formuláre
+- Plný formulár na stránke **Kontakt** (meno, e-mail, telefón nepovinne, správa).
+- Krátky formulár v bloku „Máte špecifické požiadavky alebo firmu?“ na ostatných stránkach
+  (`components/site/contact-cta.blade.php`): meno, e-mail, správa.
+- Oba posielajú na `contact.store`: správa sa uloží do admina (**Správy z webu**) a príde e-mailom na
+  `notification_email` (predvolene `info@bezvahania.sk`) s Reply-To na odosielateľa.
+- Po odoslaní (aj pri chybe) sa návštevník vráti na tú istú stránku k formuláru `#kontaktny-formular`
+  (`App\Support\ContactRedirect`, iba v rámci vlastnej domény).
+
 ## Ochrana formulárov
 - Rate limit: rezervácia 5 za minútu, kontakt 3 za minútu (na IP).
 - Honeypot pole `website` (skryté, vyplnené = odmietnuté).

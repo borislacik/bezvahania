@@ -39,6 +39,13 @@ v rezervačnom systéme.“ Zmenené predvolené nastavenia (`Setting::DEFAULTS`
 poznámka o odosielateľovi v admine, placeholder telefónu vo formulári (`+421 9xx xxx xxx`). Testy overujú, že
 `rezervacie@` sa na webe nezobrazuje.
 
+### Kontaktný formulár v kontaktnom bloku (24. 11. 2026)
+Požiadavka: „Ľavú polovicu nechaj ako je. Pravú polovicu vymeň celú za kontaktný formulár, kde bude môcť užívateľ
+napísať správu, ktorá mi príde do správ v admine a zároveň na info@bezvahania.sk. Polia budú meno, e-mail a správa.“
+Riešenie: pravá časť `contact-cta` je formulár s rovnakou logikou ako stránka Kontakt (`SendContactMessage`),
+navyše súhlas so spracovaním údajov (GDPR) a honeypot. Návrat na pôvodnú stránku k formuláru (`ContactRedirect`),
+po načítaní sa stránka posunie k formuláru s chybou alebo potvrdením. Komponent `site.field` dostal `idPrefix` a `rows`.
+
 ## Dotknuté časti
 - Migrácie: MFA stĺpce v `users`, `courses`, `blocked_days`, `bookings`, `team_members`, `faqs`, `testimonials`,
   `pages`, `settings`, `contact_messages`.

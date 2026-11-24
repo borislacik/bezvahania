@@ -152,13 +152,6 @@ return [
         'contact_eyebrow' => 'Osobná konzultácia',
         'contact_title' => 'Máte špecifické požiadavky alebo firmu?',
         'contact_text' => 'Workshop prispôsobíme vašej rodine, malej firme či športovému klubu. Zavolajte alebo napíšte, odpoviem obratom.',
-        'guarantee_title' => 'Garancia Bez váhania',
-        'guarantees' => [
-            'Platba až po skončení workshopu – v hotovosti alebo kartou',
-            'Doprava do 60 km od Bratislavy je v cene',
-            'Osvedčenie o absolvovaní pre každého účastníka',
-        ],
-        'guarantee_cta' => 'Vybrať voľný termín v kalendári',
     ],
 
     'workshops' => [

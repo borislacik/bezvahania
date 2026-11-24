@@ -32,6 +32,14 @@ class StoreBookingRequest extends FormRequest
     /**
      * @return array<string, string>
      */
+    public function messages(): array
+    {
+        return ['consent.accepted' => __('booking.consent_required')];
+    }
+
+    /**
+     * @return array<string, string>
+     */
     public function attributes(): array
     {
         return [

@@ -33,23 +33,84 @@
                     </li>
                 </ul>
             </div>
-            <div class="flex flex-col justify-between gap-6 rounded-xl bg-white/5 p-6">
-                <div>
-                    <h3 class="text-headline-sm mb-4 font-bold">{{ __('site.home.guarantee_title') }}</h3>
-                    <ul class="flex flex-col gap-3">
-                        @foreach (__('site.home.guarantees') as $guarantee)
-                            <li class="text-body-md flex items-start gap-3">
-                                <x-site.icon name="check" class="text-inverse-primary mt-0.5 size-5" />
-                                {{ $guarantee }}
-                            </li>
-                        @endforeach
-                    </ul>
+            <form
+                id="kontaktny-formular"
+                x-data
+                x-init="$el.querySelector('.field-error, [role=status]') && $el.scrollIntoView({ block: 'center' })"
+                method="POST"
+                action="{{ route('contact.store') }}"
+                novalidate
+                class="bg-surface-container-lowest text-on-surface flex scroll-mt-28 flex-col gap-4 rounded-xl p-6 shadow-lg"
+                data-testid="contact-cta-form"
+            >
+                @csrf
+                <h3 class="text-headline-sm font-bold">{{ __('contact.quick.title') }}</h3>
+
+                @if (session('status'))
+                    <div class="bg-success-container text-success flex items-center gap-3 rounded-xl p-4" role="status">
+                        <x-site.icon name="check_circle" class="size-6" />
+                        <p class="text-body-md font-semibold">{{ session('status') }}</p>
+                    </div>
+                @endif
+
+                <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                    <x-site.field
+                        id-prefix="cta"
+                        name="name"
+                        :label="__('contact.fields.name')"
+                        autocomplete="name"
+                        required
+                    />
+                    <x-site.field
+                        id-prefix="cta"
+                        name="email"
+                        type="email"
+                        :label="__('contact.fields.email')"
+                        autocomplete="email"
+                        required
+                    />
                 </div>
-                <a href="{{ route('booking.create') }}" class="btn-primary">
-                    {{ __('site.home.guarantee_cta') }}
-                    <x-site.icon name="calendar_today" class="size-5" />
-                </a>
-            </div>
+                <x-site.field
+                    id-prefix="cta"
+                    name="message"
+                    type="textarea"
+                    rows="4"
+                    :label="__('contact.fields.message')"
+                    :placeholder="__('contact.quick.placeholder')"
+                    required
+                />
+
+                {{-- Honeypot --}}
+                <div class="hidden" aria-hidden="true">
+                    <input type="text" name="website" tabindex="-1" autocomplete="off" />
+                </div>
+
+                <div>
+                    <label class="text-body-sm text-on-surface flex items-start gap-3">
+                        <input
+                            type="checkbox"
+                            name="consent"
+                            value="1"
+                            class="accent-primary-container mt-0.5 size-5 shrink-0"
+                            @checked (old('consent'))
+                            required
+                        />
+                        <span>
+                            {!! __('contact.fields.consent', [
+                                'privacy' => '<a class="text-primary underline" href="'.route('legal.privacy').'" target="_blank">'.e(__('contact.fields.consent_privacy')).'</a>',
+                            ]) !!}
+                        </span>
+                    </label>
+                    @error ('consent')
+                        <p class="field-error">{{ $message }}</p>
+                    @enderror
+                </div>
+
+                <button type="submit" class="btn-primary w-full">
+                    {{ __('contact.submit') }}
+                    <x-site.icon name="arrow_forward" class="size-5" />
+                </button>
+            </form>
         </div>
     </div>
 </section>

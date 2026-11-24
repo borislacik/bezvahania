@@ -22,6 +22,10 @@ verzie podľa git tagov z deployov (`vRRRR.MM.DD-N`).
 - Docker služby `queue` a `scheduler`, ukážkové dáta (`migrate --seed`).
 - Testy: 114 Unit/Feature (pokrytie 97 %) a 8 browser testov (rezervácia, plný termín, admin, všetky stránky).
 
+### Zmenené – kontakt
+- Blok „Garancia Bez váhania“ v kontaktnom bloku nahradil krátky kontaktný formulár (meno, e-mail, správa); správa ide do admina aj na info@bezvahania.sk.
+- Zrozumiteľnejšie hlásenie pri chýbajúcom súhlase vo formulároch.
+
 ### Opravené
 - Kontakt na webe: telefón +421 915 918 386 a e-mail info@bezvahania.sk; rezervacie@bezvahania.sk iba ako odosielateľ automatických e-mailov, odpovede zákazníkov idú na info@.
 - Admin po chvíli odhlásil používateľa: middleware session a cookies sa pri Livewire požiadavkách spúšťali dvakrát.

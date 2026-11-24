@@ -46,10 +46,13 @@
 
             <div class="lg:col-span-7">
                 <form
+                    id="kontaktny-formular"
+                    x-data
+                    x-init="$el.querySelector('.field-error, [role=status]') && $el.scrollIntoView({ block: 'center' })"
                     method="POST"
                     action="{{ route('contact.store') }}"
                     novalidate
-                    class="card flex flex-col gap-4 p-6 lg:p-8"
+                    class="card flex scroll-mt-28 flex-col gap-4 p-6 lg:p-8"
                     data-testid="contact-form"
                 >
                     @csrf

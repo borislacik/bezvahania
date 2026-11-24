@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Support\ContactRedirect;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreContactMessageRequest extends FormRequest
@@ -20,6 +21,22 @@ class StoreContactMessageRequest extends FormRequest
             // Honeypot: real visitors never fill this hidden field.
             'website' => ['prohibited'],
         ];
+    }
+
+    /**
+     * After a validation error go back to the form the visitor used (contact page or the box on other pages).
+     */
+    protected function getRedirectUrl(): string
+    {
+        return ContactRedirect::back();
+    }
+
+    /**
+     * @return array<string, string>
+     */
+    public function messages(): array
+    {
+        return ['consent.accepted' => __('contact.consent_required')];
     }
 
     /**

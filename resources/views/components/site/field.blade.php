@@ -1,34 +1,40 @@
-@props (['name', 'label', 'type' => 'text', 'placeholder' => null, 'required' => false])
+@props (['name', 'label', 'type' => 'text', 'placeholder' => null, 'required' => false, 'rows' => 3, 'idPrefix' => 'field'])
+
+@php
+    $id = $idPrefix.'-'.$name;
+    $errorId = $idPrefix.'-error-'.$name;
+@endphp
 
 <div>
-    <label for="field-{{ $name }}" class="field-label"
+    <label for="{{ $id }}" class="field-label"
         >{{ $label }}
         @if ($required) *@endif
     </label>
     @if ($type === 'textarea')
         <textarea
-            id="field-{{ $name }}"
+            id="{{ $id }}"
             name="{{ $name }}"
-            rows="3"
+            rows="{{ $rows }}"
             placeholder="{{ $placeholder }}"
-            @if ($errors->has($name)) aria-invalid="true" aria-describedby="error-{{ $name }}" @endif
+            @if ($required) required @endif
+            @if ($errors->has($name)) aria-invalid="true" aria-describedby="{{ $errorId }}" @endif
             {{ $attributes->class(['field-input', 'border-error' => $errors->has($name)]) }}
             >{{ old($name) }}</textarea
         >
     @else
         <input
-            id="field-{{ $name }}"
+            id="{{ $id }}"
             type="{{ $type }}"
             name="{{ $name }}"
             value="{{ old($name) }}"
             placeholder="{{ $placeholder }}"
             @if ($required) required @endif
-            @if ($errors->has($name)) aria-invalid="true" aria-describedby="error-{{ $name }}" @endif
+            @if ($errors->has($name)) aria-invalid="true" aria-describedby="{{ $errorId }}" @endif
             {{ $attributes->class(['field-input', 'border-error' => $errors->has($name)]) }}
         />
     @endif
     {{ $slot }}
     @error ($name)
-        <p id="error-{{ $name }}" class="field-error">{{ $message }}</p>
+        <p id="{{ $errorId }}" class="field-error">{{ $message }}</p>
     @enderror
 </div>
