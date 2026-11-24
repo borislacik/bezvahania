@@ -40,6 +40,7 @@ class AdminPanelProvider extends PanelProvider
                 isRequired: (bool) config('auth.admin_mfa_required'),
             )
             ->brandName(__('admin.brand'))
+            ->favicon(asset('favicon.png'))
             ->colors([
                 'primary' => Color::hex('#e52320'),
                 'gray' => Color::Slate,

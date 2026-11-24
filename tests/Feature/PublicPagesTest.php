@@ -165,3 +165,19 @@ it('describes the group as 2 to 4 people everywhere', function () {
         ->toContain('value="2"')
         ->toContain('value="4"');
 });
+
+it('uses the logo image and the generated favicons', function () {
+    $this->withVite();
+
+    $this->get(route('home'))
+        ->assertOk()
+        ->assertSee('data-testid="site-logo"', escape: false)
+        ->assertSee('/favicon.ico', escape: false)
+        ->assertSee('/apple-touch-icon.png', escape: false);
+
+    foreach (['favicon.ico', 'favicon.png', 'apple-touch-icon.png'] as $file) {
+        expect(filesize(public_path($file)))->toBeGreaterThan(0);
+    }
+
+    expect(getimagesize(resource_path('images/logo.webp'))['mime'])->toBe('image/webp');
+})->skip(fn () => ! is_file(public_path('build/manifest.json')), 'needs built assets');

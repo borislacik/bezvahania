@@ -23,6 +23,14 @@ Každá stránka má:
 - Obrázky majú `width`, `height`, `loading="lazy"` (okrem hlavného obrázka na úvode, ten má `fetchpriority="high"`).
 - Test `PublicPagesTest` overuje, že všetky `<img>` na úvodnej stránke sú WebP.
 
+## Logo a favicon
+- Dočasné logo (finálne pripravuje grafik): zdroj `design/logo/docasne-logo-zdroj.jpg` (červený znak na čiernom).
+- `php scripts/make-logo.php <zdroj>` urobí čierne pozadie priehľadné (priehľadnosť podľa červeného kanála, bez tmavej
+  obruby), oreže znak na štvorec a vytvorí `resources/images/logo.webp` (web), `design/logo/logo.png` (master),
+  `public/favicon.ico` (16 + 32 px), `public/favicon.png` a `public/apple-touch-icon.png` (biele pozadie, iOS).
+- **Výnimka z pravidla WebP:** favicony sú ICO/PNG, lebo WebP ako favicon prehliadače nepodporujú spoľahlivo.
+- Pri finálnom logu stačí spustiť skript znova s novým zdrojom (pri inej farbe upraviť farbu v skripte).
+
 ## Písma a ikony bez tretích strán
 - Písma Space Grotesk a Work Sans sa pri builde stiahnu a servírujú z vlastnej domény (`@fonts`).
 - Ikony Material Symbols sú SVG súbory v `resources/svg/icons` (licencia Apache 2.0), komponent

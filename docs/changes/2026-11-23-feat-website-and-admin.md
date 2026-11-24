@@ -75,6 +75,12 @@ Hero obrázok (24. 11. 2026): odstránený popis na spodku obrázka, ktorý prek
 
 Slogan v logu (hlavička aj pätička): „Prvá pomoc, ktorú zvládneš“ (`site.brand_tagline`, 24. 11. 2026).
 
+### Dočasné logo a favicon (24. 11. 2026)
+Požiadavka: „Použi tento obrázok ako nové logo, bude dočasné. Všetko čo je čierne sprav priehľadné. Následne ho použi
+aj ako nový favicon.“ Skript `scripts/make-logo.php` (GD), výstupy pozri `docs/features/seo-and-images.md`.
+Logo nahradilo červený štvorec s ikonou (`components/site/logo`), favicon aj v admine (`->favicon()`), odstránený
+`public/favicon.svg`.
+
 ### Stabilita browser testov
 `composer test:browser` pred testami skompiluje šablóny (`view:cache`). Pri studenom štarte sa inak pri prvom
 prihlásení do adminu kompilovali všetky Filament šablóny a test prekročil časový limit.

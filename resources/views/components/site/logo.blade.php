@@ -1,11 +1,15 @@
 @props (['dark' => false])
 
-<a href="{{ route('home') }}" class="group flex items-center gap-2" aria-label="{{ config('app.name') }}">
-    <span
-        class="bg-primary-container text-on-primary-container flex size-10 items-center justify-center rounded-lg shadow-sm"
-    >
-        <x-site.icon name="medical_services" class="size-6" />
-    </span>
+<a href="{{ route('home') }}" class="group flex items-center gap-2.5" aria-label="{{ config('app.name') }}">
+    {{-- Temporary logo (design/logo), the final version comes from the designer. --}}
+    <img
+        src="{{ Vite::asset('resources/images/logo.webp') }}"
+        alt=""
+        width="512"
+        height="512"
+        class="size-11 shrink-0"
+        data-testid="site-logo"
+    />
     <span class="flex flex-col">
         <span
             @class ([

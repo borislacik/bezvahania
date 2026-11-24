@@ -22,6 +22,7 @@ workshopu a právne stránky. Pozri [ADR 0007](adr/0007-one-page-website.md).
 | Testy | **Pest 5** (zadanie uvádzalo Pest 4, medzitým vyšla nová major verzia). |
 | SEO | Plne pripravené a **editovateľné v admine** (titulok, popis, obrázok pre zdieľanie) pre každú stránku. |
 | Obrázky | **Všetky obrázky na webe sú WebP.** Každý obrázok nahratý cez admin sa automaticky skonvertuje na WebP. |
+| Logo | Dočasné logo (červený znak „star of life“), finálne dodá grafik. Favicon z toho istého znaku (24. 11. 2026). |
 | Dizajn | Návrh v Google Stitch (projekt „Mobile First Aid Workshops“), dostupný cez Stitch MCP. |
 | Analytika | Google Analytics 4, ID `G-Z690RSSEM0`, iba na produkcii (`GOOGLE_ANALYTICS_ID`). |
 

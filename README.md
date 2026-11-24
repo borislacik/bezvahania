@@ -59,6 +59,7 @@ Všetky príkazy sa spúšťajú v kontajneri `app`:
 
 | `docker compose exec app php artisan app:create-admin` | vytvorí administrátora (meno, e-mail, heslo min. 12 znakov) |
 | `docker compose exec app php artisan app:anonymize-bookings` | anonymizuje rezervácie staršie ako 3 roky (spúšťa sa aj denne automaticky) |
+| `docker compose exec app php scripts/make-logo.php design/logo/<zdroj>.jpg` | z loga na čiernom pozadí vytvorí priehľadné logo (WebP) a favicony |
 | `docker compose exec app php artisan migrate:fresh --seed` | znovu vytvorí lokálnu databázu s ukážkovými dátami (**zmaže lokálne dáta**) |
 
 ### Lokálny admin
