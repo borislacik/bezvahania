@@ -80,7 +80,7 @@ return [
         'pillars_lead' => 'Zabudnite na nudné prednášky v preplnených miestnostiach. Toto je dôvod, prečo v núdzi nezamrznete.',
         'pillars' => [
             [
-                'icon' => 'verified_user',
+                'icon' => 'workspace_premium',
                 'title' => 'Dôveryhodnosť a odbornosť',
                 'text' => 'Žiadne suché poučky z učebníc. Vedomosti a reflexy priamo z reálnych výjazdov profesionálneho hasiča a záchranára – vieme, čo v strese funguje a čo nie.',
             ],
