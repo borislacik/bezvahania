@@ -222,3 +222,15 @@ it('shows the operator privacy and cookies text', function () {
         ->assertSee('href="https://dataprotection.gov.sk/"', escape: false)
         ->assertDontSee('Text sa pripravuje');
 });
+
+it('shows the operator terms and refers to the cancellation terms', function () {
+    $this->get(route('legal.terms'))->assertOk()
+        ->assertSee('<h2>1. Identifikácia poskytovateľa</h2>', escape: false)
+        ->assertSee('<h2>7. Zmena termínu a zrušenie workshopu</h2>', escape: false)
+        ->assertSee('href="/storno-podmienky"', escape: false)
+        ->assertSee('href="/ochrana-osobnych-udajov"', escape: false)
+        ->assertSee('<h2>14. Záverečné ustanovenia</h2>', escape: false);
+
+    $this->get('/storno-podmienky')->assertOk();
+    $this->get('/ochrana-osobnych-udajov')->assertOk();
+});

@@ -151,9 +151,9 @@ class ContentSeeder extends Seeder
             ])->save();
         }
 
-        // Legal texts from the operator (privacy page includes cookies); once filled they are only edited
+        // Legal texts from the operator (terms, cancellation, privacy incl. cookies); once filled they are only edited
         // in the admin, never overwritten.
-        foreach (['cancellation', 'privacy'] as $key) {
+        foreach (['terms', 'cancellation', 'privacy'] as $key) {
             $page = Page::query()->where('key', $key)->firstOrFail();
             if (! $page->content) {
                 $page->update(['content' => file_get_contents(database_path("seeders/content/{$key}.html"))]);

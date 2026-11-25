@@ -196,6 +196,16 @@ workshop?“ (`ContentSeeder`). Piliere sa už nepodobajú na karty workshopov: 
   (aj v pätičke – `Setting::DEFAULTS` a lokálna DB).
 - Test: obsah stránky (prevádzkovateľ, cookies, odkaz na dozorný orgán, bez dočasného textu).
 
+### Text obchodných podmienok (25. 11. 2026)
+- Text od používateľa (účinnosť od 1. 1. 2027) je v `database/seeders/content/terms.html`; `ContentSeeder` ho vkladá
+  rovnako ako storno podmienky a ochranu údajov (iba do prázdnej stránky). Lokálna DB doplnená.
+- Článok 7 (zmena termínu a zrušenie) skrátený na pokyn používateľa: oznámenie písomne / e-mailom, presun po dohode,
+  storno poplatky a zrušenie zo strany poskytovateľa odkazujú na Storno podmienky. Článok 8 (zákonné odstúpenie
+  spotrebiteľa) ostáva celý – storno podmienky ho opisujú iba všeobecne.
+- Úpravy pri prepise: e-mail, telefón (v tvare `+421 915 918 386` ako na webe), web, SOI a odkazy na storno podmienky
+  a ochranu údajov sú odkazy; úvodzovky v názve dokumentu v 12.2.
+- Test: obsah stránky a odkazy na storno podmienky a ochranu údajov.
+
 ### Facebook v kontaktnom bloku (25. 11. 2026)
 - Pod telefón a e-mail v bloku „Osobná konzultácia“ pribudol odkaz **Bez váhania na Facebooku** s ikonou
   (nové okno, `rel="noopener"`).
