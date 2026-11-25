@@ -30,7 +30,7 @@
         @if ($course->badge)
             {{-- Quiet frosted label like "Živý nácvik" in the hero: red stays reserved for the booking buttons. --}}
             <span
-                class="font-heading text-label-badge text-on-surface absolute top-4 left-4 rounded-full bg-white/70 px-2.5 py-1 font-bold uppercase shadow-sm backdrop-blur-md"
+                class="font-heading text-label-badge text-on-surface absolute top-4 left-4 rounded-full bg-white/55 px-2.5 py-1 font-bold uppercase shadow-sm backdrop-blur-md"
                 data-testid="course-badge"
             >
                 {{ $course->badge }}
@@ -38,7 +38,7 @@
         @endif
 
         <span
-            class="bg-surface-container-lowest/90 font-heading text-label-badge text-on-surface absolute right-3 bottom-3 rounded-lg px-3 py-1 font-bold backdrop-blur-md"
+            class="font-heading text-label-badge text-on-surface absolute right-3 bottom-3 rounded-lg bg-white/55 px-3 py-1 font-bold shadow-sm backdrop-blur-md"
         >
             {{ $course->duration_label }}
         </span>

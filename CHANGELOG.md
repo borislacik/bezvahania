@@ -34,7 +34,7 @@ verzie podľa git tagov z deployov (`vRRRR.MM.DD-N`).
 - Piliere bez označenia „Pilier 01 – 03“, iba nadpis a text; nové ikony 1. piliera (medaila) a 2. piliera (dotyk ruky).
 - Prvý pilier a jeho ikona sa nezvýraznia hneď, ale až keď je sekcia pilierov v polovici obrazovky.
 - Hero bez troch číselných údajov (12+ rokov, 90 % nácvik, 2 – 4 účastníci); na desktope je vrch hlavného nadpisu zarovnaný s vrchom obrázka.
-- Karty workshopov: všetky tlačidlá „Rezervovať termín“ červené ako rovnocenné výzvy; štítok na obrázku je nenápadný ako „Živý nácvik“ v hero, bez bodky; nové texty štítkov „Pokročilý tréning“, „Univerzálny“, „Špecializovaný“; dočasná fotka pre workshop Civilná prvá pomoc; nadpis „Tri intenzívne praktické workshopy“ (predtým „špecializované“); štítky z matného skla (hero aj workshopy) sú priehľadnejšie.
+- Karty workshopov: všetky tlačidlá „Rezervovať termín“ červené ako rovnocenné výzvy; štítok na obrázku je nenápadný ako „Živý nácvik“ v hero, bez bodky; nové texty štítkov „Pokročilý tréning“, „Univerzálny“, „Špecializovaný“; dočasná fotka pre workshop Civilná prvá pomoc; nadpis „Tri intenzívne praktické workshopy“ (predtým „špecializované“); štítky z matného skla (hero, štítok a dĺžka na workshopoch, prvky pri lektorovi) majú jednotne bielu 55 %.
 - Časté otázky a skúsenosti absolventov vedľa seba (na desktope otázky 2/3, skúsenosti 1/3 – dve nad sebou, pri viacerých sa striedajú); mobil bez zmeny poradia.
 - Lektor: Boris Lacík, profesionálny hasič a zdravotnícky záchranár, 9+ rokov aktívnej služby, dočasná fotka (finálna od fotografa príde neskôr).
 - Pruh „Kritický čas“: namiesto blikajúcej bodky animovaná červená EKG krivka poza text „Pripravenosť zachraňuje“ (bez animácie pri obmedzení pohybu).
