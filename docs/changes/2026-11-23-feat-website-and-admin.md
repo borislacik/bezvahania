@@ -211,7 +211,8 @@ workshop?“ (`ContentSeeder`). Piliere sa už nepodobajú na karty workshopov: 
   „Špecializovaný“ tretieho workshopu).
 - Štítky z matného bieleho skla („Živý nácvik“ v hero a štítky workshopov) sú priehľadnejšie: biela 70 % namiesto 85 %.
   Neskôr (25. 11.) zjednotené na 55 % spolu so štítkom dĺžky workshopu (predtým 90 %) a prvkami pri lektorovi –
-  všetky štítky z matného skla majú `bg-white/55 backdrop-blur-md`. Hlavička webu ostáva `bg-surface/90`.
+  všetky štítky z matného skla majú `bg-white/55 backdrop-blur-md`. Hlavička webu ostáva `bg-surface/90`. Kartička „Aktuálne odporúčania ERC“ v hero
+  je podľa výberu používateľa (náhľady 55 % / 70 %) z matného skla `bg-white/70` – dlhší text sa číta ľahšie.
 
 ### Časté otázky a skúsenosti vedľa seba (24. 11. 2026)
 - Na desktope jedna sekcia: vľavo časté otázky (2/3 šírky), vpravo skúsenosti absolventov (1/3) s menším nadpisom.

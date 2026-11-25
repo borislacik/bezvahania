@@ -79,7 +79,8 @@
                             </span>
                         </div>
                         <div
-                            class="bg-surface-container-lowest absolute -bottom-6 -left-6 hidden items-center gap-3 rounded-xl p-4 shadow-xl sm:flex"
+                            class="absolute -bottom-6 -left-6 hidden items-center gap-3 rounded-xl bg-white/70 p-4 shadow-xl backdrop-blur-md sm:flex"
+                            data-testid="hero-erc-card"
                         >
                             <span
                                 class="bg-surface-container text-primary flex size-12 items-center justify-center rounded-lg"
