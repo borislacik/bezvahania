@@ -24,6 +24,7 @@ class Setting extends Model
         'operator_vat_note' => 'Nie som platiteľ DPH',
         'operator_address' => 'Studenohorská 2061/17, 841 03, Bratislava',
         'booking_lead_days' => '2',
+        'social_facebook' => 'https://www.facebook.com/profile.php?id=61596209436961',
     ];
 
     private const CACHE_KEY = 'settings.all';

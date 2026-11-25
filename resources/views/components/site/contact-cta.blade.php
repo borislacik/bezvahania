@@ -33,6 +33,20 @@
                             {{ $settings['contact_email'] }}
                         </a>
                     </li>
+                    @if ($settings['social_facebook'])
+                        <li>
+                            <a
+                                href="{{ $settings['social_facebook'] }}"
+                                target="_blank"
+                                rel="noopener"
+                                class="font-heading text-headline-sm flex items-center gap-3 font-bold hover:underline"
+                                data-testid="contact-facebook"
+                            >
+                                <x-site.icon name="facebook" class="text-inverse-primary size-6" />
+                                {{ __('site.home.contact_facebook') }}
+                            </a>
+                        </li>
+                    @endif
                 </ul>
             </div>
             <form

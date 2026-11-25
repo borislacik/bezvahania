@@ -2,6 +2,7 @@
 
 use App\Models\Course;
 use App\Models\Page;
+use App\Models\Setting;
 use App\Models\TeamMember;
 use App\Models\Testimonial;
 use Database\Seeders\ContentSeeder;
@@ -56,6 +57,20 @@ it('shows the three pillars before the workshops and answers how a workshop runs
             'Ako prebieha workshop?',
         ])
         ->assertDontSee('id="ako-prebieha"', escape: false);
+});
+
+it('links the Facebook page from the contact block and can hide it', function () {
+    $url = 'https://www.facebook.com/profile.php?id=61596209436961';
+
+    $this->get(route('home'))
+        ->assertOk()
+        ->assertSee('href="'.e($url).'"', escape: false)
+        ->assertSee(__('site.home.contact_facebook'))
+        ->assertSee('"sameAs":["'.$url.'"]', escape: false);
+
+    Setting::put(['social_facebook' => '']);
+
+    $this->get(route('home'))->assertOk()->assertDontSee(__('site.home.contact_facebook'));
 });
 
 it('shows the business details in the footer by default', function () {

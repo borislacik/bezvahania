@@ -134,6 +134,8 @@ return [
         'booking' => 'Rezervácie',
         'contact_phone' => 'Telefón',
         'contact_email' => 'E-mail na webe',
+        'social_facebook' => 'Facebook stránka (odkaz)',
+        'social_facebook_help' => 'Zobrazí sa v kontaktnom bloku; prázdne pole ikonu skryje.',
         'notification_email' => 'E-mail pre upozornenia na nové rezervácie a správy',
         'sender_note' => 'Automatické e-maily sa odosielajú z adresy :address. Odpovede zákazníkov idú na e-mail na webe.',
         'operator_name' => 'Meno / obchodné meno',

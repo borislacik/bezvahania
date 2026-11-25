@@ -62,6 +62,7 @@ class PageController extends Controller
             'email' => Setting::get('contact_email'),
             'areaServed' => ['@type' => 'City', 'name' => 'Bratislava'],
             'priceRange' => '€€',
+            'sameAs' => array_values(array_filter([Setting::get('social_facebook')])) ?: null,
         ]);
     }
 }

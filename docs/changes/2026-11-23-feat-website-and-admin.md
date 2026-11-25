@@ -125,6 +125,15 @@ workshop?“ (`ContentSeeder`). Piliere sa už nepodobajú na karty workshopov: 
   po nich bolo príliš veľké, preto je na desktope vrch hlavného nadpisu zarovnaný s vrchom obrázka (`lg:items-start`,
   obrázok `lg:mt-7`) a sekcia je nižšia.
 
+### Facebook v kontaktnom bloku (25. 11. 2026)
+- Pod telefón a e-mail v bloku „Osobná konzultácia“ pribudol odkaz **Bez váhania na Facebooku** s ikonou
+  (nové okno, `rel="noopener"`).
+- Adresa stránky je nové nastavenie `social_facebook` (admin → Kontakt a prevádzkovateľ, validácia URL), predvolene
+  `https://www.facebook.com/profile.php?id=61596209436961`; prázdne pole odkaz skryje. Pridaná aj do JSON-LD
+  LocalBusiness ako `sameAs`.
+- Ikona `resources/svg/icons/facebook.svg` je logo zo Simple Icons (CC0), uložené lokálne – web nenačítava nič
+  z Facebooku (žiadne vkladané widgety ani cookies tretích strán).
+
 ### Právne stránky a nastavenia cookies (25. 11. 2026)
 - Dve právne stránky namiesto troch: **Obchodné podmienky** (`/obchodne-podmienky`, kľúč `terms`, predtým „Podmienky
   rezervácie“ na `/podmienky-rezervacie`) a **Ochrana osobných údajov a používanie cookies** (`/ochrana-osobnych-udajov`,

@@ -60,6 +60,7 @@ class Settings extends Page
                         TextInput::make('contact_phone')->label(__('admin.settings.contact_phone'))->tel()->required()->maxLength(40),
                         TextInput::make('contact_email')->label(__('admin.settings.contact_email'))->email()->required()->maxLength(190),
                         TextInput::make('notification_email')->label(__('admin.settings.notification_email'))->email()->required()->maxLength(190)->columnSpanFull(),
+                        TextInput::make('social_facebook')->label(__('admin.settings.social_facebook'))->helperText(__('admin.settings.social_facebook_help'))->url()->maxLength(255)->columnSpanFull(),
                     ]),
                 Section::make(__('admin.settings.operator'))->columns(2)->schema([
                     TextInput::make('operator_name')->label(__('admin.settings.operator_name'))->maxLength(160),

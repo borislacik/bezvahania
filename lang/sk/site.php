@@ -119,6 +119,7 @@ return [
         'faq_title' => 'Všetko, čo potrebujete vedieť pred workshopom',
 
         'contact_eyebrow' => 'Osobná konzultácia',
+        'contact_facebook' => 'Bez váhania na Facebooku',
         'contact_title' => 'Máte špecifické požiadavky alebo firmu?',
         'contact_text' => 'Workshop prispôsobíme vašej rodine, firemnému tímu či športovému klubu. Zavolajte alebo napíšte, odpoviem obratom.',
     ],
