@@ -59,21 +59,32 @@ export function cookieConsent(measurementId = '') {
         open: false,
         details: false,
         analytics: false,
+        hasConsent: false,
 
         init() {
             const consent = readConsent();
+            this.hasConsent = consent !== null;
 
             if (consent) {
                 this.analytics = consent.analytics;
                 this.apply();
             } else {
+                this.details = false;
                 this.open = true;
             }
 
             window.addEventListener('open-cookie-settings', () => {
+                this.analytics = readConsent()?.analytics ?? false;
                 this.details = true;
                 this.open = true;
             });
+        },
+
+        /** Closes the settings without changing the stored choice (only once a choice exists). */
+        close() {
+            if (this.hasConsent) {
+                this.open = false;
+            }
         },
 
         acceptAll() {
@@ -91,8 +102,10 @@ export function cookieConsent(measurementId = '') {
                 STORAGE_KEY,
                 JSON.stringify({ version: CONSENT_VERSION, analytics: this.analytics, date: new Date().toISOString() }),
             );
+            this.hasConsent = true;
+            // Only the dialog is hidden here: hiding the collapsing details at the same time made Alpine wait
+            // for a transition that never finished, so the dialog stayed open. Details are reset when it opens.
             this.open = false;
-            this.details = false;
             this.apply();
         },
 

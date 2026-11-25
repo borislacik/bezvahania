@@ -7,11 +7,23 @@
     aria-labelledby="cookie-title"
     class="fixed inset-x-3 bottom-3 z-[70] sm:inset-x-auto sm:right-4 sm:bottom-4 sm:max-w-md"
     data-testid="cookie-banner"
+    @keydown.escape.window="close()"
 >
     <div class="bg-surface-container-lowest border-surface-container rounded-2xl border p-6 shadow-2xl">
         <div class="mb-2 flex items-center gap-2">
             <x-site.icon name="cookie" class="text-primary-container size-6" />
             <h2 id="cookie-title" class="text-headline-sm font-bold">{{ __('cookies.title') }}</h2>
+            {{-- Closing without a new choice only makes sense once a choice exists (settings from the footer). --}}
+            <button
+                type="button"
+                class="text-on-surface-variant hover:bg-surface-container hover:text-on-surface -mr-2 ml-auto rounded-lg p-1.5"
+                x-show="hasConsent"
+                @click="close()"
+                aria-label="{{ __('cookies.close') }}"
+                data-cookie-close
+            >
+                <x-site.icon name="close" class="size-5" />
+            </button>
         </div>
         <p class="text-body-sm text-on-surface-variant">
             {{ __('cookies.text') }}

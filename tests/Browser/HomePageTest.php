@@ -139,3 +139,23 @@ it('shows two testimonials next to the FAQ and switches to the next ones', funct
     expect($page->script($visible))->toBe(['1', '1']);
     $page->assertNoJavaScriptErrors();
 });
+
+it('closes the cookie settings opened from the footer after a choice', function () {
+    $page = visit('/')
+        ->click('[data-cookie-reject]')
+        ->assertMissing('[data-testid="cookie-banner"]');
+
+    $page->click('footer [data-cookie-settings]')
+        ->assertVisible('[data-testid="cookie-banner"]')
+        ->click(__('cookies.accept_all'))
+        ->assertMissing('[data-testid="cookie-banner"]');
+
+    $page->click('footer [data-cookie-settings]')
+        ->click(__('cookies.save'))
+        ->assertMissing('[data-testid="cookie-banner"]');
+
+    $page->click('footer [data-cookie-settings]')
+        ->click('[data-cookie-close]')
+        ->assertMissing('[data-testid="cookie-banner"]')
+        ->assertNoJavaScriptErrors();
+});

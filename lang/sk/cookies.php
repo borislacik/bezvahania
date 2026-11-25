@@ -13,4 +13,5 @@ return [
     'analytics' => 'Analytické',
     'analytics_text' => 'Google Analytics – anonymná štatistika návštevnosti. Načíta sa iba s vaším súhlasom.',
     'always_on' => 'Vždy zapnuté',
+    'close' => 'Zavrieť bez zmeny',
 ];

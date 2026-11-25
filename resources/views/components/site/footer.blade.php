@@ -34,6 +34,7 @@
                         type="button"
                         class="hover:text-inverse-on-surface underline-offset-2 hover:underline"
                         @click="$dispatch('open-cookie-settings')"
+                        data-cookie-settings
                         x-data
                     >
                         {{ __('site.footer.cookie_settings') }}
