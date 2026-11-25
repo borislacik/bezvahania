@@ -134,3 +134,21 @@ it('shows contact messages and marks them handled', function () {
 
     expect($message->refresh()->handled_at)->not->toBeNull();
 });
+
+it('keeps the seeded legal texts intact when they are saved in the admin', function (string $key, array $fragments) {
+    $this->seed(ContentSeeder::class);
+    $page = Page::query()->where('key', $key)->sole();
+
+    Livewire::test(EditPage::class, ['record' => $page->getRouteKey()])
+        ->call('save')
+        ->assertHasNoFormErrors();
+
+    $content = (string) $page->refresh()->content;
+    foreach ($fragments as $fragment) {
+        expect($content)->toContain($fragment);
+    }
+})->with([
+    'terms' => ['terms', ['<h2>7. Zmena termínu a zrušenie workshopu</h2>', 'href="/storno-podmienky"', '<br>']],
+    'cancellation' => ['cancellation', ['<h3>1.1 Spotrebiteľ</h3>', '<li>', '<ol>']],
+    'privacy' => ['privacy', ['<h2>9. Používanie cookies</h2>', 'href="https://dataprotection.gov.sk/"']],
+]);

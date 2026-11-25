@@ -204,7 +204,9 @@ workshop?“ (`ContentSeeder`). Piliere sa už nepodobajú na karty workshopov: 
   spotrebiteľa) ostáva celý – storno podmienky ho opisujú iba všeobecne.
 - Úpravy pri prepise: e-mail, telefón (v tvare `+421 915 918 386` ako na webe), web, SOI a odkazy na storno podmienky
   a ochranu údajov sú odkazy; úvodzovky v názve dokumentu v 12.2.
-- Test: obsah stránky a odkazy na storno podmienky a ochranu údajov.
+- Bod 8.6 na pokyn používateľa bez vety o vzorovom formulári (formulár sa nezverejní).
+- Test: obsah stránky a odkazy na storno podmienky a ochranu údajov; uloženie všetkých troch právnych textov v admine
+  (editor zachová nadpisy, zoznamy, odkazy a zalomenia riadkov).
 
 ### Facebook v kontaktnom bloku (25. 11. 2026)
 - Pod telefón a e-mail v bloku „Osobná konzultácia“ pribudol odkaz **Bez váhania na Facebooku** s ikonou
