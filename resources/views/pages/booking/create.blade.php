@@ -417,6 +417,7 @@
                                         <span>
                                             {!! __('booking.fields.consent', [
                                                 'terms' => '<a class="text-primary underline" href="'.route('legal.terms').'" target="_blank">'.e(__('booking.fields.consent_terms')).'</a>',
+                                                'cancellation' => '<a class="text-primary underline" href="'.route('legal.cancellation').'" target="_blank">'.e(__('booking.fields.consent_cancellation')).'</a>',
                                                 'privacy' => '<a class="text-primary underline" href="'.route('legal.privacy').'" target="_blank">'.e(__('booking.fields.consent_privacy')).'</a>',
                                             ]) !!}
                                         </span>
@@ -493,6 +494,17 @@
                         <p class="text-body-sm text-on-surface-variant mt-3 flex items-center justify-center gap-2 text-center">
                             <x-site.icon name="lock" class="size-4" />
                             {{ __('booking.payment_note') }}
+                        </p>
+                        <p
+                            class="text-body-sm text-on-surface-variant mt-1 flex items-center justify-center gap-2 text-center"
+                            data-testid="cancellation-note"
+                        >
+                            <x-site.icon name="calendar_clock" class="size-4" />
+                            <span>
+                                {!! __('booking.cancellation_note', [
+                                    'terms' => '<a class="text-primary underline" href="'.route('legal.cancellation').'" target="_blank">'.e(__('booking.cancellation_note_terms')).'</a>',
+                                ]) !!}
+                            </span>
                         </p>
                     </div>
                 </div>

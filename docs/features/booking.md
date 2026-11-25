@@ -7,7 +7,7 @@
 3. Vyberie **časť dňa**: doobeda 9:00 – 13:00 alebo poobede 15:00 – 19:00.
 4. Vyberie **typ workshopu** (predvolený je workshop označený v admine ako „Predvolený vo formulári“,
    alebo ten, z ktorého karty prišiel – `?workshop=<slug>`).
-5. Vyplní kontakt, **adresu konania**, prípadne **fakturačné údaje** (iba ak sú iné – zaškrtávacie pole), počet osôb (2 – 4, `Booking::MIN_PARTICIPANTS`/`MAX_PARTICIPANTS`), poznámku a súhlas s podmienkami.
+5. Vyplní kontakt, **adresu konania**, prípadne **fakturačné údaje** (iba ak sú iné – zaškrtávacie pole), počet osôb (2 – 4, `Booking::MIN_PARTICIPANTS`/`MAX_PARTICIPANTS`), poznámku a súhlas s obchodnými a storno podmienkami.
 6. Rezervácia sa **potvrdí hneď** (bez schvaľovania adminom), zákazník dostane e-mail a vidí potvrdenie
    na podpísanej adrese `/rezervacia/<číslo>` (platnosť 7 dní).
 
@@ -54,7 +54,7 @@ Lokálne ich zachytáva Mailpit (http://localhost:8025), frontu spracúva služb
   stránke je to sekcia `#kontakt`, zobrazuje sa aj na detaile workshopu: meno, e-mail, telefón (nepovinne), správa.
 - Kontaktné formuláre **nemajú zaškrtávacie pole súhlasu**, iba informačnú vetu o spracovaní osobných údajov
   (`components/site/privacy-notice.blade.php`). `consent_at` pri správe zaznamenáva čas odoslania s touto informáciou.
-  Rezervačný formulár zaškrtávacie pole má (súhlas s podmienkami rezervácie).
+  Rezervačný formulár zaškrtávacie pole má (súhlas s obchodnými a storno podmienkami).
 - Posiela na `contact.store` (`POST /kontakt`): správa sa uloží do admina (**Správy z webu**) a príde e-mailom na
   `notification_email` (predvolene `info@bezvahania.sk`) s Reply-To na odosielateľa.
 - Po odoslaní (aj pri chybe) sa návštevník vráti na tú istú stránku k formuláru `#kontaktny-formular`
@@ -73,3 +73,10 @@ Lokálne ich zachytáva Mailpit (http://localhost:8025), frontu spracúva služb
 ## Otvorené
 - Zrušenie rezervácie zákazníkom (odkaz v e-maile, lehota) – upresní prevádzkovateľ.
 - Pripomienkový e-mail pred workshopom – zatiaľ nie je.
+
+## Zrušenie rezervácie
+- Zákazník si rezerváciu na webe sám nezruší; zrušenie alebo presun oznámi e-mailom (storno podmienky vyžadujú
+  preukázateľné oznámenie, rozhoduje deň doručenia). Rezerváciu potom zruší admin (akcia **Zrušiť rezerváciu**).
+- Storno pravidlá (bez poplatku 7 a viac dní pred termínom, 3 – 6 dní 20 %, menej ako 72 hodín 40 %) sú na stránke
+  `/storno-podmienky` a skrátene v potvrdzovacom e-maile, na potvrdzovacej stránke, vo formulári a v FAQ.
+  Pri zmene podmienok treba upraviť aj texty v `lang/sk/booking.php`, `lang/sk/mail.php` a otázku v `ContentSeeder`.

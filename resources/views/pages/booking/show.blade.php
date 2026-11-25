@@ -54,7 +54,10 @@
 
                 <p class="text-body-md text-on-surface-variant">{{ __('booking.confirmation.next') }}</p>
                 <p class="text-body-sm text-on-surface-variant">
-                    {{ __('booking.confirmation.change', ['phone' => $settings['contact_phone'], 'email' => $settings['contact_email']]) }}
+                    {!! __('booking.confirmation.change', [
+                        'email' => '<a class="text-primary underline" href="mailto:'.e($settings['contact_email']).'">'.e($settings['contact_email']).'</a>',
+                        'terms' => '<a class="text-primary underline" href="'.route('legal.cancellation').'">'.e(__('booking.confirmation.change_terms')).'</a>',
+                    ]) !!}
                 </p>
                 <a href="{{ route('home') }}" class="btn-dark mt-2">{{ __('booking.confirmation.home') }}</a>
             </div>

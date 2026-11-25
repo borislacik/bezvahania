@@ -38,8 +38,9 @@ return [
         'billing_address' => 'Fakturačné údaje',
         'participants' => 'Počet účastníkov',
         'note' => 'Poznámka alebo špecifické otázky (nepovinné)',
-        'consent' => 'Súhlasím s :terms a beriem na vedomie :privacy.',
+        'consent' => 'Súhlasím s :terms a :cancellation a beriem na vedomie :privacy.',
         'consent_terms' => 'obchodnými podmienkami',
+        'consent_cancellation' => 'storno podmienkami',
         'consent_privacy' => 'spracovanie osobných údajov',
     ],
 
@@ -68,16 +69,19 @@ return [
         'not_selected' => 'nevybrané',
     ],
 
-    'consent_required' => 'Pred rezerváciou potvrďte súhlas s obchodnými podmienkami a spracovaním osobných údajov.',
+    'consent_required' => 'Pred rezerváciou potvrďte súhlas s obchodnými a storno podmienkami a so spracovaním osobných údajov.',
 
     'submit' => 'Záväzne rezervovať workshop',
     'payment_note' => 'Platba až po skončení workshopu, v hotovosti alebo kartou.',
+    'cancellation_note' => 'Zrušenie bez poplatku najneskôr 7 dní pred termínom (:terms).',
+    'cancellation_note_terms' => 'storno podmienky',
 
     'confirmation' => [
         'title' => 'Ďakujeme za rezerváciu!',
         'lead' => 'Termín je pre vás rezervovaný. Potvrdenie sme poslali na :email.',
         'next' => 'Deň pred workshopom sa vám ozvem a potvrdím presný čas príchodu.',
-        'change' => 'Potrebujete termín zmeniť alebo zrušiť? Zavolajte na :phone alebo napíšte na :email.',
+        'change' => 'Potrebujete termín zrušiť alebo presunúť? Napíšte mi na :email. Zrušenie 7 a viac dní pred termínom je bez poplatku, pri neskoršom zrušení sa platí storno poplatok podľa :terms.',
+        'change_terms' => 'storno podmienok',
         'home' => 'Späť na úvod',
     ],
 

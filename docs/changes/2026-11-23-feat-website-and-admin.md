@@ -169,8 +169,20 @@ workshop?“ (`ContentSeeder`). Piliere sa už nepodobajú na karty workshopov: 
 - Nová právna stránka **Storno podmienky** (`/storno-podmienky`, route `legal.cancellation`, kľúč stránky
   `cancellation`), v pätičke medzi Obchodnými podmienkami a Ochranou osobných údajov, v sitemape a v admine
   (Stránky a SEO, s editorom obsahu).
-- Text storno podmienok zatiaľ nie je (brief: politika zrušenia sa ešte určí) – stránka zobrazuje „Text sa
-  pripravuje“. Text dodá používateľ; do nasadenia ho vkladá Claude do seedera, nie cez admin.
+- Text storno podmienok dodal používateľ (25. 11. 2026) – pozri „Text storno podmienok“ nižšie.
+
+### Text storno podmienok (25. 11. 2026)
+- Text od používateľa je v `database/seeders/content/cancellation.html`; `ContentSeeder` ho vloží do stránky
+  `cancellation`, iba ak je obsah prázdny (neskoršie úpravy v admine sa neprepíšu). Lokálna DB doplnená rovnakým textom.
+- Skrátené pravidlá (zrušenie 7 a viac dní pred termínom bez poplatku, 3 – 6 dní 20 %, menej ako 72 hodín 40 %,
+  oznámenie e-mailom, rozhoduje deň doručenia, možnosť presunu) sú:
+  - v potvrdzovacom e-maile zákazníkovi (namiesto „zavolajte alebo napíšte“ – podmienky vyžadujú preukázateľné
+    oznámenie, telefón ostáva na otázky) s odkazom na stránku,
+  - na potvrdzovacej stránke rezervácie s odkazom na e-mail a stránku,
+  - v rezervačnom formulári pod tlačidlom („Zrušenie bez poplatku najneskôr 7 dní pred termínom“),
+  - v novej otázke v častých otázkach „Môžem termín zrušiť alebo presunúť?“ (7. v poradí, osvedčenie je teraz 8.).
+- Súhlas vo formulári zahŕňa aj storno podmienky (odkaz); `CreateBooking::CONSENT_VERSION` = `2026-11-25`.
+- Testy: obsah stránky a jeho zachovanie pri ďalšom seedovaní, otázka v FAQ, odkazy vo formulári, potvrdení a e-maile.
 
 ### Facebook v kontaktnom bloku (25. 11. 2026)
 - Pod telefón a e-mail v bloku „Osobná konzultácia“ pribudol odkaz **Bez váhania na Facebooku** s ikonou

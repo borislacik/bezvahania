@@ -24,7 +24,7 @@ use Illuminate\Support\Facades\Mail;
  */
 final class CreateBooking
 {
-    public const CONSENT_VERSION = '2026-11-23';
+    public const CONSENT_VERSION = '2026-11-25';
 
     /**
      * @param  array{course_id: int, date: string, time_slot: string, contact_name: string, email: string, phone: string, address: string, billing_address?: string|null, participants: int, note?: string|null}  $data

@@ -195,3 +195,19 @@ it('lists the legal pages and the cookie settings in the footer', function () {
         ->assertSeeInOrder(['Obchodné podmienky', 'Storno podmienky', 'Ochrana osobných údajov a cookies', __('site.footer.cookie_settings')])
         ->assertDontSee('Zásady používania cookies');
 });
+
+it('shows the operator cancellation terms and keeps them when seeding again', function () {
+    $this->get(route('legal.cancellation'))->assertOk()
+        ->assertSee('<h2>1. Zrušenie alebo presun termínu zákazníkom</h2>', escape: false)
+        ->assertSee('3 až 6 kalendárnych dní pred termínom: storno poplatok 20 % z dohodnutej ceny.')
+        ->assertSee('<h2>4. Spoločné ustanovenia</h2>', escape: false);
+
+    Page::query()->where('key', 'cancellation')->sole()->update(['content' => '<p>Upravené v admine</p>']);
+    $this->seed(ContentSeeder::class);
+
+    expect(Page::query()->where('key', 'cancellation')->sole()->content)->toBe('<p>Upravené v admine</p>');
+});
+
+it('answers how to cancel a workshop in the FAQ', function () {
+    $this->get(route('home'))->assertOk()->assertSee('Môžem termín zrušiť alebo presunúť?');
+});

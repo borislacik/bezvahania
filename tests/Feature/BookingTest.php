@@ -195,6 +195,26 @@ it('shows the billing details on the confirmation page only when given', functio
         ->assertDontSee('data-testid="billing-summary"', escape: false);
 });
 
+it('points to the cancellation terms in the form, the confirmation page and the e-mail', function () {
+    $this->get(route('booking.create'))->assertOk()
+        ->assertSee('data-testid="cancellation-note"', escape: false)
+        ->assertSee('href="'.route('legal.cancellation').'"', escape: false)
+        ->assertSee(__('booking.fields.consent_cancellation'));
+
+    $this->followingRedirects()
+        ->post(route('booking.store'), bookingPayload())
+        ->assertOk()
+        ->assertSee('7 a viac dní pred termínom je bez poplatku')
+        ->assertSee('href="'.route('legal.cancellation').'"', escape: false);
+
+    Mail::assertQueued(BookingConfirmedMail::class, function (BookingConfirmedMail $mail): bool {
+        $html = $mail->render();
+
+        return str_contains($html, 'menej ako 72 hodín pred termínom 40 %')
+            && str_contains($html, 'href="'.route('legal.cancellation').'"');
+    });
+});
+
 it('rejects inactive workshops', function () {
     $inactive = Course::factory()->inactive()->create();
 

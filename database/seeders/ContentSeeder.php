@@ -101,6 +101,7 @@ class ContentSeeder extends Seeder
             ['Koľko ľudí sa môže zúčastniť?', 'Workshop je pre 2 až 4 osoby, ktoré sa poznajú – rodina, priatelia alebo kolegovia. Cena je za celú skupinu.'],
             ['Kam za vami prídete?', 'Pôsobím v Bratislave a okolí. Doprava do 60 km od Bratislavy je v cene, pri väčšej vzdialenosti sa dohodneme individuálne.'],
             ['Ako a kedy sa platí?', 'Platí sa až po skončení workshopu, v hotovosti alebo kartou.'],
+            ['Môžem termín zrušiť alebo presunúť?', 'Áno. Napíšte mi e-mail čo najskôr – rozhoduje deň, keď správa príde. Zrušenie 7 a viac dní pred termínom je bez poplatku, 3 až 6 dní pred termínom je storno poplatok 20 % a menej ako 72 hodín pred termínom 40 % z ceny workshopu. Namiesto zrušenia sa môžeme dohodnúť aj na presune na iný termín. Podrobnosti nájdete v storno podmienkach.'],
             ['Dostaneme potvrdenie o absolvovaní?', 'Áno, každý účastník dostane osvedčenie o absolvovaní workshopu. Nejde o akreditovaný kurz (napríklad pre BOZP alebo vodičský preukaz).'],
         ];
 
@@ -148,6 +149,12 @@ class ContentSeeder extends Seeder
                 'seo_title' => $page->seo_title ?: $seoTitle,
                 'seo_description' => $page->seo_description ?: $seoDescription,
             ])->save();
+        }
+
+        // Legal texts from the operator; once filled they are only edited in the admin, never overwritten.
+        $cancellation = Page::query()->where('key', 'cancellation')->firstOrFail();
+        if (! $cancellation->content) {
+            $cancellation->update(['content' => file_get_contents(database_path('seeders/content/cancellation.html'))]);
         }
 
         // Privacy and cookies are one page; the privacy text itself comes from the operator later.

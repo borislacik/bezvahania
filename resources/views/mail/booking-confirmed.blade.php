@@ -19,7 +19,9 @@
 
 {{ __('mail.booking_confirmed.payment') }}
 
-{{ __('mail.booking_confirmed.change', ['phone' => \App\Models\Setting::get('contact_phone'), 'email' => \App\Models\Setting::get('contact_email')]) }}
+{{ __('mail.booking_confirmed.change', ['email' => \App\Models\Setting::get('contact_email')]) }}
+
+{{ __('mail.booking_confirmed.cancellation_terms', ['url' => route('legal.cancellation'), 'phone' => \App\Models\Setting::get('contact_phone')]) }}
 
 {{ __('mail.signature') }}<br>
 {{ config('app.name') }}
