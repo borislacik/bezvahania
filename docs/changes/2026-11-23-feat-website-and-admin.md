@@ -134,8 +134,10 @@ workshop?“ (`ContentSeeder`). Piliere sa už nepodobajú na karty workshopov: 
   max. 10, konverzia na WebP ako pri ostatných obrázkoch).
 - Fotky od používateľa orezané na štvorec 1024 × 1024 / 921 × 921 tak, aby lektor ostal v zábere:
   `resources/images/instructor-2.webp` (nácvik KPR so skupinou, tváre účastníkov zakryté už na zdrojovej fotke),
-  `resources/images/instructor-3.webp` (lektor v záchrannej službe). Poradie: súčasná fotka, nácvik, záchranná služba.
-  Seeder aj lokálna DB.
+  `resources/images/instructor-field.webp` (lektor v záchrannej službe; nahradila pôvodnú `instructor-3.webp` vo vyššej
+  kvalite, nový názov kvôli cache prehliadačov). Poradie: súčasná fotka, nácvik, záchranná služba. Seeder aj lokálna DB.
+- Prepínač (bodky) a odznak „Aktívna služba · 9+ rokov zásahov“ sú z matného bieleho skla (biela 55 %, rozmazanie);
+  text odznaku tmavomodrý (`text-inverse-surface`), štítok „Aktívna služba“ červený – predtým tmavomodrý odznak.
 
 ### Blokovanie doobedného alebo poobedného termínu (25. 11. 2026)
 - Admin → Dostupnosť termínov: každý deň má dva termíny (9 – 13, 15 – 19), kliknutím sa termín zablokuje alebo

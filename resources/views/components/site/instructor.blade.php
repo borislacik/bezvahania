@@ -46,7 +46,7 @@
 
                 @if (count($photos) > 1)
                     <div
-                        class="absolute bottom-4 left-4 flex gap-1.5 rounded-full bg-white/70 px-2.5 py-2 shadow-sm backdrop-blur-md"
+                        class="absolute bottom-4 left-4 flex gap-1.5 rounded-full bg-white/55 px-2.5 py-2 shadow-sm backdrop-blur-md"
                     >
                         @foreach ($photos as $photo)
                             <button
@@ -62,13 +62,14 @@
                 @endif
             </div>
             <div
-                class="bg-inverse-surface text-inverse-on-surface absolute -right-2 -bottom-6 flex items-center gap-3 rounded-xl p-4 shadow-xl sm:right-6"
+                class="text-inverse-surface absolute -right-2 -bottom-6 flex items-center gap-3 rounded-xl bg-white/55 p-4 shadow-xl backdrop-blur-md sm:right-6"
+                data-testid="instructor-badge"
             >
                 <span class="bg-primary text-on-primary flex size-10 items-center justify-center rounded-lg">
                     <x-site.icon name="ambulance" class="size-6" />
                 </span>
                 <span class="flex flex-col">
-                    <span class="font-heading text-label-badge text-inverse-primary font-bold uppercase">
+                    <span class="font-heading text-label-badge text-primary font-bold uppercase">
                         {{ __('site.home.instructor_badge_label') }}
                     </span>
                     <span

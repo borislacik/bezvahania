@@ -6,7 +6,7 @@ verzie podľa git tagov z deployov (`vRRRR.MM.DD-N`).
 ## [Unreleased]
 
 ### Pridané – web a administrácia
-- Lektor: viac fotiek, ktoré sa na webe každých 6 sekúnd striedajú a dajú sa prepnúť bodkami; v admine nové pole „Ďalšie fotky“ (poradie potiahnutím), migrácia `add_gallery_to_team_members_table`. Pribudli dve fotky (nácvik KPR, záchranná služba).
+- Lektor: viac fotiek, ktoré sa na webe každých 6 sekúnd striedajú a dajú sa prepnúť bodkami; v admine nové pole „Ďalšie fotky“ (poradie potiahnutím), migrácia `add_gallery_to_team_members_table`. Pribudli dve fotky (nácvik KPR, záchranná služba). Prepínač fotiek a odznak „Aktívna služba“ sú z matného skla s tmavomodrým textom.
 - Dostupnosť termínov v admine: okrem celého dňa sa dá zablokovať aj iba doobedný (9 – 13) alebo poobedný (15 – 19) termín; nová migrácia `add_slot_to_blocked_days_table`.
 - Verejný web podľa dizajnu zo Stitchu: úvod, workshopy a ich detail, rezervácia, lektor, časté otázky, kontakt,
   právne stránky, chybové stránky 404/419/429/500/503 po slovensky.

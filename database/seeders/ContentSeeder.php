@@ -86,7 +86,7 @@ class ContentSeeder extends Seeder
             'quote' => 'V praxi vidím, že o prežití často nerozhodujú záchranári, ktorí prídu o niekoľko minút, ale ľudia, ktorí sú pri postihnutom v prvých minútach. Naučím vás jednoduché postupy tak, aby ste v kritickom okamihu konali bez váhania.',
             'bio' => "Pri výcviku spájam aktuálne odporúčania European Resuscitation Council s reálnou praxou zo zásahov.\nNa workshope vytvárame bezpečný priestor, kde si každú situáciu vyskúšate toľkokrát, kým sa nebudete cítiť pripravení.",
             'photo' => $this->copyImage('instructor.webp', 'team'),
-            'gallery' => [$this->copyImage('instructor-2.webp', 'team'), $this->copyImage('instructor-3.webp', 'team')],
+            'gallery' => [$this->copyImage('instructor-2.webp', 'team'), $this->copyImage('instructor-field.webp', 'team')],
             'is_active' => true,
             'sort_order' => 1,
         ]);

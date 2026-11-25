@@ -62,7 +62,7 @@ it('shows the three pillars before the workshops and answers how a workshop runs
 it('shows all instructor photos, the main one first, with dots to switch them', function () {
     $response = $this->get(route('home'))->assertOk();
 
-    $response->assertSeeInOrder(['team/instructor.webp', 'team/instructor-2.webp', 'team/instructor-3.webp'], escape: false)
+    $response->assertSeeInOrder(['team/instructor.webp', 'team/instructor-2.webp', 'team/instructor-field.webp'], escape: false)
         ->assertSee(__('site.home.instructor_photo_show', ['number' => 3]));
 
     TeamMember::query()->update(['gallery' => null]);
