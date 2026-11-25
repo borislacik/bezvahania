@@ -40,7 +40,7 @@ it('renders Slovak letters with the brand fonts, not a fallback font', function 
 });
 
 it('renders every public page without JavaScript errors', function () {
-    $pages = visit(['/', '/workshopy/kpr-a-aed', '/rezervacia', '/ochrana-osobnych-udajov', '/obchodne-podmienky']);
+    $pages = visit(['/', '/workshopy/kpr-a-aed', '/rezervacia', '/ochrana-osobnych-udajov', '/obchodne-podmienky', '/storno-podmienky']);
 
     $pages->assertNoJavaScriptErrors()->assertNoConsoleLogs();
 });

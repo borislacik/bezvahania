@@ -58,7 +58,7 @@ Enums: `TimeSlot` (doobeda 9 – 13, poobede 15 – 19), `BookingStatus` (confir
 ## Verejné routy (`routes/web.php`, doména `APP_DOMAIN`)
 Web je one-pager ([ADR 0007](adr/0007-one-page-website.md)): úvodná stránka `/` so sekciami `#workshopy`,
 `#lektor`, `#otazky`, `#kontakt`, ďalej `/workshopy/{slug}` (detail), `/rezervacia` (GET/POST),
-`/rezervacia/{číslo}` (podpísaná), `POST /kontakt`, `/obchodne-podmienky`, `/ochrana-osobnych-udajov` (ochrana osobných
+`/rezervacia/{číslo}` (podpísaná), `POST /kontakt`, `/obchodne-podmienky`, `/storno-podmienky`, `/ochrana-osobnych-udajov` (ochrana osobných
 údajov a používanie cookies na jednej stránke), `/sitemap.xml`, `/robots.txt`. Bývalé `/workshopy`, `/o-lektorovi`,
 `/caste-otazky`, `/kontakt` (GET) presmerúvajú 301 na sekcie, bývalé `/podmienky-rezervacie` na `/obchodne-podmienky`
 a `/cookies` na `/ochrana-osobnych-udajov`. Health check `/up`.

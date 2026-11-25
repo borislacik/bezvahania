@@ -18,6 +18,13 @@
                 <li>
                     <a
                         class="hover:text-inverse-on-surface"
+                        href="{{ route('legal.cancellation') }}"
+                        >{{ __('site.pages.cancellation') }}</a
+                    >
+                </li>
+                <li>
+                    <a
+                        class="hover:text-inverse-on-surface"
                         href="{{ route('legal.privacy') }}"
                         >{{ __('site.footer.privacy') }}</a
                     >

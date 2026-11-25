@@ -125,6 +125,13 @@ workshop?“ (`ContentSeeder`). Piliere sa už nepodobajú na karty workshopov: 
   po nich bolo príliš veľké, preto je na desktope vrch hlavného nadpisu zarovnaný s vrchom obrázka (`lg:items-start`,
   obrázok `lg:mt-7`) a sekcia je nižšia.
 
+### Storno podmienky (25. 11. 2026)
+- Nová právna stránka **Storno podmienky** (`/storno-podmienky`, route `legal.cancellation`, kľúč stránky
+  `cancellation`), v pätičke medzi Obchodnými podmienkami a Ochranou osobných údajov, v sitemape a v admine
+  (Stránky a SEO, s editorom obsahu).
+- Text storno podmienok zatiaľ nie je (brief: politika zrušenia sa ešte určí) – stránka zobrazuje „Text sa
+  pripravuje“. Text dodá používateľ; do nasadenia ho vkladá Claude do seedera, nie cez admin.
+
 ### Facebook v kontaktnom bloku (25. 11. 2026)
 - Pod telefón a e-mail v bloku „Osobná konzultácia“ pribudol odkaz **Bez váhania na Facebooku** s ikonou
   (nové okno, `rel="noopener"`).

@@ -22,6 +22,7 @@ it('renders every public page', function (string $route, array $parameters = [])
     'booking' => ['booking.create'],
     'privacy' => ['legal.privacy'],
     'terms' => ['legal.terms'],
+    'cancellation' => ['legal.cancellation'],
 ]);
 
 it('shows the contact phone and e-mail, never the automatic booking address', function (string $route) {
@@ -112,7 +113,7 @@ it('serves a sitemap with all public pages and workshops', function () {
         ->assertOk()
         ->assertHeader('Content-Type', 'application/xml; charset=UTF-8');
 
-    foreach (['home', 'booking.create', 'legal.privacy', 'legal.terms'] as $route) {
+    foreach (['home', 'booking.create', 'legal.privacy', 'legal.terms', 'legal.cancellation'] as $route) {
         $response->assertSee('<loc>'.route($route).'</loc>', escape: false);
     }
 
@@ -188,9 +189,9 @@ it('redirects the former legal page addresses', function () {
     $this->get('/cookies')->assertMovedPermanently()->assertRedirect(route('legal.privacy'));
 });
 
-it('lists the two legal pages and the cookie settings in the footer', function () {
+it('lists the legal pages and the cookie settings in the footer', function () {
     $this->get(route('home'))
         ->assertOk()
-        ->assertSeeInOrder(['Obchodné podmienky', 'Ochrana osobných údajov a cookies', __('site.footer.cookie_settings')])
+        ->assertSeeInOrder(['Obchodné podmienky', 'Storno podmienky', 'Ochrana osobných údajov a cookies', __('site.footer.cookie_settings')])
         ->assertDontSee('Zásady používania cookies');
 });

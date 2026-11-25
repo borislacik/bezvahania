@@ -15,6 +15,7 @@ return [
         'booking' => 'Rezervácia termínu',
         'privacy' => 'Ochrana osobných údajov a používanie cookies',
         'terms' => 'Obchodné podmienky',
+        'cancellation' => 'Storno podmienky',
     ],
 
     'nav' => [

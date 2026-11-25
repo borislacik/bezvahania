@@ -137,6 +137,7 @@ class ContentSeeder extends Seeder
             'booking' => ['Rezervácia termínu workshopu', 'Vyberte si voľný termín workshopu prvej pomoci v kalendári – doobeda alebo poobede, u vás doma v Bratislave a okolí.'],
             'privacy' => ['Ochrana osobných údajov a používanie cookies', 'Ako spracúvame osobné údaje pri rezervácii a v kontaktnom formulári, aké cookies používame a ako zmeníte svoj súhlas.'],
             'terms' => ['Obchodné podmienky', 'Obchodné podmienky workshopov prvej pomoci Bez váhania – rezervácia, platba a zrušenie termínu.'],
+            'cancellation' => ['Storno podmienky', 'Ako a dokedy môžete zrušiť alebo presunúť rezervovaný workshop prvej pomoci Bez váhania.'],
         ];
 
         foreach ($pages as $key => [$seoTitle, $seoDescription]) {
