@@ -216,6 +216,8 @@ it('shows the operator privacy and cookies text', function () {
     $this->get(route('legal.privacy'))->assertOk()
         ->assertSee('<h2>1. Prevádzkovateľ osobných údajov</h2>', escape: false)
         ->assertSee('Okresný úrad Bratislava, č. 110-317766')
+        ->assertSee('Studenohorská 2061/17, 841 03 Bratislava<br />', escape: false)
+        ->assertSee('anonymizujeme 3 roky po termíne workshopu')
         ->assertSee('<h2>9. Používanie cookies</h2>', escape: false)
         ->assertSee('href="https://dataprotection.gov.sk/"', escape: false)
         ->assertDontSee('Text sa pripravuje');

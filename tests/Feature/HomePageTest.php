@@ -89,7 +89,7 @@ it('links the Facebook page from the contact block and can hide it', function ()
 it('shows the business details in the footer by default', function () {
     $this->get(route('home'))
         ->assertOk()
-        ->assertSeeInOrder(['Boris Lacík', 'IČO: 54842280', 'DIČ: 1077502657', 'Nie som platiteľ DPH', 'Studenohorská 2061/17, 841 03, Bratislava']);
+        ->assertSeeInOrder(['Boris Lacík', 'IČO: 54842280', 'DIČ: 1077502657', 'Nie som platiteľ DPH', 'Studenohorská 2061/17, 841 03 Bratislava']);
 });
 
 it('introduces the instructor and keeps the hero without key figures', function () {

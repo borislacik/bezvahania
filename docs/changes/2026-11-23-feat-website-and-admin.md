@@ -191,6 +191,9 @@ workshop?“ (`ContentSeeder`). Piliere sa už nepodobajú na karty workshopov: 
   zo súborov jednotne, iba do prázdnej stránky. Lokálna DB prepísaná novým textom (predtým dočasný text zo seedera).
 - Úpravy pri prepise: e-mail a webové adresy (Google, ÚOOÚ) sú odkazy, opravený preklep „miesta konania workshopu“,
   dvojitá medzera v adrese úradu.
+- Na pokyn používateľa doplnené: v 2.1 počet účastníkov a poznámka k rezervácii, v 2.2 obsah správy, v bode 6 konkrétne
+  lehoty webu (anonymizácia rezervácií 3 roky po termíne, mazanie správ po 12 mesiacoch); adresa „841 03 Bratislava“
+  (aj v pätičke – `Setting::DEFAULTS` a lokálna DB).
 - Test: obsah stránky (prevádzkovateľ, cookies, odkaz na dozorný orgán, bez dočasného textu).
 
 ### Facebook v kontaktnom bloku (25. 11. 2026)
@@ -227,7 +230,7 @@ workshop?“ (`ContentSeeder`). Piliere sa už nepodobajú na karty workshopov: 
   (bez migrácie, tabuľka `settings`). Predvolené hodnoty v `Setting::DEFAULTS` sú údaje živnosti Borisa Lacíka,
   takže sa zobrazia aj po nasadení bez ručného zadania; lokálne sú uložené aj v DB.
 - Z pätičky odstránený riadok „Bratislava a okolie do 60 km“ (oblasť je uvedená v iných častiach webu).
-- Adresa v tvare „Studenohorská 2061/17, 841 03, Bratislava“, text „Nie som platiteľ DPH“.
+- Adresa v tvare „Studenohorská 2061/17, 841 03 Bratislava“ (25. 11. zjednotené s ochranou údajov, bez čiarky za PSČ), text „Nie som platiteľ DPH“.
 
 ### Karty workshopov (24. 11. 2026)
 - Tlačidlá „Rezervovať termín“ boli pri každom workshope inej farby (červené, tmavé, svetlé), takže prvý workshop
