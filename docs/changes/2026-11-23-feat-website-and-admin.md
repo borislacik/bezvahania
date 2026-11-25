@@ -128,7 +128,8 @@ workshop?“ (`ContentSeeder`). Piliere sa už nepodobajú na karty workshopov: 
 ### Blokovanie doobedného alebo poobedného termínu (25. 11. 2026)
 - Admin → Dostupnosť termínov: každý deň má dva termíny (9 – 13, 15 – 19), kliknutím sa termín zablokuje alebo
   uvoľní. Tlačidlo **Celý deň** blokuje / uvoľní oba naraz. Uvoľnenie jedného termínu v celom zablokovanom dni
-  nechá druhý termín zablokovaný. Rezervovaný termín sa nedá zablokovať (zobrazí sa s menom zákazníka), deň
+  nechá druhý termín zablokovaný; zablokovanie oboch termínov postupne sa zlúči na celý deň (zvýrazní sa aj
+  „Celý deň“, v DB jeden riadok `day`). Rezervovaný termín sa nedá zablokovať (zobrazí sa s menom zákazníka), deň
   s rezerváciou sa nedá zablokovať celý, minulé dni sa nemenia.
 - Nová migrácia `2026_11_25_105940_add_slot_to_blocked_days_table`: stĺpec `slot` (`day` | `morning` |
   `afternoon`, predvolene `day`), unikátny index `date` nahradený `(date, slot)`. Existujúce blokovania ostávajú

@@ -73,10 +73,10 @@ class Availability extends Page
         }
 
         $label = $day->format('j. n. Y');
-        $wholeDay = BlockedDay::query()->whereDate('date', $day)->where('slot', BlockedDay::WHOLE_DAY)->first();
+        $blocks = BlockedDay::query()->whereDate('date', $day)->pluck('slot')->all();
 
-        if ($wholeDay) {
-            $wholeDay->delete();
+        if ($this->coversWholeDay($blocks)) {
+            BlockedDay::query()->whereDate('date', $day)->delete();
             Notification::make()->success()->title(__('admin.availability.day_unblocked', ['date' => $label]))->send();
 
             return;
@@ -129,8 +129,26 @@ class Availability extends Page
             return;
         }
 
+        // Both slots blocked = the whole day: keep a single whole-day block, so "Celý deň" is highlighted too.
+        if ($blocks->isNotEmpty()) {
+            BlockedDay::query()->whereDate('date', $day)->delete();
+            BlockedDay::query()->create(['date' => $day, 'slot' => BlockedDay::WHOLE_DAY]);
+            Notification::make()->success()->title(__('admin.availability.day_blocked', ['date' => $replace['date']]))->send();
+
+            return;
+        }
+
         BlockedDay::query()->create(['date' => $day, 'slot' => $timeSlot->value]);
         Notification::make()->success()->title(__('admin.availability.slot_blocked', $replace))->send();
+    }
+
+    /**
+     * @param  list<string>  $blocks  blocked parts of one day
+     */
+    private function coversWholeDay(array $blocks): bool
+    {
+        return in_array(BlockedDay::WHOLE_DAY, $blocks, true)
+            || array_diff(array_map(fn (TimeSlot $slot): string => $slot->value, TimeSlot::cases()), $blocks) === [];
     }
 
     /**
@@ -161,7 +179,7 @@ class Availability extends Page
         for ($day = $gridStart; $day->lte($gridEnd); $day = $day->addDay()) {
             $key = $day->toDateString();
             $dayBookings = $bookings->get($key, collect());
-            $wholeDay = isset($blocked[$key][BlockedDay::WHOLE_DAY]);
+            $wholeDay = $this->coversWholeDay(array_keys($blocked[$key] ?? []));
             $slots = [];
             foreach (TimeSlot::cases() as $slot) {
                 $slots[$slot->value] = [

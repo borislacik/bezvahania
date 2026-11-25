@@ -68,6 +68,20 @@ it('turns slot blocks into a whole day and back', function () {
     expect(BlockedDay::query()->pluck('slot')->all())->toBe(['afternoon']);
 });
 
+it('blocks the whole day once both slots are blocked one by one', function () {
+    Livewire::test(Availability::class)
+        ->call('toggleSlot', '2026-11-30', 'morning')
+        ->call('toggleSlot', '2026-11-30', 'afternoon')
+        ->assertNotified(__('admin.availability.day_blocked', ['date' => '30. 11. 2026']))
+        ->assertSeeHtml('data-blocked="1"');
+
+    expect(BlockedDay::query()->pluck('slot')->all())->toBe([BlockedDay::WHOLE_DAY]);
+
+    Livewire::test(Availability::class)->call('toggleDay', '2026-11-30');
+
+    expect(BlockedDay::query()->count())->toBe(0);
+});
+
 it('does not block a slot that has a booking but allows the other one', function () {
     Booking::factory()->create(['date' => '2026-12-02', 'time_slot' => TimeSlot::Morning]);
 
