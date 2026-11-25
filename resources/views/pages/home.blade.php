@@ -66,7 +66,7 @@
                             />
                             {{-- Decorative, intentionally quiet: red is reserved for the booking calls to action. --}}
                             <span
-                                class="font-heading text-label-badge text-on-surface absolute top-4 left-4 inline-flex items-center gap-1.5 rounded-full bg-white/55 px-2.5 py-1 font-bold uppercase shadow-sm backdrop-blur-md"
+                                class="font-heading text-label-badge text-on-surface absolute top-4 left-4 inline-flex items-center gap-1.5 rounded-full bg-white/70 px-2.5 py-1 font-bold uppercase shadow-sm backdrop-blur-md"
                                 data-testid="hero-badge"
                             >
                                 <span class="relative flex size-2" aria-hidden="true">

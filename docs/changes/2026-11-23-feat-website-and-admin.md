@@ -213,6 +213,8 @@ workshop?“ (`ContentSeeder`). Piliere sa už nepodobajú na karty workshopov: 
   Neskôr (25. 11.) zjednotené na 55 % spolu so štítkom dĺžky workshopu (predtým 90 %) a prvkami pri lektorovi –
   všetky štítky z matného skla majú `bg-white/55 backdrop-blur-md`. Hlavička webu ostáva `bg-surface/90`. Kartička „Aktuálne odporúčania ERC“ v hero
   je podľa výberu používateľa (náhľady 55 % / 70 %) z matného skla `bg-white/70` – dlhší text sa číta ľahšie.
+  Po náhľadoch kariet workshopov a fotky lektora používateľ zvolil 70 % pre všetky prvky z matného skla
+  (6× `bg-white/70 backdrop-blur-md`); hlavička ostáva `bg-surface/90`.
 
 ### Časté otázky a skúsenosti vedľa seba (24. 11. 2026)
 - Na desktope jedna sekcia: vľavo časté otázky (2/3 šírky), vpravo skúsenosti absolventov (1/3) s menším nadpisom.
