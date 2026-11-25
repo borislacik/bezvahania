@@ -495,17 +495,6 @@
                             <x-site.icon name="lock" class="size-4" />
                             {{ __('booking.payment_note') }}
                         </p>
-                        <p
-                            class="text-body-sm text-on-surface-variant mt-1 flex items-center justify-center gap-2 text-center"
-                            data-testid="cancellation-note"
-                        >
-                            <x-site.icon name="calendar_clock" class="size-4" />
-                            <span>
-                                {!! __('booking.cancellation_note', [
-                                    'terms' => '<a class="text-primary underline" href="'.route('legal.cancellation').'" target="_blank">'.e(__('booking.cancellation_note_terms')).'</a>',
-                                ]) !!}
-                            </span>
-                        </p>
                     </div>
                 </div>
             </form>

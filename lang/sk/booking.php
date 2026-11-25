@@ -73,8 +73,6 @@ return [
 
     'submit' => 'Záväzne rezervovať workshop',
     'payment_note' => 'Platba až po skončení workshopu, v hotovosti alebo kartou.',
-    'cancellation_note' => 'Zrušenie bez poplatku najneskôr 7 dní pred termínom (:terms).',
-    'cancellation_note_terms' => 'storno podmienky',
 
     'confirmation' => [
         'title' => 'Ďakujeme za rezerváciu!',

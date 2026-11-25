@@ -179,10 +179,10 @@ workshop?“ (`ContentSeeder`). Piliere sa už nepodobajú na karty workshopov: 
   - v potvrdzovacom e-maile zákazníkovi (namiesto „zavolajte alebo napíšte“ – podmienky vyžadujú preukázateľné
     oznámenie, telefón ostáva na otázky) s odkazom na stránku,
   - na potvrdzovacej stránke rezervácie s odkazom na e-mail a stránku,
-  - v rezervačnom formulári pod tlačidlom („Zrušenie bez poplatku najneskôr 7 dní pred termínom“),
   - v novej otázke v častých otázkach „Môžem termín zrušiť alebo presunúť?“ (7. v poradí, osvedčenie je teraz 8.).
 - Súhlas vo formulári zahŕňa aj storno podmienky (odkaz); `CreateBooking::CONSENT_VERSION` = `2026-11-25`.
 - Testy: obsah stránky a jeho zachovanie pri ďalšom seedovaní, otázka v FAQ, odkazy vo formulári, potvrdení a e-maile.
+- Riadok o bezplatnom zrušení pod tlačidlom rezervácie na pokyn používateľa odstránený (ostáva iba informácia o platbe; storno podmienky sú v súhlase).
 - V bode 1.1 na pokyn používateľa „navrhujú sa tieto podmienky“ → „platia tieto podmienky“.
 
 ### Facebook v kontaktnom bloku (25. 11. 2026)

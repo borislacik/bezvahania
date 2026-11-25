@@ -78,5 +78,5 @@ Lokálne ich zachytáva Mailpit (http://localhost:8025), frontu spracúva služb
 - Zákazník si rezerváciu na webe sám nezruší; zrušenie alebo presun oznámi e-mailom (storno podmienky vyžadujú
   preukázateľné oznámenie, rozhoduje deň doručenia). Rezerváciu potom zruší admin (akcia **Zrušiť rezerváciu**).
 - Storno pravidlá (bez poplatku 7 a viac dní pred termínom, 3 – 6 dní 20 %, menej ako 72 hodín 40 %) sú na stránke
-  `/storno-podmienky` a skrátene v potvrdzovacom e-maile, na potvrdzovacej stránke, vo formulári a v FAQ.
+  `/storno-podmienky` a skrátene v potvrdzovacom e-maile, na potvrdzovacej stránke a v FAQ (vo formulári iba odkaz v súhlase).
   Pri zmene podmienok treba upraviť aj texty v `lang/sk/booking.php`, `lang/sk/mail.php` a otázku v `ContentSeeder`.

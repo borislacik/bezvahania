@@ -197,7 +197,7 @@ it('shows the billing details on the confirmation page only when given', functio
 
 it('points to the cancellation terms in the form, the confirmation page and the e-mail', function () {
     $this->get(route('booking.create'))->assertOk()
-        ->assertSee('data-testid="cancellation-note"', escape: false)
+        ->assertDontSee('data-testid="cancellation-note"', escape: false)
         ->assertSee('href="'.route('legal.cancellation').'"', escape: false)
         ->assertSee(__('booking.fields.consent_cancellation'));
 
