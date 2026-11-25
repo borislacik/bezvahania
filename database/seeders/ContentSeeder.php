@@ -151,20 +151,13 @@ class ContentSeeder extends Seeder
             ])->save();
         }
 
-        // Legal texts from the operator; once filled they are only edited in the admin, never overwritten.
-        $cancellation = Page::query()->where('key', 'cancellation')->firstOrFail();
-        if (! $cancellation->content) {
-            $cancellation->update(['content' => file_get_contents(database_path('seeders/content/cancellation.html'))]);
-        }
-
-        // Privacy and cookies are one page; the privacy text itself comes from the operator later.
-        $privacy = Page::query()->where('key', 'privacy')->firstOrFail();
-        if (! $privacy->content) {
-            $privacy->update(['content' => '<h2>Ochrana osobných údajov</h2><p>Text sa pripravuje. Pre otázky nás kontaktujte na info@bezvahania.sk.</p>'
-                .'<h2>Používanie cookies</h2><p>Cookies sú malé súbory, ktoré web ukladá vo vašom prehliadači.</p>'
-                .'<h3>Nevyhnutné cookies</h3><p>Zabezpečujú fungovanie webu a ochranu formulárov (napr. <code>XSRF-TOKEN</code> a cookie relácie). Na ich použitie nepotrebujeme súhlas.</p>'
-                .'<h3>Analytické cookies</h3><p>Google Analytics (cookies <code>_ga</code>, <code>_ga_*</code>) používame iba vtedy, ak s tým súhlasíte v cookie lište. Pomáhajú nám pochopiť, ako sa web používa.</p>'
-                .'<h3>Zmena súhlasu</h3><p>Svoj súhlas môžete kedykoľvek zmeniť cez odkaz „Nastavenia cookies“ v pätičke webu.</p>']);
+        // Legal texts from the operator (privacy page includes cookies); once filled they are only edited
+        // in the admin, never overwritten.
+        foreach (['cancellation', 'privacy'] as $key) {
+            $page = Page::query()->where('key', $key)->firstOrFail();
+            if (! $page->content) {
+                $page->update(['content' => file_get_contents(database_path("seeders/content/{$key}.html"))]);
+            }
         }
     }
 

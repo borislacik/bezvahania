@@ -211,3 +211,12 @@ it('shows the operator cancellation terms and keeps them when seeding again', fu
 it('answers how to cancel a workshop in the FAQ', function () {
     $this->get(route('home'))->assertOk()->assertSee('Môžem termín zrušiť alebo presunúť?');
 });
+
+it('shows the operator privacy and cookies text', function () {
+    $this->get(route('legal.privacy'))->assertOk()
+        ->assertSee('<h2>1. Prevádzkovateľ osobných údajov</h2>', escape: false)
+        ->assertSee('Okresný úrad Bratislava, č. 110-317766')
+        ->assertSee('<h2>9. Používanie cookies</h2>', escape: false)
+        ->assertSee('href="https://dataprotection.gov.sk/"', escape: false)
+        ->assertDontSee('Text sa pripravuje');
+});

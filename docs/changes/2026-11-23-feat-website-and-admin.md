@@ -185,6 +185,14 @@ workshop?“ (`ContentSeeder`). Piliere sa už nepodobajú na karty workshopov: 
 - Riadok o bezplatnom zrušení pod tlačidlom rezervácie na pokyn používateľa odstránený (ostáva iba informácia o platbe; storno podmienky sú v súhlase).
 - V bode 1.1 na pokyn používateľa „navrhujú sa tieto podmienky“ → „platia tieto podmienky“.
 
+### Text ochrany osobných údajov a cookies (25. 11. 2026)
+- Text od používateľa (účinnosť od 1. 1. 2027) je v `database/seeders/content/privacy.html`; nahrádza dočasný text
+  „Text sa pripravuje“ a skrátenú časť o cookies. `ContentSeeder` vkladá právne texty (storno, ochrana údajov)
+  zo súborov jednotne, iba do prázdnej stránky. Lokálna DB prepísaná novým textom (predtým dočasný text zo seedera).
+- Úpravy pri prepise: e-mail a webové adresy (Google, ÚOOÚ) sú odkazy, opravený preklep „miesta konania workshopu“,
+  dvojitá medzera v adrese úradu.
+- Test: obsah stránky (prevádzkovateľ, cookies, odkaz na dozorný orgán, bez dočasného textu).
+
 ### Facebook v kontaktnom bloku (25. 11. 2026)
 - Pod telefón a e-mail v bloku „Osobná konzultácia“ pribudol odkaz **Bez váhania na Facebooku** s ikonou
   (nové okno, `rel="noopener"`).
