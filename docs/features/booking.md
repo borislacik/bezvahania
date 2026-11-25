@@ -7,7 +7,7 @@
 3. Vyberie **časť dňa**: doobeda 9:00 – 13:00 alebo poobede 15:00 – 19:00.
 4. Vyberie **typ workshopu** (predvolený je workshop označený v admine ako „Predvolený vo formulári“,
    alebo ten, z ktorého karty prišiel – `?workshop=<slug>`).
-5. Vyplní kontakt, **adresu konania**, počet osôb (2 – 4, `Booking::MIN_PARTICIPANTS`/`MAX_PARTICIPANTS`), poznámku a súhlas s podmienkami.
+5. Vyplní kontakt, **adresu konania**, prípadne **fakturačné údaje** (iba ak sú iné – zaškrtávacie pole), počet osôb (2 – 4, `Booking::MIN_PARTICIPANTS`/`MAX_PARTICIPANTS`), poznámku a súhlas s podmienkami.
 6. Rezervácia sa **potvrdí hneď** (bez schvaľovania adminom), zákazník dostane e-mail a vidí potvrdenie
    na podpísanej adrese `/rezervacia/<číslo>` (platnosť 7 dní).
 

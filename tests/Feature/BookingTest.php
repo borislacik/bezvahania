@@ -156,6 +156,45 @@ it('validates the booking form', function (array $overrides, string $field) {
     'honeypot' => [['website' => 'spam'], 'website'],
 ]);
 
+it('stores separate billing details when the customer asks for them', function () {
+    $this->post(route('booking.store'), bookingPayload([
+        'billing_different' => '1',
+        'billing_address' => "  Firma s.r.o.\nObchodná 5, 811 01 Bratislava\nIČO 12345678  ",
+    ]))->assertRedirect();
+
+    $booking = Booking::query()->sole();
+    expect($booking->billing_address)->toBe("Firma s.r.o.\nObchodná 5, 811 01 Bratislava\nIČO 12345678");
+
+    Mail::assertQueued(BookingConfirmedMail::class, fn (BookingConfirmedMail $mail) => str_contains($mail->render(), 'Firma s.r.o.<br>Obchodná 5'));
+    Mail::assertQueued(NewBookingAdminMail::class, fn (NewBookingAdminMail $mail) => str_contains($mail->render(), 'IČO 12345678'));
+});
+
+it('ignores billing details when the billing checkbox is not ticked', function () {
+    $this->post(route('booking.store'), bookingPayload(['billing_address' => 'Firma s.r.o.']))->assertRedirect();
+
+    expect(Booking::query()->sole()->billing_address)->toBeNull();
+});
+
+it('requires billing details when the billing checkbox is ticked', function () {
+    $this->post(route('booking.store'), bookingPayload(['billing_different' => '1', 'billing_address' => '']))
+        ->assertSessionHasErrors('billing_address');
+
+    expect(Booking::query()->count())->toBe(0);
+});
+
+it('shows the billing details on the confirmation page only when given', function () {
+    $this->followingRedirects()
+        ->post(route('booking.store'), bookingPayload(['billing_different' => '1', 'billing_address' => 'Firma s.r.o.']))
+        ->assertOk()
+        ->assertSee('data-testid="billing-summary"', escape: false)
+        ->assertSee('Firma s.r.o.');
+
+    $this->followingRedirects()
+        ->post(route('booking.store'), bookingPayload(['date' => '2026-12-03']))
+        ->assertOk()
+        ->assertDontSee('data-testid="billing-summary"', escape: false);
+});
+
 it('rejects inactive workshops', function () {
     $inactive = Course::factory()->inactive()->create();
 

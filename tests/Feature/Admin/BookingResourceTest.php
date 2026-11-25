@@ -89,6 +89,7 @@ it('creates a phone booking and refuses an occupied slot', function () {
             'phone' => '0900 333 444',
             'email' => 'telefon@example.com',
             'address' => 'Dlhá 5, Pezinok',
+            'billing_address' => 'Firma s.r.o., IČO 12345678',
             'notify' => true,
         ])
         ->call('create')
@@ -96,7 +97,8 @@ it('creates a phone booking and refuses an occupied slot', function () {
 
     $booking = Booking::query()->sole();
     expect($booking->time_slot)->toBe(TimeSlot::Afternoon)
-        ->and($booking->status)->toBe(BookingStatus::Confirmed);
+        ->and($booking->status)->toBe(BookingStatus::Confirmed)
+        ->and($booking->billing_address)->toBe('Firma s.r.o., IČO 12345678');
     Mail::assertQueued(BookingConfirmedMail::class);
 
     Livewire::test(CreateBooking::class)
@@ -120,12 +122,13 @@ it('edits only contact details of a booking', function () {
     $booking = Booking::factory()->create(['date' => '2026-12-01', 'time_slot' => TimeSlot::Morning]);
 
     Livewire::test(EditBooking::class, ['record' => $booking->getRouteKey()])
-        ->fillForm(['phone' => '0911 000 111', 'participants' => 2, 'date' => '2026-12-24'])
+        ->fillForm(['phone' => '0911 000 111', 'billing_address' => 'Iná firma', 'participants' => 2, 'date' => '2026-12-24'])
         ->call('save')
         ->assertHasNoFormErrors();
 
     $booking->refresh();
     expect($booking->phone)->toBe('0911 000 111')
+        ->and($booking->billing_address)->toBe('Iná firma')
         ->and($booking->participants)->toBe(2)
         ->and($booking->date->toDateString())->toBe('2026-12-01');
 });

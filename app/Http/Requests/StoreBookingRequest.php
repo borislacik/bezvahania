@@ -22,6 +22,8 @@ class StoreBookingRequest extends FormRequest
             'email' => ['required', 'string', 'email:rfc', 'max:190'],
             'phone' => ['required', 'string', 'max:40', 'regex:/^[0-9 +()\/-]{6,}$/'],
             'address' => ['required', 'string', 'max:255'],
+            'billing_different' => ['boolean'],
+            'billing_address' => ['nullable', 'required_if_accepted:billing_different', 'string', 'max:500'],
             'participants' => ['required', 'integer', 'between:'.Booking::MIN_PARTICIPANTS.','.Booking::MAX_PARTICIPANTS],
             'note' => ['nullable', 'string', 'max:2000'],
             'consent' => ['accepted'],
@@ -51,6 +53,7 @@ class StoreBookingRequest extends FormRequest
             'email' => __('booking.fields.email'),
             'phone' => __('booking.fields.phone'),
             'address' => __('booking.fields.address'),
+            'billing_address' => __('booking.fields.billing_address'),
             'participants' => __('booking.fields.participants'),
             'note' => __('booking.fields.note'),
             'consent' => __('booking.fields.consent_terms'),
@@ -58,7 +61,7 @@ class StoreBookingRequest extends FormRequest
     }
 
     /**
-     * @return array{course_id: int, date: string, time_slot: string, contact_name: string, email: string, phone: string, address: string, participants: int, note: string|null}
+     * @return array{course_id: int, date: string, time_slot: string, contact_name: string, email: string, phone: string, address: string, billing_address: string|null, participants: int, note: string|null}
      */
     public function bookingData(): array
     {
@@ -70,6 +73,9 @@ class StoreBookingRequest extends FormRequest
             'email' => $this->string('email')->trim()->lower()->toString(),
             'phone' => $this->string('phone')->trim()->toString(),
             'address' => $this->string('address')->trim()->toString(),
+            'billing_address' => $this->boolean('billing_different') && $this->filled('billing_address')
+                ? $this->string('billing_address')->trim()->toString()
+                : null,
             'participants' => $this->integer('participants'),
             'note' => $this->filled('note') ? $this->string('note')->trim()->toString() : null,
         ];

@@ -25,6 +25,10 @@ it('lets a visitor pick a day, slot and workshop and book it', function () {
         ->type('phone', '+421 900 555 666')
         ->type('email', 'eva@example.com')
         ->type('address', 'Testovacia 12, Bratislava')
+        ->assertMissing('textarea[name="billing_address"]')
+        ->check('billing_different')
+        ->assertVisible('textarea[name="billing_address"]')
+        ->type('billing_address', 'Firma s.r.o., IČO 12345678')
         ->click('3 osoby')
         ->check('consent')
         ->assertSee($course->name)
@@ -38,6 +42,7 @@ it('lets a visitor pick a day, slot and workshop and book it', function () {
         ->and($booking->date->toDateString())->toBe('2026-11-27')
         ->and($booking->time_slot)->toBe(TimeSlot::Afternoon)
         ->and($booking->participants)->toBe(3)
+        ->and($booking->billing_address)->toBe('Firma s.r.o., IČO 12345678')
         ->and($booking->status)->toBe(BookingStatus::Confirmed);
 
     Mail::assertQueued(BookingConfirmedMail::class, fn ($mail) => $mail->hasTo('eva@example.com'));

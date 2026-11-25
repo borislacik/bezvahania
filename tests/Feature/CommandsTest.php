@@ -25,7 +25,7 @@ it('rejects a weak password and a duplicate e-mail', function () {
 });
 
 it('anonymizes bookings older than three years', function () {
-    $old = Booking::factory()->create(['date' => now()->subYears(3)->subDay()->toDateString(), 'note' => 'Súkromná poznámka']);
+    $old = Booking::factory()->create(['date' => now()->subYears(3)->subDay()->toDateString(), 'note' => 'Súkromná poznámka', 'billing_address' => 'Firma s.r.o., Hlavná 1']);
     $recent = Booking::factory()->create(['date' => now()->subYears(2)->toDateString()]);
 
     $this->artisan('app:anonymize-bookings')->assertSuccessful();
@@ -35,6 +35,7 @@ it('anonymizes bookings older than three years', function () {
         ->and($old->email)->toBe('—')
         ->and($old->phone)->toBe('—')
         ->and($old->note)->toBeNull()
+        ->and($old->billing_address)->toBeNull()
         ->and($old->anonymized_at)->not->toBeNull()
         ->and($recent->refresh()->anonymized_at)->toBeNull();
 });

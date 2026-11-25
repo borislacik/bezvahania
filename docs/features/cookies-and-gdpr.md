@@ -14,7 +14,7 @@
 - Formuláre zbierajú len potrebné údaje. Rezervácia vyžaduje súhlas s podmienkami (zaškrtávacie pole),
   kontaktné formuláre zobrazujú iba informačnú vetu o spracovaní osobných údajov (súhlas tu nie je právnym základom).
 - Pri rezervácii sa ukladá čas a verzia súhlasu (`consent_at`, `consent_version`).
-- Doby uchovávania: rezervácie anonymizované **3 roky** po termíne, správy z formulára zmazané po **12 mesiacoch**.
+- Doby uchovávania: rezervácie (vrátane fakturačných údajov) anonymizované **3 roky** po termíne, správy z formulára zmazané po **12 mesiacoch**.
 - Právne stránky sú tri: **Obchodné podmienky** (`/obchodne-podmienky`), **Storno podmienky** (`/storno-podmienky`)
   a **Ochrana osobných údajov a používanie cookies** (`/ochrana-osobnych-udajov`, obsahuje aj časť o cookies). Texty dodá prevádzkovateľ, vkladajú sa v admine
   (**Stránky a SEO**). Kým nie sú vyplnené, stránka zobrazí informáciu, že text sa pripravuje.

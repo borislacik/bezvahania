@@ -43,7 +43,7 @@ class ListBookings extends ListRecords
             fputcsv($out, [
                 __('admin.fields.reference'), __('admin.fields.date'), __('admin.fields.time_slot'), __('admin.fields.course'),
                 __('admin.fields.status'), __('admin.fields.contact_name'), __('admin.fields.phone'), __('admin.fields.email'),
-                __('admin.fields.address'), __('admin.fields.participants'), __('admin.fields.price'), __('admin.fields.note'),
+                __('admin.fields.address'), __('admin.fields.billing_address'), __('admin.fields.participants'), __('admin.fields.price'), __('admin.fields.note'),
             ], ';', escape: '');
 
             /** @var Booking $booking */
@@ -58,6 +58,7 @@ class ListBookings extends ListRecords
                     $booking->phone,
                     $booking->email,
                     $booking->address,
+                    $booking->billing_address,
                     $booking->participants,
                     number_format((float) $booking->price, 2, ',', ''),
                     $booking->note,

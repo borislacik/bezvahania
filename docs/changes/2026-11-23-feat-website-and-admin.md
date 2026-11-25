@@ -153,6 +153,18 @@ workshop?“ (`ContentSeeder`). Piliere sa už nepodobajú na karty workshopov: 
 - Testy: blokovanie / uvoľnenie termínu, prechod medzi termínom a celým dňom, termín s rezerváciou, neplatný
   termín a minulý deň (Livewire), stav termínu v `AvailabilityTest`.
 
+### Fakturačné údaje v rezervácii (25. 11. 2026)
+- Pod adresou konania pribudlo zaškrtávacie pole **Fakturačné údaje sú iné ako adresa konania**; po zaškrtnutí sa
+  zobrazí textové pole **Fakturačné údaje** (meno alebo firma, adresa, prípadne IČO a DIČ, max. 500 znakov).
+  Zaškrtnuté a prázdne pole je chyba; bez zaškrtnutia sa text ignoruje.
+- Nová migrácia `2026_11_25_220802_add_billing_address_to_bookings_table` (stĺpec `bookings.billing_address`, text,
+  nepovinný). Pôvodná migrácia sa nemenila.
+- Fakturačné údaje sú v potvrdení na webe, v e-maile zákazníkovi aj prevádzkovateľovi, v detaile a úprave rezervácie
+  v admine (prázdne = „Rovnaké ako adresa konania“), pri telefonickej rezervácii a v exporte CSV.
+- GDPR: anonymizácia po 3 rokoch maže aj fakturačné údaje.
+- Testy: uloženie a orezanie textu, ignorovanie bez zaškrtnutia, povinnosť po zaškrtnutí, potvrdzovacia stránka,
+  e-maily, admin (vytvorenie, úprava), anonymizácia, browser test celej rezervácie so zaškrtnutím.
+
 ### Storno podmienky (25. 11. 2026)
 - Nová právna stránka **Storno podmienky** (`/storno-podmienky`, route `legal.cancellation`, kľúč stránky
   `cancellation`), v pätičke medzi Obchodnými podmienkami a Ochranou osobných údajov, v sitemape a v admine

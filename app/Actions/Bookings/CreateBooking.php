@@ -27,7 +27,7 @@ final class CreateBooking
     public const CONSENT_VERSION = '2026-11-23';
 
     /**
-     * @param  array{course_id: int, date: string, time_slot: string, contact_name: string, email: string, phone: string, address: string, participants: int, note?: string|null}  $data
+     * @param  array{course_id: int, date: string, time_slot: string, contact_name: string, email: string, phone: string, address: string, billing_address?: string|null, participants: int, note?: string|null}  $data
      *
      * @throws SlotUnavailableException
      */
@@ -51,6 +51,7 @@ final class CreateBooking
                 'email' => $data['email'],
                 'phone' => $data['phone'],
                 'address' => $data['address'],
+                'billing_address' => $data['billing_address'] ?? null,
                 'participants' => $data['participants'],
                 'note' => $data['note'] ?? null,
                 'price' => $course->price,

@@ -22,6 +22,7 @@ final class AnonymizeOldBookings
                 'email' => '—',
                 'phone' => '—',
                 'address' => '—',
+                'billing_address' => null,
                 'note' => null,
                 'cancellation_reason' => null,
                 'anonymized_at' => now(),

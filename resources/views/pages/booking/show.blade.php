@@ -32,6 +32,14 @@
                         <dt class="text-on-surface-variant">{{ __('booking.summary.address') }}</dt>
                         <dd class="text-on-surface text-right font-bold">{{ $booking->address }}</dd>
                     </div>
+                    @if ($booking->billing_address)
+                        <div class="flex justify-between gap-4" data-testid="billing-summary">
+                            <dt class="text-on-surface-variant">{{ __('booking.summary.billing_address') }}</dt>
+                            <dd class="text-on-surface text-right font-bold">
+                                {!! nl2br(e($booking->billing_address)) !!}
+                            </dd>
+                        </div>
+                    @endif
                     <div class="flex justify-between gap-4">
                         <dt class="text-on-surface-variant">{{ __('booking.summary.participants') }}</dt>
                         <dd class="text-on-surface font-bold">{{ $booking->participants }}</dd>

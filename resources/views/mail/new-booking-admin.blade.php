@@ -9,6 +9,9 @@
 **{{ __('booking.fields.phone') }}:** {{ $booking->phone }}<br>
 **{{ __('booking.fields.email') }}:** {{ $booking->email }}<br>
 **{{ __('booking.summary.address') }}:** {{ $booking->address }}<br>
+@if ($booking->billing_address)
+**{{ __('booking.summary.billing_address') }}:** {!! preg_replace('/\R/', '<br>', e($booking->billing_address)) !!}<br>
+@endif
 **{{ __('booking.summary.participants') }}:** {{ $booking->participants }}
 </x-mail::panel>
 

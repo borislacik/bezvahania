@@ -10,6 +10,9 @@
 **{{ __('booking.summary.course') }}:** {{ $booking->course->name }}<br>
 **{{ __('booking.summary.date') }}:** {{ $booking->date->translatedFormat('l j. n. Y') }}, {{ $booking->time_slot->range() }}<br>
 **{{ __('booking.summary.address') }}:** {{ $booking->address }}<br>
+@if ($booking->billing_address)
+**{{ __('booking.summary.billing_address') }}:** {!! preg_replace('/\R/', '<br>', e($booking->billing_address)) !!}<br>
+@endif
 **{{ __('booking.summary.participants') }}:** {{ $booking->participants }}<br>
 **{{ __('booking.summary.price') }}:** {{ \Illuminate\Support\Number::currency((float) $booking->price, 'EUR', 'sk') }}
 </x-mail::panel>

@@ -337,6 +337,38 @@
                                     <p class="text-body-sm text-on-surface-variant mt-1">{{ __('booking.area_note') }}</p>
                                 </x-site.field>
 
+                                <div
+                                    x-data="{ billing: @js((bool) old('billing_different')) }"
+                                    class="flex flex-col gap-3"
+                                    data-testid="billing"
+                                >
+                                    <label class="text-body-sm text-on-surface flex items-start gap-3">
+                                        <input
+                                            type="checkbox"
+                                            name="billing_different"
+                                            value="1"
+                                            class="accent-primary-container mt-0.5 size-5 shrink-0"
+                                            x-model="billing"
+                                            @checked (old('billing_different'))
+                                        />
+                                        <span>{{ __('booking.fields.billing_different') }}</span>
+                                    </label>
+                                    <div
+                                        x-show="billing"
+                                        x-collapse
+                                        @if (! old('billing_different')) style="display: none" @endif
+                                    >
+                                        <x-site.field
+                                            name="billing_address"
+                                            type="textarea"
+                                            :label="__('booking.fields.billing_address')"
+                                            :placeholder="__('booking.placeholders.billing_address')"
+                                            x-bind:required="billing"
+                                            required
+                                        />
+                                    </div>
+                                </div>
+
                                 <fieldset>
                                     <legend class="field-label">{{ __('booking.fields.participants') }} *</legend>
                                     <div class="grid grid-cols-3 gap-2">

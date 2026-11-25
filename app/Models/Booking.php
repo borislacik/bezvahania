@@ -24,6 +24,7 @@ use Illuminate\Support\Str;
  * @property string $email
  * @property string $phone
  * @property string $address
+ * @property string|null $billing_address
  * @property int $participants
  * @property string|null $note
  * @property string $price
@@ -47,7 +48,7 @@ class Booking extends Model
 
     protected $fillable = [
         'reference', 'course_id', 'date', 'time_slot', 'status', 'contact_name', 'email', 'phone', 'address',
-        'participants', 'note', 'price', 'consent_at', 'consent_version', 'cancelled_at', 'cancellation_reason',
+        'billing_address', 'participants', 'note', 'price', 'consent_at', 'consent_version', 'cancelled_at', 'cancellation_reason',
         'anonymized_at',
     ];
 

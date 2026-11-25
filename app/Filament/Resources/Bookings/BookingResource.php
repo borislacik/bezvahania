@@ -98,6 +98,7 @@ class BookingResource extends Resource
                 TextInput::make('phone')->label(__('admin.fields.phone'))->tel()->required()->maxLength(40),
                 TextInput::make('email')->label(__('admin.fields.email'))->email()->required()->maxLength(190),
                 TextInput::make('address')->label(__('admin.fields.address'))->required()->maxLength(255),
+                Textarea::make('billing_address')->label(__('admin.fields.billing_address'))->helperText(__('admin.fields.billing_address_help'))->rows(3)->maxLength(500)->columnSpanFull(),
                 Textarea::make('note')->label(__('admin.fields.note'))->rows(3)->columnSpanFull(),
                 Toggle::make('notify')
                     ->label(__('admin.fields.notify_customer'))
@@ -127,6 +128,7 @@ class BookingResource extends Resource
                 TextEntry::make('phone')->label(__('admin.fields.phone'))->url(fn (Booking $record): string => 'tel:'.preg_replace('/\s+/', '', $record->phone)),
                 TextEntry::make('email')->label(__('admin.fields.email'))->url(fn (Booking $record): string => 'mailto:'.$record->email),
                 TextEntry::make('address')->label(__('admin.fields.address')),
+                TextEntry::make('billing_address')->label(__('admin.fields.billing_address'))->placeholder(__('admin.fields.billing_same'))->formatStateUsing(fn (string $state): string => nl2br(e($state)))->html()->columnSpanFull(),
                 TextEntry::make('note')->label(__('admin.fields.note'))->placeholder('—')->columnSpanFull(),
             ]),
         ]);

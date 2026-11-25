@@ -19,7 +19,7 @@ class EditBooking extends EditRecord
      */
     protected function mutateFormDataBeforeSave(array $data): array
     {
-        return array_intersect_key($data, array_flip(['contact_name', 'phone', 'email', 'address', 'participants', 'note']));
+        return array_intersect_key($data, array_flip(['contact_name', 'phone', 'email', 'address', 'billing_address', 'participants', 'note']));
     }
 
     protected function getRedirectUrl(): string

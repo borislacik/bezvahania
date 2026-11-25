@@ -32,6 +32,7 @@ class CreateBooking extends CreateRecord
                 'email' => (string) $data['email'],
                 'phone' => (string) $data['phone'],
                 'address' => (string) $data['address'],
+                'billing_address' => filled($data['billing_address'] ?? null) ? (string) $data['billing_address'] : null,
                 'participants' => (int) $data['participants'],
                 'note' => $data['note'] ?? null,
             ], checkWindow: false, notify: (bool) ($data['notify'] ?? true));
