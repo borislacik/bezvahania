@@ -53,6 +53,14 @@ class TeamMemberResource extends Resource
             Textarea::make('quote')->label(__('admin.fields.quote'))->rows(4)->columnSpanFull(),
             Textarea::make('bio')->label(__('admin.fields.bio'))->rows(5)->columnSpanFull(),
             WebpUpload::make('photo', 'team')->label(__('admin.fields.photo'))->columnSpanFull(),
+            WebpUpload::make('gallery', 'team')
+                ->label(__('admin.fields.gallery'))
+                ->helperText(__('admin.fields.gallery_help'))
+                ->multiple()
+                ->reorderable()
+                ->appendFiles()
+                ->maxFiles(10)
+                ->columnSpanFull(),
             TextInput::make('sort_order')->label(__('admin.fields.sort_order'))->numeric()->default(0)->required(),
             Toggle::make('is_active')->label(__('admin.fields.is_active'))->default(true),
         ]);

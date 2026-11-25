@@ -59,6 +59,19 @@ it('shows the three pillars before the workshops and answers how a workshop runs
         ->assertDontSee('id="ako-prebieha"', escape: false);
 });
 
+it('shows all instructor photos, the main one first, with dots to switch them', function () {
+    $response = $this->get(route('home'))->assertOk();
+
+    $response->assertSeeInOrder(['team/instructor.webp', 'team/instructor-2.webp', 'team/instructor-3.webp'], escape: false)
+        ->assertSee(__('site.home.instructor_photo_show', ['number' => 3]));
+
+    TeamMember::query()->update(['gallery' => null]);
+
+    $this->get(route('home'))->assertOk()
+        ->assertSee('team/instructor.webp', escape: false)
+        ->assertDontSee(__('site.home.instructor_photo_show', ['number' => 1]));
+});
+
 it('links the Facebook page from the contact block and can hide it', function () {
     $url = 'https://www.facebook.com/profile.php?id=61596209436961';
 

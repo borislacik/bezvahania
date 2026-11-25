@@ -159,3 +159,18 @@ it('closes the cookie settings opened from the footer after a choice', function 
         ->assertMissing('[data-testid="cookie-banner"]')
         ->assertNoJavaScriptErrors();
 });
+
+it('switches the instructor photos with the dots', function () {
+    $page = visit('/')->resize(1366, 768)->click('[data-cookie-reject]');
+
+    $visible = <<<'JS'
+        () => [...document.querySelectorAll('[data-testid="instructor-photos"] img')]
+            .findIndex((img) => getComputedStyle(img).opacity === '1')
+        JS;
+
+    $page->click('[aria-label="'.__('site.home.instructor_photo_show', ['number' => 3]).'"]');
+    $page->wait(1);
+
+    expect($page->script($visible))->toBe(2);
+    $page->assertNoJavaScriptErrors();
+});

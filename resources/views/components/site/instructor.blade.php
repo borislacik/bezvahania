@@ -3,16 +3,63 @@
 <div class="grid grid-cols-1 items-center gap-12 lg:grid-cols-12">
     <div class="relative order-2 lg:order-1 lg:col-span-5">
         <div class="relative mx-auto max-w-md">
-            <div class="bg-surface overflow-hidden rounded-2xl shadow-xl">
-                <img
-                    src="{{ $member->photoUrl() ?? Vite::asset('resources/images/instructor.webp') }}"
-                    alt="{{ $member->name }}"
-                    width="1024"
-                    height="1024"
-                    loading="lazy"
-                    decoding="async"
-                    class="h-[460px] w-full object-cover"
-                />
+            {{-- Photos change every few seconds (paused on hover/focus, not with reduced motion); dots switch them. --}}
+            @php ($photos = $member->photoUrls() ?: [Vite::asset('resources/images/instructor.webp')])
+            <div
+                class="bg-surface relative h-[460px] overflow-hidden rounded-2xl shadow-xl"
+                data-testid="instructor-photos"
+                @if (count($photos) > 1)
+                    x-data="{
+                        current: 0,
+                        count: {{ count($photos) }},
+                        paused: false,
+                        init() {
+                            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+                            setInterval(() => { if (! this.paused) this.current = (this.current + 1) % this.count; }, 6000);
+                        },
+                    }"
+                    @mouseenter="paused = true"
+                    @mouseleave="paused = false"
+                    @focusin="paused = true"
+                    @focusout="paused = false"
+                @endif
+            >
+                @foreach ($photos as $photo)
+                    <img
+                        src="{{ $photo }}"
+                        alt="{{ $loop->first ? $member->name : __('site.home.instructor_photo_alt', ['name' => $member->name, 'number' => $loop->iteration]) }}"
+                        width="1024"
+                        height="1024"
+                        loading="lazy"
+                        decoding="async"
+                        data-photo="{{ $loop->index }}"
+                        @class ([
+                            'absolute inset-0 size-full object-cover transition-opacity duration-700 motion-reduce:transition-none',
+                            'opacity-0' => ! $loop->first,
+                        ])
+                        @if (count($photos) > 1)
+                            :class="current === {{ $loop->index }} ? 'opacity-100' : 'opacity-0'"
+                            :aria-hidden="current !== {{ $loop->index }}"
+                        @endif
+                    />
+                @endforeach
+
+                @if (count($photos) > 1)
+                    <div
+                        class="absolute bottom-4 left-4 flex gap-1.5 rounded-full bg-white/70 px-2.5 py-2 shadow-sm backdrop-blur-md"
+                    >
+                        @foreach ($photos as $photo)
+                            <button
+                                type="button"
+                                class="h-2 rounded-full transition-all duration-300"
+                                :class="current === {{ $loop->index }} ? 'bg-primary-container w-5' : 'w-2 bg-slate-400 hover:bg-slate-500'"
+                                @click="current = {{ $loop->index }}"
+                                :aria-current="current === {{ $loop->index }}"
+                                aria-label="{{ __('site.home.instructor_photo_show', ['number' => $loop->iteration]) }}"
+                            ></button>
+                        @endforeach
+                    </div>
+                @endif
             </div>
             <div
                 class="bg-inverse-surface text-inverse-on-surface absolute -right-2 -bottom-6 flex items-center gap-3 rounded-xl p-4 shadow-xl sm:right-6"

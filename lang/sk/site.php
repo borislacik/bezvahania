@@ -103,6 +103,8 @@ return [
         'workshops_lead' => 'Vyberte si zameranie, ktoré najlepšie zodpovedá vašim potrebám.',
 
         'instructor_eyebrow' => 'Váš lektor',
+        'instructor_photo_alt' => ':name – fotka :number',
+        'instructor_photo_show' => 'Zobraziť fotku :number',
         'instructor_badge_label' => 'Aktívna služba',
         'instructor_badge_value' => '9+ rokov zásahov',
         'instructor_credentials' => [

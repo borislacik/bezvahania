@@ -60,6 +60,8 @@ return [
         'quote' => 'Citát',
         'bio' => 'O lektorovi',
         'photo' => 'Fotografia',
+        'gallery' => 'Ďalšie fotky',
+        'gallery_help' => 'Na webe sa striedajú po hlavnej fotke (každých pár sekúnd, dajú sa prepnúť aj ručne). Poradie zmeníte potiahnutím. Obrázky sa uložia ako WebP.',
         'question' => 'Otázka',
         'answer' => 'Odpoveď',
         'author' => 'Autor',

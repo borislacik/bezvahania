@@ -16,6 +16,7 @@ use Spatie\Translatable\HasTranslations;
  * @property string|null $quote
  * @property string|null $bio
  * @property string|null $photo
+ * @property list<string>|null $gallery more photos shown in turn after the main one
  * @property bool $is_active
  * @property int $sort_order
  */
@@ -29,11 +30,11 @@ class TeamMember extends Model
     /** @var list<string> */
     public array $translatable = ['role', 'quote', 'bio'];
 
-    protected $fillable = ['name', 'role', 'quote', 'bio', 'photo', 'is_active', 'sort_order'];
+    protected $fillable = ['name', 'role', 'quote', 'bio', 'photo', 'gallery', 'is_active', 'sort_order'];
 
     protected function casts(): array
     {
-        return ['is_active' => 'boolean', 'sort_order' => 'integer'];
+        return ['gallery' => 'array', 'is_active' => 'boolean', 'sort_order' => 'integer'];
     }
 
     /**
@@ -47,5 +48,17 @@ class TeamMember extends Model
     public function photoUrl(): ?string
     {
         return $this->photo ? Storage::disk('public')->url($this->photo) : null;
+    }
+
+    /**
+     * The main photo followed by the gallery, as public URLs.
+     *
+     * @return list<string>
+     */
+    public function photoUrls(): array
+    {
+        $paths = array_filter([$this->photo, ...($this->gallery ?? [])], fn (mixed $path): bool => is_string($path) && $path !== '');
+
+        return array_values(array_map(fn (string $path): string => Storage::disk('public')->url($path), $paths));
     }
 }

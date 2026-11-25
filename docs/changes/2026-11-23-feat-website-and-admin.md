@@ -125,6 +125,18 @@ workshop?“ (`ContentSeeder`). Piliere sa už nepodobajú na karty workshopov: 
   po nich bolo príliš veľké, preto je na desktope vrch hlavného nadpisu zarovnaný s vrchom obrázka (`lg:items-start`,
   obrázok `lg:mt-7`) a sekcia je nižšia.
 
+### Viac fotiek lektora (25. 11. 2026)
+- Sekcia O lektorovi: hlavná fotka a ďalšie fotky sa striedajú každých 6 s (prelínanie), pauza pri prejdení myšou
+  alebo fokuse, pri obmedzení pohybu sa samé nemenia. Bodky vľavo dole na fotke (matné sklo) ich prepínajú ručne.
+  Pri jednej fotke sa bodky nezobrazia.
+- Model `TeamMember`: nové pole `gallery` (JSON zoznam ciest, migrácia `2026_11_25_114106_add_gallery_to_team_members_table`),
+  `photoUrls()` = hlavná fotka + galéria. Admin → Lektori: „Ďalšie fotky“ (viac súborov, poradie potiahnutím,
+  max. 10, konverzia na WebP ako pri ostatných obrázkoch).
+- Fotky od používateľa orezané na štvorec 1024 × 1024 / 921 × 921 tak, aby lektor ostal v zábere:
+  `resources/images/instructor-2.webp` (nácvik KPR so skupinou, tváre účastníkov zakryté už na zdrojovej fotke),
+  `resources/images/instructor-3.webp` (lektor v záchrannej službe). Poradie: súčasná fotka, nácvik, záchranná služba.
+  Seeder aj lokálna DB.
+
 ### Blokovanie doobedného alebo poobedného termínu (25. 11. 2026)
 - Admin → Dostupnosť termínov: každý deň má dva termíny (9 – 13, 15 – 19), kliknutím sa termín zablokuje alebo
   uvoľní. Tlačidlo **Celý deň** blokuje / uvoľní oba naraz. Uvoľnenie jedného termínu v celom zablokovanom dni
