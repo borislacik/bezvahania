@@ -47,7 +47,7 @@ verzie podľa git tagov z deployov (`vRRRR.MM.DD-N`).
 - Zrušené samostatné stránky Workshopy, O lektorovi, Časté otázky a Kontakt; ich adresy presmerúvajú (301) na sekcie. Na úvodnej stránke sú všetky časté otázky.
 
 ### Zmenené – kontakt
-- Právne stránky sú dve: „Obchodné podmienky“ (`/obchodne-podmienky`, predtým Podmienky rezervácie) a „Ochrana osobných údajov a používanie cookies“ (spojené so stránkou o cookies); staré adresy presmerúvajú 301. Pätička: Obchodné podmienky, Ochrana osobných údajov a používanie cookies, Nastavenia cookies.
+- Právne stránky sú dve: „Obchodné podmienky“ (`/obchodne-podmienky`, predtým Podmienky rezervácie) a „Ochrana osobných údajov a používanie cookies“ (spojené so stránkou o cookies); staré adresy presmerúvajú 301. Pätička: Obchodné podmienky, Ochrana osobných údajov a cookies (kratší text odkazu), Nastavenia cookies.
 - Pätička, časť Kontakt: údaje o živnosti (meno, IČO, DIČ, „Nie som platiteľ DPH“, sídlo) s ikonami namiesto popisov; DIČ a text k DPH sú nové polia v admine. Riadok „Bratislava a okolie do 60 km“ a deliaca čiara z pätičky odstránené, pätička je nižšia.
 - Pätička bez bloku „Užitočné odkazy“ (odkazy sú v hlavnom menu).
 - Text kontaktného bloku: „malej firme“ → „firemnému tímu“.

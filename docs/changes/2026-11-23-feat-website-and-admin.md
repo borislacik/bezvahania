@@ -129,8 +129,8 @@ workshop?“ (`ContentSeeder`). Piliere sa už nepodobajú na karty workshopov: 
 - Dve právne stránky namiesto troch: **Obchodné podmienky** (`/obchodne-podmienky`, kľúč `terms`, predtým „Podmienky
   rezervácie“ na `/podmienky-rezervacie`) a **Ochrana osobných údajov a používanie cookies** (`/ochrana-osobnych-udajov`,
   kľúč `privacy`; obsah bývalej stránky `/cookies` je jej časťou). Route `legal.cookies` a kľúč `cookies` zrušené,
-  staré adresy presmerúvajú 301. Pätička: Obchodné podmienky, Ochrana osobných údajov a používanie cookies,
-  Nastavenia cookies. Cookie lišta „Viac o cookies“ vedie na stránku ochrany údajov, súhlas v rezervácii hovorí
+  staré adresy presmerúvajú 301. Pätička: Obchodné podmienky, Ochrana osobných údajov a cookies (kratší text
+  odkazu, kľúč `site.footer.privacy`; nadpis stránky ostáva dlhší), Nastavenia cookies. Cookie lišta „Viac o cookies“ vedie na stránku ochrany údajov, súhlas v rezervácii hovorí
   o „obchodných podmienkach“.
 - Lokálna DB: stránky premenované (aj SEO titulok a popis), text o cookies presunutý do stránky ochrany údajov,
   záznam stránky `cookies` zmazaný (podľa pokynu používateľa, že stránky budú dve). Na produkcii ešte nič nie je.

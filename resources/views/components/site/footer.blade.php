@@ -19,7 +19,7 @@
                     <a
                         class="hover:text-inverse-on-surface"
                         href="{{ route('legal.privacy') }}"
-                        >{{ __('site.pages.privacy') }}</a
+                        >{{ __('site.footer.privacy') }}</a
                     >
                 </li>
                 <li>

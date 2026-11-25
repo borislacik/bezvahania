@@ -191,6 +191,6 @@ it('redirects the former legal page addresses', function () {
 it('lists the two legal pages and the cookie settings in the footer', function () {
     $this->get(route('home'))
         ->assertOk()
-        ->assertSeeInOrder(['Obchodné podmienky', 'Ochrana osobných údajov a používanie cookies', __('site.footer.cookie_settings')])
+        ->assertSeeInOrder(['Obchodné podmienky', 'Ochrana osobných údajov a cookies', __('site.footer.cookie_settings')])
         ->assertDontSee('Zásady používania cookies');
 });

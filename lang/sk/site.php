@@ -32,6 +32,7 @@ return [
     'footer' => [
         'about' => 'Praktické workshopy prvej pomoci v malých skupinách ľudí, ktorí sa poznajú. Prídem za vami domov alebo do kancelárie.',
         'legal' => 'Právne informácie',
+        'privacy' => 'Ochrana osobných údajov a cookies',
         'contact' => 'Kontakt',
         'operator' => 'Prevádzkovateľ',
         'ico' => 'IČO: :ico',
