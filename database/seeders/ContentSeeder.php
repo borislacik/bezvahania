@@ -135,9 +135,8 @@ class ContentSeeder extends Seeder
         $pages = [
             'home' => ['Prvá pomoc bez váhania – workshopy u vás doma', 'Praktické workshopy prvej pomoci pre 2 – 4 osoby priamo u vás doma alebo v kancelárii. KPR a AED, prvá pomoc pre rodiny, taktická prvá pomoc. Bratislava a okolie.'],
             'booking' => ['Rezervácia termínu workshopu', 'Vyberte si voľný termín workshopu prvej pomoci v kalendári – doobeda alebo poobede, u vás doma v Bratislave a okolí.'],
-            'privacy' => ['Ochrana osobných údajov', 'Informácie o spracúvaní osobných údajov pri rezervácii workshopu a kontaktnom formulári.'],
-            'terms' => ['Podmienky rezervácie', 'Podmienky rezervácie a zrušenia workshopov prvej pomoci Bez váhania.'],
-            'cookies' => ['Zásady používania cookies', 'Aké cookies používame a ako môžete zmeniť svoj súhlas.'],
+            'privacy' => ['Ochrana osobných údajov a používanie cookies', 'Ako spracúvame osobné údaje pri rezervácii a v kontaktnom formulári, aké cookies používame a ako zmeníte svoj súhlas.'],
+            'terms' => ['Obchodné podmienky', 'Obchodné podmienky workshopov prvej pomoci Bez váhania – rezervácia, platba a zrušenie termínu.'],
         ];
 
         foreach ($pages as $key => [$seoTitle, $seoDescription]) {
@@ -149,9 +148,14 @@ class ContentSeeder extends Seeder
             ])->save();
         }
 
-        $cookies = Page::query()->where('key', 'cookies')->firstOrFail();
-        if (! $cookies->content) {
-            $cookies->update(['content' => '<h2>Čo sú cookies</h2><p>Cookies sú malé súbory, ktoré web ukladá vo vašom prehliadači.</p><h2>Nevyhnutné cookies</h2><p>Zabezpečujú fungovanie webu a ochranu formulárov (napr. <code>XSRF-TOKEN</code> a cookie relácie). Na ich použitie nepotrebujeme súhlas.</p><h2>Analytické cookies</h2><p>Google Analytics (cookies <code>_ga</code>, <code>_ga_*</code>) používame iba vtedy, ak s tým súhlasíte v cookie lište. Pomáhajú nám pochopiť, ako sa web používa.</p><h2>Zmena súhlasu</h2><p>Svoj súhlas môžete kedykoľvek zmeniť cez odkaz „Nastavenia cookies“ v pätičke webu.</p>']);
+        // Privacy and cookies are one page; the privacy text itself comes from the operator later.
+        $privacy = Page::query()->where('key', 'privacy')->firstOrFail();
+        if (! $privacy->content) {
+            $privacy->update(['content' => '<h2>Ochrana osobných údajov</h2><p>Text sa pripravuje. Pre otázky nás kontaktujte na info@bezvahania.sk.</p>'
+                .'<h2>Používanie cookies</h2><p>Cookies sú malé súbory, ktoré web ukladá vo vašom prehliadači.</p>'
+                .'<h3>Nevyhnutné cookies</h3><p>Zabezpečujú fungovanie webu a ochranu formulárov (napr. <code>XSRF-TOKEN</code> a cookie relácie). Na ich použitie nepotrebujeme súhlas.</p>'
+                .'<h3>Analytické cookies</h3><p>Google Analytics (cookies <code>_ga</code>, <code>_ga_*</code>) používame iba vtedy, ak s tým súhlasíte v cookie lište. Pomáhajú nám pochopiť, ako sa web používa.</p>'
+                .'<h3>Zmena súhlasu</h3><p>Svoj súhlas môžete kedykoľvek zmeniť cez odkaz „Nastavenia cookies“ v pätičke webu.</p>']);
         }
     }
 

@@ -27,7 +27,7 @@
         </div>
         <p class="text-body-sm text-on-surface-variant">
             {{ __('cookies.text') }}
-            <a href="{{ route('legal.cookies') }}" class="text-primary underline">{{ __('cookies.more') }}</a>
+            <a href="{{ route('legal.privacy') }}" class="text-primary underline">{{ __('cookies.more') }}</a>
         </p>
 
         <div x-show="details" x-collapse class="mt-4 space-y-3">

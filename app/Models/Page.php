@@ -32,7 +32,6 @@ class Page extends Model
         'booking' => 'booking.create',
         'privacy' => 'legal.privacy',
         'terms' => 'legal.terms',
-        'cookies' => 'legal.cookies',
     ];
 
     /** @var list<string> */

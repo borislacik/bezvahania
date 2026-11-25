@@ -23,6 +23,7 @@ verzie podľa git tagov z deployov (`vRRRR.MM.DD-N`).
 - Testy: 114 Unit/Feature (pokrytie 97 %) a 8 browser testov (rezervácia, plný termín, admin, všetky stránky).
 
 ### Opravené
+- Okno „Nastavenia cookies“ otvorené z pätičky sa po výbere nezatváralo; teraz sa zatvorí a má aj tlačidlo na zatvorenie (a Esc).
 - Slovenské písmená s diakritikou (č, š, ľ, ť, ž, ň…) sa kreslili záložným písmom; písma Work Sans a Space Grotesk sa teraz načítavajú aj so sadou latin-ext.
 
 ### Zmenené – štruktúra webu
@@ -46,6 +47,7 @@ verzie podľa git tagov z deployov (`vRRRR.MM.DD-N`).
 - Zrušené samostatné stránky Workshopy, O lektorovi, Časté otázky a Kontakt; ich adresy presmerúvajú (301) na sekcie. Na úvodnej stránke sú všetky časté otázky.
 
 ### Zmenené – kontakt
+- Právne stránky sú dve: „Obchodné podmienky“ (`/obchodne-podmienky`, predtým Podmienky rezervácie) a „Ochrana osobných údajov a používanie cookies“ (spojené so stránkou o cookies); staré adresy presmerúvajú 301. Pätička: Obchodné podmienky, Ochrana osobných údajov a používanie cookies, Nastavenia cookies.
 - Pätička, časť Kontakt: údaje o živnosti (meno, IČO, DIČ, „Nie som platiteľ DPH“, sídlo) s ikonami namiesto popisov; DIČ a text k DPH sú nové polia v admine. Riadok „Bratislava a okolie do 60 km“ a deliaca čiara z pätičky odstránené, pätička je nižšia.
 - Pätička bez bloku „Užitočné odkazy“ (odkazy sú v hlavnom menu).
 - Text kontaktného bloku: „malej firme“ → „firemnému tímu“.

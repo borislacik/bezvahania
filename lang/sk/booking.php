@@ -37,7 +37,7 @@ return [
         'participants' => 'Počet účastníkov',
         'note' => 'Poznámka alebo špecifické otázky (nepovinné)',
         'consent' => 'Súhlasím s :terms a beriem na vedomie :privacy.',
-        'consent_terms' => 'podmienkami rezervácie',
+        'consent_terms' => 'obchodnými podmienkami',
         'consent_privacy' => 'spracovanie osobných údajov',
     ],
 
@@ -64,7 +64,7 @@ return [
         'not_selected' => 'nevybrané',
     ],
 
-    'consent_required' => 'Pred rezerváciou potvrďte súhlas s podmienkami rezervácie a spracovaním osobných údajov.',
+    'consent_required' => 'Pred rezerváciou potvrďte súhlas s obchodnými podmienkami a spracovaním osobných údajov.',
 
     'submit' => 'Záväzne rezervovať workshop',
     'payment_note' => 'Platba až po skončení workshopu, v hotovosti alebo kartou.',

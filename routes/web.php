@@ -40,8 +40,7 @@ Route::domain(config('app.domain'))->group(function (): void {
         ->name('contact.store');
 
     Route::get('/ochrana-osobnych-udajov', [PageController::class, 'legal'])->defaults('key', 'privacy')->name('legal.privacy');
-    Route::get('/podmienky-rezervacie', [PageController::class, 'legal'])->defaults('key', 'terms')->name('legal.terms');
-    Route::get('/cookies', [PageController::class, 'legal'])->defaults('key', 'cookies')->name('legal.cookies');
+    Route::get('/obchodne-podmienky', [PageController::class, 'legal'])->defaults('key', 'terms')->name('legal.terms');
 
     Route::get('/sitemap.xml', [SeoController::class, 'sitemap'])->name('sitemap');
     Route::get('/robots.txt', [SeoController::class, 'robots'])->name('robots');
@@ -51,4 +50,8 @@ Route::domain(config('app.domain'))->group(function (): void {
     foreach (HomeSections::FORMER_PAGES as $path => $section) {
         Route::get($path, fn () => redirect('/#'.$section, 301));
     }
+
+    // Former legal pages (until 25. 11. 2026): terms renamed, cookies merged into the privacy page.
+    Route::get('/podmienky-rezervacie', fn () => redirect()->route('legal.terms', status: 301));
+    Route::get('/cookies', fn () => redirect()->route('legal.privacy', status: 301));
 });

@@ -13,9 +13,8 @@ return [
     'pages' => [
         'home' => 'Domáce workshopy prvej pomoci',
         'booking' => 'Rezervácia termínu',
-        'privacy' => 'Ochrana osobných údajov',
-        'terms' => 'Podmienky rezervácie',
-        'cookies' => 'Zásady používania cookies',
+        'privacy' => 'Ochrana osobných údajov a používanie cookies',
+        'terms' => 'Obchodné podmienky',
     ],
 
     'nav' => [

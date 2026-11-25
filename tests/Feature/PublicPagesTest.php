@@ -22,7 +22,6 @@ it('renders every public page', function (string $route, array $parameters = [])
     'booking' => ['booking.create'],
     'privacy' => ['legal.privacy'],
     'terms' => ['legal.terms'],
-    'cookies' => ['legal.cookies'],
 ]);
 
 it('shows the contact phone and e-mail, never the automatic booking address', function (string $route) {
@@ -97,7 +96,9 @@ it('shows all FAQs on the home page with FAQPage structured data', function () {
 });
 
 it('renders legal page content from the admin and a fallback when empty', function () {
-    $this->get(route('legal.cookies'))->assertOk()->assertSee('Google Analytics');
+    $this->get(route('legal.privacy'))->assertOk()
+        ->assertSee('Ochrana osobných údajov a používanie cookies')
+        ->assertSee('Google Analytics');
 
     Page::query()->where('key', 'privacy')->update(['content' => null]);
     $this->get(route('legal.privacy'))->assertOk()->assertSee('info@bezvahania.sk');
@@ -111,7 +112,7 @@ it('serves a sitemap with all public pages and workshops', function () {
         ->assertOk()
         ->assertHeader('Content-Type', 'application/xml; charset=UTF-8');
 
-    foreach (['home', 'booking.create', 'legal.privacy', 'legal.terms', 'legal.cookies'] as $route) {
+    foreach (['home', 'booking.create', 'legal.privacy', 'legal.terms'] as $route) {
         $response->assertSee('<loc>'.route($route).'</loc>', escape: false);
     }
 
@@ -136,9 +137,9 @@ it('does not index pages outside production', function () {
 });
 
 it('redirects www to the bare domain', function () {
-    $this->get('http://www.bezvahania.localhost/cookies?x=1')
+    $this->get('http://www.bezvahania.localhost/obchodne-podmienky?x=1')
         ->assertStatus(301)
-        ->assertRedirect('http://bezvahania.localhost/cookies?x=1');
+        ->assertRedirect('http://bezvahania.localhost/obchodne-podmienky?x=1');
 });
 
 it('sends HSTS only over HTTPS', function () {
@@ -181,3 +182,15 @@ it('uses the logo image and the generated favicons', function () {
 
     expect(getimagesize(resource_path('images/logo.webp'))['mime'])->toBe('image/webp');
 })->skip(fn () => ! is_file(public_path('build/manifest.json')), 'needs built assets');
+
+it('redirects the former legal page addresses', function () {
+    $this->get('/podmienky-rezervacie')->assertMovedPermanently()->assertRedirect(route('legal.terms'));
+    $this->get('/cookies')->assertMovedPermanently()->assertRedirect(route('legal.privacy'));
+});
+
+it('lists the two legal pages and the cookie settings in the footer', function () {
+    $this->get(route('home'))
+        ->assertOk()
+        ->assertSeeInOrder(['Obchodné podmienky', 'Ochrana osobných údajov a používanie cookies', __('site.footer.cookie_settings')])
+        ->assertDontSee('Zásady používania cookies');
+});

@@ -15,7 +15,10 @@
   kontaktné formuláre zobrazujú iba informačnú vetu o spracovaní osobných údajov (súhlas tu nie je právnym základom).
 - Pri rezervácii sa ukladá čas a verzia súhlasu (`consent_at`, `consent_version`).
 - Doby uchovávania: rezervácie anonymizované **3 roky** po termíne, správy z formulára zmazané po **12 mesiacoch**.
-- Texty **Ochrana osobných údajov** a **Podmienky rezervácie** dodá prevádzkovateľ, vkladajú sa v admine
+- Právne stránky sú dve: **Obchodné podmienky** (`/obchodne-podmienky`) a **Ochrana osobných údajov a používanie
+  cookies** (`/ochrana-osobnych-udajov`, obsahuje aj časť o cookies). Texty dodá prevádzkovateľ, vkladajú sa v admine
   (**Stránky a SEO**). Kým nie sú vyplnené, stránka zobrazí informáciu, že text sa pripravuje.
+- Okno **Nastavenia cookies** (odkaz v pätičke) sa po výbere zatvorí; ak už výber existuje, dá sa zatvoriť aj
+  krížikom alebo klávesom Esc bez zmeny.
 - Bezpečnostné hlavičky: `X-Content-Type-Options`, `Referrer-Policy`, `X-Frame-Options`, `Permissions-Policy`,
   CSP v režime report-only a HSTS na HTTPS (`App\Http\Middleware\SecurityHeaders`).

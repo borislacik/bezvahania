@@ -23,13 +23,6 @@
                     >
                 </li>
                 <li>
-                    <a
-                        class="hover:text-inverse-on-surface"
-                        href="{{ route('legal.cookies') }}"
-                        >{{ __('site.pages.cookies') }}</a
-                    >
-                </li>
-                <li>
                     <button
                         type="button"
                         class="hover:text-inverse-on-surface underline-offset-2 hover:underline"

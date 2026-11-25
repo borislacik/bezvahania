@@ -125,6 +125,20 @@ workshop?“ (`ContentSeeder`). Piliere sa už nepodobajú na karty workshopov: 
   po nich bolo príliš veľké, preto je na desktope vrch hlavného nadpisu zarovnaný s vrchom obrázka (`lg:items-start`,
   obrázok `lg:mt-7`) a sekcia je nižšia.
 
+### Právne stránky a nastavenia cookies (25. 11. 2026)
+- Dve právne stránky namiesto troch: **Obchodné podmienky** (`/obchodne-podmienky`, kľúč `terms`, predtým „Podmienky
+  rezervácie“ na `/podmienky-rezervacie`) a **Ochrana osobných údajov a používanie cookies** (`/ochrana-osobnych-udajov`,
+  kľúč `privacy`; obsah bývalej stránky `/cookies` je jej časťou). Route `legal.cookies` a kľúč `cookies` zrušené,
+  staré adresy presmerúvajú 301. Pätička: Obchodné podmienky, Ochrana osobných údajov a používanie cookies,
+  Nastavenia cookies. Cookie lišta „Viac o cookies“ vedie na stránku ochrany údajov, súhlas v rezervácii hovorí
+  o „obchodných podmienkach“.
+- Lokálna DB: stránky premenované (aj SEO titulok a popis), text o cookies presunutý do stránky ochrany údajov,
+  záznam stránky `cookies` zmazaný (podľa pokynu používateľa, že stránky budú dve). Na produkcii ešte nič nie je.
+- Oprava: okno Nastavenia cookies otvorené z pätičky sa po výbere nezatvorilo. Pri uložení sa naraz skrývalo okno
+  aj rozbalená časť s nastaveniami (`x-collapse`) a Alpine čakal na animáciu, ktorá sa nedokončila. Teraz sa skryje
+  iba okno, nastavenia sa resetujú pri otvorení. Ak už výber existuje, okno má krížik a zatvára sa aj klávesom Esc
+  (bez zmeny výberu). Browser test pokrýva všetky tri spôsoby zatvorenia.
+
 ### Údaje o živnosti v pätičke (24. 11. 2026)
 - Časť Kontakt v pätičke: pod telefónom a e-mailom (bez deliacej čiary) nasleduje ikona preukazu s menom, IČO, DIČ
   a textom k DPH, ikona domčeka so sídlom (ikony namiesto popisov „Prevádzkovateľ“, „Sídlo“).
