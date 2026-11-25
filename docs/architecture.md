@@ -38,7 +38,7 @@
 |---|---|---|
 | `Course` | `courses` | typ workshopu (3 typy), preložiteľné texty, cena, obrázok (WebP), SEO |
 | `Booking` | `bookings` | rezervácia celého termínu: dátum + `TimeSlot`, workshop, kontakt, adresa, 2 – 4 osoby (`Booking::MIN/MAX_PARTICIPANTS`), stav, súhlas |
-| `BlockedDay` | `blocked_days` | deň, keď lektor nie je k dispozícii |
+| `BlockedDay` | `blocked_days` | deň alebo termín (doobeda / poobede), keď lektor nie je k dispozícii |
 | `TeamMember` | `team_members` | lektor (meno, funkcia, citát, text, foto) |
 | `Faq`, `Testimonial` | `faqs`, `testimonials` | časté otázky a referencie |
 | `Page` | `pages` | SEO a texty pevných stránok (kľúče v `Page::KEYS`) |

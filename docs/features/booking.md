@@ -2,7 +2,8 @@
 
 ## Ako to funguje pre zákazníka
 1. Na stránke `/rezervacia` vidí kalendár **aktuálneho a nasledujúceho mesiaca**.
-2. Vyberie **deň** (sivé dni sú obsadené, zablokované adminom alebo mimo okna rezervácií).
+2. Vyberie **deň** (sivé dni sú obsadené, zablokované adminom alebo mimo okna rezervácií; deň s jedným voľným
+   termínom ostáva voľný).
 3. Vyberie **časť dňa**: doobeda 9:00 – 13:00 alebo poobede 15:00 – 19:00.
 4. Vyberie **typ workshopu** (predvolený je workshop označený v admine ako „Predvolený vo formulári“,
    alebo ten, z ktorého karty prišiel – `?workshop=<slug>`).
@@ -16,7 +17,8 @@ a zobrazuje súhrn.
 ## Pravidlá dostupnosti (`App\Support\Availability`)
 - Okno rezervácií: od **dnes + `booking_lead_days`** (nastavenie v admine, predvolene 2 dni) do **konca
   nasledujúceho mesiaca**.
-- Deň zablokovaný v admine (`blocked_days`) je nedostupný celý.
+- Admin blokuje celý deň alebo iba jeden termín (`blocked_days.slot` = `day`, `morning`, `afternoon`, jeden riadok
+  na dátum a časť dňa). Zablokovaný termín je nedostupný; celý deň blokuje oba termíny.
 - Časť dňa s aktívnou rezerváciou je obsadená. Zrušená rezervácia termín uvoľní.
 
 ## Ochrana pred dvojitou rezerváciou

@@ -45,33 +45,67 @@
                 @if (! $day['in_month'])
                     <div></div>
                 @else
-                    <button
-                        type="button"
-                        wire:click="toggleDay('{{ $day['date'] }}')"
+                    <div
                         wire:key="day-{{ $day['date'] }}"
-                        @disabled ($day['past'])
                         data-date="{{ $day['date'] }}"
                         data-blocked="{{ $day['blocked'] ? '1' : '0' }}"
                         @class ([
-                            'flex min-h-24 flex-col items-start gap-1 rounded-lg border p-2 text-left text-sm transition',
-                            'cursor-not-allowed border-gray-100 bg-gray-50 text-gray-400 dark:border-white/5 dark:bg-white/5' => $day['past'],
-                            'border-gray-300 bg-gray-200 text-gray-500 line-through dark:border-white/10 dark:bg-white/10' => $day['blocked'] && ! $day['past'],
-                            'border-gray-200 bg-white hover:border-primary-500 dark:border-white/10 dark:bg-gray-900' => ! $day['blocked'] && ! $day['past'],
+                            'flex min-h-28 flex-col gap-1.5 rounded-lg border p-2 text-left text-sm',
+                            'border-gray-100 bg-gray-50 text-gray-400 dark:border-white/5 dark:bg-white/5' => $day['past'],
+                            'border-gray-200 bg-white dark:border-white/10 dark:bg-gray-900' => ! $day['past'],
                             'ring-primary-500 ring-2' => $day['today'],
                         ])
                     >
-                        <span class="font-bold">{{ $day['day'] }}</span>
-                        @if ($day['blocked'])
-                            <span class="text-xs no-underline">{{ __('admin.availability.blocked') }}</span>
-                        @endif
-                        @foreach ($day['bookings'] as $booking)
-                            <span
-                                class="bg-primary-50 text-primary-700 dark:bg-primary-500/10 dark:text-primary-400 w-full truncate rounded px-1 py-0.5 text-xs no-underline"
-                            >
-                                {{ $booking->time_slot->range() }} · {{ $booking->contact_name }}
-                            </span>
+                        <div class="flex items-center justify-between gap-1">
+                            <span class="font-bold">{{ $day['day'] }}</span>
+                            @unless ($day['past'] || ($day['has_bookings'] && ! $day['blocked']))
+                                <button
+                                    type="button"
+                                    wire:click="toggleDay('{{ $day['date'] }}')"
+                                    data-day-toggle
+                                    title="{{ $day['blocked'] ? __('admin.availability.unblock_day') : __('admin.availability.block_day') }}"
+                                    @class ([
+                                        'rounded px-1.5 py-0.5 text-[11px] font-semibold transition',
+                                        'bg-gray-700 text-white hover:bg-gray-600 dark:bg-gray-600' => $day['blocked'],
+                                        'text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:hover:bg-white/10 dark:hover:text-white' => ! $day['blocked'],
+                                    ])
+                                >
+                                    {{ __('admin.availability.whole_day') }}
+                                </button>
+                            @endunless
+                        </div>
+
+                        @foreach ($day['slots'] as $slot => $state)
+                            @if ($state['booking'])
+                                <span
+                                    class="bg-primary-50 text-primary-700 dark:bg-primary-500/10 dark:text-primary-400 w-full truncate rounded px-1.5 py-1 text-xs"
+                                    data-slot="{{ $slot }}"
+                                    data-state="booked"
+                                >
+                                    {{ $state['range'] }} · {{ $state['booking']->contact_name }}
+                                </span>
+                            @else
+                                <button
+                                    type="button"
+                                    wire:click="toggleSlot('{{ $day['date'] }}', '{{ $slot }}')"
+                                    @disabled ($day['past'])
+                                    data-slot="{{ $slot }}"
+                                    data-state="{{ $state['blocked'] ? 'blocked' : 'free' }}"
+                                    @class ([
+                                        'w-full rounded border px-1.5 py-1 text-left text-xs transition',
+                                        'cursor-not-allowed border-transparent' => $day['past'],
+                                        'border-gray-300 bg-gray-200 text-gray-500 line-through dark:border-white/10 dark:bg-white/10' => $state['blocked'] && ! $day['past'],
+                                        'hover:border-primary-500 border-gray-200 text-gray-700 dark:border-white/10 dark:text-gray-300' => ! $state['blocked'] && ! $day['past'],
+                                    ])
+                                >
+                                    {{ $state['range'] }}
+                                    @if ($state['blocked'] && ! $day['past'])
+                                        <span class="sr-only">{{ __('admin.availability.blocked') }}</span>
+                                    @endif
+                                </button>
+                            @endif
                         @endforeach
-                    </button>
+                    </div>
                 @endif
             @endforeach
         </div>

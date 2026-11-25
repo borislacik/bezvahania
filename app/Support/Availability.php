@@ -13,7 +13,7 @@ use Carbon\CarbonInterface;
  * Computes which days and slots can be booked (docs/features/booking.md).
  *
  * Bookable window: from today + "booking_lead_days" (admin setting) to the end of next month.
- * A slot is unavailable when the day is blocked by the admin or the slot already has an active booking.
+ * A slot is unavailable when the admin blocked the whole day or that slot, or the slot already has an active booking.
  */
 final class Availability
 {
@@ -27,7 +27,7 @@ final class Availability
 
     private CarbonImmutable $today;
 
-    /** @var array<string, bool>|null */
+    /** @var array<string, array<string, bool>>|null date => blocked parts ("day", "morning", "afternoon") */
     private ?array $blockedDays = null;
 
     /** @var array<string, bool>|null */
@@ -56,7 +56,9 @@ final class Availability
             return self::STATUS_UNAVAILABLE;
         }
 
-        if (isset($this->blockedDays()[$date->toDateString()])) {
+        $blocked = $this->blockedDays()[$date->toDateString()] ?? [];
+
+        if (isset($blocked[BlockedDay::WHOLE_DAY]) || isset($blocked[$slot->value])) {
             return self::STATUS_BLOCKED;
         }
 
@@ -143,15 +145,22 @@ final class Availability
     }
 
     /**
-     * @return array<string, bool>
+     * @return array<string, array<string, bool>>
      */
     private function blockedDays(): array
     {
-        return $this->blockedDays ??= BlockedDay::query()
-            ->whereBetween('date', [$this->today->toDateString(), $this->lastBookableDay()->toDateString()])
-            ->pluck('date')
-            ->mapWithKeys(fn (CarbonInterface $date): array => [$date->toDateString() => true])
-            ->all();
+        if ($this->blockedDays === null) {
+            $this->blockedDays = [];
+
+            BlockedDay::query()
+                ->whereBetween('date', [$this->today->toDateString(), $this->lastBookableDay()->toDateString()])
+                ->get(['date', 'slot'])
+                ->each(function (BlockedDay $block): void {
+                    $this->blockedDays[$block->date->toDateString()][$block->slot] = true;
+                });
+        }
+
+        return $this->blockedDays;
     }
 
     /**

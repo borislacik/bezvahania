@@ -2,6 +2,7 @@
 
 namespace App\Filament\Pages;
 
+use App\Enums\TimeSlot;
 use App\Models\BlockedDay;
 use App\Models\Booking;
 use App\Support\Availability as AvailabilityCalculator;
@@ -14,7 +15,7 @@ use Filament\Support\Icons\Heroicon;
 use Illuminate\Contracts\Support\Htmlable;
 
 /**
- * Month calendar where the admin blocks days (greyed out on the public calendar).
+ * Month calendar where the admin blocks whole days or single slots (greyed out on the public calendar).
  */
 class Availability extends Page
 {
@@ -61,19 +62,21 @@ class Availability extends Page
         $this->month = today()->format('Y-m');
     }
 
+    /**
+     * Blocks or unblocks the whole day. A day with an active booking cannot be blocked.
+     */
     public function toggleDay(string $date): void
     {
-        $day = CarbonImmutable::parse($date)->startOfDay();
-        $label = $day->format('j. n. Y');
-
-        if ($day->isPast() && ! $day->isToday()) {
+        $day = $this->editableDay($date);
+        if (! $day) {
             return;
         }
 
-        $blocked = BlockedDay::query()->whereDate('date', $day)->first();
+        $label = $day->format('j. n. Y');
+        $wholeDay = BlockedDay::query()->whereDate('date', $day)->where('slot', BlockedDay::WHOLE_DAY)->first();
 
-        if ($blocked) {
-            $blocked->delete();
+        if ($wholeDay) {
+            $wholeDay->delete();
             Notification::make()->success()->title(__('admin.availability.day_unblocked', ['date' => $label]))->send();
 
             return;
@@ -85,8 +88,49 @@ class Availability extends Page
             return;
         }
 
-        BlockedDay::query()->create(['date' => $day]);
+        BlockedDay::query()->whereDate('date', $day)->delete();
+        BlockedDay::query()->create(['date' => $day, 'slot' => BlockedDay::WHOLE_DAY]);
         Notification::make()->success()->title(__('admin.availability.day_blocked', ['date' => $label]))->send();
+    }
+
+    /**
+     * Blocks or unblocks one slot. Unblocking a slot of a fully blocked day keeps the other slot blocked.
+     */
+    public function toggleSlot(string $date, string $slot): void
+    {
+        $day = $this->editableDay($date);
+        $timeSlot = TimeSlot::tryFrom($slot);
+        if (! $day || ! $timeSlot) {
+            return;
+        }
+
+        $replace = ['date' => $day->format('j. n. Y'), 'slot' => mb_strtolower($timeSlot->label())];
+        $blocks = BlockedDay::query()->whereDate('date', $day)->get()->keyBy('slot');
+
+        if ($blocks->has(BlockedDay::WHOLE_DAY)) {
+            $blocks->get(BlockedDay::WHOLE_DAY)?->delete();
+            $other = $timeSlot === TimeSlot::Morning ? TimeSlot::Afternoon : TimeSlot::Morning;
+            BlockedDay::query()->create(['date' => $day, 'slot' => $other->value]);
+            Notification::make()->success()->title(__('admin.availability.slot_unblocked', $replace))->send();
+
+            return;
+        }
+
+        if ($blocks->has($timeSlot->value)) {
+            $blocks->get($timeSlot->value)?->delete();
+            Notification::make()->success()->title(__('admin.availability.slot_unblocked', $replace))->send();
+
+            return;
+        }
+
+        if (Booking::query()->where('active_slot', Booking::slotKey($day->toDateString(), $timeSlot))->exists()) {
+            Notification::make()->warning()->title(__('admin.availability.slot_has_booking', $replace))->send();
+
+            return;
+        }
+
+        BlockedDay::query()->create(['date' => $day, 'slot' => $timeSlot->value]);
+        Notification::make()->success()->title(__('admin.availability.slot_blocked', $replace))->send();
     }
 
     /**
@@ -98,11 +142,13 @@ class Availability extends Page
         $gridStart = $start->startOfWeek(CarbonInterface::MONDAY);
         $gridEnd = $start->endOfMonth()->endOfWeek(CarbonInterface::SUNDAY);
 
-        $blocked = BlockedDay::query()
+        $blocked = [];
+        BlockedDay::query()
             ->whereBetween('date', [$gridStart->toDateString(), $gridEnd->toDateString()])
-            ->pluck('date')
-            ->map(fn (CarbonInterface $date): string => $date->toDateString())
-            ->flip();
+            ->get(['date', 'slot'])
+            ->each(function (BlockedDay $block) use (&$blocked): void {
+                $blocked[$block->date->toDateString()][$block->slot] = true;
+            });
 
         $bookings = Booking::query()
             ->with('course')
@@ -114,14 +160,25 @@ class Availability extends Page
         $days = [];
         for ($day = $gridStart; $day->lte($gridEnd); $day = $day->addDay()) {
             $key = $day->toDateString();
+            $dayBookings = $bookings->get($key, collect());
+            $wholeDay = isset($blocked[$key][BlockedDay::WHOLE_DAY]);
+            $slots = [];
+            foreach (TimeSlot::cases() as $slot) {
+                $slots[$slot->value] = [
+                    'range' => $slot->range(),
+                    'blocked' => $wholeDay || isset($blocked[$key][$slot->value]),
+                    'booking' => $dayBookings->first(fn (Booking $booking): bool => $booking->time_slot === $slot),
+                ];
+            }
             $days[] = [
                 'date' => $key,
                 'day' => $day->day,
                 'in_month' => $day->month === $start->month,
                 'past' => $day->lt(today()),
                 'today' => $day->isToday(),
-                'blocked' => isset($blocked[$key]),
-                'bookings' => $bookings->get($key, collect()),
+                'blocked' => $wholeDay,
+                'has_bookings' => $dayBookings->isNotEmpty(),
+                'slots' => $slots,
             ];
         }
 
@@ -136,6 +193,16 @@ class Availability extends Page
                 'until' => $window->lastBookableDay()->format('j. n. Y'),
             ]),
         ];
+    }
+
+    /**
+     * Today or a future day; past days cannot be changed.
+     */
+    private function editableDay(string $date): ?CarbonImmutable
+    {
+        $day = CarbonImmutable::parse($date)->startOfDay();
+
+        return $day->isPast() && ! $day->isToday() ? null : $day;
     }
 
     private function monthStart(): CarbonImmutable

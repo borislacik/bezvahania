@@ -38,6 +38,49 @@ it('blocks and unblocks days in the availability calendar', function () {
     expect(BlockedDay::query()->count())->toBe(0);
 });
 
+it('blocks and unblocks a single morning or afternoon slot', function () {
+    $replace = ['date' => '30. 11. 2026', 'slot' => mb_strtolower(TimeSlot::Afternoon->label())];
+
+    Livewire::test(Availability::class)
+        ->call('toggleSlot', '2026-11-30', 'afternoon')
+        ->assertNotified(__('admin.availability.slot_blocked', $replace))
+        ->assertSeeHtml('data-slot="afternoon"');
+
+    expect(BlockedDay::query()->where('slot', 'afternoon')->whereDate('date', '2026-11-30')->exists())->toBeTrue()
+        ->and(BlockedDay::query()->count())->toBe(1);
+
+    Livewire::test(Availability::class)
+        ->call('toggleSlot', '2026-11-30', 'afternoon')
+        ->assertNotified(__('admin.availability.slot_unblocked', $replace));
+
+    expect(BlockedDay::query()->count())->toBe(0);
+});
+
+it('turns slot blocks into a whole day and back', function () {
+    Livewire::test(Availability::class)
+        ->call('toggleSlot', '2026-11-30', 'morning')
+        ->call('toggleDay', '2026-11-30');
+
+    expect(BlockedDay::query()->pluck('slot')->all())->toBe([BlockedDay::WHOLE_DAY]);
+
+    Livewire::test(Availability::class)->call('toggleSlot', '2026-11-30', 'morning');
+
+    expect(BlockedDay::query()->pluck('slot')->all())->toBe(['afternoon']);
+});
+
+it('does not block a slot that has a booking but allows the other one', function () {
+    Booking::factory()->create(['date' => '2026-12-02', 'time_slot' => TimeSlot::Morning]);
+
+    Livewire::test(Availability::class)
+        ->call('toggleSlot', '2026-12-02', 'morning')
+        ->assertNotified(__('admin.availability.slot_has_booking', ['date' => '2. 12. 2026', 'slot' => mb_strtolower(TimeSlot::Morning->label())]))
+        ->call('toggleSlot', '2026-12-02', 'afternoon')
+        ->call('toggleSlot', '2026-11-01', 'afternoon')
+        ->call('toggleSlot', '2026-12-03', 'evening');
+
+    expect(BlockedDay::query()->pluck('slot')->all())->toBe(['afternoon']);
+});
+
 it('does not block days with bookings or days in the past', function () {
     Booking::factory()->create(['date' => '2026-12-02']);
 

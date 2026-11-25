@@ -125,6 +125,19 @@ workshop?“ (`ContentSeeder`). Piliere sa už nepodobajú na karty workshopov: 
   po nich bolo príliš veľké, preto je na desktope vrch hlavného nadpisu zarovnaný s vrchom obrázka (`lg:items-start`,
   obrázok `lg:mt-7`) a sekcia je nižšia.
 
+### Blokovanie doobedného alebo poobedného termínu (25. 11. 2026)
+- Admin → Dostupnosť termínov: každý deň má dva termíny (9 – 13, 15 – 19), kliknutím sa termín zablokuje alebo
+  uvoľní. Tlačidlo **Celý deň** blokuje / uvoľní oba naraz. Uvoľnenie jedného termínu v celom zablokovanom dni
+  nechá druhý termín zablokovaný. Rezervovaný termín sa nedá zablokovať (zobrazí sa s menom zákazníka), deň
+  s rezerváciou sa nedá zablokovať celý, minulé dni sa nemenia.
+- Nová migrácia `2026_11_25_105940_add_slot_to_blocked_days_table`: stĺpec `slot` (`day` | `morning` |
+  `afternoon`, predvolene `day`), unikátny index `date` nahradený `(date, slot)`. Existujúce blokovania ostávajú
+  ako celé dni. Pôvodná migrácia sa nemenila.
+- `App\Support\Availability` berie do úvahy blokovanie celého dňa aj termínu; verejný kalendár tak ponúkne iba voľný
+  termín.
+- Testy: blokovanie / uvoľnenie termínu, prechod medzi termínom a celým dňom, termín s rezerváciou, neplatný
+  termín a minulý deň (Livewire), stav termínu v `AvailabilityTest`.
+
 ### Storno podmienky (25. 11. 2026)
 - Nová právna stránka **Storno podmienky** (`/storno-podmienky`, route `legal.cancellation`, kľúč stránky
   `cancellation`), v pätičke medzi Obchodnými podmienkami a Ochranou osobných údajov, v sitemape a v admine

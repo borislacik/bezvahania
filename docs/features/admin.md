@@ -10,7 +10,7 @@ Dvojfaktorové overenie (aplikácia, TOTP, s obnovovacími kódmi) je povinné, 
 |---|---|
 | **Nástenka** | počet budúcich rezervácií, workshopy tento mesiac, nevybavené správy, najbližšie workshopy |
 | Rezervácie → **Rezervácie** | zoznam (predvolene budúce), filtre podľa stavu, workshopu a dátumu, detail, úprava kontaktu, telefonická rezervácia, akcie *Zrušiť* (s dôvodom, e-mail zákazníkovi), *Uskutočnená*, *Neuskutočnená*, **export CSV** (aktuálny filter, UTF-8, oddeľovač `;` pre Excel) |
-| Rezervácie → **Dostupnosť termínov** | mesačný kalendár; kliknutím deň zablokujete / uvoľníte. Deň s rezerváciou zablokovať nejde. |
+| Rezervácie → **Dostupnosť termínov** | mesačný kalendár; kliknutím na termín 9 – 13 alebo 15 – 19 ho zablokujete / uvoľníte, tlačidlo „Celý deň“ blokuje oba naraz. Termín (deň) s rezerváciou zablokovať nejde. |
 | Rezervácie → **Správy z webu** | správy z kontaktného formulára, označenie „vybavená“ |
 | Obsah webu → **Workshopy** | názov, adresa, štítok, cena, trvanie, vybavenie, popisy, obrázok, poradie, viditeľnosť, SEO |
 | Obsah webu → **Lektori** | meno, funkcia, citát, text, fotografia |

@@ -24,6 +24,7 @@ it('opens the window from the lead time to the end of next month', function () {
 
 it('reports the status of a slot', function () {
     BlockedDay::factory()->create(['date' => '2026-11-27']);
+    BlockedDay::factory()->create(['date' => '2026-11-30', 'slot' => TimeSlot::Morning->value]);
     Booking::factory()->create(['date' => '2026-11-28', 'time_slot' => TimeSlot::Morning]);
     Booking::factory()->cancelled()->create(['date' => '2026-11-29', 'time_slot' => TimeSlot::Morning]);
 
@@ -34,7 +35,9 @@ it('reports the status of a slot', function () {
         ->and($availability->slotStatus(Carbon::parse('2026-11-27'), TimeSlot::Afternoon))->toBe(Availability::STATUS_BLOCKED)
         ->and($availability->slotStatus(Carbon::parse('2026-11-28'), TimeSlot::Morning))->toBe(Availability::STATUS_BOOKED)
         ->and($availability->slotStatus(Carbon::parse('2026-11-28'), TimeSlot::Afternoon))->toBe(Availability::STATUS_AVAILABLE)
-        ->and($availability->isBookable(Carbon::parse('2026-11-29'), TimeSlot::Morning))->toBeTrue();
+        ->and($availability->isBookable(Carbon::parse('2026-11-29'), TimeSlot::Morning))->toBeTrue()
+        ->and($availability->slotStatus(Carbon::parse('2026-11-30'), TimeSlot::Morning))->toBe(Availability::STATUS_BLOCKED)
+        ->and($availability->slotStatus(Carbon::parse('2026-11-30'), TimeSlot::Afternoon))->toBe(Availability::STATUS_AVAILABLE);
 });
 
 it('builds the current and next month for the calendar', function () {

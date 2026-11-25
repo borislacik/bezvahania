@@ -6,6 +6,7 @@ verzie podľa git tagov z deployov (`vRRRR.MM.DD-N`).
 ## [Unreleased]
 
 ### Pridané – web a administrácia
+- Dostupnosť termínov v admine: okrem celého dňa sa dá zablokovať aj iba doobedný (9 – 13) alebo poobedný (15 – 19) termín; nová migrácia `add_slot_to_blocked_days_table`.
 - Verejný web podľa dizajnu zo Stitchu: úvod, workshopy a ich detail, rezervácia, lektor, časté otázky, kontakt,
   právne stránky, chybové stránky 404/419/429/500/503 po slovensky.
 - Rezervácia celého termínu (deň + doobeda 9 – 13 / poobede 15 – 19) v mesačnom kalendári (aktuálny a ďalší mesiac),
