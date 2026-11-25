@@ -14,7 +14,7 @@
                     {{ __('site.home.contact_title') }}
                 </h2>
                 <p class="text-body-md text-inverse-on-surface/80">{{ __('site.home.contact_text') }}</p>
-                <ul class="mt-2 flex flex-col gap-3">
+                <ul class="mt-6 flex flex-col gap-4 lg:mt-10">
                     <li>
                         <a
                             href="tel:{{ preg_replace('/\s+/', '', $settings['contact_phone']) }}"

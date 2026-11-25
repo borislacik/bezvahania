@@ -133,6 +133,10 @@ workshop?“ (`ContentSeeder`). Piliere sa už nepodobajú na karty workshopov: 
   LocalBusiness ako `sameAs`.
 - Ikona `resources/svg/icons/facebook.svg` je logo zo Simple Icons (CC0), uložené lokálne – web nenačítava nič
   z Facebooku (žiadne vkladané widgety ani cookies tretích strán).
+- Väčšia medzera medzi textom a kontaktmi (`mt-6`, na desktope `mt-10`) a medzi kontaktmi (`gap-4`), aby pod nimi
+  neostávalo veľa prázdneho miesta vedľa formulára.
+- Lokálna DB: na pokyn používateľa zmazané štyri nepoužívané stránky z obdobia pred jednostránkovým webom
+  (`workshops`, `about`, `faq`, `contact`); seeder ich nevytvára, na produkciu by sa nedostali.
 
 ### Právne stránky a nastavenia cookies (25. 11. 2026)
 - Dve právne stránky namiesto troch: **Obchodné podmienky** (`/obchodne-podmienky`, kľúč `terms`, predtým „Podmienky
