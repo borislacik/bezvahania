@@ -15,9 +15,9 @@
   kontaktné formuláre zobrazujú iba informačnú vetu o spracovaní osobných údajov (súhlas tu nie je právnym základom).
 - Pri rezervácii sa ukladá čas a verzia súhlasu (`consent_at`, `consent_version`).
 - Doby uchovávania: rezervácie (vrátane fakturačných údajov) anonymizované **3 roky** po termíne, správy z formulára zmazané po **12 mesiacoch**.
-- Právne stránky sú tri: **Obchodné podmienky** (`/obchodne-podmienky`), **Storno podmienky** (`/storno-podmienky`)
+- Právne stránky sú štyri: **Obchodné podmienky** (`/obchodne-podmienky`), **Storno podmienky** (`/storno-podmienky`), **Odstúpenie od zmluvy** (`/odstupenie-od-zmluvy`, vzorový formulár podľa prílohy zákona č. 108/2024 Z. z.)
   a **Ochrana osobných údajov a používanie cookies** (`/ochrana-osobnych-udajov`, obsahuje aj časť o cookies). Texty dodáva prevádzkovateľ;
-  všetky tri sú v `database/seeders/content/*.html` (seeder ich vloží iba do prázdnej stránky, potom sa upravujú v admine v **Stránky a SEO**). Prázdna stránka zobrazí informáciu, že text sa pripravuje.
+  všetky štyri sú v `database/seeders/content/*.html` (seeder ich vloží iba do prázdnej stránky, potom sa upravujú v admine v **Stránky a SEO**). Prázdna stránka zobrazí informáciu, že text sa pripravuje.
 - Okno **Nastavenia cookies** (odkaz v pätičke) sa po výbere zatvorí; ak už výber existuje, dá sa zatvoriť aj
   krížikom alebo klávesom Esc bez zmeny.
 - Bezpečnostné hlavičky: `X-Content-Type-Options`, `Referrer-Policy`, `X-Frame-Options`, `Permissions-Policy`,

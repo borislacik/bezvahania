@@ -25,6 +25,13 @@
                 <li>
                     <a
                         class="hover:text-inverse-on-surface"
+                        href="{{ route('legal.withdrawal') }}"
+                        >{{ __('site.pages.withdrawal') }}</a
+                    >
+                </li>
+                <li>
+                    <a
+                        class="hover:text-inverse-on-surface"
                         href="{{ route('legal.privacy') }}"
                         >{{ __('site.footer.privacy') }}</a
                     >

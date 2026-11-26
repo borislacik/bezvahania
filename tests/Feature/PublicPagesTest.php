@@ -23,6 +23,7 @@ it('renders every public page', function (string $route, array $parameters = [])
     'privacy' => ['legal.privacy'],
     'terms' => ['legal.terms'],
     'cancellation' => ['legal.cancellation'],
+    'withdrawal' => ['legal.withdrawal'],
 ]);
 
 it('shows the contact phone and e-mail, never the automatic booking address', function (string $route) {
@@ -113,7 +114,7 @@ it('serves a sitemap with all public pages and workshops', function () {
         ->assertOk()
         ->assertHeader('Content-Type', 'application/xml; charset=UTF-8');
 
-    foreach (['home', 'booking.create', 'legal.privacy', 'legal.terms', 'legal.cancellation'] as $route) {
+    foreach (['home', 'booking.create', 'legal.privacy', 'legal.terms', 'legal.cancellation', 'legal.withdrawal'] as $route) {
         $response->assertSee('<loc>'.route($route).'</loc>', escape: false);
     }
 
@@ -233,4 +234,14 @@ it('shows the operator terms and refers to the cancellation terms', function () 
 
     $this->get('/storno-podmienky')->assertOk();
     $this->get('/ochrana-osobnych-udajov')->assertOk();
+});
+
+it('publishes the model withdrawal form linked from the terms and the footer', function () {
+    $this->get(route('legal.withdrawal'))->assertOk()
+        ->assertSee('Vzorový formulár na odstúpenie od zmluvy uzavretej na diaľku')
+        ->assertSee('Komu: Boris Lacík, Studenohorská 2061/17, 841 03 Bratislava, info@bezvahania.sk')
+        ->assertSee('* Nehodiace sa prečiarknite.');
+
+    $this->get(route('legal.terms'))->assertOk()->assertSee('href="/odstupenie-od-zmluvy"', escape: false);
+    $this->get(route('home'))->assertOk()->assertSee('href="'.route('legal.withdrawal').'"', escape: false);
 });

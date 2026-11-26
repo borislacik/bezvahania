@@ -208,6 +208,15 @@ workshop?“ (`ContentSeeder`). Piliere sa už nepodobajú na karty workshopov: 
 - Test: obsah stránky a odkazy na storno podmienky a ochranu údajov; uloženie všetkých troch právnych textov v admine
   (editor zachová nadpisy, zoznamy, odkazy a zalomenia riadkov).
 
+### Vzorový formulár na odstúpenie od zmluvy (26. 11. 2026)
+- Nová právna stránka **Odstúpenie od zmluvy** (`/odstupenie-od-zmluvy`, route `legal.withdrawal`, kľúč `withdrawal`):
+  krátky úvod (odkaz na článok 8 obchodných podmienok, použitie formulára nie je povinné) a vzorový formulár v znení
+  prílohy zákona č. 108/2024 Z. z. (slov-lex, znenie od 1. 7. 2024) s doplnenými údajmi obchodníka v riadku „Komu“.
+  Text je v `database/seeders/content/withdrawal.html`, v pätičke za Storno podmienkami, v sitemape, v admine
+  s editorom obsahu. Lokálna DB doplnená.
+- Obchodné podmienky, bod 8.6: doplnený odkaz na vzorový formulár (jeho použitie nie je povinné).
+- Testy: stránka, odkazy z obchodných podmienok a pätičky, uloženie v admine, stránka bez JS chýb (browser).
+
 ### Facebook v kontaktnom bloku (25. 11. 2026)
 - Pod telefón a e-mail v bloku „Osobná konzultácia“ pribudol odkaz **Bez váhania na Facebooku** s ikonou
   (nové okno, `rel="noopener"`).

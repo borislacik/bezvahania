@@ -70,7 +70,7 @@ class PageResource extends Resource
                     ->label(__('admin.fields.content'))
                     ->helperText(__('admin.fields.content_help'))
                     ->toolbarButtons([['bold', 'italic', 'link'], ['h2', 'h3'], ['bulletList', 'orderedList'], ['undo', 'redo']])
-                    ->visible(fn (?Page $record): bool => in_array($record?->key, ['privacy', 'terms', 'cancellation'], true)),
+                    ->visible(fn (?Page $record): bool => in_array($record?->key, ['privacy', 'terms', 'cancellation', 'withdrawal'], true)),
             ]),
             SeoSection::make('og_image', 'seo')->collapsed(false),
         ]);

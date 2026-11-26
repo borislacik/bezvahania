@@ -16,6 +16,7 @@ return [
         'privacy' => 'Ochrana osobných údajov a používanie cookies',
         'terms' => 'Obchodné podmienky',
         'cancellation' => 'Storno podmienky',
+        'withdrawal' => 'Odstúpenie od zmluvy',
     ],
 
     'nav' => [

@@ -33,6 +33,7 @@ class Page extends Model
         'privacy' => 'legal.privacy',
         'terms' => 'legal.terms',
         'cancellation' => 'legal.cancellation',
+        'withdrawal' => 'legal.withdrawal',
     ];
 
     /** @var list<string> */

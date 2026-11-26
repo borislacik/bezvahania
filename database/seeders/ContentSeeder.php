@@ -140,6 +140,7 @@ class ContentSeeder extends Seeder
             'privacy' => ['Ochrana osobných údajov a používanie cookies', 'Ako spracúvame osobné údaje pri rezervácii a v kontaktnom formulári, aké cookies používame a ako zmeníte svoj súhlas.'],
             'terms' => ['Obchodné podmienky', 'Obchodné podmienky workshopov prvej pomoci Bez váhania – rezervácia, platba a zrušenie termínu.'],
             'cancellation' => ['Storno podmienky', 'Ako a dokedy môžete zrušiť alebo presunúť rezervovaný workshop prvej pomoci Bez váhania.'],
+            'withdrawal' => ['Odstúpenie od zmluvy – vzorový formulár', 'Vzorový formulár na odstúpenie od zmluvy o workshope prvej pomoci Bez váhania uzavretej na diaľku.'],
         ];
 
         foreach ($pages as $key => [$seoTitle, $seoDescription]) {
@@ -151,9 +152,9 @@ class ContentSeeder extends Seeder
             ])->save();
         }
 
-        // Legal texts from the operator (terms, cancellation, privacy incl. cookies); once filled they are only edited
-        // in the admin, never overwritten.
-        foreach (['terms', 'cancellation', 'privacy'] as $key) {
+        // Legal texts (terms, cancellation, withdrawal form, privacy incl. cookies) from database/seeders/content;
+        // once filled they are only edited in the admin, never overwritten.
+        foreach (['terms', 'cancellation', 'withdrawal', 'privacy'] as $key) {
             $page = Page::query()->where('key', $key)->firstOrFail();
             if (! $page->content) {
                 $page->update(['content' => file_get_contents(database_path("seeders/content/{$key}.html"))]);

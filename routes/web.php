@@ -42,6 +42,7 @@ Route::domain(config('app.domain'))->group(function (): void {
     Route::get('/ochrana-osobnych-udajov', [PageController::class, 'legal'])->defaults('key', 'privacy')->name('legal.privacy');
     Route::get('/obchodne-podmienky', [PageController::class, 'legal'])->defaults('key', 'terms')->name('legal.terms');
     Route::get('/storno-podmienky', [PageController::class, 'legal'])->defaults('key', 'cancellation')->name('legal.cancellation');
+    Route::get('/odstupenie-od-zmluvy', [PageController::class, 'legal'])->defaults('key', 'withdrawal')->name('legal.withdrawal');
 
     Route::get('/sitemap.xml', [SeoController::class, 'sitemap'])->name('sitemap');
     Route::get('/robots.txt', [SeoController::class, 'robots'])->name('robots');

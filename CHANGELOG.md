@@ -7,6 +7,7 @@ verzie podľa git tagov z deployov (`vRRRR.MM.DD-N`).
 
 ### Pridané – web a administrácia
 - Lektor: viac fotiek, ktoré sa na webe každých 6 sekúnd striedajú a dajú sa prepnúť bodkami; v admine nové pole „Ďalšie fotky“ (poradie potiahnutím), migrácia `add_gallery_to_team_members_table`. Pribudli dve fotky (nácvik KPR, záchranná služba). Prepínač fotiek a odznak „Aktívna služba“ sú z matného skla s tmavomodrým textom.
+- Vzorový formulár na odstúpenie od zmluvy na stránke `/odstupenie-od-zmluvy` (odkaz v pätičke a v bode 8.6 obchodných podmienok).
 - Obchodné podmienky: text prevádzkovateľa (účinnosť od 1. 1. 2027) na stránke `/obchodne-podmienky`, článok o zrušení odkazuje na storno podmienky.
 - Ochrana osobných údajov a cookies: text prevádzkovateľa (účinnosť od 1. 1. 2027) na stránke `/ochrana-osobnych-udajov`.
 - Storno podmienky: text prevádzkovateľa na stránke `/storno-podmienky`, skrátené pravidlá v potvrdzovacom e-maile, na potvrdzovacej stránke a v FAQ; súhlas pri rezervácii zahŕňa aj storno podmienky.

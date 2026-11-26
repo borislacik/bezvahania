@@ -151,4 +151,5 @@ it('keeps the seeded legal texts intact when they are saved in the admin', funct
     'terms' => ['terms', ['<h2>7. Zmena termínu a zrušenie workshopu</h2>', 'href="/storno-podmienky"', '<br>']],
     'cancellation' => ['cancellation', ['<h3>1.1 Spotrebiteľ</h3>', '<li>', '<ol>']],
     'privacy' => ['privacy', ['<h2>9. Používanie cookies</h2>', 'href="https://dataprotection.gov.sk/"']],
+    'withdrawal' => ['withdrawal', ['Komu: Boris Lacík', '<li>', 'href="/obchodne-podmienky"']],
 ]);
