@@ -165,6 +165,63 @@
         </section>
     </x-site.pillars-scrolly>
 
+    {{-- BUNDLE (outside the slowed block so that its height does not change the pinning) --}}
+    @if ($bundle->courses()->isNotEmpty())
+        <section class="bg-surface w-full pb-16 lg:pb-24">
+            <div class="container-page">
+                @php
+                    [$firstBundled, $secondBundled] = $bundle->courses()->all();
+                    $bundleTotal = Number::currency($bundle->bundlePrice(), 'EUR', 'sk', 0);
+                @endphp
+
+                <div
+                    id="balik"
+                    class="card grid scroll-mt-28 gap-8 p-6 md:p-10 lg:grid-cols-12 lg:items-center"
+                    data-testid="bundle-offer"
+                >
+                    <div class="flex flex-col gap-4 lg:col-span-8">
+                        <span class="eyebrow bg-primary-container text-on-primary self-start">
+                            <x-site.icon name="verified" class="size-4" />
+                            {{ __('site.bundle.eyebrow') }}
+                        </span>
+                        <h3 class="text-headline-lg text-on-surface font-bold">
+                            {{ __('site.bundle.title', ['price' => $bundleTotal]) }}
+                        </h3>
+                        <p class="text-body-lg text-on-surface-variant">
+                            {{ __('site.bundle.text', ['first' => $firstBundled->name, 'second' => $secondBundled->name]) }}
+                        </p>
+                        <p class="text-body-md text-on-surface-variant">
+                            {{
+                                __('site.bundle.how', [
+                                    'price' => Number::currency((float) $firstBundled->price, 'EUR', 'sk', 0),
+                                    'second_price' => Number::currency((float) $bundle->discountedPrice($firstBundled), 'EUR', 'sk', 0),
+                                ])
+                            }}
+                        </p>
+                    </div>
+                    <div class="flex flex-col items-start gap-4 lg:col-span-4 lg:items-end lg:text-right">
+                        <p>
+                            <span
+                                class="font-heading text-headline-xl text-primary block font-bold"
+                                >{{ $bundleTotal }}</span
+                            >
+                            <span class="text-body-md text-on-surface-variant">
+                                {!! __('site.bundle.regular', ['price' => '<s>'.e(Number::currency((float) $firstBundled->price + (float) $secondBundled->price, 'EUR', 'sk', 0)).'</s>']) !!}
+                            </span>
+                        </p>
+                        <a
+                            href="{{ route('booking.create', ['workshop' => $firstBundled->slug]) }}#rezervacia"
+                            class="btn-primary"
+                        >
+                            {{ __('site.common.book_course') }}
+                            <x-site.icon name="arrow_forward" class="size-[18px]" />
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    @endif
+
     {{-- INSTRUCTOR --}}
     @if ($instructor)
         <section class="section bg-surface-container-low" id="{{ \App\Support\HomeSections::INSTRUCTOR }}">

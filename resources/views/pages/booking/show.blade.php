@@ -46,11 +46,47 @@
                     </div>
                     <div class="border-surface-container flex justify-between gap-4 border-t pt-2">
                         <dt class="text-on-surface-variant">{{ __('booking.summary.price') }}</dt>
-                        <dd class="font-heading text-headline-sm text-primary font-bold">
+                        <dd class="font-heading text-headline-sm text-primary text-right font-bold">
                             {{ Number::currency((float) $booking->price, 'EUR', 'sk', 0) }}
+                            @if ($booking->bundle_booking_id)
+                                <span
+                                    class="text-body-sm text-on-surface-variant block font-normal"
+                                    data-testid="bundle-price"
+                                >
+                                    {{ __('booking.summary.bundle_price') }}
+                                </span>
+                            @endif
                         </dd>
                     </div>
                 </dl>
+
+                @php ($bundleOfferCourse = $booking->bundleCounterpart() === null ? $bundle->partnerCourse($booking->course) : null)
+                @if ($bundleOfferCourse)
+                    <div
+                        class="bg-surface-container-low flex flex-col gap-3 rounded-xl p-5 text-left"
+                        data-testid="bundle-offer"
+                    >
+                        <p class="text-headline-sm text-on-surface flex items-center gap-2 font-bold">
+                            <x-site.icon name="verified" class="text-primary size-5 shrink-0" />
+                            {{
+                                __('booking.confirmation.bundle_offer_title', [
+                                    'course' => $bundleOfferCourse->name,
+                                    'price' => Number::currency((float) $bundle->discountedPrice($bundleOfferCourse), 'EUR', 'sk', 0),
+                                ])
+                            }}
+                        </p>
+                        <p class="text-body-sm text-on-surface-variant">
+                            {{ __('booking.confirmation.bundle_offer', ['total' => Number::currency($bundle->bundlePrice(), 'EUR', 'sk', 0)]) }}
+                        </p>
+                        <a
+                            href="{{ route('booking.create', ['workshop' => $bundleOfferCourse->slug]) }}#rezervacia"
+                            class="btn-primary self-start"
+                        >
+                            {{ __('booking.confirmation.bundle_offer_button') }}
+                            <x-site.icon name="arrow_forward" class="size-[18px]" />
+                        </a>
+                    </div>
+                @endif
 
                 <p class="text-body-md text-on-surface-variant">{{ __('booking.confirmation.next') }}</p>
                 <p class="text-body-sm text-on-surface-variant">

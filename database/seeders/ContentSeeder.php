@@ -40,6 +40,7 @@ class ContentSeeder extends Seeder
                 'price' => 200,
                 'image' => 'hero-cpr.webp',
                 'is_featured' => true,
+                'is_bundled' => true,
             ],
             [
                 'slug' => 'prva-pomoc-doma-a-na-cestach',
@@ -52,6 +53,7 @@ class ContentSeeder extends Seeder
                 'price' => 200,
                 'image' => 'workshop-family.webp',
                 'is_featured' => false,
+                'is_bundled' => true,
             ],
             [
                 'slug' => 'takticka-prva-pomoc',
@@ -64,6 +66,7 @@ class ContentSeeder extends Seeder
                 'price' => 200,
                 'image' => 'workshop-tccc.webp',
                 'is_featured' => false,
+                'is_bundled' => false,
             ],
         ];
 
@@ -101,6 +104,7 @@ class ContentSeeder extends Seeder
             ['Koľko ľudí sa môže zúčastniť?', 'Workshop je pre 2 až 4 osoby, ktoré sa poznajú – rodina, priatelia alebo kolegovia. Cena je za celú skupinu.'],
             ['Kam za vami prídete?', 'Pôsobím v Bratislave a okolí. Doprava do 60 km od Bratislavy je v cene, pri väčšej vzdialenosti sa dohodneme individuálne.'],
             ['Ako a kedy sa platí?', 'Platí sa až po skončení workshopu, v hotovosti alebo kartou.'],
+            ['Dá sa ušetriť, ak absolvujeme viac workshopov?', 'Áno. Workshopy KPR a záchrana života s AED a Civilná prvá pomoc doma a na cestách tvoria balík Kompletná pripravenosť – spolu za 300 € namiesto 400 €. Nemusíte si ich objednať naraz: prvý workshop stojí 200 € a druhý už len 100 €. Stačí ho rezervovať s rovnakým e-mailom alebo telefónom a balíková cena sa uplatní automaticky. Na poradí ani čase medzi workshopmi nezáleží.'],
             ['Môžem termín zrušiť alebo presunúť?', 'Áno. Napíšte mi e-mail čo najskôr – rozhoduje deň, keď správa príde. Zrušenie 7 a viac dní pred termínom je bez poplatku, 3 až 6 dní pred termínom je storno poplatok 20 % a menej ako 72 hodín pred termínom 40 % z ceny workshopu. Namiesto zrušenia sa môžeme dohodnúť aj na presune na iný termín. Podrobnosti nájdete v storno podmienkach.'],
             ['Dostaneme potvrdenie o absolvovaní?', 'Áno, každý účastník dostane osvedčenie o absolvovaní workshopu. Nejde o akreditovaný kurz (napríklad pre BOZP alebo vodičský preukaz).'],
         ];

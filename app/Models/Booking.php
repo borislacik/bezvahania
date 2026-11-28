@@ -6,9 +6,11 @@ use App\Enums\BookingStatus;
 use App\Enums\TimeSlot;
 use Database\Factories\BookingFactory;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Str;
 
@@ -28,6 +30,7 @@ use Illuminate\Support\Str;
  * @property int $participants
  * @property string|null $note
  * @property string $price
+ * @property int|null $bundle_booking_id
  * @property Carbon|null $consent_at
  * @property string|null $consent_version
  * @property Carbon|null $cancelled_at
@@ -35,6 +38,8 @@ use Illuminate\Support\Str;
  * @property Carbon|null $anonymized_at
  * @property Carbon $created_at
  * @property-read Course $course
+ * @property-read Booking|null $bundlePartner
+ * @property-read Collection<int, Booking> $bundledBookings
  */
 class Booking extends Model
 {
@@ -48,7 +53,7 @@ class Booking extends Model
 
     protected $fillable = [
         'reference', 'course_id', 'date', 'time_slot', 'status', 'contact_name', 'email', 'phone', 'address',
-        'billing_address', 'participants', 'note', 'price', 'consent_at', 'consent_version', 'cancelled_at', 'cancellation_reason',
+        'billing_address', 'participants', 'note', 'price', 'bundle_booking_id', 'consent_at', 'consent_version', 'cancelled_at', 'cancellation_reason',
         'anonymized_at',
     ];
 
@@ -105,6 +110,40 @@ class Booking extends Model
     public function course(): BelongsTo
     {
         return $this->belongsTo(Course::class);
+    }
+
+    /**
+     * The earlier booking of the other bundled course that this booking's bundle price is based on.
+     *
+     * @return BelongsTo<Booking, $this>
+     */
+    public function bundlePartner(): BelongsTo
+    {
+        return $this->belongsTo(self::class, 'bundle_booking_id');
+    }
+
+    /**
+     * Later bookings that got the bundle price thanks to this booking.
+     *
+     * @return HasMany<Booking, $this>
+     */
+    public function bundledBookings(): HasMany
+    {
+        return $this->hasMany(self::class, 'bundle_booking_id');
+    }
+
+    /**
+     * The other booking of the bundle, in either direction (only bookings that still count).
+     */
+    public function bundleCounterpart(): ?self
+    {
+        $partner = $this->bundlePartner;
+
+        if ($partner !== null && $partner->status->countsForBundle()) {
+            return $partner;
+        }
+
+        return $this->bundledBookings->first(fn (Booking $booking): bool => $booking->status->countsForBundle());
     }
 
     /**

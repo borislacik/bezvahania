@@ -11,6 +11,7 @@ use App\Models\Booking;
 use App\Models\Course;
 use App\Models\Setting;
 use App\Support\Availability;
+use App\Support\BundlePricing;
 use Illuminate\Database\UniqueConstraintViolationException;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
@@ -19,12 +20,16 @@ use Illuminate\Support\Facades\Mail;
 /**
  * Creates a confirmed booking for a whole slot. Used by the public booking form and by the admin.
  *
+ * A booking of the second bundled course by the same contact gets the bundle price (BundlePricing).
+ *
  * Double booking is prevented by the unique `active_slot` index; the availability check before
  * the insert only produces a friendly error in the common case.
  */
 final class CreateBooking
 {
-    public const CONSENT_VERSION = '2026-11-25';
+    public const CONSENT_VERSION = '2026-11-28';
+
+    public function __construct(private readonly BundlePricing $bundlePricing) {}
 
     /**
      * @param  array{course_id: int, date: string, time_slot: string, contact_name: string, email: string, phone: string, address: string, billing_address?: string|null, participants: int, note?: string|null}  $data
@@ -41,6 +46,9 @@ final class CreateBooking
             throw new SlotUnavailableException;
         }
 
+        $bundlePartner = $this->bundlePricing->findPartnerBooking($course, $data['email'], $data['phone']);
+        $price = $bundlePartner !== null ? $this->bundlePricing->discountedPrice($course) : (float) $course->price;
+
         try {
             $booking = DB::transaction(fn (): Booking => Booking::query()->create([
                 'course_id' => $course->id,
@@ -54,7 +62,8 @@ final class CreateBooking
                 'billing_address' => $data['billing_address'] ?? null,
                 'participants' => $data['participants'],
                 'note' => $data['note'] ?? null,
-                'price' => $course->price,
+                'price' => $price,
+                'bundle_booking_id' => $bundlePartner?->id,
                 'consent_at' => now(),
                 'consent_version' => self::CONSENT_VERSION,
             ]));

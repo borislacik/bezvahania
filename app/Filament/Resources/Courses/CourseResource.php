@@ -91,6 +91,7 @@ class CourseResource extends Resource
                     Section::make(__('admin.sections.state'))->schema([
                         Toggle::make('is_active')->label(__('admin.fields.is_active'))->default(true),
                         Toggle::make('is_featured')->label(__('admin.fields.is_featured')),
+                        Toggle::make('is_bundled')->label(__('admin.fields.is_bundled'))->helperText(__('admin.fields.is_bundled_help')),
                         TextInput::make('sort_order')->label(__('admin.fields.sort_order'))->numeric()->default(0)->required(),
                     ]),
                     SeoSection::make(),

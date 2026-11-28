@@ -128,6 +128,19 @@ return [
         'contact_text' => 'Workshop prispôsobíme vašej rodine, firemnému tímu či športovému klubu. Zavolajte alebo napíšte, odpoviem obratom.',
     ],
 
+    'bundle' => [
+        'name' => 'Kompletná pripravenosť',
+        'eyebrow' => 'Balík workshopov',
+        'title' => 'Kompletná pripravenosť: dva workshopy za :price',
+        'text' => 'Absolvujte workshop „:first“ aj „:second“ a získate ucelený balík vedomostí – od resuscitácie a defibrilátora AED až po krvácanie, zlomeniny, popáleniny a ďalšie úrazy. Budete pripravení na akúkoľvek situáciu.',
+        'regular' => 'namiesto :price',
+        'how' => 'Nemusíte si ich objednať naraz. Prvý workshop stojí :price, druhý už len :second_price. Stačí ho rezervovať s rovnakým e-mailom alebo telefónom a cena sa zníži automaticky. Na poradí ani čase medzi workshopmi nezáleží.',
+        'card' => 'V balíku s ďalším workshopom spolu za :price',
+        'card_link' => 'Viac o balíku',
+        'detail_label' => 'Balík',
+        'detail_value' => 'S workshopom „:course“ spolu za :price – druhý workshop za :second_price',
+    ],
+
     'workshops' => [
         'about' => 'O workshope',
         'other' => 'Ďalšie workshopy',

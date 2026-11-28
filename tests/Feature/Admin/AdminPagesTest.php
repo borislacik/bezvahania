@@ -131,13 +131,15 @@ it('saves contact and operator settings', function () {
             'operator_vat_note' => 'Nie som platiteľ DPH',
             'operator_address' => 'Bratislava',
             'booking_lead_days' => 3,
+            'bundle_price' => 280,
         ])
         ->call('save')
         ->assertHasNoFormErrors()
         ->assertNotified(__('admin.settings.saved'));
 
     expect(Setting::get('contact_phone'))->toBe('+421 905 000 000')
-        ->and(Setting::get('booking_lead_days'))->toBe('3');
+        ->and(Setting::get('booking_lead_days'))->toBe('3')
+        ->and(Setting::get('bundle_price'))->toBe('280');
 
     $this->get(route('home'))->assertSee('Ján Živnostník')->assertSee('12345678')
         ->assertSee('DIČ: 1234567890')->assertSee('Nie som platiteľ DPH');

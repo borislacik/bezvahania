@@ -9,8 +9,15 @@
             'name' => $course->name,
             'price' => Number::currency((float) $course->price, 'EUR', 'sk', 0),
             'duration' => $course->duration_label,
+            'bundle_note' => $bundle->isBundled($course)
+                ? __('booking.summary.bundle_note', [
+                    'course' => $bundle->partnerCourse($course)?->name,
+                    'price' => Number::currency((float) $bundle->discountedPrice($course), 'EUR', 'sk', 0),
+                ])
+                : null,
         ],
     ]);
+    $selectedBundleNote = $selectedCourse ? $courseMap[$selectedCourse->id]['bundle_note'] : null;
 
     $oldDate = old('date');
     $initialMonth = $oldDate && str_starts_with($oldDate, $months[1]['key']) ? 1 : 0;
@@ -480,6 +487,15 @@
                                         </dd>
                                     </div>
                                 </dl>
+                                <p
+                                    class="text-body-sm text-on-surface-variant mt-3 flex items-start gap-2"
+                                    x-show="selectedCourse?.bundle_note"
+                                    @if (! $selectedBundleNote) x-cloak @endif
+                                    data-testid="booking-bundle-note"
+                                >
+                                    <x-site.icon name="verified" class="text-primary mt-0.5 size-4 shrink-0" />
+                                    <span x-text="selectedCourse?.bundle_note">{{ $selectedBundleNote }}</span>
+                                </p>
                             </div>
                         </div>
 

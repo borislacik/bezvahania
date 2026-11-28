@@ -12,7 +12,9 @@
 @if ($booking->billing_address)
 **{{ __('booking.summary.billing_address') }}:** {!! preg_replace('/\R/', '<br>', e($booking->billing_address)) !!}<br>
 @endif
-**{{ __('booking.summary.participants') }}:** {{ $booking->participants }}
+**{{ __('booking.summary.participants') }}:** {{ $booking->participants }}<br>
+**{{ __('booking.summary.price') }}:** {{ \Illuminate\Support\Number::currency((float) $booking->price, 'EUR', 'sk') }}@if ($booking->bundlePartner) – {{ __('mail.new_booking_admin.bundle', ['reference' => $booking->bundlePartner->reference]) }}@endif
+
 </x-mail::panel>
 
 @if ($booking->note)

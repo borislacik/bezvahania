@@ -71,6 +71,7 @@ class Settings extends Page
                 ]),
                 Section::make(__('admin.settings.booking'))->schema([
                     TextInput::make('booking_lead_days')->label(__('admin.settings.booking_lead_days'))->numeric()->minValue(0)->maxValue(30)->required(),
+                    TextInput::make('bundle_price')->label(__('admin.settings.bundle_price'))->helperText(__('admin.settings.bundle_price_help'))->numeric()->minValue(0)->suffix('€')->required(),
                 ]),
             ]);
     }

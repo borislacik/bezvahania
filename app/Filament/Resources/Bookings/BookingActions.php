@@ -36,8 +36,14 @@ final class BookingActions
                 Textarea::make('reason')->label(__('admin.fields.cancellation_reason'))->rows(3)->maxLength(1000),
             ])
             ->action(function (Booking $record, array $data): void {
-                app(CancelBooking::class)->handle($record, $data['reason'] ?? null);
-                Notification::make()->success()->title(__('admin.actions.cancelled'))->send();
+                $cancelBooking = app(CancelBooking::class);
+                $repriced = $cancelBooking->dependentBookings($record)->pluck('reference');
+
+                $cancelBooking->handle($record, $data['reason'] ?? null);
+
+                Notification::make()->success()->title(__('admin.actions.cancelled'))
+                    ->body($repriced->isNotEmpty() ? __('admin.actions.cancelled_repriced', ['references' => $repriced->implode(', ')]) : null)
+                    ->send();
             });
     }
 

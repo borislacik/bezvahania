@@ -53,6 +53,11 @@
                                 ['icon' => 'home_pin', 'label' => __('site.workshops.place'), 'value' => __('site.workshops.place_value')],
                                 ['icon' => 'payments', 'label' => __('site.workshops.payment'), 'value' => __('site.workshops.payment_value')],
                                 ['icon' => 'workspace_premium', 'label' => __('site.workshops.certificate'), 'value' => __('site.workshops.certificate_value')],
+                                ['icon' => 'verified', 'label' => __('site.bundle.detail_label'), 'value' => $bundle->isBundled($course) ? __('site.bundle.detail_value', [
+                                    'course' => $bundle->partnerCourse($course)?->name,
+                                    'price' => Number::currency($bundle->bundlePrice(), 'EUR', 'sk', 0),
+                                    'second_price' => Number::currency((float) $bundle->discountedPrice($course), 'EUR', 'sk', 0),
+                                ]) : null],
                             ] as $row)
                                 @if ($row['value'])
                                     <div class="flex items-start gap-3">

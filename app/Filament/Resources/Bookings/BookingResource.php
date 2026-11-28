@@ -92,6 +92,14 @@ class BookingResource extends Resource
                     ->options(collect(range(Booking::MIN_PARTICIPANTS, Booking::MAX_PARTICIPANTS))->mapWithKeys(fn (int $count): array => [(string) $count => (string) $count])->all())
                     ->default(4)
                     ->required(),
+                TextInput::make('price')
+                    ->label(__('admin.fields.price'))
+                    ->helperText(__('admin.fields.booking_price_help'))
+                    ->numeric()
+                    ->minValue(0)
+                    ->suffix('€')
+                    ->required()
+                    ->visibleOn('edit'),
             ]),
             Section::make(__('admin.sections.customer'))->columns(2)->schema([
                 TextInput::make('contact_name')->label(__('admin.fields.contact_name'))->required()->maxLength(120),
@@ -120,6 +128,12 @@ class BookingResource extends Resource
                 TextEntry::make('time_slot')->label(__('admin.fields.time_slot')),
                 TextEntry::make('participants')->label(__('admin.fields.participants')),
                 TextEntry::make('price')->label(__('admin.fields.price'))->money('EUR', locale: 'sk'),
+                TextEntry::make('bundle')
+                    ->label(__('admin.fields.bundle'))
+                    ->state(fn (Booking $record): ?string => self::bundleLabel($record))
+                    ->placeholder(__('admin.fields.bundle_none'))
+                    ->url(fn (Booking $record): ?string => ($counterpart = $record->bundleCounterpart()) ? self::getUrl('view', ['record' => $counterpart]) : null)
+                    ->columnSpan(2),
                 TextEntry::make('created_at')->label(__('admin.fields.created_at'))->dateTime('j. n. Y H:i'),
                 TextEntry::make('cancellation_reason')->label(__('admin.fields.cancellation_reason'))->visible(fn (Booking $record): bool => $record->status === BookingStatus::Cancelled),
             ]),
@@ -145,6 +159,11 @@ class BookingResource extends Resource
                 TextColumn::make('contact_name')->label(__('admin.fields.contact_name'))->searchable(),
                 TextColumn::make('phone')->label(__('admin.fields.phone'))->searchable()->toggleable(),
                 TextColumn::make('participants')->label(__('admin.fields.participants'))->alignCenter(),
+                TextColumn::make('price')
+                    ->label(__('admin.fields.price'))
+                    ->money('EUR', locale: 'sk')
+                    ->description(fn (Booking $record): ?string => $record->bundle_booking_id !== null ? __('admin.fields.bundle_price_applied') : null)
+                    ->toggleable(),
                 TextColumn::make('status')->label(__('admin.fields.status'))->badge(),
                 TextColumn::make('reference')->label(__('admin.fields.reference'))->searchable()->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('created_at')->label(__('admin.fields.created_at'))->dateTime('j. n. Y H:i')->sortable()->toggleable(isToggledHiddenByDefault: true),
@@ -173,6 +192,24 @@ class BookingResource extends Resource
                     ...BookingActions::all(),
                 ]),
             ]);
+    }
+
+    /**
+     * "S rezerváciou BV-XXXX (course, date)" for the other booking of the bundle.
+     */
+    public static function bundleLabel(Booking $booking): ?string
+    {
+        $counterpart = $booking->bundleCounterpart();
+
+        if ($counterpart === null) {
+            return null;
+        }
+
+        return __('admin.fields.bundle_with', [
+            'reference' => $counterpart->reference,
+            'course' => $counterpart->course->name,
+            'date' => $counterpart->date->format('j. n. Y'),
+        ]);
     }
 
     public static function getPages(): array

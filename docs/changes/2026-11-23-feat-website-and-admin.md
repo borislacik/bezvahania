@@ -208,6 +208,19 @@ workshop?“ (`ContentSeeder`). Piliere sa už nepodobajú na karty workshopov: 
 - Test: obsah stránky a odkazy na storno podmienky a ochranu údajov; uloženie všetkých troch právnych textov v admine
   (editor zachová nadpisy, zoznamy, odkazy a zalomenia riadkov).
 
+### Balík workshopov (28. 11. 2026)
+Požiadavka: „ak si zákazník objedná kurz KPR spolu s kurzom civilnej prvej pomoci, spoločná cena bude 300 eur … nemusí si
+ich objednať naraz“. Rozhodnutia používateľa: platí aj opačne, bez časového limitu, ten istý kontakt (e-mail alebo
+telefón), bez políčka vo formulári (automatická kontrola + ručná úprava v admine), pri zrušení prvého workshopu sa
+druhý vráti na 200 €, storno poplatok zo skutočnej ceny, taktická prvá pomoc mimo balíka.
+
+Riešenie: `App\Support\BundlePricing` (výber dvoch kurzov `courses.is_bundled`, cena `bundle_price` v nastaveniach,
+hľadanie partnerskej rezervácie), väzba `bookings.bundle_booking_id`, prepočet v `CancelBooking`. Zvažované a
+zamietnuté: zľavový kód (zákazník by ho musel mať a zadať) a políčko vo formulári (používateľ nechcel). Box balíka je
+na úvode mimo bloku so spomaleným skrolovaním, aby jeho výška nemenila kotvy. Verzia súhlasu `2026-11-28` (zmena
+obchodných podmienok a ochrany údajov). Podrobnosti v [features/booking.md](../features/booking.md).
+README: bez zmeny – žiadne nové príkazy ani `.env` premenné.
+
 ### Vzorový formulár na odstúpenie od zmluvy (26. 11. 2026)
 - Nová právna stránka **Odstúpenie od zmluvy** (`/odstupenie-od-zmluvy`, route `legal.withdrawal`, kľúč `withdrawal`):
   krátky úvod (odkaz na článok 8 obchodných podmienok, použitie formulára nie je povinné) a vzorový formulár v znení

@@ -42,4 +42,12 @@ enum BookingStatus: string implements HasColor, HasLabel
     {
         return $this !== self::Cancelled;
     }
+
+    /**
+     * Whether the booking can make up a bundle (booked or attended, not cancelled or missed).
+     */
+    public function countsForBundle(): bool
+    {
+        return in_array($this, [self::Confirmed, self::Completed], true);
+    }
 }

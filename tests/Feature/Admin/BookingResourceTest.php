@@ -10,6 +10,7 @@ use App\Mail\BookingCancelledMail;
 use App\Mail\BookingConfirmedMail;
 use App\Models\Booking;
 use App\Models\Course;
+use Filament\Notifications\Notification;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Mail;
 
@@ -146,4 +147,47 @@ it('exports the filtered bookings as CSV', function () {
         ->toContain('Exportovaná Osoba')
         ->toContain($booking->reference)
         ->toContain(';');
+});
+
+it('lets the admin adjust the price of a booking', function () {
+    $booking = Booking::factory()->create(['date' => '2026-12-01', 'price' => 200]);
+
+    Livewire::test(EditBooking::class, ['record' => $booking->getRouteKey()])
+        ->assertFormFieldExists('price')
+        ->fillForm(['price' => 100])
+        ->call('save')
+        ->assertHasNoFormErrors();
+
+    expect((float) $booking->refresh()->price)->toBe(100.0);
+});
+
+it('shows the other booking of the bundle on both bookings', function () {
+    $civil = Course::factory()->bundled()->create(['name' => 'Civilná prvá pomoc']);
+    $cpr = Course::factory()->bundled()->create(['name' => 'KPR a AED']);
+    $first = Booking::factory()->for($civil)->create(['date' => '2026-12-01']);
+    $second = Booking::factory()->for($cpr)->create(['date' => '2026-12-08', 'price' => 100, 'bundle_booking_id' => $first->id]);
+    $single = Booking::factory()->create(['date' => '2026-12-09']);
+
+    Livewire::test(ViewBooking::class, ['record' => $second->getRouteKey()])
+        ->assertSee(__('admin.fields.bundle_with', ['reference' => $first->reference, 'course' => 'Civilná prvá pomoc', 'date' => '1. 12. 2026']));
+    Livewire::test(ViewBooking::class, ['record' => $first->getRouteKey()])
+        ->assertSee(__('admin.fields.bundle_with', ['reference' => $second->reference, 'course' => 'KPR a AED', 'date' => '8. 12. 2026']));
+    Livewire::test(ViewBooking::class, ['record' => $single->getRouteKey()])
+        ->assertSee(__('admin.fields.bundle_none'));
+    Livewire::test(ListBookings::class)
+        ->assertSee(__('admin.fields.bundle_price_applied'));
+});
+
+it('tells the admin which bundle booking was repriced after a cancellation', function () {
+    $civil = Course::factory()->bundled()->create(['price' => 200]);
+    $cpr = Course::factory()->bundled()->create(['price' => 200]);
+    $first = Booking::factory()->for($civil)->create(['date' => '2026-12-01']);
+    $second = Booking::factory()->for($cpr)->create(['date' => '2026-12-08', 'price' => 100, 'bundle_booking_id' => $first->id]);
+
+    Livewire::test(ListBookings::class)
+        ->callTableAction('cancel', $first)
+        ->assertNotified(Notification::make()->success()->title(__('admin.actions.cancelled'))
+            ->body(__('admin.actions.cancelled_repriced', ['references' => $second->reference])));
+
+    expect((float) $second->refresh()->price)->toBe(200.0);
 });

@@ -29,6 +29,7 @@ class CourseFactory extends Factory
             'price' => 200,
             'image' => null,
             'is_featured' => false,
+            'is_bundled' => false,
             'is_active' => true,
             'sort_order' => fake()->numberBetween(1, 10),
         ];
@@ -37,5 +38,10 @@ class CourseFactory extends Factory
     public function inactive(): static
     {
         return $this->state(fn () => ['is_active' => false]);
+    }
+
+    public function bundled(): static
+    {
+        return $this->state(fn () => ['is_bundled' => true]);
     }
 }

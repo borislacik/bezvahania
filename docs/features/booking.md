@@ -80,3 +80,23 @@ Lokálne ich zachytáva Mailpit (http://localhost:8025), frontu spracúva služb
 - Storno pravidlá (bez poplatku 7 a viac dní pred termínom, 3 – 6 dní 20 %, menej ako 72 hodín 40 %) sú na stránke
   `/storno-podmienky` a skrátene v potvrdzovacom e-maile, na potvrdzovacej stránke a v FAQ (vo formulári iba odkaz v súhlase).
   Pri zmene podmienok treba upraviť aj texty v `lang/sk/booking.php`, `lang/sk/mail.php` a otázku v `ContentSeeder`.
+
+## Balík workshopov (`App\Support\BundlePricing`)
+- Dva workshopy označené v admine ako **Súčasť balíka** (KPR a AED + Civilná prvá pomoc) stoja spolu **cenu balíka**
+  (nastavenie `bundle_price`, predvolene 300 €, admin: Kontakt a prevádzkovateľ → Rezervácie). Balík funguje iba pri
+  presne dvoch aktívnych kurzoch v balíku; taktická prvá pomoc v ňom nie je.
+- Prvý workshop stojí štandardnú cenu, druhý rozdiel do ceny balíka (300 − 200 = 100 €). Nárok sa overí automaticky
+  pri vytvorení rezervácie (`CreateBooking`, web aj admin): existuje nezrušená rezervácia (potvrdená alebo
+  uskutočnená, nie „neuskutočnená“) druhého kurzu z balíka s **rovnakým e-mailom alebo telefónom** (telefón sa
+  porovnáva podľa posledných 9 číslic). Na poradí ani čase medzi workshopmi nezáleží. Vo formulári nie je žiadne políčko.
+- Každá rezervácia môže byť iba v jednom balíku. Väzba je v `bookings.bundle_booking_id` (zľavnená rezervácia →
+  rezervácia, vďaka ktorej zľavu dostala); cena sa ukladá do `bookings.price`.
+- Zrušenie (`CancelBooking`): budúce rezervácie, ktoré mali balíkovú cenu vďaka zrušenej rezervácii, sa spárujú s inou
+  rezerváciou toho istého zákazníka, alebo sa vrátia na štandardnú cenu. Admin dostane v notifikácii zoznam
+  prepočítaných rezervácií. Zákazníkovi sa o zmene ceny e-mail neposiela – dohodne sa individuálne.
+- Admin: v detaile rezervácie riadok **Balík** s odkazom na druhú rezerváciu, v tabuľke pri cene „balíková cena“,
+  v exporte CSV stĺpec Balík; **cenu rezervácie môže upraviť** (napr. balík pri inom e-maile, individuálna dohoda).
+- Web: box „Kompletná pripravenosť“ pod workshopmi na úvode (`#balik`), poznámka na kartách a v detaile kurzov,
+  poznámka pri cene vo formulári, ponuka druhého workshopu na potvrdzovacej stránke a v e-maile, otázka v FAQ,
+  bod 4.3 obchodných podmienok, zmienka v ochrane osobných údajov (bod 3.1). Storno poplatok sa počíta zo skutočnej ceny.
+- Pri zmene cien treba upraviť aj texty s pevnými sumami: otázku v FAQ (`ContentSeeder`, admin) a bod 4.3 obchodných podmienok.

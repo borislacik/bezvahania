@@ -78,6 +78,17 @@
             </div>
         </dl>
 
+        @if ($bundle->isBundled($course))
+            <a
+                href="{{ route('home') }}#balik"
+                class="text-body-sm text-primary mt-3 flex items-center gap-1.5 font-semibold hover:underline"
+                data-testid="course-bundle-note"
+            >
+                <x-site.icon name="verified" class="size-[18px] shrink-0" />
+                {{ __('site.bundle.card', ['price' => Number::currency($bundle->bundlePrice(), 'EUR', 'sk', 0)]) }}
+            </a>
+        @endif
+
         <a
             href="{{ route('booking.create', ['workshop' => $course->slug]) }}#rezervacia"
             class="btn-primary mt-6 w-full"

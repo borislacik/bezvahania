@@ -51,11 +51,12 @@ it('lists, creates and edits workshops', function () {
 
     Livewire::test(EditCourse::class, ['record' => $existing->getRouteKey()])
         ->assertSchemaStateSet(['name' => 'Starý názov'])
-        ->fillForm(['name' => 'Upravený názov'])
+        ->fillForm(['name' => 'Upravený názov', 'is_bundled' => true])
         ->call('save')
         ->assertHasNoFormErrors();
 
-    expect($existing->refresh()->name)->toBe('Upravený názov');
+    expect($existing->refresh()->name)->toBe('Upravený názov')
+        ->and($existing->is_bundled)->toBeTrue();
 });
 
 it('converts an uploaded workshop image to WebP', function () {

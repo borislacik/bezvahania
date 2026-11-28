@@ -24,6 +24,7 @@ use Spatie\Translatable\HasTranslations;
  * @property string $price
  * @property string|null $image
  * @property bool $is_featured
+ * @property bool $is_bundled
  * @property bool $is_active
  * @property int $sort_order
  * @property string|null $seo_title
@@ -43,7 +44,7 @@ class Course extends Model
 
     protected $fillable = [
         'slug', 'name', 'badge', 'short_description', 'description', 'duration_label', 'equipment', 'price', 'image',
-        'is_featured', 'is_active', 'sort_order', 'seo_title', 'seo_description',
+        'is_featured', 'is_bundled', 'is_active', 'sort_order', 'seo_title', 'seo_description',
     ];
 
     protected function casts(): array
@@ -51,6 +52,7 @@ class Course extends Model
         return [
             'price' => 'decimal:2',
             'is_featured' => 'boolean',
+            'is_bundled' => 'boolean',
             'is_active' => 'boolean',
             'sort_order' => 'integer',
         ];

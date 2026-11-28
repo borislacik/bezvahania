@@ -6,6 +6,7 @@ verzie podľa git tagov z deployov (`vRRRR.MM.DD-N`).
 ## [Unreleased]
 
 ### Pridané – web a administrácia
+- Balík workshopov „Kompletná pripravenosť“: KPR a AED + Civilná prvá pomoc spolu za 300 € (druhý workshop 100 €), bez ohľadu na poradie a čas. Nárok sa overí automaticky podľa e-mailu alebo telefónu, pri zrušení prvého workshopu sa cena druhého vráti na 200 €. Box na úvode, poznámky pri kurzoch a vo formulári, ponuka v potvrdení, FAQ, bod 4.3 obchodných podmienok. Admin: cena balíka v nastaveniach, prepínač „Súčasť balíka“ pri kurze, väzba medzi rezerváciami, úprava ceny rezervácie. Migrácia `add_bundle_to_courses_and_bookings`.
 - Lektor: viac fotiek, ktoré sa na webe každých 6 sekúnd striedajú a dajú sa prepnúť bodkami; v admine nové pole „Ďalšie fotky“ (poradie potiahnutím), migrácia `add_gallery_to_team_members_table`. Pribudli dve fotky (nácvik KPR, záchranná služba). Prepínač fotiek a odznak „Aktívna služba“ sú z matného skla s tmavomodrým textom.
 - Vzorový formulár na odstúpenie od zmluvy na stránke `/odstupenie-od-zmluvy` (odkaz v pätičke a v bode 8.6 obchodných podmienok).
 - Obchodné podmienky: text prevádzkovateľa (účinnosť od 1. 1. 2027) na stránke `/obchodne-podmienky`, článok o zrušení odkazuje na storno podmienky.

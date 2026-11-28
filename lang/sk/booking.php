@@ -67,6 +67,8 @@ return [
         'participants' => 'Počet účastníkov',
         'price' => 'Cena za skupinu',
         'not_selected' => 'nevybrané',
+        'bundle_price' => 'balíková cena',
+        'bundle_note' => 'Ak už máte rezervovaný alebo absolvovaný workshop „:course“, cena bude :price. Stačí vyplniť rovnaký e-mail alebo telefón.',
     ],
 
     'consent_required' => 'Pred rezerváciou potvrďte súhlas s obchodnými a storno podmienkami a so spracovaním osobných údajov.',
@@ -80,6 +82,9 @@ return [
         'next' => 'Deň pred workshopom sa vám ozvem a potvrdím presný čas príchodu.',
         'change' => 'Potrebujete termín zrušiť alebo presunúť? Napíšte mi na :email. Zrušenie 7 a viac dní pred termínom je bez poplatku, pri neskoršom zrušení sa platí storno poplatok podľa :terms.',
         'change_terms' => 'storno podmienok',
+        'bundle_offer_title' => 'Doplňte si workshop „:course“ za :price',
+        'bundle_offer' => 'Spolu s týmto workshopom zaplatíte za oba len :total. Rezervujte ho kedykoľvek s rovnakým e-mailom alebo telefónom a balíková cena sa uplatní automaticky.',
+        'bundle_offer_button' => 'Vybrať termín',
         'home' => 'Späť na úvod',
     ],
 
